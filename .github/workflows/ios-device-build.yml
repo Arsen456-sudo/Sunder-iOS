@@ -34,7 +34,10 @@ jobs:
             allow-import-from-derivation = true
             max-jobs = 2
             cores = 3
-      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+            extra-substituters = https://cache.iog.io
+            extra-trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=
+            require-sigs = true
+      - uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
         id: native
         with:
           path: apps/ios/Libraries/ios
@@ -49,6 +52,12 @@ jobs:
           unzip -o native-result/pkg-ios-aarch64-swift-json.zip -d apps/ios/Libraries/ios
       - name: Match native archive names
         run: sh scripts/ios/update-pbxproj.sh
+      - name: Save verified native libraries before Swift compilation
+        if: steps.native.outputs.cache-hit != 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: apps/ios/Libraries/ios
+          key: ${{ steps.native.outputs.cache-primary-key }}
       - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
         with:
           path: .build/SourcePackages

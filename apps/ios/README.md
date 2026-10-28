@@ -135,3 +135,10 @@ and regenerate notices; a mutable development branch is not a binary/source mani
 ## Manual test IPA build
 
 Run the Sunder iOS test IPA workflow on GitHub Actions. It uses Xcode 26 and the locked Nix iOS core target from this source, caches the resulting archives and Swift packages, then packages an unsigned device app. Logs and checksums are retained for three days. This is an initial build pipeline, not a verified binary release; signing, shared Keychain/App Groups and push service configuration still require independent adaptation and device checks.
+
+Nix also uses the signed cache recommended by haskell.nix (cache.iog.io with its
+documented hydra.iohk.io public key). Missing substitutes can still require source
+compilation. Native archives are saved immediately after archive-name validation,
+before Swift compilation, so a later Xcode failure does not discard this completed
+native result. Restore requires the exact native-input cache key. Changes to the
+workflow apply to newly dispatched runs; an existing job keeps its original config.

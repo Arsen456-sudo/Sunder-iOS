@@ -16,3 +16,9 @@ that every remaining source-license/service question is resolved.
 SOURCE_EXPORT.json records original Git executable modes. When initializing a new Git repo
 on Windows, run git add first, then restore 100755 entries using git update-index --chmod=+x
 before committing. Do not copy .git metadata from the old private checkout.
+
+Subsequent maintenance commits
+------------------------------
+SOURCE_EXPORT.json describes the initial source export. Later tracked changes are
+recorded by Git commits; use the current commit and CI SOURCE_COMMIT.txt for an exact
+build reference. The export manifest is not a rolling hash list of later commits.

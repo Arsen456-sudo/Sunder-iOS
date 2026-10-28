@@ -352,3 +352,14 @@ Operator UI uses provider tradeName text and SF network symbols rather than bran
 images. Operator metadata, legal names, URLs, IDs, enabled/selected state, validation,
 conditions acceptance and core networking are unchanged. See the
 [navigation scope](client/navigation.md#sunder-temporary-logo-removal--2026-10-28).
+
+## Sunder iOS build cache — 2026-10-28
+
+The [device workflow](../../../.github/workflows/ios-device-build.yml#L28) keeps
+flake.lock/core source fixed and adds the upstream-recommended signed cache.iog.io
+substituter. Signature validation remains required. Native archives are restored
+by the exact source-input key, validated by update-pbxproj.sh, and explicitly saved
+before Swift package resolution or Xcode compilation. This avoids discarding a
+completed core build after a later Swift failure. Cache availability and build
+success are not guaranteed. In-flight workflows retain their initial configuration.
+No application behavior, FFI, permissions or supported protocol changes.
