@@ -1,0 +1,195 @@
+{
+  "date": "2026-10-28",
+  "scope": "Pinned root-license evidence, not full component clearance",
+  "sources": [
+    {
+      "identity": "simplexmq-root",
+      "source": "https://github.com/simplex-chat/simplexmq",
+      "revision": "efaad8e73436d60f5052f07dda6b71151ad5039b",
+      "metadata_url": "https://api.github.com/repos/simplex-chat/simplexmq/license?ref=efaad8e73436d60f5052f07dda6b71151ad5039b",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE",
+      "declared_spdx": "AGPL-3.0",
+      "file": "docs/fork/licenses/simplexmq-root-LICENSE.txt",
+      "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"
+    },
+    {
+      "identity": "hs-socks-root",
+      "source": "https://github.com/simplex-chat/hs-socks",
+      "revision": "a30cc7a79a08d8108316094f8f2f82a0c5e1ac51",
+      "metadata_url": "https://api.github.com/repos/simplex-chat/hs-socks/license?ref=a30cc7a79a08d8108316094f8f2f82a0c5e1ac51",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE",
+      "declared_spdx": "NOASSERTION",
+      "file": "docs/fork/licenses/hs-socks-root-LICENSE.txt",
+      "sha256": "db10da7ebf4700ddf9c5e72ba4a18b48c0d652d8d0e25966fcb8f609ded8e55c"
+    },
+    {
+      "identity": "direct-sqlcipher-root",
+      "source": "https://github.com/simplex-chat/direct-sqlcipher",
+      "revision": "f814ee68b16a9447fbb467ccc8f29bdd3546bfd9",
+      "metadata_url": "https://api.github.com/repos/simplex-chat/direct-sqlcipher/license?ref=f814ee68b16a9447fbb467ccc8f29bdd3546bfd9",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE",
+      "declared_spdx": "MIT",
+      "file": "docs/fork/licenses/direct-sqlcipher-root-LICENSE.txt",
+      "sha256": "4bbfcbc9a857b509bfebc40b83f6794dc2cb177a452fb4374fe0db93d52bf1d7"
+    },
+    {
+      "identity": "sqlcipher-simple-root",
+      "source": "https://github.com/simplex-chat/sqlcipher-simple",
+      "revision": "a46bd361a19376c5211f1058908fc0ae6bf42446",
+      "metadata_url": "https://api.github.com/repos/simplex-chat/sqlcipher-simple/license?ref=a46bd361a19376c5211f1058908fc0ae6bf42446",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE",
+      "declared_spdx": "NOASSERTION",
+      "file": "docs/fork/licenses/sqlcipher-simple-root-LICENSE.txt",
+      "sha256": "971995bc10410a4b0429a8e30c2a1ab91806a78cbcdfb44c334392e70c04f116"
+    },
+    {
+      "identity": "aeson-root",
+      "source": "https://github.com/simplex-chat/aeson",
+      "revision": "aab7b5a14d6c5ea64c64dcaee418de1bb00dcc2b",
+      "metadata_url": "https://api.github.com/repos/simplex-chat/aeson/license?ref=aab7b5a14d6c5ea64c64dcaee418de1bb00dcc2b",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE",
+      "declared_spdx": "NOASSERTION",
+      "file": "docs/fork/licenses/aeson-root-LICENSE.txt",
+      "sha256": "0447823bc7935d43958ae6fe9a779b7f78cac08df3b4f6a89b61b80d3af1cca0"
+    },
+    {
+      "identity": "haskell-terminal-root",
+      "source": "https://github.com/simplex-chat/haskell-terminal",
+      "revision": "f708b00009b54890172068f168bf98508ffcd495",
+      "metadata_url": "https://api.github.com/repos/simplex-chat/haskell-terminal/license?ref=f708b00009b54890172068f168bf98508ffcd495",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE",
+      "declared_spdx": "NOASSERTION",
+      "file": "docs/fork/licenses/haskell-terminal-root-LICENSE.txt",
+      "sha256": "d595f1b1632edc9173edad936d6bc328c70a7ea5795abc1cf6deb6fec72812ca"
+    },
+    {
+      "identity": "android-support-root",
+      "source": "https://github.com/simplex-chat/android-support",
+      "revision": "9aa09f148089d6752ce563b14c2df1895718d806",
+      "metadata_url": "https://api.github.com/repos/simplex-chat/android-support/license?ref=9aa09f148089d6752ce563b14c2df1895718d806",
+      "status": "manual-review-required",
+      "http_status": 404,
+      "package_metadata_url": "https://raw.githubusercontent.com/simplex-chat/android-support/9aa09f148089d6752ce563b14c2df1895718d806/android-support.cabal",
+      "package_metadata_file": "docs/fork/licenses/android-support-package-metadata.txt",
+      "package_metadata_sha256": "ec8f2153bb79b745dff90697b54704fdd809cd7ae5a8f21b7ae85ec4cbbccef3",
+      "declared_package_license": null,
+      "review_note": "Root license endpoint returned 404; pinned package metadata was retrieved. A declaration alone does not replace required full notices or prove transitive resource permissions."
+    },
+    {
+      "identity": "zip-root",
+      "source": "https://github.com/simplex-chat/zip",
+      "revision": "2eff156c3aac389e35d38bf10a52733d7061640a",
+      "metadata_url": "https://api.github.com/repos/simplex-chat/zip/license?ref=2eff156c3aac389e35d38bf10a52733d7061640a",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE.md",
+      "declared_spdx": "BSD-3-Clause",
+      "file": "docs/fork/licenses/zip-root-LICENSE.txt",
+      "sha256": "350d88bfac03b94f9ceec64ba546a1f0b7c5fc1f3247440b2eead6a0528ea5b6"
+    },
+    {
+      "identity": "wai-warp-tls",
+      "source": "https://github.com/yesodweb/wai",
+      "revision": "ec5e017d896a78e787a5acea62b37a4e677dec2e",
+      "metadata_url": "https://api.github.com/repos/yesodweb/wai/license?ref=ec5e017d896a78e787a5acea62b37a4e677dec2e",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE",
+      "declared_spdx": "MIT",
+      "file": "docs/fork/licenses/wai-warp-tls-LICENSE.txt",
+      "sha256": "e65b625c104dbe1b961dccc759517381d82d15b6d34fc90ee829f6abb55f7ffc"
+    },
+    {
+      "identity": "wai-warp",
+      "source": "https://github.com/simplex-chat/wai",
+      "revision": "2f6e5aa5f05ba9140ac99e195ee647b4f7d926b0",
+      "metadata_url": "https://api.github.com/repos/simplex-chat/wai/license?ref=2f6e5aa5f05ba9140ac99e195ee647b4f7d926b0",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE",
+      "declared_spdx": "MIT",
+      "file": "docs/fork/licenses/wai-warp-LICENSE.txt",
+      "sha256": "e65b625c104dbe1b961dccc759517381d82d15b6d34fc90ee829f6abb55f7ffc"
+    },
+    {
+      "identity": "codescanner",
+      "source": "https://github.com/twostraws/CodeScanner",
+      "revision": "34da57fb63b47add20de8a85da58191523ccce57",
+      "metadata_url": "https://api.github.com/repos/twostraws/CodeScanner/license?ref=34da57fb63b47add20de8a85da58191523ccce57",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE",
+      "declared_spdx": "MIT",
+      "file": "docs/fork/licenses/codescanner-LICENSE.txt",
+      "sha256": "b4d2f1225af9e5a7d179db0fb45ca62ea1c11bd5d1ec3cba1772ced81fa7427d"
+    },
+    {
+      "identity": "elegant-emoji-picker",
+      "source": "https://github.com/Finalet/Elegant-Emoji-Picker",
+      "revision": "71d2d46092b4d550cc593614efc06438f845f6e6",
+      "metadata_url": "https://api.github.com/repos/Finalet/Elegant-Emoji-Picker/license?ref=71d2d46092b4d550cc593614efc06438f845f6e6",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE",
+      "declared_spdx": "MIT",
+      "file": "docs/fork/licenses/elegant-emoji-picker-LICENSE.txt",
+      "sha256": "fbae41fcf86fee9a5d855966ac1b81d9aa83e40d35b0b49bbe1c9c640664294f"
+    },
+    {
+      "identity": "ink",
+      "source": "https://github.com/johnsundell/ink",
+      "revision": "bcc9f219900a62c4210e6db726035d7f03ae757b",
+      "metadata_url": "https://api.github.com/repos/johnsundell/ink/license?ref=bcc9f219900a62c4210e6db726035d7f03ae757b",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE",
+      "declared_spdx": "MIT",
+      "file": "docs/fork/licenses/ink-LICENSE.txt",
+      "sha256": "1d41e78e97dcad0825b29d4104b32bb95e3e9d23e82e6c5092538a2a2228f696"
+    },
+    {
+      "identity": "lzstring-swift",
+      "source": "https://github.com/Ibrahimhass/lzstring-swift",
+      "revision": "7f62f21de5b18582a950e1753b775cc614722407",
+      "metadata_url": "https://api.github.com/repos/Ibrahimhass/lzstring-swift/license?ref=7f62f21de5b18582a950e1753b775cc614722407",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE.txt",
+      "declared_spdx": "WTFPL",
+      "file": "docs/fork/licenses/lzstring-swift-LICENSE.txt",
+      "sha256": "0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5"
+    },
+    {
+      "identity": "swiftygif",
+      "source": "https://github.com/kirualex/SwiftyGif",
+      "revision": "5e8619335d394901379c9add5c4c1c2f420b3800",
+      "metadata_url": "https://api.github.com/repos/kirualex/SwiftyGif/license?ref=5e8619335d394901379c9add5c4c1c2f420b3800",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE",
+      "declared_spdx": "MIT",
+      "file": "docs/fork/licenses/swiftygif-LICENSE.txt",
+      "sha256": "ca136c5ebb10cf8ee95b08222ee6acc92da0bd67ff6633abbde614c28ad07634"
+    },
+    {
+      "identity": "webrtc",
+      "source": "https://github.com/simplex-chat/WebRTC",
+      "revision": "34bedc50f9c58dccf4967ea59c7e6a47d620803b",
+      "metadata_url": "https://api.github.com/repos/simplex-chat/WebRTC/license?ref=34bedc50f9c58dccf4967ea59c7e6a47d620803b",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE.md",
+      "declared_spdx": "NOASSERTION",
+      "file": "docs/fork/licenses/webrtc-LICENSE.txt",
+      "sha256": "843529896bae499c92af3ecade86855128f930334ba97530695ccecef56e966d"
+    },
+    {
+      "identity": "yams",
+      "source": "https://github.com/jpsim/Yams",
+      "revision": "9234124cff5e22e178988c18d8b95a8ae8007f76",
+      "metadata_url": "https://api.github.com/repos/jpsim/Yams/license?ref=9234124cff5e22e178988c18d8b95a8ae8007f76",
+      "status": "retrieved-root-license-review-component-scope",
+      "upstream_license_path": "LICENSE",
+      "declared_spdx": "MIT",
+      "file": "docs/fork/licenses/yams-LICENSE.txt",
+      "sha256": "0354b0ea403d2e78059c5ae0510a2cfae9f8eb306fcef094ac9fff5b47e20bed"
+    }
+  ]
+}

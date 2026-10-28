@@ -1,0 +1,158 @@
+{
+  "date": "2026-10-28",
+  "previous_checkpoint": "e76cd6febfefc9a53148c5d21b429b811026347f",
+  "scope": "iOS source/resource preparation, not a built IPA SBOM or legal certification",
+  "resource_count": 88,
+  "resource_categories": {
+    "temporary-app-icon": 44,
+    "profile-badge": 3,
+    "symbol": 2,
+    "other-graphic": 18,
+    "wallpaper": 18,
+    "audio": 3
+  },
+  "resource_statuses": {
+    "new-neutral-placeholder": 44,
+    "permission-or-replacement-pending": 21,
+    "file-specific-rights-pending": 20,
+    "provenance-pending": 3
+  },
+  "tracked_ios_fonts": [],
+  "swift_packages": [
+    {
+      "identity": "codescanner",
+      "revision": "34da57fb63b47add20de8a85da58191523ccce57",
+      "manifest": {
+        "kind": "manifest",
+        "url": "https://raw.githubusercontent.com/twostraws/CodeScanner/34da57fb63b47add20de8a85da58191523ccce57/Package.swift",
+        "file": "docs/fork/ios/sources/codescanner-manifest.txt",
+        "sha256": "c1801cd2a0950c21d8de458b2426475f22151b5706917ca28274189fdc87d76b"
+      },
+      "root_license_label": "MIT",
+      "remote_source_dependencies_declared": false,
+      "special_scope": "Source package; no extra remote package dependency declared in inspected manifest."
+    },
+    {
+      "identity": "elegant-emoji-picker",
+      "revision": "71d2d46092b4d550cc593614efc06438f845f6e6",
+      "manifest": {
+        "kind": "manifest",
+        "url": "https://raw.githubusercontent.com/Finalet/Elegant-Emoji-Picker/71d2d46092b4d550cc593614efc06438f845f6e6/Package.swift",
+        "file": "docs/fork/ios/sources/elegant-emoji-picker-manifest.txt",
+        "sha256": "f2ef6ce5ab450af1e607a8d705ee711235d9526c283c0b2133fd3b83fc769209"
+      },
+      "root_license_label": "MIT",
+      "remote_source_dependencies_declared": false,
+      "special_scope": "Manifest bundles Unicode JSON plus icon catalog; MIT root evidence retained, imported-data/artwork provenance not independently certified."
+    },
+    {
+      "identity": "ink",
+      "revision": "bcc9f219900a62c4210e6db726035d7f03ae757b",
+      "manifest": {
+        "kind": "manifest",
+        "url": "https://raw.githubusercontent.com/johnsundell/ink/bcc9f219900a62c4210e6db726035d7f03ae757b/Package.swift",
+        "file": "docs/fork/ios/sources/ink-manifest.txt",
+        "sha256": "f028acd73700e94079507e0d36b3cdbbbff64f9db710869a32885a84ce1e170f"
+      },
+      "root_license_label": "MIT",
+      "remote_source_dependencies_declared": false,
+      "special_scope": "Source package; no extra remote package dependency declared in inspected manifest."
+    },
+    {
+      "identity": "lzstring-swift",
+      "revision": "7f62f21de5b18582a950e1753b775cc614722407",
+      "manifest": {
+        "kind": "manifest",
+        "url": "https://raw.githubusercontent.com/Ibrahimhass/lzstring-swift/7f62f21de5b18582a950e1753b775cc614722407/Package.swift",
+        "file": "docs/fork/ios/sources/lzstring-swift-manifest.txt",
+        "sha256": "f1bafaa984d61ce94f3543c00f1153eb84f5429b2d52e1e271bfd5d62767cb7a"
+      },
+      "root_license_label": "WTFPL-2.0",
+      "remote_source_dependencies_declared": false,
+      "special_scope": "Source package; no extra remote package dependency declared in inspected manifest."
+    },
+    {
+      "identity": "swiftygif",
+      "revision": "5e8619335d394901379c9add5c4c1c2f420b3800",
+      "manifest": {
+        "url": "https://raw.githubusercontent.com/alexiscreuzot/SwiftyGif/5e8619335d394901379c9add5c4c1c2f420b3800/Package.swift",
+        "file": "docs/fork/ios/sources/swiftygif-manifest.txt",
+        "sha256": "90c25a9d0201c411b06ec396cd932e3a49b5c71f2aab677e5c06c35659c299ce",
+        "kind": "manifest",
+        "note": "Same pinned commit; canonical repository path after rename."
+      },
+      "root_license_label": "MIT",
+      "remote_source_dependencies_declared": false,
+      "special_scope": "Source package; no extra remote package dependency declared in inspected manifest."
+    },
+    {
+      "identity": "webrtc",
+      "revision": "34bedc50f9c58dccf4967ea59c7e6a47d620803b",
+      "manifest": {
+        "kind": "manifest",
+        "url": "https://raw.githubusercontent.com/simplex-chat/WebRTC/34bedc50f9c58dccf4967ea59c7e6a47d620803b/Package.swift",
+        "file": "docs/fork/ios/sources/webrtc-manifest.txt",
+        "sha256": "dd5bfcffd04df6ba458cc15bb9a37f0239a9007fc3da591c938dac8a674e204d"
+      },
+      "root_license_label": "BSD-3-Clause (root/archive notice; third-party closure pending)",
+      "remote_source_dependencies_declared": false,
+      "special_scope": "Checksummed binary package; no final native closure/third-party notice completeness claim."
+    },
+    {
+      "identity": "yams",
+      "revision": "9234124cff5e22e178988c18d8b95a8ae8007f76",
+      "manifest": {
+        "kind": "manifest",
+        "url": "https://raw.githubusercontent.com/jpsim/Yams/9234124cff5e22e178988c18d8b95a8ae8007f76/Package.swift",
+        "file": "docs/fork/ios/sources/yams-manifest.txt",
+        "sha256": "deb0661978a6861048a03ddf5bfc8c5d8dd806e533a9db2ce180766817d83c19"
+      },
+      "root_license_label": "MIT (root); vendored CYaml provenance remains separately reviewed",
+      "remote_source_dependencies_declared": false,
+      "special_scope": "Manifest builds vendored CYaml C sources. Supplemental upstream libyaml notice collected; exact vendor revision unverified."
+    }
+  ],
+  "existing_empty_notice_files": [
+    "docs/dependencies/licences/haskell/aeson-2.2.1.0/LICENSE",
+    "docs/dependencies/licences/haskell/bitvec-1.1.5.0/LICENSE",
+    "docs/dependencies/licences/haskell/blaze-textual-0.2.3.1/LICENSE",
+    "docs/dependencies/licences/haskell/conduit-1.3.5/LICENSE",
+    "docs/dependencies/licences/haskell/conduit-extra-1.3.6/LICENSE",
+    "docs/dependencies/licences/haskell/constraints-0.14/LICENSE",
+    "docs/dependencies/licences/haskell/email-validate-2.3.2.19/LICENSE",
+    "docs/dependencies/licences/haskell/http2-5.0.0/LICENSE",
+    "docs/dependencies/licences/haskell/ini-0.4.2/LICENSE",
+    "docs/dependencies/licences/haskell/libyaml-0.1.2/LICENSE",
+    "docs/dependencies/licences/haskell/monad-logger-0.3.40/LICENSE",
+    "docs/dependencies/licences/haskell/mono-traversable-1.0.15.3/LICENSE",
+    "docs/dependencies/licences/haskell/network-control-0.0.2/LICENSE",
+    "docs/dependencies/licences/haskell/simple-logger-0.1.1/LICENSE",
+    "docs/dependencies/licences/haskell/vector-algorithms-0.9.0.1/LICENSE",
+    "docs/dependencies/licences/haskell/websockets-0.12.7.3/LICENCE",
+    "docs/dependencies/licences/haskell/yaml-0.11.11.2/LICENSE",
+    "docs/dependencies/licences/haskell/zip-2.0.0/LICENSE.md"
+  ],
+  "recovered_versioned_notice_count": 18,
+  "webrtc_archive": {
+    "sha256": "2598307f788ab668e0f42b2a1daef4306adbb9ec9c3959441064e8e84f7310ee",
+    "verified": true,
+    "bytes": 34279775,
+    "notice_paths": [
+      "WebRTC.xcframework/LICENSE"
+    ]
+  },
+  "native_library_directory_present": false,
+  "native_library_matching": "Unresolved. Xcode references GMP, GMPXX, libffi and Haskell static libraries; ignored/downloaded local archives are absent. download-libs.sh uses a latest endpoint, not immutable artifact inputs.",
+  "open_release_gates": [
+    "Remaining original graphics, badges, wallpapers, symbols and audio need file-specific grants or compatible replacements.",
+    "Yams/CYaml vendor matching and imported emoji-data/icon provenance require follow-up.",
+    "WebRTC archive root notice is preserved, but full third-party build inventory and notices are not established.",
+    "Match native GMP/GMPXX/libffi/GHC/SQLCipher/core libraries to exact sources, versions, options, notices and applicable distribution obligations.",
+    "Historical Haskell report and recovered notices are evidence, not proof of actual iOS dependency versions.",
+    "Verify final IPA contents, offline resource inclusion, extension requirements, signing and device behavior.",
+    "Private source/issue links and Git history exposure remain separate publication work."
+  ],
+  "build_run": false,
+  "tests_run": false,
+  "public_visibility_changed": false
+}

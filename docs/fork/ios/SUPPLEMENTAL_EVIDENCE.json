@@ -1,0 +1,193 @@
+{
+  "date": "2026-10-28",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/jpsim/Yams/9234124cff5e22e178988c18d8b95a8ae8007f76/Sources/CYaml/src/yaml_private.h",
+      "file": "docs/fork/ios/sources/yams-Sources_CYaml_src_yaml_private.h.txt",
+      "sha256": "2e2f7887f27da6bff518db117d358f708c1af30ebabdeeea612e628b9ed18841",
+      "package": "yams"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/jpsim/Yams/9234124cff5e22e178988c18d8b95a8ae8007f76/Sources/CYaml/src/api.c",
+      "file": "docs/fork/ios/sources/yams-Sources_CYaml_src_api.c.txt",
+      "sha256": "332a0fdeeb6c2d5bacc6fc93d19f80db59eedf51ec87f0851742bcf441b69421",
+      "package": "yams"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/jpsim/Yams/9234124cff5e22e178988c18d8b95a8ae8007f76/README.md",
+      "file": "docs/fork/ios/sources/yams-README.md.txt",
+      "sha256": "9c05c49de1b3ca3e3c3610d9c1f989f19ad083563b082d75906b46f4ec41b9a7",
+      "package": "yams"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Finalet/Elegant-Emoji-Picker/71d2d46092b4d550cc593614efc06438f845f6e6/README.md",
+      "file": "docs/fork/ios/sources/elegant-emoji-picker-README.md.txt",
+      "sha256": "107919f0e1d522f3202e0fe4955f036636aba4581d54036d10f3860ae1ff57c9",
+      "package": "elegant-emoji-picker"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Ibrahimhass/lzstring-swift/7f62f21de5b18582a950e1753b775cc614722407/README.md",
+      "file": "docs/fork/ios/sources/lzstring-swift-README.md.txt",
+      "sha256": "d4e4d58173ba6361768866756801ccd83f39ff31ed4399927a746a6356d14253",
+      "package": "lzstring-swift"
+    },
+    {
+      "url": "https://api.github.com/repos/simplex-chat/WebRTC/releases/tags/110.0.0",
+      "file": "docs/fork/ios/sources/webrtc-release-110.0.0.json",
+      "sha256": "942de8a7fd26e80e45d36c4ad392d72b48c061d8fc363d8a5568ab18d0e822bd"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/yaml/libyaml/2c891fc7a770e8ba2fec34fc6b545c672beb37e6/License",
+      "file": "docs/fork/ios/sources/libyaml-upstream-License.txt",
+      "sha256": "c40112449f254b9753045925248313e9270efa36d226b22d82d4cc6c43c57f29",
+      "revision": "2c891fc7a770e8ba2fec34fc6b545c672beb37e6",
+      "scope": "Supplemental upstream libyaml notice; exact Yams-vendored revision not established."
+    }
+  ],
+  "empty_haskell_notice_recovery": [
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/aeson-2.2.1.0/LICENSE",
+      "package_version": "aeson-2.2.1.0",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/aeson-2.2.1.0/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-aeson-2.2.1.0-LICENSE.txt",
+      "sha256": "0447823bc7935d43958ae6fe9a779b7f78cac08df3b4f6a89b61b80d3af1cca0"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/bitvec-1.1.5.0/LICENSE",
+      "package_version": "bitvec-1.1.5.0",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/bitvec-1.1.5.0/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-bitvec-1.1.5.0-LICENSE.txt",
+      "sha256": "5f7cb32fbcb073e1a536b178aea87d0a52e7ce7d6d6d816054a51421e4183cec"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/blaze-textual-0.2.3.1/LICENSE",
+      "package_version": "blaze-textual-0.2.3.1",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/blaze-textual-0.2.3.1/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-blaze-textual-0.2.3.1-LICENSE.txt",
+      "sha256": "ad33b0ce49deffa788aa9b8867a4c4fbbeff7b67f0a004a760eac9aecbf21a8b"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/conduit-1.3.5/LICENSE",
+      "package_version": "conduit-1.3.5",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/conduit-1.3.5/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-conduit-1.3.5-LICENSE.txt",
+      "sha256": "bebc00cb81ab4a16c3f27768fad205a203d0d7b56944299808dc3c35b53e198d"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/conduit-extra-1.3.6/LICENSE",
+      "package_version": "conduit-extra-1.3.6",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/conduit-extra-1.3.6/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-conduit-extra-1.3.6-LICENSE.txt",
+      "sha256": "bebc00cb81ab4a16c3f27768fad205a203d0d7b56944299808dc3c35b53e198d"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/constraints-0.14/LICENSE",
+      "package_version": "constraints-0.14",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/constraints-0.14/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-constraints-0.14-LICENSE.txt",
+      "sha256": "c9ed0c32e5332899f31bfad68cdb6e949a712a155318a0eb4872cc8f5bf4c95b"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/email-validate-2.3.2.19/LICENSE",
+      "package_version": "email-validate-2.3.2.19",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/email-validate-2.3.2.19/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-email-validate-2.3.2.19-LICENSE.txt",
+      "sha256": "6d6dd1c178f27bcda14a24c9ceabc20663d9f84c3e1ac0a7fc6074de89f1bef2"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/http2-5.0.0/LICENSE",
+      "package_version": "http2-5.0.0",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/http2-5.0.0/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-http2-5.0.0-LICENSE.txt",
+      "sha256": "ba1850df60eee7d108835ab7c669b67be159fb47e104321e79c35ca74d5184f5"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/ini-0.4.2/LICENSE",
+      "package_version": "ini-0.4.2",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/ini-0.4.2/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-ini-0.4.2-LICENSE.txt",
+      "sha256": "18d5d2248a51ab29a488c8ea8c3786b00f50db4fea52f61766beffe3426bb85a"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/libyaml-0.1.2/LICENSE",
+      "package_version": "libyaml-0.1.2",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/libyaml-0.1.2/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-libyaml-0.1.2-LICENSE.txt",
+      "sha256": "8681da769bea4d67080fe8d9d997fac6fcbda3bae9c5582bf643eefb5f05d490"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/monad-logger-0.3.40/LICENSE",
+      "package_version": "monad-logger-0.3.40",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/monad-logger-0.3.40/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-monad-logger-0.3.40-LICENSE.txt",
+      "sha256": "bebc00cb81ab4a16c3f27768fad205a203d0d7b56944299808dc3c35b53e198d"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/mono-traversable-1.0.15.3/LICENSE",
+      "package_version": "mono-traversable-1.0.15.3",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/mono-traversable-1.0.15.3/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-mono-traversable-1.0.15.3-LICENSE.txt",
+      "sha256": "49993c21a514d0ea769e899737fa3b1df2d76b7e23846fcc46db6f5e6d07d14b"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/network-control-0.0.2/LICENSE",
+      "package_version": "network-control-0.0.2",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/network-control-0.0.2/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-network-control-0.0.2-LICENSE.txt",
+      "sha256": "2a247ae4bf4cf5465f8847a39abf7f642e306148fbf7aa0a3eda468d4b7f7c56"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/simple-logger-0.1.1/LICENSE",
+      "package_version": "simple-logger-0.1.1",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/simple-logger-0.1.1/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-simple-logger-0.1.1-LICENSE.txt",
+      "sha256": "ad847c3158a7e55b21fb6b8805debfd32cb4c4413343fefb5b62da538fc58e63"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/vector-algorithms-0.9.0.1/LICENSE",
+      "package_version": "vector-algorithms-0.9.0.1",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/vector-algorithms-0.9.0.1/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-vector-algorithms-0.9.0.1-LICENSE.txt",
+      "sha256": "c188f9ee5859b8d2f7d7e3c9ec729953d7297ee5c09e7491cac1f5a44cf7e4df"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/websockets-0.12.7.3/LICENCE",
+      "package_version": "websockets-0.12.7.3",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/websockets-0.12.7.3/src/LICENCE",
+      "file": "docs/fork/ios/sources/hackage-websockets-0.12.7.3-LICENCE.txt",
+      "sha256": "41c4e5a4786871195fc4f5949b60f273fec0b8540710b75a4f33a67e70326318"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/yaml-0.11.11.2/LICENSE",
+      "package_version": "yaml-0.11.11.2",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/yaml-0.11.11.2/src/LICENSE",
+      "file": "docs/fork/ios/sources/hackage-yaml-0.11.11.2-LICENSE.txt",
+      "sha256": "8681da769bea4d67080fe8d9d997fac6fcbda3bae9c5582bf643eefb5f05d490"
+    },
+    {
+      "original_empty_file": "docs/dependencies/licences/haskell/zip-2.0.0/LICENSE.md",
+      "package_version": "zip-2.0.0",
+      "scope": "Versioned report evidence; actual iOS native binary matching remains unverified.",
+      "url": "https://hackage-content.haskell.org/package/zip-2.0.0/src/LICENSE.md",
+      "file": "docs/fork/ios/sources/hackage-zip-2.0.0-LICENSE_md.txt",
+      "sha256": "350d88bfac03b94f9ceec64ba546a1f0b7c5fc1f3247440b2eead6a0528ea5b6"
+    }
+  ]
+}

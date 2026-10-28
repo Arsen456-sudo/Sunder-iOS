@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-28",
+  "scope": "Current tracked and nonignored development text candidates <=2MiB; known pattern rules only; no matched secret contents recorded.",
+  "text_candidates": 2960,
+  "findings": [
+    {
+      "path": "tests/fixtures/tls/server.key",
+      "rule": "private-key-header",
+      "classification": "known-public-upstream-test-fixture"
+    }
+  ],
+  "local_user_path_indicators": [],
+  "ignored_files_count": 0,
+  "ignored_files_exported": false,
+  "limitations": "No arbitrary-password/full personal-data certification. Export uses committed Git data and never copies ignored files or .git."
+}

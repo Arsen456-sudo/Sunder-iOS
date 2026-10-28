@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-28",
+  "repository": "Arsen456-sudo/SimpleX-Private",
+  "private": true,
+  "default_branch": "main",
+  "workflows": [
+    {
+      "name": "build",
+      "state": "disabled_manually"
+    },
+    {
+      "name": "CLA Assistant",
+      "state": "disabled_manually"
+    },
+    {
+      "name": "Reproduce latest release",
+      "state": "disabled_manually"
+    },
+    {
+      "name": "Build Eleventy",
+      "state": "disabled_manually"
+    }
+  ],
+  "actions_runs": 0,
+  "artifacts": 0,
+  "visibility_changed": false,
+  "note": "Metadata review only. No private job logs or secret values were requested or recorded."
+}

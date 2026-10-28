@@ -1,0 +1,6 @@
+# Preserve upstream evidence and notice formatting without checkout-dependent CRLF changes.
+*.sh text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+docs/fork/ios/sources/** text eol=lf -whitespace
+apps/ios/Shared/SunderNotices.txt text eol=lf -whitespace

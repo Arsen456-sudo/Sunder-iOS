@@ -1,0 +1,52 @@
+{
+  "scope": "Original base64 sample/default-avatar media, not user-provided images or decoder prefixes",
+  "new_png_sha256": "60708f18e29fe0e1c95a0eef8994c6b1170010427caf575f914863a739d3e5f8",
+  "new_data_uri": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAFklEQVR42mO49+Q1SYhhVMOohuGrAQAbh60f9sW+IwAAAABJRU5ErkJggg==",
+  "files": [
+    {
+      "path": "apps/ios/Shared/Views/Helpers/ProfileImage.swift",
+      "replaced_literals": 1,
+      "original_literal_sha256": [
+        "c3a2a4b48f0d19c6c11d3a74f1356e638fe2e29758de7789545964c4ca36e741"
+      ]
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CILinkView.swift",
+      "replaced_literals": 1,
+      "original_literal_sha256": [
+        "c5ceb408131aaa27f33aea30810e159003ec80ed14301bb0713a734deffa2d38"
+      ]
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/FramedItemView.swift",
+      "replaced_literals": 4,
+      "original_literal_sha256": [
+        "c5ceb408131aaa27f33aea30810e159003ec80ed14301bb0713a734deffa2d38",
+        "c5ceb408131aaa27f33aea30810e159003ec80ed14301bb0713a734deffa2d38",
+        "c5ceb408131aaa27f33aea30810e159003ec80ed14301bb0713a734deffa2d38",
+        "c5ceb408131aaa27f33aea30810e159003ec80ed14301bb0713a734deffa2d38"
+      ]
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/ComposeLinkView.swift",
+      "replaced_literals": 1,
+      "original_literal_sha256": [
+        "c5ceb408131aaa27f33aea30810e159003ec80ed14301bb0713a734deffa2d38"
+      ]
+    },
+    {
+      "path": "src/Simplex/Chat/Library/Commands.hs",
+      "replaced_literals": 1,
+      "original_literal_sha256": [
+        "fcc4f69964f1df66992e2e8d91bd008d7da32a8bfbb83e01cb631a2d3a947f35"
+      ]
+    },
+    {
+      "path": "src/Simplex/Chat/Library/Internal.hs",
+      "replaced_literals": 1,
+      "original_literal_sha256": [
+        "8eb6ad8f8d3160d785a251dad8ef1c92908bb856d3f9104bfa5666f66a584a55"
+      ]
+    }
+  ]
+}

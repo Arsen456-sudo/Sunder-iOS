@@ -1,0 +1,242 @@
+{
+  "date": "2026-10-28",
+  "original_media_remaining_in_ios_bundle": false,
+  "files": [
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/100.png",
+      "sha256": "f3569adde59ff5987d814667ee5a0a88b1dc8887028e2ea466d9ccd003a547cf",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/1024.png",
+      "sha256": "c85eb4a4edbd261ddea15b5ba3a3d5faf8a7ba15de5a2f04aec9a782aec5e664",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/114.png",
+      "sha256": "1f6f7a336a40296058723b744e8b3b5151e2ff994826ebd11b9bf8ad6a9e4a07",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/120.png",
+      "sha256": "ef2e557120e41bf63c850f1eb38ebee85419d7c9bb5ec907a83570cb6ab56b12",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/144.png",
+      "sha256": "f90b987c64e93e0e6f510593b5b0ade7cdbe84f631ecca8f90ae7c8639e361ca",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/152.png",
+      "sha256": "742484cb1e8008b3094348dc62a5cb5b41ce46e8bad3e9546a008da45dc516f5",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/167.png",
+      "sha256": "15995375238000e70dabfe2d8afec50368a5fd86fdcdf4f327726da1765872e9",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/180.png",
+      "sha256": "f43a64f685b733b822af358bab7f78261a29366393a6b642362568273986a2e1",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/20.png",
+      "sha256": "c9e24a3f68c4568a983188376a682648e42a9e2bf1c8f94fa3c391a5d966f7bd",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/29.png",
+      "sha256": "11f4d8d52455676a078b020a62a298f99c7c89f8a1eb9982aa568222a478c455",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/40.png",
+      "sha256": "0a0e92c8f7e84c5205ac79622ffad357ecd0d04cbf95a1554355fe1fe1d23900",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/50.png",
+      "sha256": "bdf5b0a985e23a39ae258115ba85fa080ca1481459757b1d49ca1c72a1ed73ed",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/57.png",
+      "sha256": "970bf95a6bddcd1c138642eb878bace9c87889b522d184ce2289e3b3418d441f",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/58.png",
+      "sha256": "90c86c64de3019f7ba1107eb45c9ef9e59b360ff36a40916c011480475e23f3c",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/60.png",
+      "sha256": "960767af6d271281013883950e34d5ecc8d9652ee4ebd1ac9ac2722dcd341e08",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/72.png",
+      "sha256": "221c3188ca53d98920a9536d8f3ed03b769730ca685b9500caf14c17154e6a93",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/76.png",
+      "sha256": "6215e5d7480c1fe32a629b6e834203d46550a9ca1945f2b666010e2206ef8c6b",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/80.png",
+      "sha256": "240830311405db9a29f6f4519ce39e2fca2af869239fd82740dc8cce0bf9a7b4",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/87.png",
+      "sha256": "19c72ced04602512d3a4e1c303e44654bdb151b62996e1294102d2b1866f5b7c",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/100.png",
+      "sha256": "cb4e97f1b0ab21d08945ad03909ac24b5d9aae4fc775428c4b721c0f4c0f83ae",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/1024.png",
+      "sha256": "3f96aa309d53199f09ed83551184e20754366493fe2b3c1335ac0269ab6d4a25",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/114.png",
+      "sha256": "d6f659f39e97237c8ed42e02cf000ac3ecaabf2406284db2e22e50c6c1643c80",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/120.png",
+      "sha256": "284eaf4391435872c07b043ce187bdbe00a17f7539037f7755e96f4e2ca34578",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/144.png",
+      "sha256": "8e75d60fe407f6600f3a961e4144c24f166a9e4f5410315dbb49d61bc9dbe861",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/152.png",
+      "sha256": "2066ba86d4123f279fab3ced8b6d63a745a519006996e898e5b884c6d4d871c3",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/167.png",
+      "sha256": "c079bccee4e786dbd0bd1bec3989f7e38dd5dac618a8bf06b121d1188d095b54",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/180.png",
+      "sha256": "4818891971cb20788aa0e8557be77c4c91bde628107ca68a78f6b6f0bc7aa3e0",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/20.png",
+      "sha256": "aff3891020cd6dbf7bcb76f32a69d0654a95b730138253e183ddaab9697df878",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/29.png",
+      "sha256": "b6c9dc887a270f14e8df109cce0765194493e10d1f515f09228ae17c58c03bc7",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/40.png",
+      "sha256": "6297b0af3fbc40cacd36ddc0970924c55db02628f4cec33685c99229c8ed200f",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/50.png",
+      "sha256": "4f48d63d3279935fd8f4ec34b74efba1f0923439138a7baadbd4e4f3e87e5f0c",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/57.png",
+      "sha256": "bdf28e02a955439b51e0afe794569c7bf5e8dbea9881133bcedf13b5f115ef5f",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/58.png",
+      "sha256": "06d7a41cea12cf2b8312ec9d6d7419b9646dc958c2d4c354fc9681b9e39c6f96",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/60.png",
+      "sha256": "2986d0a14930cd3abbdb9059904d3966ed8ff72548933eb035bb6f81d40af3dd",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/72.png",
+      "sha256": "08d46bda158247d20531eaa969bf9d4fc0d3e0748bd8335e770028ffbec42c00",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/76.png",
+      "sha256": "1c48d85545f24d4279c09b18df2643c29bea5510ccb576bdc38f8b974f7674be",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/80.png",
+      "sha256": "1598db83054a6fb53bfa29b1b05a6b39257a36ed52316eb1c35ce30bd30a6f3d",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/87.png",
+      "sha256": "db0989401f04bb434c1367f59228c5119c71f436b6c1d2e07131ca73eaf45f99",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-dark.imageset/120.png",
+      "sha256": "284eaf4391435872c07b043ce187bdbe00a17f7539037f7755e96f4e2ca34578",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-dark.imageset/180.png",
+      "sha256": "4818891971cb20788aa0e8557be77c4c91bde628107ca68a78f6b6f0bc7aa3e0",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-dark.imageset/60.png",
+      "sha256": "2986d0a14930cd3abbdb9059904d3966ed8ff72548933eb035bb6f81d40af3dd",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-light.imageset/icon-light.png",
+      "sha256": "f3569adde59ff5987d814667ee5a0a88b1dc8887028e2ea466d9ccd003a547cf",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-light.imageset/icon-light@2x.png",
+      "sha256": "52319bc3b36cbeccb5c4017968a06d87e793be9d17d57fadbf026749c38fbb93",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-light.imageset/icon-light@3x.png",
+      "sha256": "4d6ebe92339578a3a503a700480df31b2cbdf46a4c90ec546f414e4e0731883e",
+      "origin": "Sunder neutral icon placeholder"
+    },
+    {
+      "path": "apps/ios/sounds/connecting_call.wav",
+      "sha256": "a54320dae89f18e02997d6fed7d58f31252e6654fd771054ee937bcb5c1dc6fe",
+      "origin": "Sunder mathematical PCM cue"
+    },
+    {
+      "path": "apps/ios/sounds/in_call.wav",
+      "sha256": "66859a2992992475498572cd873619ef31781793c705c6ba4ab267a0317eb360",
+      "origin": "Sunder mathematical PCM cue"
+    },
+    {
+      "path": "apps/ios/sounds/ringtone2.wav",
+      "sha256": "6fb3771a72b549209c3a0c2b23f050aa13900421245bff7205d825cead35c260",
+      "origin": "Sunder mathematical PCM cue"
+    }
+  ],
+  "native_resources": "SF Symbols and cached UIKit dot tile are generated/rendered by code, not proprietary bundled artwork."
+}

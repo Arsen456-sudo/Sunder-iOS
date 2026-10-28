@@ -1,0 +1,219 @@
+{
+  "date": "2026-10-28",
+  "scope": "Exact Swift package manifests and repository trees; not a resolved binary SBOM",
+  "packages": [
+    {
+      "identity": "codescanner",
+      "repository": "twostraws/CodeScanner",
+      "revision": "34da57fb63b47add20de8a85da58191523ccce57",
+      "version": "2.5.0",
+      "evidence": [
+        {
+          "kind": "manifest",
+          "url": "https://raw.githubusercontent.com/twostraws/CodeScanner/34da57fb63b47add20de8a85da58191523ccce57/Package.swift",
+          "file": "docs/fork/ios/sources/codescanner-manifest.txt",
+          "sha256": "c1801cd2a0950c21d8de458b2426475f22151b5706917ca28274189fdc87d76b"
+        },
+        {
+          "kind": "tree",
+          "url": "https://api.github.com/repos/twostraws/CodeScanner/git/trees/34da57fb63b47add20de8a85da58191523ccce57?recursive=1",
+          "file": "docs/fork/ios/sources/codescanner-tree.txt",
+          "sha256": "7a338cb68b2774175a590ff25ebc3cbc0f9685f08f50d9510e3fec975287da70"
+        }
+      ],
+      "license_paths": [
+        "LICENSE"
+      ],
+      "resource_paths": []
+    },
+    {
+      "identity": "elegant-emoji-picker",
+      "repository": "Finalet/Elegant-Emoji-Picker",
+      "revision": "71d2d46092b4d550cc593614efc06438f845f6e6",
+      "version": null,
+      "evidence": [
+        {
+          "kind": "manifest",
+          "url": "https://raw.githubusercontent.com/Finalet/Elegant-Emoji-Picker/71d2d46092b4d550cc593614efc06438f845f6e6/Package.swift",
+          "file": "docs/fork/ios/sources/elegant-emoji-picker-manifest.txt",
+          "sha256": "f2ef6ce5ab450af1e607a8d705ee711235d9526c283c0b2133fd3b83fc769209"
+        },
+        {
+          "kind": "tree",
+          "url": "https://api.github.com/repos/Finalet/Elegant-Emoji-Picker/git/trees/71d2d46092b4d550cc593614efc06438f845f6e6?recursive=1",
+          "file": "docs/fork/ios/sources/elegant-emoji-picker-tree.txt",
+          "sha256": "04cf35cfc9b38030d34a9afcfc4162b0071a976f0f3ad650b184b732c7033bda"
+        }
+      ],
+      "license_paths": [
+        "LICENSE"
+      ],
+      "resource_paths": [
+        "Demo/Demo/Assets.xcassets/AppIcon.appiconset/Demo Icon.png",
+        "Documentation/Github Hero.png",
+        "Sources/Resources/Icons.xcassets/Activities.imageset/ic_activity.png",
+        "Sources/Resources/Icons.xcassets/Activities.imageset/ic_activity@2x.png",
+        "Sources/Resources/Icons.xcassets/Activities.imageset/ic_activity@3x.png",
+        "Sources/Resources/Icons.xcassets/Animals & Nature.imageset/ic_animals_nature.png",
+        "Sources/Resources/Icons.xcassets/Animals & Nature.imageset/ic_animals_nature@2x.png",
+        "Sources/Resources/Icons.xcassets/Animals & Nature.imageset/ic_animals_nature@3x.png",
+        "Sources/Resources/Icons.xcassets/Flags.imageset/ic_flags.png",
+        "Sources/Resources/Icons.xcassets/Flags.imageset/ic_flags@2x.png",
+        "Sources/Resources/Icons.xcassets/Flags.imageset/ic_flags@3x.png",
+        "Sources/Resources/Icons.xcassets/Food & Drink.imageset/ic_food_drink.png",
+        "Sources/Resources/Icons.xcassets/Food & Drink.imageset/ic_food_drink@2x.png",
+        "Sources/Resources/Icons.xcassets/Food & Drink.imageset/ic_food_drink@3x.png",
+        "Sources/Resources/Icons.xcassets/Objects.imageset/ic_objects.png",
+        "Sources/Resources/Icons.xcassets/Objects.imageset/ic_objects@2x.png",
+        "Sources/Resources/Icons.xcassets/Objects.imageset/ic_objects@3x.png",
+        "Sources/Resources/Icons.xcassets/Smileys & Emotion.imageset/ic_smileys_people.png",
+        "Sources/Resources/Icons.xcassets/Smileys & Emotion.imageset/ic_smileys_people@2x.png",
+        "Sources/Resources/Icons.xcassets/Smileys & Emotion.imageset/ic_smileys_people@3x.png",
+        "Sources/Resources/Icons.xcassets/Symbols.imageset/ic_symbols.png",
+        "Sources/Resources/Icons.xcassets/Symbols.imageset/ic_symbols@2x.png",
+        "Sources/Resources/Icons.xcassets/Symbols.imageset/ic_symbols@3x.png",
+        "Sources/Resources/Icons.xcassets/Travel & Places.imageset/ic_travel_places.png",
+        "Sources/Resources/Icons.xcassets/Travel & Places.imageset/ic_travel_places@2x.png",
+        "Sources/Resources/Icons.xcassets/Travel & Places.imageset/ic_travel_places@3x.png"
+      ]
+    },
+    {
+      "identity": "ink",
+      "repository": "johnsundell/ink",
+      "revision": "bcc9f219900a62c4210e6db726035d7f03ae757b",
+      "version": "0.6.0",
+      "evidence": [
+        {
+          "kind": "manifest",
+          "url": "https://raw.githubusercontent.com/johnsundell/ink/bcc9f219900a62c4210e6db726035d7f03ae757b/Package.swift",
+          "file": "docs/fork/ios/sources/ink-manifest.txt",
+          "sha256": "f028acd73700e94079507e0d36b3cdbbbff64f9db710869a32885a84ce1e170f"
+        },
+        {
+          "kind": "tree",
+          "url": "https://api.github.com/repos/johnsundell/ink/git/trees/bcc9f219900a62c4210e6db726035d7f03ae757b?recursive=1",
+          "file": "docs/fork/ios/sources/ink-tree.txt",
+          "sha256": "210d3b906e762aba2036b9abe1cfa374a7aa49b249651d79bcb9f365f237e406"
+        }
+      ],
+      "license_paths": [
+        "LICENSE"
+      ],
+      "resource_paths": [
+        "Logo.png"
+      ]
+    },
+    {
+      "identity": "lzstring-swift",
+      "repository": "Ibrahimhass/lzstring-swift",
+      "revision": "7f62f21de5b18582a950e1753b775cc614722407",
+      "version": null,
+      "evidence": [
+        {
+          "kind": "manifest",
+          "url": "https://raw.githubusercontent.com/Ibrahimhass/lzstring-swift/7f62f21de5b18582a950e1753b775cc614722407/Package.swift",
+          "file": "docs/fork/ios/sources/lzstring-swift-manifest.txt",
+          "sha256": "f1bafaa984d61ce94f3543c00f1153eb84f5429b2d52e1e271bfd5d62767cb7a"
+        },
+        {
+          "kind": "tree",
+          "url": "https://api.github.com/repos/Ibrahimhass/lzstring-swift/git/trees/7f62f21de5b18582a950e1753b775cc614722407?recursive=1",
+          "file": "docs/fork/ios/sources/lzstring-swift-tree.txt",
+          "sha256": "e505f03e65e4f54de0704fd2fe08593bd2d8f873b6cb320ffe8c35b0bb58cf83"
+        }
+      ],
+      "license_paths": [
+        "LICENSE.txt"
+      ],
+      "resource_paths": []
+    },
+    {
+      "identity": "swiftygif",
+      "repository": "kirualex/SwiftyGif",
+      "revision": "5e8619335d394901379c9add5c4c1c2f420b3800",
+      "version": null,
+      "evidence": [
+        {
+          "kind": "manifest",
+          "url": "https://raw.githubusercontent.com/kirualex/SwiftyGif/5e8619335d394901379c9add5c4c1c2f420b3800/Package.swift",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "kind": "tree",
+          "url": "https://api.github.com/repos/kirualex/SwiftyGif/git/trees/5e8619335d394901379c9add5c4c1c2f420b3800?recursive=1",
+          "file": "docs/fork/ios/sources/swiftygif-tree.txt",
+          "sha256": "95119ab7e7f48e9bd3c8663049ebe5ffd3261582a00edd8b2341ecba06a26cea"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/alexiscreuzot/SwiftyGif/5e8619335d394901379c9add5c4c1c2f420b3800/Package.swift",
+          "file": "docs/fork/ios/sources/swiftygif-manifest.txt",
+          "sha256": "90c25a9d0201c411b06ec396cd932e3a49b5c71f2aab677e5c06c35659c299ce",
+          "kind": "manifest",
+          "note": "Same pinned commit; canonical repository path after rename."
+        }
+      ],
+      "license_paths": [
+        "LICENSE"
+      ],
+      "resource_paths": [
+        "SwiftyGifTests/__Snapshots__/SwiftyGifTests/testThat15MBGIFCanBeLoaded.1.png",
+        "SwiftyGifTests/__Snapshots__/SwiftyGifTests/testThatGIFWithoutkCGImagePropertyGIFDictionaryCanBeLoaded.1.png",
+        "SwiftyGifTests/__Snapshots__/SwiftyGifTests/testThatImageViewCanBeRecycled.1.png",
+        "SwiftyGifTests/__Snapshots__/SwiftyGifTests/testThatImageViewCanBeRecycledForGIF.2.png",
+        "SwiftyGifTests/__Snapshots__/SwiftyGifTests/testThatImageViewCanBeRecycledForNormalImage.1.png",
+        "SwiftyGifTests/__Snapshots__/SwiftyGifTests/testThatNonAnimatedGIFCanBeLoaded.1.png",
+        "SwiftyGifTests/__Snapshots__/SwiftyGifTests/testThatNonAnimatedGIFCanBeLoadedWithUIImage.1.png"
+      ]
+    },
+    {
+      "identity": "webrtc",
+      "repository": "simplex-chat/WebRTC",
+      "revision": "34bedc50f9c58dccf4967ea59c7e6a47d620803b",
+      "version": null,
+      "evidence": [
+        {
+          "kind": "manifest",
+          "url": "https://raw.githubusercontent.com/simplex-chat/WebRTC/34bedc50f9c58dccf4967ea59c7e6a47d620803b/Package.swift",
+          "file": "docs/fork/ios/sources/webrtc-manifest.txt",
+          "sha256": "dd5bfcffd04df6ba458cc15bb9a37f0239a9007fc3da591c938dac8a674e204d"
+        },
+        {
+          "kind": "tree",
+          "url": "https://api.github.com/repos/simplex-chat/WebRTC/git/trees/34bedc50f9c58dccf4967ea59c7e6a47d620803b?recursive=1",
+          "file": "docs/fork/ios/sources/webrtc-tree.txt",
+          "sha256": "22a46fb8a76d725d6fa44340471737e7c0dbcda4c703662bb856506ac5a0a39d"
+        }
+      ],
+      "license_paths": [
+        "LICENSE.md"
+      ],
+      "resource_paths": []
+    },
+    {
+      "identity": "yams",
+      "repository": "jpsim/Yams",
+      "revision": "9234124cff5e22e178988c18d8b95a8ae8007f76",
+      "version": "5.1.2",
+      "evidence": [
+        {
+          "kind": "manifest",
+          "url": "https://raw.githubusercontent.com/jpsim/Yams/9234124cff5e22e178988c18d8b95a8ae8007f76/Package.swift",
+          "file": "docs/fork/ios/sources/yams-manifest.txt",
+          "sha256": "deb0661978a6861048a03ddf5bfc8c5d8dd806e533a9db2ce180766817d83c19"
+        },
+        {
+          "kind": "tree",
+          "url": "https://api.github.com/repos/jpsim/Yams/git/trees/9234124cff5e22e178988c18d8b95a8ae8007f76?recursive=1",
+          "file": "docs/fork/ios/sources/yams-tree.txt",
+          "sha256": "98c75bc50a4233f14e411cfc1c1113bba7e8246466b93cf9774364471c1af22a"
+        }
+      ],
+      "license_paths": [
+        "LICENSE"
+      ],
+      "resource_paths": [
+        "yams.jpg"
+      ]
+    }
+  ]
+}

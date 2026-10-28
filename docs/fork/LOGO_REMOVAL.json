@@ -1,0 +1,948 @@
+{
+  "date": "2026-10-28",
+  "previous_checkpoint": "a84ddab7f49f09d981ba29c79cfa66e4f67bfd2e",
+  "scope": "Bundled application branding and operator-logo presentation; website/blog/media history is separate",
+  "changes": [
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/100.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "6b08105addce86f9a5a67e96fc6495d2bf153e548c1747ff770477902079cce8",
+      "replacement_sha256": "f3569adde59ff5987d814667ee5a0a88b1dc8887028e2ea466d9ccd003a547cf",
+      "previous_worktree_sha256": "6b08105addce86f9a5a67e96fc6495d2bf153e548c1747ff770477902079cce8"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/1024.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "5f9fe700cddf2c01197e2896b6316c983f6f92ddfe8e34e089a0318882c9e5a9",
+      "replacement_sha256": "c85eb4a4edbd261ddea15b5ba3a3d5faf8a7ba15de5a2f04aec9a782aec5e664",
+      "previous_worktree_sha256": "5f9fe700cddf2c01197e2896b6316c983f6f92ddfe8e34e089a0318882c9e5a9"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/114.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "72f4900e44ffc55993fa69c1512f297e537222a952075139610b722bcb1cd7a5",
+      "replacement_sha256": "1f6f7a336a40296058723b744e8b3b5151e2ff994826ebd11b9bf8ad6a9e4a07",
+      "previous_worktree_sha256": "72f4900e44ffc55993fa69c1512f297e537222a952075139610b722bcb1cd7a5"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/120.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "49c686d5ac8ab7da2a594bed2d47526ec932a1670c92632d91d111505f109c8d",
+      "replacement_sha256": "ef2e557120e41bf63c850f1eb38ebee85419d7c9bb5ec907a83570cb6ab56b12",
+      "previous_worktree_sha256": "49c686d5ac8ab7da2a594bed2d47526ec932a1670c92632d91d111505f109c8d"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/144.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "da49977bbe78da88274650a2029640c4e639d7c1396845e84d071e756698ce14",
+      "replacement_sha256": "f90b987c64e93e0e6f510593b5b0ade7cdbe84f631ecca8f90ae7c8639e361ca",
+      "previous_worktree_sha256": "da49977bbe78da88274650a2029640c4e639d7c1396845e84d071e756698ce14"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/152.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "1d49e03cae86f17ea9d198a1f4c471e6713d5cacff00928762235041a0932e8d",
+      "replacement_sha256": "742484cb1e8008b3094348dc62a5cb5b41ce46e8bad3e9546a008da45dc516f5",
+      "previous_worktree_sha256": "1d49e03cae86f17ea9d198a1f4c471e6713d5cacff00928762235041a0932e8d"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/167.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "eee05615838d8185d23c87900099b495db50770be852152032e069eff5a453cd",
+      "replacement_sha256": "15995375238000e70dabfe2d8afec50368a5fd86fdcdf4f327726da1765872e9",
+      "previous_worktree_sha256": "eee05615838d8185d23c87900099b495db50770be852152032e069eff5a453cd"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/180.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "6a1437d2b4103ed34eff32a2c1b7248a7f98eb1c598b97f6fb2a8ed89c1b8312",
+      "replacement_sha256": "f43a64f685b733b822af358bab7f78261a29366393a6b642362568273986a2e1",
+      "previous_worktree_sha256": "6a1437d2b4103ed34eff32a2c1b7248a7f98eb1c598b97f6fb2a8ed89c1b8312"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/20.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "78f7f8e819c25d4119b173dcd7cc28be875ceb3d062c9db182ed6b52a0bd7c70",
+      "replacement_sha256": "c9e24a3f68c4568a983188376a682648e42a9e2bf1c8f94fa3c391a5d966f7bd",
+      "previous_worktree_sha256": "78f7f8e819c25d4119b173dcd7cc28be875ceb3d062c9db182ed6b52a0bd7c70"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/29.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "dee388a0b7d3d724bf13fb10e0bd98d5c4326b722b1ed1debaaf50f2d112210b",
+      "replacement_sha256": "11f4d8d52455676a078b020a62a298f99c7c89f8a1eb9982aa568222a478c455",
+      "previous_worktree_sha256": "dee388a0b7d3d724bf13fb10e0bd98d5c4326b722b1ed1debaaf50f2d112210b"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/40.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "97c8f0ec0af04452582829467c31050dc29b469ec663b5e0d553565768c1d040",
+      "replacement_sha256": "0a0e92c8f7e84c5205ac79622ffad357ecd0d04cbf95a1554355fe1fe1d23900",
+      "previous_worktree_sha256": "97c8f0ec0af04452582829467c31050dc29b469ec663b5e0d553565768c1d040"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/50.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "d395d92b3c6c2885eef02490e12ec4ec06c912a1ba6a3fee51887990fc4da8af",
+      "replacement_sha256": "bdf5b0a985e23a39ae258115ba85fa080ca1481459757b1d49ca1c72a1ed73ed",
+      "previous_worktree_sha256": "d395d92b3c6c2885eef02490e12ec4ec06c912a1ba6a3fee51887990fc4da8af"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/57.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "3c26f503dc84fb65db1f8ad52df81c2e11117447ba83f49d1256e64c4c369c0a",
+      "replacement_sha256": "970bf95a6bddcd1c138642eb878bace9c87889b522d184ce2289e3b3418d441f",
+      "previous_worktree_sha256": "3c26f503dc84fb65db1f8ad52df81c2e11117447ba83f49d1256e64c4c369c0a"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/58.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "eae52fa334f6115bf1acc6b9e33338ac78725e1b8a53cdd7c8388359f2e9931d",
+      "replacement_sha256": "90c86c64de3019f7ba1107eb45c9ef9e59b360ff36a40916c011480475e23f3c",
+      "previous_worktree_sha256": "eae52fa334f6115bf1acc6b9e33338ac78725e1b8a53cdd7c8388359f2e9931d"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/60.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "d6d57adb3d2287c8b4f5cdfcc15c042877454e9cfcc9ad9cc575ac16df7d8946",
+      "replacement_sha256": "960767af6d271281013883950e34d5ecc8d9652ee4ebd1ac9ac2722dcd341e08",
+      "previous_worktree_sha256": "d6d57adb3d2287c8b4f5cdfcc15c042877454e9cfcc9ad9cc575ac16df7d8946"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/72.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "5e80ede1a290ba325fb42103d976532a4e38b83c23d2217aba9eb809a0897345",
+      "replacement_sha256": "221c3188ca53d98920a9536d8f3ed03b769730ca685b9500caf14c17154e6a93",
+      "previous_worktree_sha256": "5e80ede1a290ba325fb42103d976532a4e38b83c23d2217aba9eb809a0897345"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/76.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "8c650d24f4c1e2cd1ac42e2deffd5cd86dd0212001436070f83a7211f7d0e236",
+      "replacement_sha256": "6215e5d7480c1fe32a629b6e834203d46550a9ca1945f2b666010e2206ef8c6b",
+      "previous_worktree_sha256": "8c650d24f4c1e2cd1ac42e2deffd5cd86dd0212001436070f83a7211f7d0e236"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/80.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "4455e02ef0b6b129667e119d6e6dbcce08ed1f12dac9044f3710804ab21c8b79",
+      "replacement_sha256": "240830311405db9a29f6f4519ce39e2fca2af869239fd82740dc8cce0bf9a7b4",
+      "previous_worktree_sha256": "4455e02ef0b6b129667e119d6e6dbcce08ed1f12dac9044f3710804ab21c8b79"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/AppIcon.appiconset/87.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "b02eb9f6c551f2bcf7d51341308661f961d7addfd882543dc298ec200c08442a",
+      "replacement_sha256": "19c72ced04602512d3a4e1c303e44654bdb151b62996e1294102d2b1866f5b7c",
+      "previous_worktree_sha256": "b02eb9f6c551f2bcf7d51341308661f961d7addfd882543dc298ec200c08442a"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/100.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "3cbe7c5cba509d315c425aaab3c3d222224f34951fe3ada12127869fb47a0b63",
+      "replacement_sha256": "cb4e97f1b0ab21d08945ad03909ac24b5d9aae4fc775428c4b721c0f4c0f83ae",
+      "previous_worktree_sha256": "3cbe7c5cba509d315c425aaab3c3d222224f34951fe3ada12127869fb47a0b63"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/1024.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "8638ffaf786c4348dee23f05225a5b82e4b59c4856a13132cec45b30f027dc69",
+      "replacement_sha256": "3f96aa309d53199f09ed83551184e20754366493fe2b3c1335ac0269ab6d4a25",
+      "previous_worktree_sha256": "8638ffaf786c4348dee23f05225a5b82e4b59c4856a13132cec45b30f027dc69"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/114.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "e217b007cdccb5817776083ba2e1bdfc5860eec47a9cd1c7f3841c65ae5f5f21",
+      "replacement_sha256": "d6f659f39e97237c8ed42e02cf000ac3ecaabf2406284db2e22e50c6c1643c80",
+      "previous_worktree_sha256": "e217b007cdccb5817776083ba2e1bdfc5860eec47a9cd1c7f3841c65ae5f5f21"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/120.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "cdc731e4f7d240b4e27654c1d23735b11f2a512ead136ed3457d50d3f15cb811",
+      "replacement_sha256": "284eaf4391435872c07b043ce187bdbe00a17f7539037f7755e96f4e2ca34578",
+      "previous_worktree_sha256": "cdc731e4f7d240b4e27654c1d23735b11f2a512ead136ed3457d50d3f15cb811"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/144.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "bd0b134ab84eb94f854bfd7926673386fe7ffb36432c90e3ff2eb3d6aaa97f37",
+      "replacement_sha256": "8e75d60fe407f6600f3a961e4144c24f166a9e4f5410315dbb49d61bc9dbe861",
+      "previous_worktree_sha256": "bd0b134ab84eb94f854bfd7926673386fe7ffb36432c90e3ff2eb3d6aaa97f37"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/152.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "e131ea203289e5b0d5dc554e7085b84415796462d5372fa92c919c082462ed71",
+      "replacement_sha256": "2066ba86d4123f279fab3ced8b6d63a745a519006996e898e5b884c6d4d871c3",
+      "previous_worktree_sha256": "e131ea203289e5b0d5dc554e7085b84415796462d5372fa92c919c082462ed71"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/167.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "8f46e8736eab69f1b7fd22116f0a0b56b5e8edc5c86ccee15886edaebac5343f",
+      "replacement_sha256": "c079bccee4e786dbd0bd1bec3989f7e38dd5dac618a8bf06b121d1188d095b54",
+      "previous_worktree_sha256": "8f46e8736eab69f1b7fd22116f0a0b56b5e8edc5c86ccee15886edaebac5343f"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/180.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "b05cf8560abdcc7bc21514494d5ebfe2bdc55b0aff9afb17bdcfbf88ae72a93f",
+      "replacement_sha256": "4818891971cb20788aa0e8557be77c4c91bde628107ca68a78f6b6f0bc7aa3e0",
+      "previous_worktree_sha256": "b05cf8560abdcc7bc21514494d5ebfe2bdc55b0aff9afb17bdcfbf88ae72a93f"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/20.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "77d5af71bdb71abfb5650426fbdf8ed31831648dd37886d3c790ee58740b3765",
+      "replacement_sha256": "aff3891020cd6dbf7bcb76f32a69d0654a95b730138253e183ddaab9697df878",
+      "previous_worktree_sha256": "77d5af71bdb71abfb5650426fbdf8ed31831648dd37886d3c790ee58740b3765"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/29.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "ac8feeedfceb4061ec8cf2d917b2c489f409b0b60a8762ef07f95bf36c20ccc3",
+      "replacement_sha256": "b6c9dc887a270f14e8df109cce0765194493e10d1f515f09228ae17c58c03bc7",
+      "previous_worktree_sha256": "ac8feeedfceb4061ec8cf2d917b2c489f409b0b60a8762ef07f95bf36c20ccc3"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/40.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "845a2a3e3da914e2793c26b972df0821566411fe381d696a015dea1c68788de0",
+      "replacement_sha256": "6297b0af3fbc40cacd36ddc0970924c55db02628f4cec33685c99229c8ed200f",
+      "previous_worktree_sha256": "845a2a3e3da914e2793c26b972df0821566411fe381d696a015dea1c68788de0"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/50.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "9fd85a5dbed38cde2e3647db7a1aa6d23da0d3a735fd9cba528a38b4b0554cf1",
+      "replacement_sha256": "4f48d63d3279935fd8f4ec34b74efba1f0923439138a7baadbd4e4f3e87e5f0c",
+      "previous_worktree_sha256": "9fd85a5dbed38cde2e3647db7a1aa6d23da0d3a735fd9cba528a38b4b0554cf1"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/57.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "50ea99cc3ab983ee02126a96aab63b4215e8362cb43b3162fae3fde8afdab21b",
+      "replacement_sha256": "bdf28e02a955439b51e0afe794569c7bf5e8dbea9881133bcedf13b5f115ef5f",
+      "previous_worktree_sha256": "50ea99cc3ab983ee02126a96aab63b4215e8362cb43b3162fae3fde8afdab21b"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/58.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "53cafcbf0a4583d27e85975059400511dd6b9de21635d460402a2a9ccc03a1e6",
+      "replacement_sha256": "06d7a41cea12cf2b8312ec9d6d7419b9646dc958c2d4c354fc9681b9e39c6f96",
+      "previous_worktree_sha256": "53cafcbf0a4583d27e85975059400511dd6b9de21635d460402a2a9ccc03a1e6"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/60.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "4a96d711898c5d18a6c05f38df47e6510ccbc530fd65182d554d84387d508845",
+      "replacement_sha256": "2986d0a14930cd3abbdb9059904d3966ed8ff72548933eb035bb6f81d40af3dd",
+      "previous_worktree_sha256": "4a96d711898c5d18a6c05f38df47e6510ccbc530fd65182d554d84387d508845"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/72.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "0cd6405f736830754f4b4872925fcc1c6fcce78679c2f882373ad0c2b282eff2",
+      "replacement_sha256": "08d46bda158247d20531eaa969bf9d4fc0d3e0748bd8335e770028ffbec42c00",
+      "previous_worktree_sha256": "0cd6405f736830754f4b4872925fcc1c6fcce78679c2f882373ad0c2b282eff2"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/76.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "cf5cca3f3c913190fe9aa0127a2b8a239c864b3a9b2bf0f82ddde9828d8a46d4",
+      "replacement_sha256": "1c48d85545f24d4279c09b18df2643c29bea5510ccb576bdc38f8b974f7674be",
+      "previous_worktree_sha256": "cf5cca3f3c913190fe9aa0127a2b8a239c864b3a9b2bf0f82ddde9828d8a46d4"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/80.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "6a9f61a65af06270d65d271649672005aef7a2233352f5094a78238e21d6dbe4",
+      "replacement_sha256": "1598db83054a6fb53bfa29b1b05a6b39257a36ed52316eb1c35ce30bd30a6f3d",
+      "previous_worktree_sha256": "6a9f61a65af06270d65d271649672005aef7a2233352f5094a78238e21d6dbe4"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/DarkAppIcon.appiconset/87.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "d5981ce837e3cd823ba2fd83cc54a33b1b2952fbbc01759472c1e343f1d714b4",
+      "replacement_sha256": "db0989401f04bb434c1367f59228c5119c71f436b6c1d2e07131ca73eaf45f99",
+      "previous_worktree_sha256": "d5981ce837e3cd823ba2fd83cc54a33b1b2952fbbc01759472c1e343f1d714b4"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-light.imageset/icon-light.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "7af79a0e81dc4005a3aee828e767808da6cdb156cbe9f82e6e5e89b06c516aea",
+      "replacement_sha256": "f3569adde59ff5987d814667ee5a0a88b1dc8887028e2ea466d9ccd003a547cf",
+      "previous_worktree_sha256": "7af79a0e81dc4005a3aee828e767808da6cdb156cbe9f82e6e5e89b06c516aea"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-light.imageset/icon-light@2x.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "8973fe9116fafffa9124a6ef87ae81fae4ce4ab43df5bed4ed67736d15443a81",
+      "replacement_sha256": "52319bc3b36cbeccb5c4017968a06d87e793be9d17d57fadbf026749c38fbb93",
+      "previous_worktree_sha256": "8973fe9116fafffa9124a6ef87ae81fae4ce4ab43df5bed4ed67736d15443a81"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-light.imageset/icon-light@3x.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "588423452958c043c6505f83d5670e6aacaf7a888f200b9a75741c9cbf2ee043",
+      "replacement_sha256": "4d6ebe92339578a3a503a700480df31b2cbdf46a4c90ec546f414e4e0731883e",
+      "previous_worktree_sha256": "588423452958c043c6505f83d5670e6aacaf7a888f200b9a75741c9cbf2ee043"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-dark.imageset/120.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "1d6b14e692faccdb9895151bfa9cf51a698931eb1a6788fde5dc51803b56145a",
+      "replacement_sha256": "284eaf4391435872c07b043ce187bdbe00a17f7539037f7755e96f4e2ca34578",
+      "previous_worktree_sha256": "1d6b14e692faccdb9895151bfa9cf51a698931eb1a6788fde5dc51803b56145a"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-dark.imageset/180.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "a2ffc5da7b08101074ed72e03f0c1be9cba56428d79bdce3226205c1413de797",
+      "replacement_sha256": "4818891971cb20788aa0e8557be77c4c91bde628107ca68a78f6b6f0bc7aa3e0",
+      "previous_worktree_sha256": "a2ffc5da7b08101074ed72e03f0c1be9cba56428d79bdce3226205c1413de797"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-dark.imageset/60.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "2a45576225bdf46b799b25caa577862b7989f274a20f5234a103f6be7b3131c4",
+      "replacement_sha256": "2986d0a14930cd3abbdb9059904d3966ed8ff72548933eb035bb6f81d40af3dd",
+      "previous_worktree_sha256": "2a45576225bdf46b799b25caa577862b7989f274a20f5234a103f6be7b3131c4"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/logo.imageset/Contents.json",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "7951a28f06cb5b02b6101c2756b8e31e6f38b47a9e90a3a74789567e90acd481",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "9b004d9d8c22c5031ad5958860444be0b7d0104f9d5b498529b8475014408ae7"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/logo.imageset/logo.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "b4cd5fd4570060e0ab2b3655f15e596036272100759956ad10c373372c532b81",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "b4cd5fd4570060e0ab2b3655f15e596036272100759956ad10c373372c532b81"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/logo.imageset/logo@2x.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "264f9798e31490ca0602f41556262df3c88a287bd05737ccb7e2eeff165eb6bb",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "264f9798e31490ca0602f41556262df3c88a287bd05737ccb7e2eeff165eb6bb"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/logo.imageset/logo@3x.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "6eef87c6e5296571a9b43c764ec926b619dc80fc5d7057c67aba74e6dce6863c",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "6eef87c6e5296571a9b43c764ec926b619dc80fc5d7057c67aba74e6dce6863c"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/logo-light.imageset/Contents.json",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "ff2307bba54f7098a1f41249c1c082731c39ef762a419695f5ffe7afdbfc885f",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "e163b9d28f7fd06e82d022b08e6513ad984df63ece8890faf16a41b64cc9538a"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/logo-light.imageset/logo-light.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "2e21e0c048e494bfe0a33463d3a437ce35f8e08dfef4ca9cbccd434f2ea76d61",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "2e21e0c048e494bfe0a33463d3a437ce35f8e08dfef4ca9cbccd434f2ea76d61"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/logo-light.imageset/logo-light@2x.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "b6304af5c8979bacfcc7d5ca3a2f743ef4f107a6c66b53315d42d123880f9c9b",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "b6304af5c8979bacfcc7d5ca3a2f743ef4f107a6c66b53315d42d123880f9c9b"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/logo-light.imageset/logo-light@3x.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "ff6bb428f9555fa81f47222a44101347f01c61a5148543b54db6218573f56e96",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "ff6bb428f9555fa81f47222a44101347f01c61a5148543b54db6218573f56e96"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/vertical_logo.imageset/Contents.json",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "9389e76ac5c39aec88bbf7ad3aa018f62ed66d7fcf7b8e926a99f38b3dc2a514",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "fdd1c8b7712f970be1ef18ed3883e4bda180d524fb39ee8fc3d9d4ca5cb415b4"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/vertical_logo.imageset/vertical_logo_x1.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "8e8f09eadc59c351f1e66427e32d34648f49124b1e321aa6c667ed39c904d597",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "8e8f09eadc59c351f1e66427e32d34648f49124b1e321aa6c667ed39c904d597"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/vertical_logo.imageset/vertical_logo_x2.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "d1bc610ca3c6e743520b91da11b4fc9e1a675f6fe54f2bbad8f3c42180ae1fc0",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "d1bc610ca3c6e743520b91da11b4fc9e1a675f6fe54f2bbad8f3c42180ae1fc0"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/vertical_logo.imageset/vertical_logo_x3.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "c7f19f90ce7d50992cd611a977932d4e0b8f585abfac0a3125179367f79ee273",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "c7f19f90ce7d50992cd611a977932d4e0b8f585abfac0a3125179367f79ee273"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-transparent.imageset/120.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "a1a6a1a41048c8a97dea570e683a96697f6cf77372ab08cf6559c4a051d112d1",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "a1a6a1a41048c8a97dea570e683a96697f6cf77372ab08cf6559c4a051d112d1"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-transparent.imageset/180.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "43d52a58150439258212ba3f57693f4557feeb99fd7325d28cfabec6bf06d367",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "43d52a58150439258212ba3f57693f4557feeb99fd7325d28cfabec6bf06d367"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-transparent.imageset/60.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "09017be801ce6763742632acbcc2a4a479c58a1e791cb6bb238d3d7cae65fe9f",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "09017be801ce6763742632acbcc2a4a479c58a1e791cb6bb238d3d7cae65fe9f"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/icon-transparent.imageset/Contents.json",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "e7302fc117752862b87a7d7d9982e4ef1a33b35d04851ddc446c85d0649002bf",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "d53039acc0a121509197d8e91382023f6a58dfa9bbb7e0f5b6c59539d3b321b7"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/flux_logo.imageset/Contents.json",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "a72474732cf096fbf55c33f2dfd29d4f286cec40241aa7cda6b26885741687fc",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "116a1cde9b4cb56642d97b70f15f9331d2992600d94a460fb2772ba6a0a2dffb"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/flux_logo.imageset/Flux_logo_blue.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "70ced74f1f0664cd1b277d026448f1d90c1a10351c7e8ee4370126b306bcf514",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "70ced74f1f0664cd1b277d026448f1d90c1a10351c7e8ee4370126b306bcf514"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/flux_logo-light.imageset/Contents.json",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "2d07e0bad857b11c664632bd4b2441527c280f922d26bb7af121e09f75fd088e",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "0d270515500b5c8cec3fd7bef2c5fc57956a861ebb3aa87faae4cbdf499c73db"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/flux_logo-light.imageset/Flux_logo_blue_white.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "0e3b233f85dd0bcc62b8e10e9a7edb95acd6de2b08bdf4a19a3b77a288b4ef92",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "0e3b233f85dd0bcc62b8e10e9a7edb95acd6de2b08bdf4a19a3b77a288b4ef92"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/flux_logo_symbol.imageset/Contents.json",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "f03f24da3952f3f09456f94a53ea420a5e181a254b21219b7c52e59d32ccf48a",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "68fbca0b52c242e0cded0c762049a7a8bcc27ebc1f1aa565d55625bd15188a75"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/flux_logo_symbol.imageset/Flux_symbol_blue-white.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "589402eb1936c5648543cdb5e7a0f3dd223302b21f30d854250629534306849c",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "589402eb1936c5648543cdb5e7a0f3dd223302b21f30d854250629534306849c"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/icon-playstore.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "fa6afc844ed156306e9026116b8679ab9b9fd5c99864f4f6535639a888ab59c5",
+      "replacement_sha256": "05feba18e3cc0ab2d608f8e2ffb7f8b9e55de37029722a79de26908795ef93e4",
+      "previous_worktree_sha256": "fa6afc844ed156306e9026116b8679ab9b9fd5c99864f4f6535639a888ab59c5"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/icon_dark_blue-playstore.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "3fe4f1ebf6cd5b7d9ea7eec948044c227f7e991509873671cb7e3890c2f3c1c0",
+      "replacement_sha256": "b4d1ff9dc35777aba0f6c6bde0a99704a82d6af86fe69cd19bc3e1f3be1e19c9",
+      "previous_worktree_sha256": "3fe4f1ebf6cd5b7d9ea7eec948044c227f7e991509873671cb7e3890c2f3c1c0"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-hdpi/icon.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "12844566d9464d9f9752e00c1be64ede55cd47208dd467ec489e8d1f0d468059",
+      "replacement_sha256": "221c3188ca53d98920a9536d8f3ed03b769730ca685b9500caf14c17154e6a93",
+      "previous_worktree_sha256": "12844566d9464d9f9752e00c1be64ede55cd47208dd467ec489e8d1f0d468059"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-hdpi/icon_dark_blue.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "f12c71687d26dba797a4d0b15871070e5f3c21e032129d1c86c71f98784c7c98",
+      "replacement_sha256": "08d46bda158247d20531eaa969bf9d4fc0d3e0748bd8335e770028ffbec42c00",
+      "previous_worktree_sha256": "f12c71687d26dba797a4d0b15871070e5f3c21e032129d1c86c71f98784c7c98"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-hdpi/icon_dark_blue_foreground.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "ceb5e518ff296107134173af9c93a671ff418880d09b487ff2de3d114f6c8401",
+      "replacement_sha256": "8eb8d4b13b1ecccff34ccf88ac6dcfbfcd52bf035a1f37377dcfd3eb032cfd85",
+      "previous_worktree_sha256": "ceb5e518ff296107134173af9c93a671ff418880d09b487ff2de3d114f6c8401"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-hdpi/icon_dark_blue_round.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "2536739e414f53ea973dce774f8123c9df638692b3a8c50703a6b604b8ca689f",
+      "replacement_sha256": "08d46bda158247d20531eaa969bf9d4fc0d3e0748bd8335e770028ffbec42c00",
+      "previous_worktree_sha256": "2536739e414f53ea973dce774f8123c9df638692b3a8c50703a6b604b8ca689f"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-hdpi/icon_foreground.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "e66af7d63c2c213a6d7f8477639d7643b1daa8cd3dc1c3d066da20532304535f",
+      "replacement_sha256": "564147999e88953455ab53fb105fdc55e113c1e8927c46095bbad588c27168e3",
+      "previous_worktree_sha256": "e66af7d63c2c213a6d7f8477639d7643b1daa8cd3dc1c3d066da20532304535f"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-hdpi/icon_round.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "bc134a735c4c3f979c956cf085a668cc4c774768d0a0f7139d60cf2abf6c9469",
+      "replacement_sha256": "221c3188ca53d98920a9536d8f3ed03b769730ca685b9500caf14c17154e6a93",
+      "previous_worktree_sha256": "bc134a735c4c3f979c956cf085a668cc4c774768d0a0f7139d60cf2abf6c9469"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-mdpi/icon.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "105ac5de5662cb087671f0d35519aad459301c2b290a847416963a6528153a32",
+      "replacement_sha256": "80d71eb6abdc1d41141ee72154ace96cbe0abe5a224c68522a92414c6c98eff3",
+      "previous_worktree_sha256": "105ac5de5662cb087671f0d35519aad459301c2b290a847416963a6528153a32"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-mdpi/icon_dark_blue.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "8fdc63c93f3630806af40fe914d4f228d0ea06c6b4fda41d4b80c963fead9a7f",
+      "replacement_sha256": "a8145c796179c89606d73234b57d5c51e7f9d9b6ff438b6cf08a038e8448feae",
+      "previous_worktree_sha256": "8fdc63c93f3630806af40fe914d4f228d0ea06c6b4fda41d4b80c963fead9a7f"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-mdpi/icon_dark_blue_foreground.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "618e7cb8e3e1af699c26bc96fae36ca055afa26a821e161f9b34e4f988b6704b",
+      "replacement_sha256": "cb84067329705cc893fca50ff17e2cc96201c4d7d348aeace1c64242cd0f7fb3",
+      "previous_worktree_sha256": "618e7cb8e3e1af699c26bc96fae36ca055afa26a821e161f9b34e4f988b6704b"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-mdpi/icon_dark_blue_round.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "65cb39ca352cac10557788393b390fe6469c6e4297976b70c01444dcc21c33df",
+      "replacement_sha256": "a8145c796179c89606d73234b57d5c51e7f9d9b6ff438b6cf08a038e8448feae",
+      "previous_worktree_sha256": "65cb39ca352cac10557788393b390fe6469c6e4297976b70c01444dcc21c33df"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-mdpi/icon_foreground.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "85d2fb98bab76bc59a96534385607412ce1a1a674d1b557ff14ec69154379da1",
+      "replacement_sha256": "8f159158212426fc153740ae669bb9c8b8f16dfbaa68bae90ddcae7c6e12beaa",
+      "previous_worktree_sha256": "85d2fb98bab76bc59a96534385607412ce1a1a674d1b557ff14ec69154379da1"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-mdpi/icon_round.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "6033e64cce77f649eeb3ef93a5f12d43271280856e14988f762145d8b701291e",
+      "replacement_sha256": "80d71eb6abdc1d41141ee72154ace96cbe0abe5a224c68522a92414c6c98eff3",
+      "previous_worktree_sha256": "6033e64cce77f649eeb3ef93a5f12d43271280856e14988f762145d8b701291e"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xhdpi/icon.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "c7528ae63bcb9d9f6ada1c71d4dfc1fd0f7ec08d0c84766c47739b6e5eaae301",
+      "replacement_sha256": "8ad4ddf12e704ca1b36be874d2ffeda104f62df273c0d927a4a253623e1bc29e",
+      "previous_worktree_sha256": "c7528ae63bcb9d9f6ada1c71d4dfc1fd0f7ec08d0c84766c47739b6e5eaae301"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xhdpi/icon_dark_blue.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "3f1f7764d47bffe60d032f3520a81b3fcd8b3bea3b442b098950d5e2d12fc1ed",
+      "replacement_sha256": "e8d66c9f415abcb238992d7972fb99886a9b962231c8cf4ac5f42db64482f0b3",
+      "previous_worktree_sha256": "3f1f7764d47bffe60d032f3520a81b3fcd8b3bea3b442b098950d5e2d12fc1ed"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xhdpi/icon_dark_blue_foreground.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "babe002e3ef50f0f76a6fe36ff12cd215638e7295c6caa011e7b23185c00c967",
+      "replacement_sha256": "c7c50a0961da2bf54b7859a65246c32a8931785b68a8aad376ed838ddd23a58a",
+      "previous_worktree_sha256": "babe002e3ef50f0f76a6fe36ff12cd215638e7295c6caa011e7b23185c00c967"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xhdpi/icon_dark_blue_round.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "313594ed68c0035c935949def7174f97492fde18bb77890904e407b2a0b21816",
+      "replacement_sha256": "e8d66c9f415abcb238992d7972fb99886a9b962231c8cf4ac5f42db64482f0b3",
+      "previous_worktree_sha256": "313594ed68c0035c935949def7174f97492fde18bb77890904e407b2a0b21816"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xhdpi/icon_foreground.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "ad9eed4a3b998a9aefa12f31c532a6d34c7a92c60a41b5666b0788b4998e5fab",
+      "replacement_sha256": "b0e18d77950709b3b2d5e2d158634180ad7ad88d4ed5fda8c478ea674fa656a1",
+      "previous_worktree_sha256": "ad9eed4a3b998a9aefa12f31c532a6d34c7a92c60a41b5666b0788b4998e5fab"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xhdpi/icon_round.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "9d920a39d5935554d5133ce2a00d640ad144efde9bbc1c518be104aa54f4d573",
+      "replacement_sha256": "8ad4ddf12e704ca1b36be874d2ffeda104f62df273c0d927a4a253623e1bc29e",
+      "previous_worktree_sha256": "9d920a39d5935554d5133ce2a00d640ad144efde9bbc1c518be104aa54f4d573"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xxhdpi/icon.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "9d59ae0922c85c231c0c01aaa0ca7e87470900291d12071439662e17186e67ed",
+      "replacement_sha256": "f90b987c64e93e0e6f510593b5b0ade7cdbe84f631ecca8f90ae7c8639e361ca",
+      "previous_worktree_sha256": "9d59ae0922c85c231c0c01aaa0ca7e87470900291d12071439662e17186e67ed"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xxhdpi/icon_dark_blue.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "56d7ac7beea95c1a0e1c77f841cd4803248dc9435cf04a111d1ee018a396c1fa",
+      "replacement_sha256": "8e75d60fe407f6600f3a961e4144c24f166a9e4f5410315dbb49d61bc9dbe861",
+      "previous_worktree_sha256": "56d7ac7beea95c1a0e1c77f841cd4803248dc9435cf04a111d1ee018a396c1fa"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xxhdpi/icon_dark_blue_foreground.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "2d1b1d7dc0b903843a6b59e46992a744774cce50f73ca428ca3256899f423f0f",
+      "replacement_sha256": "de9e1129be2ca3f49ff0229b8b809aa273102ae063b817b272775299250ed91f",
+      "previous_worktree_sha256": "2d1b1d7dc0b903843a6b59e46992a744774cce50f73ca428ca3256899f423f0f"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xxhdpi/icon_dark_blue_round.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "00f91e0ad4b66f761731e7983e98593e70b3b036547f00f53775e2f47c9c70e0",
+      "replacement_sha256": "8e75d60fe407f6600f3a961e4144c24f166a9e4f5410315dbb49d61bc9dbe861",
+      "previous_worktree_sha256": "00f91e0ad4b66f761731e7983e98593e70b3b036547f00f53775e2f47c9c70e0"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xxhdpi/icon_foreground.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "a9da739a5b3e5f8f3a00e4556a13363ec71a7ad1a8467578cb86dcb9deb8ecb0",
+      "replacement_sha256": "2642922feb8243b432acda64d379a96441ddf83664866a49f0e6922f0285a3f3",
+      "previous_worktree_sha256": "a9da739a5b3e5f8f3a00e4556a13363ec71a7ad1a8467578cb86dcb9deb8ecb0"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xxhdpi/icon_round.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "823ce5628f4c61b9c042f073b817bbb0398ecf4e9d683aef2f0561d0f74b6372",
+      "replacement_sha256": "f90b987c64e93e0e6f510593b5b0ade7cdbe84f631ecca8f90ae7c8639e361ca",
+      "previous_worktree_sha256": "823ce5628f4c61b9c042f073b817bbb0398ecf4e9d683aef2f0561d0f74b6372"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xxxhdpi/icon.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "40fc460693f37e713e9194a2faf8fe415598d17cb821f76d4e6f9a8757c45d8f",
+      "replacement_sha256": "677d1977038a9952bae0b391b55a64a508e9621eef75f54ba24d22657be3cd7d",
+      "previous_worktree_sha256": "40fc460693f37e713e9194a2faf8fe415598d17cb821f76d4e6f9a8757c45d8f"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xxxhdpi/icon_dark_blue.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "d707ce2c1e7a14d7fa3dc773dc7798e428e9c37d0a34fc503a92132aa431f810",
+      "replacement_sha256": "369e943998dd0e2c7c8854442f171564f70bc3488bae2bf4b9da33e727e15988",
+      "previous_worktree_sha256": "d707ce2c1e7a14d7fa3dc773dc7798e428e9c37d0a34fc503a92132aa431f810"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xxxhdpi/icon_dark_blue_foreground.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "ecb3097c532fb201174a5a624848fad7ebba6b4a2ab812adc8346968b377ff11",
+      "replacement_sha256": "590847558367c9b31ccda688cc68b708cc16e8d65c1918107ec878dcfef500d0",
+      "previous_worktree_sha256": "ecb3097c532fb201174a5a624848fad7ebba6b4a2ab812adc8346968b377ff11"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xxxhdpi/icon_dark_blue_round.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "5c9920300f22c3e778d9b38667ddf77fde3ad9bcc3ba739c90e126bda8305db0",
+      "replacement_sha256": "369e943998dd0e2c7c8854442f171564f70bc3488bae2bf4b9da33e727e15988",
+      "previous_worktree_sha256": "5c9920300f22c3e778d9b38667ddf77fde3ad9bcc3ba739c90e126bda8305db0"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xxxhdpi/icon_foreground.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "1d181fb4d7aee7dcc12d2d0362809b45825b65d2d21666311223e4a59a34f413",
+      "replacement_sha256": "39ab36c25a7c703fe5cfaf6a1d9fb5ac49b5ff0f914543e0539613cb8ffc4c2d",
+      "previous_worktree_sha256": "1d181fb4d7aee7dcc12d2d0362809b45825b65d2d21666311223e4a59a34f413"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/mipmap-xxxhdpi/icon_round.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "74ad7bdba51f033dc86c977fb9c8e173173a2f6d23a88a037f3cbcbc02a4f267",
+      "replacement_sha256": "677d1977038a9952bae0b391b55a64a508e9621eef75f54ba24d22657be3cd7d",
+      "previous_worktree_sha256": "74ad7bdba51f033dc86c977fb9c8e173173a2f6d23a88a037f3cbcbc02a4f267"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable/logo.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "6eef87c6e5296571a9b43c764ec926b619dc80fc5d7057c67aba74e6dce6863c",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "6eef87c6e5296571a9b43c764ec926b619dc80fc5d7057c67aba74e6dce6863c"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable/logo_light.png",
+      "action": "deleted-unused-logo-artwork",
+      "previous_sha256": "ff6bb428f9555fa81f47222a44101347f01c61a5148543b54db6218573f56e96",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "ff6bb428f9555fa81f47222a44101347f01c61a5148543b54db6218573f56e96"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+      "action": "unbranded-adaptive-foreground",
+      "previous_sha256": "d04a80bcaf6ccddbaf77b8040fff0495a6d14a469da8ea00387e20269d14032f",
+      "replacement_sha256": "723261a689780f73ecd0ec1b3800ce09a2b28052e6a17e41e50fa44de4c77d46",
+      "previous_worktree_sha256": "a46c458cac2b023c5b4c6e1e28c54c2bff9634c8d716380cc3541c3c14e36ed1"
+    },
+    {
+      "path": "apps/multiplatform/common/src/androidMain/res/drawable/icon_foreground_android_common.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "1d181fb4d7aee7dcc12d2d0362809b45825b65d2d21666311223e4a59a34f413",
+      "replacement_sha256": "39ab36c25a7c703fe5cfaf6a1d9fb5ac49b5ff0f914543e0539613cb8ffc4c2d",
+      "previous_worktree_sha256": "1d181fb4d7aee7dcc12d2d0362809b45825b65d2d21666311223e4a59a34f413"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/icon_foreground_common@4x.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "1d181fb4d7aee7dcc12d2d0362809b45825b65d2d21666311223e4a59a34f413",
+      "replacement_sha256": "39ab36c25a7c703fe5cfaf6a1d9fb5ac49b5ff0f914543e0539613cb8ffc4c2d",
+      "previous_worktree_sha256": "1d181fb4d7aee7dcc12d2d0362809b45825b65d2d21666311223e4a59a34f413"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/ic_simplex_light@4x.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "588423452958c043c6505f83d5670e6aacaf7a888f200b9a75741c9cbf2ee043",
+      "replacement_sha256": "4d6ebe92339578a3a503a700480df31b2cbdf46a4c90ec546f414e4e0731883e",
+      "previous_worktree_sha256": "588423452958c043c6505f83d5670e6aacaf7a888f200b9a75741c9cbf2ee043"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/ic_simplex_dark@4x.png",
+      "action": "plain-packaging-placeholder",
+      "previous_sha256": "a2ffc5da7b08101074ed72e03f0c1be9cba56428d79bdce3226205c1413de797",
+      "replacement_sha256": "4818891971cb20788aa0e8557be77c4c91bde628107ca68a78f6b6f0bc7aa3e0",
+      "previous_worktree_sha256": "a2ffc5da7b08101074ed72e03f0c1be9cba56428d79bdce3226205c1413de797"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/logo@4x.png",
+      "action": "deleted-logo-artwork",
+      "previous_sha256": "6eef87c6e5296571a9b43c764ec926b619dc80fc5d7057c67aba74e6dce6863c",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "6eef87c6e5296571a9b43c764ec926b619dc80fc5d7057c67aba74e6dce6863c"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/logo.svg",
+      "action": "empty-metadata-resource-slot",
+      "previous_sha256": null,
+      "replacement_sha256": "36905a724b2089ae9df1ddce44dbe4455f1264ff8ccb0f16c5167462a311684f"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/logo_light@4x.png",
+      "action": "deleted-logo-artwork",
+      "previous_sha256": "ff6bb428f9555fa81f47222a44101347f01c61a5148543b54db6218573f56e96",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "ff6bb428f9555fa81f47222a44101347f01c61a5148543b54db6218573f56e96"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/logo_light.svg",
+      "action": "empty-metadata-resource-slot",
+      "previous_sha256": null,
+      "replacement_sha256": "36905a724b2089ae9df1ddce44dbe4455f1264ff8ccb0f16c5167462a311684f"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/flux_logo@4x.png",
+      "action": "deleted-logo-artwork",
+      "previous_sha256": "70ced74f1f0664cd1b277d026448f1d90c1a10351c7e8ee4370126b306bcf514",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "70ced74f1f0664cd1b277d026448f1d90c1a10351c7e8ee4370126b306bcf514"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/flux_logo.svg",
+      "action": "empty-metadata-resource-slot",
+      "previous_sha256": null,
+      "replacement_sha256": "36905a724b2089ae9df1ddce44dbe4455f1264ff8ccb0f16c5167462a311684f"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/flux_logo_light@4x.png",
+      "action": "deleted-logo-artwork",
+      "previous_sha256": "0e3b233f85dd0bcc62b8e10e9a7edb95acd6de2b08bdf4a19a3b77a288b4ef92",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "0e3b233f85dd0bcc62b8e10e9a7edb95acd6de2b08bdf4a19a3b77a288b4ef92"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/flux_logo_light.svg",
+      "action": "empty-metadata-resource-slot",
+      "previous_sha256": null,
+      "replacement_sha256": "36905a724b2089ae9df1ddce44dbe4455f1264ff8ccb0f16c5167462a311684f"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/flux_logo_symbol@4x.png",
+      "action": "deleted-logo-artwork",
+      "previous_sha256": "589402eb1936c5648543cdb5e7a0f3dd223302b21f30d854250629534306849c",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "589402eb1936c5648543cdb5e7a0f3dd223302b21f30d854250629534306849c"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/flux_logo_symbol.svg",
+      "action": "empty-metadata-resource-slot",
+      "previous_sha256": null,
+      "replacement_sha256": "36905a724b2089ae9df1ddce44dbe4455f1264ff8ccb0f16c5167462a311684f"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/ic_simplex.svg",
+      "action": "neutral-status-marker",
+      "previous_sha256": "49f401679eaa2c988906e3596b3c7298ca4c7476855fc6183311f2aecea86ef1",
+      "replacement_sha256": "e52daf7d75a6eac85977c2cc2810a54ca95f1b1402c5c17c1d99a96a5409e85c",
+      "previous_worktree_sha256": "def29bc0d46e23d06f339b8048ec69ab5866ca62a85facea36491fa7c33e763e"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/ic_simplex_tray_light.svg",
+      "action": "neutral-status-marker",
+      "previous_sha256": "bc4c36ed70c6018eed941b3d9a935a808095ca65db31e6f6378da1b23f8d83fc",
+      "replacement_sha256": "5930cdacf863cc3aea1ca59d28dd16a8a789d86a44b7e9cad67bb546a596e283",
+      "previous_worktree_sha256": "aa688a94bb4cb549bf094c489ae8cc816f8ba60863f60500c8883f6b24177b3d"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/ic_simplex_tray_dot.svg",
+      "action": "neutral-status-marker",
+      "previous_sha256": "f2c4fc9d8f10dccb06d8722c34f4315485f300d39121c962fcf298ef946b642e",
+      "replacement_sha256": "c245bbe2f37cd8dc42fff0bf4fd729b4ec281b8d8c098db2f5f4d63feb5a0b8d",
+      "previous_worktree_sha256": "6a304199c39ba7d83f22f65ae333b5df0f54da05fe9f50dd2f7cbbc423d91a5c"
+    },
+    {
+      "path": "apps/multiplatform/common/src/commonMain/resources/MR/images/ic_simplex_tray_dot_light.svg",
+      "action": "neutral-status-marker",
+      "previous_sha256": "21ac93417a48be60449b10275d3ea5309f1322b344ab962e7f850bcf57e49843",
+      "replacement_sha256": "075f454af0913213209aa3679a4c324645418b4ede24f74b18138ab686e6911d",
+      "previous_worktree_sha256": "e8fb4c2f1b537775b46a172b3049076b06b14bc909a35351e552cd37f7592f50"
+    },
+    {
+      "path": "apps/multiplatform/desktop/src/jvmMain/resources/distribute/simplex.png",
+      "action": "platform-default-package-icon",
+      "previous_sha256": "b535caacde03114d47f372f0293c82e37867968a9c4c434041c435413a581792",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "b535caacde03114d47f372f0293c82e37867968a9c4c434041c435413a581792"
+    },
+    {
+      "path": "apps/multiplatform/desktop/src/jvmMain/resources/distribute/simplex.ico",
+      "action": "platform-default-package-icon",
+      "previous_sha256": "e3b0a336329b5996ee183c0344c36090f7f79829994409517d8d61a41c57197f",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "e3b0a336329b5996ee183c0344c36090f7f79829994409517d8d61a41c57197f"
+    },
+    {
+      "path": "apps/multiplatform/desktop/src/jvmMain/resources/distribute/simplex.icns",
+      "action": "platform-default-package-icon",
+      "previous_sha256": "a33b0f50ece2049770cf702b612d2ac76e258354aa430cd8449946ff7e3467e1",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "a33b0f50ece2049770cf702b612d2ac76e258354aa430cd8449946ff7e3467e1"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable-hdpi/ntf_icon.png",
+      "action": "deleted-branded-notification-silhouette",
+      "previous_sha256": "c3acb05a12106b17a29809682384f9b746d6528ac02fac24fa2eb59232721176",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "c3acb05a12106b17a29809682384f9b746d6528ac02fac24fa2eb59232721176"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable-hdpi/ntf_service_icon.png",
+      "action": "deleted-branded-notification-silhouette",
+      "previous_sha256": "96abd0f1b023714773b837fae94eb6fd1b69ca60c41f4088315c722f597bca0e",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "96abd0f1b023714773b837fae94eb6fd1b69ca60c41f4088315c722f597bca0e"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable-mdpi/ntf_icon.png",
+      "action": "deleted-branded-notification-silhouette",
+      "previous_sha256": "7f54a017cd295951966528f5871f17c7936bdf48102e24e424ff7227d685415b",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "7f54a017cd295951966528f5871f17c7936bdf48102e24e424ff7227d685415b"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable-mdpi/ntf_service_icon.png",
+      "action": "deleted-branded-notification-silhouette",
+      "previous_sha256": "544459b1f8a2291222adb338ff667382e1841d42b9beebbade14dd65b4fe0113",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "544459b1f8a2291222adb338ff667382e1841d42b9beebbade14dd65b4fe0113"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable-xhdpi/ntf_icon.png",
+      "action": "deleted-branded-notification-silhouette",
+      "previous_sha256": "c9561fc7559d3724abda4069aa12e4458c6c7b29a28939d2260b853a7c7bf189",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "c9561fc7559d3724abda4069aa12e4458c6c7b29a28939d2260b853a7c7bf189"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable-xhdpi/ntf_service_icon.png",
+      "action": "deleted-branded-notification-silhouette",
+      "previous_sha256": "18f343b358220e9c93a0ee7e0a064cc3aef18a5cc9817a808f0dd4fd7771644c",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "18f343b358220e9c93a0ee7e0a064cc3aef18a5cc9817a808f0dd4fd7771644c"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable-xxhdpi/ntf_icon.png",
+      "action": "deleted-branded-notification-silhouette",
+      "previous_sha256": "4cca514cd1b4525f9656f8e8d207780ae7fca796595f7b5443c7fc525c223241",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "4cca514cd1b4525f9656f8e8d207780ae7fca796595f7b5443c7fc525c223241"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable-xxhdpi/ntf_service_icon.png",
+      "action": "deleted-branded-notification-silhouette",
+      "previous_sha256": "0906d6a2c553da4cd9258f9289bb1e9f17e445b40385d375240c239d0aaa9f21",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "0906d6a2c553da4cd9258f9289bb1e9f17e445b40385d375240c239d0aaa9f21"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable-xxxhdpi/ntf_icon.png",
+      "action": "deleted-branded-notification-silhouette",
+      "previous_sha256": "6667ae6c3634540c03fc7bf53e7579e419c9ff184e978024bafbbdea850dc08a",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "6667ae6c3634540c03fc7bf53e7579e419c9ff184e978024bafbbdea850dc08a"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable-xxxhdpi/ntf_service_icon.png",
+      "action": "deleted-branded-notification-silhouette",
+      "previous_sha256": "2157c03d093f837b9e74417f7bb3a6420dd8d61ac2a0a4f1601fa62a0229f781",
+      "replacement_sha256": null,
+      "previous_worktree_sha256": "2157c03d093f837b9e74417f7bb3a6420dd8d61ac2a0a4f1601fa62a0229f781"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable/ntf_icon.xml",
+      "action": "neutral-notification-marker",
+      "previous_sha256": null,
+      "replacement_sha256": "b9d4686af393374b4384f71b6a1e2b40699c24962d14360310fed2dbca02cc1f"
+    },
+    {
+      "path": "apps/multiplatform/android/src/main/res/drawable/ntf_service_icon.xml",
+      "action": "neutral-notification-marker",
+      "previous_sha256": null,
+      "replacement_sha256": "b9d4686af393374b4384f71b6a1e2b40699c24962d14360310fed2dbca02cc1f"
+    }
+  ],
+  "new_placeholder_policy": "Flat color fields and basic status rings are temporary technical resources, not a new Sunder logo.",
+  "history_rewritten": false,
+  "build_run": false,
+  "tests_run": false,
+  "counts": {
+    "deleted": 42,
+    "replaced": 85,
+    "new": 7
+  },
+  "hash_convention": "previous_sha256 hashes original Git blob bytes; previous_worktree_sha256 preserves original local bytes including CRLF conversion; replacement_sha256 hashes the new local file."
+}

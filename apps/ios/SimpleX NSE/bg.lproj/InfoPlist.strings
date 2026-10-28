@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "Sunder Notifications";
+
+/* Bundle name */
+"CFBundleName" = "Sunder NSE";
+
+/* Copyright (human-readable) */
+"NSHumanReadableCopyright" = "Авторско право © 2022 SimpleX Chat. Всички права запазени.";
+

@@ -1,0 +1,13 @@
+name: Fork question
+description: Ask about this independent development copy
+title: "[Question]: "
+body:
+  - type: markdown
+    attributes:
+      value: "This repository is independent of SimpleX Chat Ltd. Do not post secrets or security vulnerabilities here. Read the fork preparation records first."
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+    validations:
+      required: true

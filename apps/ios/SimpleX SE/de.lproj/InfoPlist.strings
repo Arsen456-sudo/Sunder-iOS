@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "Sunder";
+
+/* Bundle name */
+"CFBundleName" = "Sunder SE";
+
+/* Copyright (human-readable) */
+"NSHumanReadableCopyright" = "Copyright © 2025 SimpleX Chat. Alle Rechte vorbehalten.";
+

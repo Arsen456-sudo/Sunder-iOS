@@ -1,0 +1,36 @@
+name: Fork bug report
+description: Report an ordinary bug in this independent development fork
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: "This is an independent fork. Do not include credentials, message databases, vulnerability details or unredacted logs. Read SECURITY.md first."
+  - type: input
+    id: revision
+    attributes:
+      label: Fork commit or build identifier
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform, device and OS version
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional information
+      description: Include only screenshots or logs you have reviewed and redacted.

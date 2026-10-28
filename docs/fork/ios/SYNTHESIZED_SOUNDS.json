@@ -1,0 +1,27 @@
+{
+  "license": "AGPL-3.0-only",
+  "generator": "scripts/ios/generate-sunder-sounds.py",
+  "files": [
+    {
+      "path": "apps/ios/sounds/connecting_call.wav",
+      "sha256": "a54320dae89f18e02997d6fed7d58f31252e6654fd771054ee937bcb5c1dc6fe",
+      "sample_rate": 22050,
+      "seconds": 1.6,
+      "origin": "New mathematical sine cues; no sampled upstream audio"
+    },
+    {
+      "path": "apps/ios/sounds/in_call.wav",
+      "sha256": "66859a2992992475498572cd873619ef31781793c705c6ba4ab267a0317eb360",
+      "sample_rate": 22050,
+      "seconds": 0.25,
+      "origin": "New mathematical sine cues; no sampled upstream audio"
+    },
+    {
+      "path": "apps/ios/sounds/ringtone2.wav",
+      "sha256": "6fb3771a72b549209c3a0c2b23f050aa13900421245bff7205d825cead35c260",
+      "sample_rate": 22050,
+      "seconds": 2.4,
+      "origin": "New mathematical sine cues; no sampled upstream audio"
+    }
+  ]
+}

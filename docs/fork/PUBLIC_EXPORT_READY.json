@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-28",
+  "directory": "C:\\Sunder-iOS-Public-Ready",
+  "source_revision": "9b4a35f0b14aae645730dfef3921e43cd5c1833e",
+  "retained_files": 1576,
+  "excluded_entries": 2183,
+  "executable_mode_records": 30,
+  "retained_media_files": 47,
+  "file_hashes_verified": true,
+  "offline_notice_regeneration_verified": true,
+  "private_git_history_copied": false,
+  "git_initialized": false,
+  "github_visibility_changed": false,
+  "native_build_run": false,
+  "tests_run": false,
+  "intermediate_copies": "Retained with DO_NOT_PUBLISH.txt markers; final directory is the only publication-review candidate.",
+  "binary_release_gates": "Own signing/Keychain/App Groups/APNs, native binary/source provenance, full third-party binary notice closure and device checks remain separate from source publication."
+}

@@ -1,0 +1,228 @@
+{
+  "date": "2026-10-28",
+  "base": "fbf664947d40082dc40a9da4e0fcce0c2c1998a7",
+  "removed_original_media": [
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/badge-investor.imageset/badge-investor.svg",
+      "sha256": "6720a1ddf7157ae0292c16f5aef7d86361300d1ee6445d2800689dee014fd8ff",
+      "category": "profile-badge"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/badge-legend.imageset/badge-legend.svg",
+      "sha256": "de0283209436d05c3a269a0e8392241ecf96eaf17f66aaa1b8427981f8bd3bf0",
+      "category": "profile-badge"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/badge-supporter.imageset/badge-supporter.svg",
+      "sha256": "f836c50ff0d01d79c44ac4428771502fa207f0db123ee4062848116ef476b2cf",
+      "category": "profile-badge"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/checkmark.2.symbolset/checkmark.2.svg",
+      "sha256": "322477eb47168f127760f0f8f450d14efc7eeb3fe40645a5562690ef42e12fba",
+      "category": "symbol"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/checkmark.wide.symbolset/checkmark.wide.svg",
+      "sha256": "a40763aadcf27c69f50595695622924dff8d3e589e311b18f63c062727416bbf",
+      "category": "symbol"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/decentralized-light.imageset/decentralized_light.png",
+      "sha256": "7386c61a4b53a91ce4e54d06e2c917c26f7df253b24d4e4fb9ca62a1a303a285",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/decentralized-light.imageset/decentralized_light@2x.png",
+      "sha256": "251f5bd3a2867544483d3a70c51ffd77427254cb694382a4360eda28a3b1ad6e",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/decentralized-light.imageset/decentralized_light@3x.png",
+      "sha256": "1a0b7b467312bd22ad91befd4527d141122c0f2eb9b3f707d1fb253df3b483cc",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/decentralized.imageset/decentralized.png",
+      "sha256": "decbd99c43a5a71e77332f2f50c56cfeec60fbddcd60d7f1eb798a48de60695d",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/decentralized.imageset/decentralized@2x.png",
+      "sha256": "cffb5d30d89270976a6baa9f0a1bcf6ffaac39a860d542ca66fc831b64154208",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/decentralized.imageset/decentralized@3x.png",
+      "sha256": "8e6045df66167ce8ef03d662e022e23ad4516ddbb1ab06b72cc348e030ef7300",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/github.imageset/github_1x.png",
+      "sha256": "5a7b8ca11a78c30a748b1ff058cc40f2b7f5cd0dc753ed6ea35bf02149bf1f21",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/github.imageset/github_2x.png",
+      "sha256": "da19e15776a470295cf189c0879b4249a78d3439931e117ec912b43e62c32537",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/github.imageset/github_3x.png",
+      "sha256": "3d634f31f86f248b42a8651f2e6bcc53bccc8d9199b07d978bdd04d3e73d130a",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/github_light.imageset/github_light_1x.png",
+      "sha256": "4dd09e39cc067dacb50f62de0433c2b1d833302009bd123fb2d7f32e7f1036e2",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/github_light.imageset/github_light_2x.png",
+      "sha256": "148f97d6aeae317103f1384cb01fb5b7641e3147be61b43e82b4eef1a75d32c1",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/github_light.imageset/github_light_3x.png",
+      "sha256": "eb03f49b48e5d95d18d76136e94d6f0ef7a4c6198c2321c7fe45458042a99b29",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/privacy.imageset/privacy.png",
+      "sha256": "1e07c68f4cde81269f7cd7cec7eb76b32195ff0d4af8e1b345ed5003ba78ead5",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/privacy.imageset/privacy@2x.png",
+      "sha256": "a2f9296b39d0b1334fafcaa0e29d8c5f21d18c40f29ef19bcd2c7146c2b55486",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/privacy.imageset/privacy@3x.png",
+      "sha256": "c0514555c52c2c2fd69547b7b3c1d41e47a21c3e3615653e628fd902ddc8fd8e",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/shield.imageset/shield.png",
+      "sha256": "c741de20b70a81a8a7524ff93a1068067e1714056fbfdd206f72d1a4b02141e9",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/shield.imageset/shield@2x.png",
+      "sha256": "6154bd8d4d91284e52b982a9dc3aa5a2df38e6f427f1e7db520949b8c0320c13",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/shield.imageset/shield@3x.png",
+      "sha256": "b3cf30652f28f3847ed7ec87fb23cd4db6df312df571cb0925bd0280251cb047",
+      "category": "other-graphic"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_cats.imageset/wallpaper_cats@1x.png",
+      "sha256": "483fbca237de7d5462fb358c3a0ae3ed79f90f0f3c1c66157a9a488d9917423a",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_cats.imageset/wallpaper_cats@2x.png",
+      "sha256": "4bede658bbc6053dc36fcc8ee5e96fc8a5c87f9b338d29c6797d391905303419",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_cats.imageset/wallpaper_cats@3x.png",
+      "sha256": "d0d051ff38f274adfa8eeccb433ed0cdf6bd902e5f576feda44770020795a00c",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_flowers.imageset/wallpaper_flowers@1x.png",
+      "sha256": "c96d2826d15710032f9f8316eacf1fa8c254d86da8eb2aa4f6d391b72867697e",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_flowers.imageset/wallpaper_flowers@2x.png",
+      "sha256": "57720b5688e1f92adb30584473bc76636e2912066f87615926eb99c617ba612d",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_flowers.imageset/wallpaper_flowers@3x.png",
+      "sha256": "0360890460f8bead9fa24eed726f2feb31ed8ca65f8e56a3afa45abe94a7fe1c",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_hearts.imageset/wallpaper_hearts@1x.png",
+      "sha256": "98ec3a3632db976abc6283a46a17a56d5d62c0f2366dcc6742e1e5a588f08ff7",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_hearts.imageset/wallpaper_hearts@2x.png",
+      "sha256": "f184b09fa22ad31d798a8bbaf2fad6a56702df5f73b777e35636df96caa906ad",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_hearts.imageset/wallpaper_hearts@3x.png",
+      "sha256": "cfcc74fd6955a8964491f3c742ddb2a557632b9022fce5e35bb0d4b7a04f0da2",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_kids.imageset/wallpaper_kids@1x.png",
+      "sha256": "cf004bb2980961c680f7c0f0905fed0aa9587f391074038dba6fd1a54027f842",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_kids.imageset/wallpaper_kids@2x.png",
+      "sha256": "899872968e5e29eaddcd9134f26bd5b9dc8b3f61a124a6d4faaba08b7e2a346a",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_kids.imageset/wallpaper_kids@3x.png",
+      "sha256": "b5ff6801f6123ade148fb7212143ff271397f0623eab39f36eeeed175218b57e",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_school.imageset/wallpaper_school@1x.png",
+      "sha256": "cfe58d3bd1bf9cdf1a501db8f1971597341e2e82ebaff70496fd4742d4f20426",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_school.imageset/wallpaper_school@2x.png",
+      "sha256": "8b4963b4d4a61554137b889baa84bce41f83d90641c38ec7596107812819260d",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_school.imageset/wallpaper_school@3x.png",
+      "sha256": "55daa1c03e010b0a914e681352287f4854e99db1fe51c45a7a48dc61c5b546e1",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_travel.imageset/wallpaper_travel@1x.png",
+      "sha256": "bf5628c306f81655afb8816caca1f3973530e4231aa7b2b0c901ebca210ba99a",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_travel.imageset/wallpaper_travel@2x.png",
+      "sha256": "e96d5fb3239de3b0f9c845644c12aedcb1343c7859fa7e67a84a6cd51efe3e75",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/Shared/Assets.xcassets/wallpaper_travel.imageset/wallpaper_travel@3x.png",
+      "sha256": "c7912a6a695d3cd6f7203b64084664f0e28f1779e2e912402118a7f320ef28ea",
+      "category": "wallpaper"
+    },
+    {
+      "path": "apps/ios/sounds/connecting_call.mp3",
+      "sha256": "d149da31793a6acc4d29fe4006e280b2a66099abc8d00f18262ffe0add942aa3",
+      "category": "audio"
+    },
+    {
+      "path": "apps/ios/sounds/in_call.mp3",
+      "sha256": "7b51e2b993b6187d2a23d8d864c43efd6eff015175bff5b092e2b979f430a6d7",
+      "category": "audio"
+    },
+    {
+      "path": "apps/ios/sounds/ringtone2.m4a",
+      "sha256": "7a67e8a71415ddc4a722232b4ef7fb9446fd3853a7b2836fe3a2184c1dc95671",
+      "category": "audio"
+    }
+  ],
+  "replacement_policy": "Native SF Symbols, a cached procedural dot tile, and newly synthesized PCM WAV cues. Existing palette IDs, verification and runtime semantics are preserved.",
+  "history_rewritten": false
+}

@@ -1,0 +1,90 @@
+name: Sunder iOS test IPA
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sunder-ios-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  device:
+    runs-on: macos-15
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Select Xcode with iOS 26 SDK
+        shell: bash
+        run: |
+          set -euo pipefail
+          developer_dir=$(find /Applications -maxdepth 1 -name 'Xcode_26*.app' | sort -V | tail -1)
+          test -n "$developer_dir"
+          sudo xcode-select -s "$developer_dir/Contents/Developer"
+          xcodebuild -version
+          xcodebuild -showsdks
+      - uses: cachix/install-nix-action@75c75c31ebece974e48ebc36b4ad125bd97bd97b
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            allow-import-from-derivation = true
+            max-jobs = 2
+            cores = 3
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        id: native
+        with:
+          path: apps/ios/Libraries/ios
+          key: sunder-native-arm64-v1-${{ hashFiles('flake.lock', 'flake.nix', 'cabal.project', 'simplex-chat.cabal', 'scripts/nix/**', 'src/**') }}
+      - name: Build native core from this source and locked inputs
+        if: steps.native.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          nix build --no-write-lock-file --print-build-logs '.#packages.aarch64-darwin."aarch64-darwin-ios:lib:simplex-chat"' --out-link native-result
+          mkdir -p apps/ios/Libraries/ios
+          unzip -o native-result/pkg-ios-aarch64-swift-json.zip -d apps/ios/Libraries/ios
+      - name: Match native archive names
+        run: sh scripts/ios/update-pbxproj.sh
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: .build/SourcePackages
+          key: sunder-spm-v1-${{ runner.os }}-${{ hashFiles('apps/ios/SimpleX.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
+      - name: Compile unsigned device application
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build
+          python3 scripts/ios/generate-sunder-notices.py --check
+          xcodebuild -project apps/ios/SimpleX.xcodeproj -scheme 'SimpleX (iOS)' \
+            -configuration Release -destination 'generic/platform=iOS' \
+            -derivedDataPath .build/DerivedData -clonedSourcePackagesDirPath .build/SourcePackages \
+            -onlyUsePackageVersionsFromResolvedFile \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO DEVELOPMENT_TEAM= \
+            build 2>&1 | tee build/xcodebuild.log
+      - name: Package test IPA and provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/Payload
+          ditto '.build/DerivedData/Build/Products/Release-iphoneos/SimpleX.app' build/Payload/SimpleX.app
+          (cd build && zip -qry Sunder-unsigned.ipa Payload)
+          shasum -a 256 build/Sunder-unsigned.ipa > build/Sunder-unsigned.ipa.sha256
+          git rev-parse HEAD > build/SOURCE_COMMIT.txt
+          shasum -a 256 apps/ios/Libraries/ios/*.a > build/NATIVE_ARCHIVES.sha256
+          printf '%s\n' 'Unsigned test build. Requires signing; original App Group/Keychain/APNs configuration is not yet adapted for independent distribution.' > build/BUILD_LIMITATIONS.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: Sunder-iOS-${{ github.run_number }}
+          retention-days: 3
+          if-no-files-found: warn
+          path: |
+            build/Sunder-unsigned.ipa
+            build/*.sha256
+            build/SOURCE_COMMIT.txt
+            build/BUILD_LIMITATIONS.txt
+            build/xcodebuild.log

@@ -1,0 +1,126 @@
+{
+  "review_date": "2026-10-28",
+  "baseline": "79d91e716dbb8aae80327f580aac9a6b42426466",
+  "scope": "Source pins, not a complete transitive or binary SBOM",
+  "cabal_index_state": "2023-12-12T00:00:00Z",
+  "cabal_sources": [
+    {
+      "source": "https://github.com/simplex-chat/simplexmq.git",
+      "revision": "efaad8e73436d60f5052f07dda6b71151ad5039b",
+      "subdirectory": null
+    },
+    {
+      "source": "https://github.com/simplex-chat/hs-socks.git",
+      "revision": "a30cc7a79a08d8108316094f8f2f82a0c5e1ac51",
+      "subdirectory": null
+    },
+    {
+      "source": "https://github.com/simplex-chat/direct-sqlcipher.git",
+      "revision": "f814ee68b16a9447fbb467ccc8f29bdd3546bfd9",
+      "subdirectory": null
+    },
+    {
+      "source": "https://github.com/simplex-chat/sqlcipher-simple.git",
+      "revision": "a46bd361a19376c5211f1058908fc0ae6bf42446",
+      "subdirectory": null
+    },
+    {
+      "source": "https://github.com/simplex-chat/aeson.git",
+      "revision": "aab7b5a14d6c5ea64c64dcaee418de1bb00dcc2b",
+      "subdirectory": null
+    },
+    {
+      "source": "https://github.com/simplex-chat/haskell-terminal.git",
+      "revision": "f708b00009b54890172068f168bf98508ffcd495",
+      "subdirectory": null
+    },
+    {
+      "source": "https://github.com/simplex-chat/android-support.git",
+      "revision": "9aa09f148089d6752ce563b14c2df1895718d806",
+      "subdirectory": null
+    },
+    {
+      "source": "https://github.com/simplex-chat/zip.git",
+      "revision": "2eff156c3aac389e35d38bf10a52733d7061640a",
+      "subdirectory": null
+    },
+    {
+      "source": "https://github.com/yesodweb/wai.git",
+      "revision": "ec5e017d896a78e787a5acea62b37a4e677dec2e",
+      "subdirectory": "warp-tls"
+    },
+    {
+      "source": "https://github.com/simplex-chat/wai.git",
+      "revision": "2f6e5aa5f05ba9140ac99e195ee647b4f7d926b0",
+      "subdirectory": "warp"
+    }
+  ],
+  "swift_package_pins": [
+    {
+      "identity": "codescanner",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/twostraws/CodeScanner",
+      "state": {
+        "revision": "34da57fb63b47add20de8a85da58191523ccce57",
+        "version": "2.5.0"
+      }
+    },
+    {
+      "identity": "elegant-emoji-picker",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/Finalet/Elegant-Emoji-Picker",
+      "state": {
+        "branch": "main",
+        "revision": "71d2d46092b4d550cc593614efc06438f845f6e6"
+      }
+    },
+    {
+      "identity": "ink",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/johnsundell/ink",
+      "state": {
+        "revision": "bcc9f219900a62c4210e6db726035d7f03ae757b",
+        "version": "0.6.0"
+      }
+    },
+    {
+      "identity": "lzstring-swift",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/Ibrahimhass/lzstring-swift",
+      "state": {
+        "revision": "7f62f21de5b18582a950e1753b775cc614722407"
+      }
+    },
+    {
+      "identity": "swiftygif",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/kirualex/SwiftyGif",
+      "state": {
+        "revision": "5e8619335d394901379c9add5c4c1c2f420b3800"
+      }
+    },
+    {
+      "identity": "webrtc",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/simplex-chat/WebRTC.git",
+      "state": {
+        "revision": "34bedc50f9c58dccf4967ea59c7e6a47d620803b"
+      }
+    },
+    {
+      "identity": "yams",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/jpsim/Yams",
+      "state": {
+        "revision": "9234124cff5e22e178988c18d8b95a8ae8007f76",
+        "version": "5.1.2"
+      }
+    }
+  ],
+  "submodule_status": "-efb2ebf85a2b06f7c508aba9eaad5377e3a01e81 apps/multiplatform/external/nanohttpd/upstream",
+  "notes": [
+    "The nanohttpd submodule is not initialized in this checkout.",
+    "Pinned package root licenses do not establish rights for every bundled resource or binary.",
+    "Gradle/native/prebuilt/transitive release components require further review."
+  ]
+}

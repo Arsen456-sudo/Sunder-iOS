@@ -1,0 +1,21 @@
+/* Bundle name */
+"CFBundleName" = "Sunder";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Sunder се нуждае от достъп до камерата, за да сканира QR кодове, за да се свърже с други потребители и за видео разговори.";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Sunder използва Face ID за локалнa идентификация";
+
+/* Privacy - Local Network Usage Description */
+"NSLocalNetworkUsageDescription" = "Sunder използва достъп до локална мрежа, за да позволи използването на потребителския чат профил чрез настолно приложение в същата мрежа.";
+
+/* Privacy - Microphone Usage Description */
+"NSMicrophoneUsageDescription" = "Sunder се нуждае от достъп до микрофона за аудио и видео разговори и за запис на гласови съобщения.";
+
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "Sunder се нуждае от достъп до фотобиблиотека за запазване на заснета и получена медия";
+
+
+/* Independent client display name. */
+"CFBundleDisplayName" = "Sunder";

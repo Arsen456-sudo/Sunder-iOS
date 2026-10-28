@@ -1,0 +1,1642 @@
+{
+  "url": "https://github.com/simplex-chat/WebRTC/releases/download/110.0.0/WebRTC-M110.0.0.xcframework.zip",
+  "expected_sha256": "2598307f788ab668e0f42b2a1daef4306adbb9ec9c3959441064e8e84f7310ee",
+  "binary_executed": false,
+  "archive_extracted": false,
+  "actual_sha256": "2598307f788ab668e0f42b2a1daef4306adbb9ec9c3959441064e8e84f7310ee",
+  "bytes": 34279775,
+  "checksum_verified": true,
+  "entries": [
+    {
+      "path": "WebRTC.xcframework/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/_CodeSignature/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/_CodeSignature/CodeResources",
+      "bytes": 24074
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCI420Buffer.h",
+      "bytes": 693
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCPeerConnectionFactoryOptions.h",
+      "bytes": 1092
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCRtpHeaderExtension.h",
+      "bytes": 986
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCSSLCertificateVerifier.h",
+      "bytes": 692
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCCallbackLogger.h",
+      "bytes": 1500
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCStatisticsReport.h",
+      "bytes": 1892
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCNativeI420Buffer.h",
+      "bytes": 722
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCCryptoOptions.h",
+      "bytes": 2337
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCCameraVideoCapturer.h",
+      "bytes": 2534
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCSessionDescription.h",
+      "bytes": 1396
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCRtpCodecParameters.h",
+      "bytes": 2535
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoCapturer.h",
+      "bytes": 1027
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoDecoderVP8.h",
+      "bytes": 895
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/UIDevice+RTCDevice.h",
+      "bytes": 3080
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCCVPixelBuffer.h",
+      "bytes": 1942
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoEncoder.h",
+      "bytes": 2406
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCCodecSpecificInfoH264.h",
+      "bytes": 978
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCConfiguration.h",
+      "bytes": 10081
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCMetricsSampleInfo.h",
+      "bytes": 1249
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoSource.h",
+      "bytes": 1253
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCDispatcher.h",
+      "bytes": 1582
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoEncoderAV1.h",
+      "bytes": 917
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCIceServer.h",
+      "bytes": 4573
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCMediaConstraints.h",
+      "bytes": 1674
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCSSLAdapter.h",
+      "bytes": 697
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCDefaultVideoDecoderFactory.h",
+      "bytes": 891
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCNativeMutableI420Buffer.h",
+      "bytes": 783
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCTracing.h",
+      "bytes": 785
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCMediaStreamTrack.h",
+      "bytes": 1423
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoTrack.h",
+      "bytes": 1162
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCRtpParameters.h",
+      "bytes": 2001
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoViewShading.h",
+      "bytes": 1366
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoDecoderFactory.h",
+      "bytes": 997
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCMacros.h",
+      "bytes": 1965
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoRenderer.h",
+      "bytes": 1043
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCCertificate.h",
+      "bytes": 1368
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCRtpTransceiver.h",
+      "bytes": 5537
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCMTLVideoView.h",
+      "bytes": 1238
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCEAGLVideoView.h",
+      "bytes": 1478
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoEncoderVP9.h",
+      "bytes": 917
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoEncoderSettings.h",
+      "bytes": 1281
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCMetrics.h",
+      "bytes": 830
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCRtpEncodingParameters.h",
+      "bytes": 2361
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCRtpSender.h",
+      "bytes": 1810
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCNetworkMonitor.h",
+      "bytes": 667
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoEncoderQpThresholds.h",
+      "bytes": 866
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCAudioTrack.h",
+      "bytes": 822
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCYUVPlanarBuffer.h",
+      "bytes": 1649
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoFrame.h",
+      "bytes": 3057
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCFileVideoCapturer.h",
+      "bytes": 1457
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCCameraPreviewView.h",
+      "bytes": 954
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCDataChannel.h",
+      "bytes": 4023
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoDecoderAV1.h",
+      "bytes": 895
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCMutableYUVPlanarBuffer.h",
+      "bytes": 884
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoCodecInfo.h",
+      "bytes": 1149
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCFileLogger.h",
+      "bytes": 2607
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCAudioSource.h",
+      "bytes": 1027
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCDataChannelConfiguration.h",
+      "bytes": 1653
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoEncoderVP8.h",
+      "bytes": 895
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCFrameEncryptor.h",
+      "bytes": 1394
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoDecoderFactoryH264.h",
+      "bytes": 643
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCAudioSession.h",
+      "bytes": 11675
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCMutableI420Buffer.h",
+      "bytes": 777
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoEncoderH264.h",
+      "bytes": 742
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCAudioSessionConfiguration.h",
+      "bytes": 1876
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoCodecConstants.h",
+      "bytes": 625
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCPeerConnection.h",
+      "bytes": 17026
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoDecoder.h",
+      "bytes": 1326
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCPeerConnectionFactory.h",
+      "bytes": 4801
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCMediaStream.h",
+      "bytes": 1627
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCRtpReceiver.h",
+      "bytes": 2983
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoDecoderH264.h",
+      "bytes": 622
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCFieldTrials.h",
+      "bytes": 1378
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCEncodedImage.h",
+      "bytes": 1746
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCLogging.h",
+      "bytes": 2359
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCAudioDevice.h",
+      "bytes": 11790
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/WebRTC.h",
+      "bytes": 3848
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCRtcpParameters.h",
+      "bytes": 834
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCFrameDecryptor.h",
+      "bytes": 1392
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCIceCandidateErrorEvent.h",
+      "bytes": 1642
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCIceCandidate.h",
+      "bytes": 1449
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCDefaultVideoEncoderFactory.h",
+      "bytes": 1039
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoDecoderVP9.h",
+      "bytes": 917
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoEncoderFactoryH264.h",
+      "bytes": 643
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoFrameBuffer.h",
+      "bytes": 1315
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCLegacyStatsReport.h",
+      "bytes": 1117
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCH264ProfileLevelId.h",
+      "bytes": 1906
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCMediaSource.h",
+      "bytes": 885
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCCodecSpecificInfo.h",
+      "bytes": 725
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCVideoEncoderFactory.h",
+      "bytes": 1687
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Headers/RTCDtmfSender.h",
+      "bytes": 2507
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/WebRTC",
+      "bytes": 19604976
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Modules/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Modules/module.modulemap",
+      "bytes": 93
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-simulator/WebRTC.framework/Info.plist",
+      "bytes": 778
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Resources",
+      "bytes": 26
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Resources/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Resources/Info.plist",
+      "bytes": 745
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCI420Buffer.h",
+      "bytes": 693
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCPeerConnectionFactoryOptions.h",
+      "bytes": 1092
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCRtpHeaderExtension.h",
+      "bytes": 986
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCSSLCertificateVerifier.h",
+      "bytes": 692
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCCallbackLogger.h",
+      "bytes": 1500
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCStatisticsReport.h",
+      "bytes": 1892
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCNativeI420Buffer.h",
+      "bytes": 722
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCCryptoOptions.h",
+      "bytes": 2337
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCCameraVideoCapturer.h",
+      "bytes": 2534
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCSessionDescription.h",
+      "bytes": 1396
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCRtpCodecParameters.h",
+      "bytes": 2535
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoCapturer.h",
+      "bytes": 1027
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoDecoderVP8.h",
+      "bytes": 895
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/UIDevice+RTCDevice.h",
+      "bytes": 3080
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCCVPixelBuffer.h",
+      "bytes": 1942
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoEncoder.h",
+      "bytes": 2406
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCCodecSpecificInfoH264.h",
+      "bytes": 978
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCConfiguration.h",
+      "bytes": 10081
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCMetricsSampleInfo.h",
+      "bytes": 1249
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoSource.h",
+      "bytes": 1253
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCDispatcher.h",
+      "bytes": 1582
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderAV1.h",
+      "bytes": 917
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCIceServer.h",
+      "bytes": 4573
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCMediaConstraints.h",
+      "bytes": 1674
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCSSLAdapter.h",
+      "bytes": 697
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCDefaultVideoDecoderFactory.h",
+      "bytes": 891
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCNativeMutableI420Buffer.h",
+      "bytes": 783
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCTracing.h",
+      "bytes": 785
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCMediaStreamTrack.h",
+      "bytes": 1423
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoTrack.h",
+      "bytes": 1162
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCRtpParameters.h",
+      "bytes": 2001
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoViewShading.h",
+      "bytes": 1366
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoDecoderFactory.h",
+      "bytes": 997
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCMacros.h",
+      "bytes": 1965
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoRenderer.h",
+      "bytes": 1043
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCCertificate.h",
+      "bytes": 1368
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCRtpTransceiver.h",
+      "bytes": 5537
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCMTLVideoView.h",
+      "bytes": 1238
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCEAGLVideoView.h",
+      "bytes": 1478
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderVP9.h",
+      "bytes": 917
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderSettings.h",
+      "bytes": 1281
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCMetrics.h",
+      "bytes": 830
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCRtpEncodingParameters.h",
+      "bytes": 2361
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCRtpSender.h",
+      "bytes": 1810
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCNetworkMonitor.h",
+      "bytes": 667
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderQpThresholds.h",
+      "bytes": 866
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCAudioTrack.h",
+      "bytes": 822
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCYUVPlanarBuffer.h",
+      "bytes": 1649
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoFrame.h",
+      "bytes": 3057
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCFileVideoCapturer.h",
+      "bytes": 1457
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCCameraPreviewView.h",
+      "bytes": 954
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCDataChannel.h",
+      "bytes": 4023
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoDecoderAV1.h",
+      "bytes": 895
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCMutableYUVPlanarBuffer.h",
+      "bytes": 884
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoCodecInfo.h",
+      "bytes": 1149
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCFileLogger.h",
+      "bytes": 2607
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCAudioSource.h",
+      "bytes": 1027
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCDataChannelConfiguration.h",
+      "bytes": 1653
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderVP8.h",
+      "bytes": 895
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCFrameEncryptor.h",
+      "bytes": 1394
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoDecoderFactoryH264.h",
+      "bytes": 643
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCAudioSession.h",
+      "bytes": 11675
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCMutableI420Buffer.h",
+      "bytes": 777
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderH264.h",
+      "bytes": 742
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCAudioSessionConfiguration.h",
+      "bytes": 1876
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoCodecConstants.h",
+      "bytes": 625
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCPeerConnection.h",
+      "bytes": 17026
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoDecoder.h",
+      "bytes": 1326
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCPeerConnectionFactory.h",
+      "bytes": 4801
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCMediaStream.h",
+      "bytes": 1627
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCRtpReceiver.h",
+      "bytes": 2983
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoDecoderH264.h",
+      "bytes": 622
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCFieldTrials.h",
+      "bytes": 1378
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCEncodedImage.h",
+      "bytes": 1746
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCLogging.h",
+      "bytes": 2359
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCAudioDevice.h",
+      "bytes": 11790
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/WebRTC.h",
+      "bytes": 3848
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCRtcpParameters.h",
+      "bytes": 834
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCFrameDecryptor.h",
+      "bytes": 1392
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCIceCandidateErrorEvent.h",
+      "bytes": 1642
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCIceCandidate.h",
+      "bytes": 1449
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCDefaultVideoEncoderFactory.h",
+      "bytes": 1039
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoDecoderVP9.h",
+      "bytes": 917
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderFactoryH264.h",
+      "bytes": 643
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoFrameBuffer.h",
+      "bytes": 1315
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCLegacyStatsReport.h",
+      "bytes": 1117
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCH264ProfileLevelId.h",
+      "bytes": 1906
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCMediaSource.h",
+      "bytes": 885
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCCodecSpecificInfo.h",
+      "bytes": 725
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderFactory.h",
+      "bytes": 1687
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Headers/RTCDtmfSender.h",
+      "bytes": 2507
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/WebRTC",
+      "bytes": 19356088
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Modules/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/A/Modules/module.modulemap",
+      "bytes": 93
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Versions/Current",
+      "bytes": 1
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Headers",
+      "bytes": 24
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/WebRTC",
+      "bytes": 23
+    },
+    {
+      "path": "WebRTC.xcframework/ios-x86_64_arm64-maccatalyst/WebRTC.framework/Modules",
+      "bytes": 24
+    },
+    {
+      "path": "WebRTC.xcframework/LICENSE",
+      "bytes": 1511
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Resources",
+      "bytes": 26
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Resources/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Resources/Info.plist",
+      "bytes": 1017
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCI420Buffer.h",
+      "bytes": 693
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCPeerConnectionFactoryOptions.h",
+      "bytes": 1092
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCRtpHeaderExtension.h",
+      "bytes": 986
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCSSLCertificateVerifier.h",
+      "bytes": 692
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCCallbackLogger.h",
+      "bytes": 1500
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCStatisticsReport.h",
+      "bytes": 1892
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCNativeI420Buffer.h",
+      "bytes": 722
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCCryptoOptions.h",
+      "bytes": 2337
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCCameraVideoCapturer.h",
+      "bytes": 2534
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCSessionDescription.h",
+      "bytes": 1396
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCRtpCodecParameters.h",
+      "bytes": 2535
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoCapturer.h",
+      "bytes": 1027
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoDecoderVP8.h",
+      "bytes": 895
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCCVPixelBuffer.h",
+      "bytes": 1942
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoEncoder.h",
+      "bytes": 2406
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCCodecSpecificInfoH264.h",
+      "bytes": 978
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCConfiguration.h",
+      "bytes": 10081
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCMetricsSampleInfo.h",
+      "bytes": 1249
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoSource.h",
+      "bytes": 1253
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCDispatcher.h",
+      "bytes": 1582
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderAV1.h",
+      "bytes": 917
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCIceServer.h",
+      "bytes": 4573
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCMediaConstraints.h",
+      "bytes": 1674
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCSSLAdapter.h",
+      "bytes": 697
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCDefaultVideoDecoderFactory.h",
+      "bytes": 891
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCNativeMutableI420Buffer.h",
+      "bytes": 783
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCTracing.h",
+      "bytes": 785
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCMediaStreamTrack.h",
+      "bytes": 1423
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoTrack.h",
+      "bytes": 1162
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCRtpParameters.h",
+      "bytes": 2001
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoViewShading.h",
+      "bytes": 1366
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoDecoderFactory.h",
+      "bytes": 997
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCMacros.h",
+      "bytes": 1965
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoRenderer.h",
+      "bytes": 1043
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCCertificate.h",
+      "bytes": 1368
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCRtpTransceiver.h",
+      "bytes": 5537
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderVP9.h",
+      "bytes": 917
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderSettings.h",
+      "bytes": 1281
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCMetrics.h",
+      "bytes": 830
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCRtpEncodingParameters.h",
+      "bytes": 2361
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCRtpSender.h",
+      "bytes": 1810
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderQpThresholds.h",
+      "bytes": 866
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCNSGLVideoView.h",
+      "bytes": 1194
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCAudioTrack.h",
+      "bytes": 822
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCYUVPlanarBuffer.h",
+      "bytes": 1649
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoFrame.h",
+      "bytes": 3057
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCFileVideoCapturer.h",
+      "bytes": 1457
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCDataChannel.h",
+      "bytes": 4023
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoDecoderAV1.h",
+      "bytes": 895
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCMutableYUVPlanarBuffer.h",
+      "bytes": 884
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoCodecInfo.h",
+      "bytes": 1149
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCFileLogger.h",
+      "bytes": 2607
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCAudioSource.h",
+      "bytes": 1027
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCDataChannelConfiguration.h",
+      "bytes": 1653
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderVP8.h",
+      "bytes": 895
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCFrameEncryptor.h",
+      "bytes": 1394
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoDecoderFactoryH264.h",
+      "bytes": 643
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCMutableI420Buffer.h",
+      "bytes": 777
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderH264.h",
+      "bytes": 742
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCPeerConnection.h",
+      "bytes": 17026
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoDecoder.h",
+      "bytes": 1326
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCMTLNSVideoView.h",
+      "bytes": 714
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCPeerConnectionFactory.h",
+      "bytes": 4801
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCMediaStream.h",
+      "bytes": 1627
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCRtpReceiver.h",
+      "bytes": 2983
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoDecoderH264.h",
+      "bytes": 622
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCFieldTrials.h",
+      "bytes": 1378
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCEncodedImage.h",
+      "bytes": 1746
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCLogging.h",
+      "bytes": 2359
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/WebRTC.h",
+      "bytes": 3576
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCRtcpParameters.h",
+      "bytes": 834
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCFrameDecryptor.h",
+      "bytes": 1392
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCIceCandidateErrorEvent.h",
+      "bytes": 1642
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCIceCandidate.h",
+      "bytes": 1449
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCDefaultVideoEncoderFactory.h",
+      "bytes": 1039
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoDecoderVP9.h",
+      "bytes": 917
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderFactoryH264.h",
+      "bytes": 643
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoFrameBuffer.h",
+      "bytes": 1315
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCLegacyStatsReport.h",
+      "bytes": 1117
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCH264ProfileLevelId.h",
+      "bytes": 1906
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCMediaSource.h",
+      "bytes": 885
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCCodecSpecificInfo.h",
+      "bytes": 725
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCVideoEncoderFactory.h",
+      "bytes": 1687
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Headers/RTCDtmfSender.h",
+      "bytes": 2507
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/WebRTC",
+      "bytes": 25248712
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Modules/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/A/Modules/module.modulemap",
+      "bytes": 93
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Versions/Current",
+      "bytes": 1
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Headers",
+      "bytes": 24
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/WebRTC",
+      "bytes": 23
+    },
+    {
+      "path": "WebRTC.xcframework/macos-x86_64_arm64/WebRTC.framework/Modules",
+      "bytes": 24
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCI420Buffer.h",
+      "bytes": 693
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCPeerConnectionFactoryOptions.h",
+      "bytes": 1092
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCRtpHeaderExtension.h",
+      "bytes": 986
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCSSLCertificateVerifier.h",
+      "bytes": 692
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCCallbackLogger.h",
+      "bytes": 1500
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCStatisticsReport.h",
+      "bytes": 1892
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCNativeI420Buffer.h",
+      "bytes": 722
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCCryptoOptions.h",
+      "bytes": 2337
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCCameraVideoCapturer.h",
+      "bytes": 2534
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCSessionDescription.h",
+      "bytes": 1396
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCRtpCodecParameters.h",
+      "bytes": 2535
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoCapturer.h",
+      "bytes": 1027
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoDecoderVP8.h",
+      "bytes": 895
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/UIDevice+RTCDevice.h",
+      "bytes": 3080
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCCVPixelBuffer.h",
+      "bytes": 1942
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoEncoder.h",
+      "bytes": 2406
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCCodecSpecificInfoH264.h",
+      "bytes": 978
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCConfiguration.h",
+      "bytes": 10081
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCMetricsSampleInfo.h",
+      "bytes": 1249
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoSource.h",
+      "bytes": 1253
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCDispatcher.h",
+      "bytes": 1582
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoEncoderAV1.h",
+      "bytes": 917
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCIceServer.h",
+      "bytes": 4573
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCMediaConstraints.h",
+      "bytes": 1674
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCSSLAdapter.h",
+      "bytes": 697
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCDefaultVideoDecoderFactory.h",
+      "bytes": 891
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCNativeMutableI420Buffer.h",
+      "bytes": 783
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCTracing.h",
+      "bytes": 785
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCMediaStreamTrack.h",
+      "bytes": 1423
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoTrack.h",
+      "bytes": 1162
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCRtpParameters.h",
+      "bytes": 2001
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoViewShading.h",
+      "bytes": 1366
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoDecoderFactory.h",
+      "bytes": 997
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCMacros.h",
+      "bytes": 1965
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoRenderer.h",
+      "bytes": 1043
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCCertificate.h",
+      "bytes": 1368
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCRtpTransceiver.h",
+      "bytes": 5537
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCMTLVideoView.h",
+      "bytes": 1238
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCEAGLVideoView.h",
+      "bytes": 1478
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoEncoderVP9.h",
+      "bytes": 917
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoEncoderSettings.h",
+      "bytes": 1281
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCMetrics.h",
+      "bytes": 830
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCRtpEncodingParameters.h",
+      "bytes": 2361
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCRtpSender.h",
+      "bytes": 1810
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCNetworkMonitor.h",
+      "bytes": 667
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoEncoderQpThresholds.h",
+      "bytes": 866
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCAudioTrack.h",
+      "bytes": 822
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCYUVPlanarBuffer.h",
+      "bytes": 1649
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoFrame.h",
+      "bytes": 3057
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCFileVideoCapturer.h",
+      "bytes": 1457
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCCameraPreviewView.h",
+      "bytes": 954
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCDataChannel.h",
+      "bytes": 4023
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoDecoderAV1.h",
+      "bytes": 895
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCMutableYUVPlanarBuffer.h",
+      "bytes": 884
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoCodecInfo.h",
+      "bytes": 1149
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCFileLogger.h",
+      "bytes": 2607
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCAudioSource.h",
+      "bytes": 1027
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCDataChannelConfiguration.h",
+      "bytes": 1653
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoEncoderVP8.h",
+      "bytes": 895
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCFrameEncryptor.h",
+      "bytes": 1394
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoDecoderFactoryH264.h",
+      "bytes": 643
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCAudioSession.h",
+      "bytes": 11675
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCMutableI420Buffer.h",
+      "bytes": 777
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoEncoderH264.h",
+      "bytes": 742
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCAudioSessionConfiguration.h",
+      "bytes": 1876
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoCodecConstants.h",
+      "bytes": 625
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCPeerConnection.h",
+      "bytes": 17026
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoDecoder.h",
+      "bytes": 1326
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCPeerConnectionFactory.h",
+      "bytes": 4801
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCMediaStream.h",
+      "bytes": 1627
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCRtpReceiver.h",
+      "bytes": 2983
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoDecoderH264.h",
+      "bytes": 622
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCFieldTrials.h",
+      "bytes": 1378
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCEncodedImage.h",
+      "bytes": 1746
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCLogging.h",
+      "bytes": 2359
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCAudioDevice.h",
+      "bytes": 11790
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/WebRTC.h",
+      "bytes": 3848
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCRtcpParameters.h",
+      "bytes": 834
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCFrameDecryptor.h",
+      "bytes": 1392
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCIceCandidateErrorEvent.h",
+      "bytes": 1642
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCIceCandidate.h",
+      "bytes": 1449
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCDefaultVideoEncoderFactory.h",
+      "bytes": 1039
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoDecoderVP9.h",
+      "bytes": 917
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoEncoderFactoryH264.h",
+      "bytes": 643
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoFrameBuffer.h",
+      "bytes": 1315
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCLegacyStatsReport.h",
+      "bytes": 1117
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCH264ProfileLevelId.h",
+      "bytes": 1906
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCMediaSource.h",
+      "bytes": 885
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCCodecSpecificInfo.h",
+      "bytes": 725
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCVideoEncoderFactory.h",
+      "bytes": 1687
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Headers/RTCDtmfSender.h",
+      "bytes": 2507
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/WebRTC",
+      "bytes": 8087872
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Modules/",
+      "bytes": 0
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Modules/module.modulemap",
+      "bytes": 93
+    },
+    {
+      "path": "WebRTC.xcframework/ios-arm64/WebRTC.framework/Info.plist",
+      "bytes": 751
+    },
+    {
+      "path": "WebRTC.xcframework/Info.plist",
+      "bytes": 1771
+    }
+  ],
+  "notice_files": [
+    {
+      "archive_path": "WebRTC.xcframework/LICENSE",
+      "file": "docs/fork/ios/sources/webrtc-archive-notice-0.txt",
+      "sha256": "ab00a482b6a3902e40211b43c5d0441962ea99b6cc7c25c0f243fa270b78d482"
+    }
+  ]
+}

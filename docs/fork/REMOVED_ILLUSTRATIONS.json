@@ -1,0 +1,642 @@
+{
+  "date": "2026-10-28",
+  "previous_checkpoint": "cef5f099f546b70b8e719bc73b0692433b783323",
+  "scope": "Optional proprietary illustration overlay only; not all repository artwork",
+  "removed_files": [
+    {
+      "path": "assets/multiplatform/resources/MR/images/banner_create_link@2x.png",
+      "sha256": "e691d7f48c89d0303f4048398827b2b1033dddf54f162a222b73e4a2ed52ef12",
+      "bytes": 29172,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/banner_create_link@3x.png",
+      "sha256": "4d0dfb780711875054405cf8ff9468bfa5b7f6c64e6793d8fec412ea11c0b156",
+      "bytes": 81066,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/banner_create_link_light@2x.png",
+      "sha256": "8120c4cb24285201cd300cfbc91dbbb8732e9d2dc2c2a80ac8ee3fe1315eedea",
+      "bytes": 19614,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/banner_create_link_light@3x.png",
+      "sha256": "178c8fe1a4cf5b75a5522e1a92ca61d9aba5ad821909cdd9ec86f4340ea1d761",
+      "bytes": 50187,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/banner_paste_link@2x.png",
+      "sha256": "d4e1ca7d147d502f42480f8ae2659cde97bc5ded90bcbd9ab47a5b9a39effd01",
+      "bytes": 27257,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/banner_paste_link@3x.png",
+      "sha256": "4686ada1b87b9091353a7d976c31d78d3d2fe72ee71b6b3cc985780e11669a3b",
+      "bytes": 71865,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/banner_paste_link_light@2x.png",
+      "sha256": "f9280b59c89e1cde1627e88a6f8cd9bd608aacd394baf7b7f4ebcde3aaaee29d",
+      "bytes": 20450,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/banner_paste_link_light@3x.png",
+      "sha256": "2d4841603192146fc746b3daa89f2b8a2a18e53546f087342faed9bf47eb608d",
+      "bytes": 49027,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_connect_via_link_alpha@2x.png",
+      "sha256": "f2487bf3071855abcbf0c7e96a43925e6455933827a033bc6f264feb26180de7",
+      "bytes": 29205,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_connect_via_link_alpha@3x.png",
+      "sha256": "9cdba23af080a2c4ae44b005e3370720d0fbf121579c4ee68bf56d0ab0af8ab6",
+      "bytes": 58865,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_connect_via_link_alpha_light@2x.png",
+      "sha256": "b8fa2f3296ec89cb999ee44f0e53037d73f290eeec7172367213a434d7263697",
+      "bytes": 26072,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_connect_via_link_alpha_light@3x.png",
+      "sha256": "98e3cf59cb0a2402ab0a98a19f5b58066b346101ac290db893121b2c09c2de78",
+      "bytes": 53471,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_create_your_public_address_alpha@2x.png",
+      "sha256": "14413ee2509e282fc40baf5923a30939db74a6c48228f88ac1cfc423be046696",
+      "bytes": 58040,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_create_your_public_address_alpha@3x.png",
+      "sha256": "44a7f6b6f9a3386c366a9113be5502e464832064758d7515fb7fd22173833816",
+      "bytes": 121949,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_create_your_public_address_alpha_light@2x.png",
+      "sha256": "18c7dbc9f1a98a501d9e58723d9ebe17924462fce5d9cc19ef83cc9f8d7a7dd1",
+      "bytes": 48223,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_create_your_public_address_alpha_light@3x.png",
+      "sha256": "ba617a38440113c333a3006b1544a341fcc726a303e3c70e76c866e6cc39fb02",
+      "bytes": 101981,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_invite_someone_privately_alpha@2x.png",
+      "sha256": "14d6dc4daf282c1812228ba16defed5979268690147a002ff9e7be416979fcf1",
+      "bytes": 28671,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_invite_someone_privately_alpha@3x.png",
+      "sha256": "02ee6e5dad4976e258c0202a6585b8f6777ac97d7b139ba201da0c791616d8bc",
+      "bytes": 58047,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_invite_someone_privately_alpha_light@2x.png",
+      "sha256": "1c058447c31da1d4ea4f2c306d89899341838bbc017b6708e72742cb0dfed73f",
+      "bytes": 27441,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_invite_someone_privately_alpha_light@3x.png",
+      "sha256": "7ec7c71f0e5edaceb1ae94592201228c2ef497e7ec272a8e0a797dd55d62797e",
+      "bytes": 53719,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_let_someone_connect_to_you_alpha@2x.png",
+      "sha256": "736a89c408faab2e986d182093ec4a9b546095baccf1feaa8af0031c13e47d12",
+      "bytes": 22453,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_let_someone_connect_to_you_alpha@3x.png",
+      "sha256": "4af05ed51b11e4a274e9ffeaf7592b94176c577f8a9ebc8675fdc786deee02f9",
+      "bytes": 45528,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_let_someone_connect_to_you_alpha_light@2x.png",
+      "sha256": "0b6a8e988dfc7a0b5afd46f58079609d4605f1ff377d3d1eab84ae80a0033f2a",
+      "bytes": 20884,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/card_let_someone_connect_to_you_alpha_light@3x.png",
+      "sha256": "84941c1428dc540b78035c1fbd189a103bc9c4645f571370467ec988e4c8116b",
+      "bytes": 42243,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/connect_via_link@2x.png",
+      "sha256": "81ecd03791a49a8821fbe507f4256edcd08f3ac941dd3752c7d43d48b53b9223",
+      "bytes": 53785,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/connect_via_link@3x.png",
+      "sha256": "69f5acfce111f428d73673015cb2150c47b22aaef88aec500cb3d32737e69442",
+      "bytes": 121620,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/connect_via_link_light@2x.png",
+      "sha256": "bea67df7493c79eca9dd39e47b4a70cd0d87c08fa811030d4fa187e8cf6dc3d4",
+      "bytes": 18584,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/connect_via_link_light@3x.png",
+      "sha256": "af0e898f8a6a9ef14dddbe6bf55937b5860db224d0d2e14120530f21dcccf1ca",
+      "bytes": 40486,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/connect_via_link_small@2x.png",
+      "sha256": "82925e6705ca77d3359889d759f737e2005010e210e71f89c2789ecfac4f92b7",
+      "bytes": 17618,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/connect_via_link_small@3x.png",
+      "sha256": "a508f67dd9bf7dfd3a488732c6214c67aa7beea32fe168d84ee9d6325093d684",
+      "bytes": 35925,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/connect_via_link_small_light@2x.png",
+      "sha256": "a7d51a64f2fcc95da41b55251c7365085285ec82dedbc24b1ca341874864e34b",
+      "bytes": 7223,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/connect_via_link_small_light@3x.png",
+      "sha256": "d01812696546f3450f21655063942ef80ab541ddd29fd0fd5f250a9a4b7ff72c",
+      "bytes": 13002,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/create_channel@2x.png",
+      "sha256": "3ab801dc239be8177b019503e3442b8ac97e60d1da4f0e516c32ac2f7430d330",
+      "bytes": 31715,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/create_channel@3x.png",
+      "sha256": "178c26c42a2351bc50884b48aa40a31e6921298c2dd085395925739bf93a64f7",
+      "bytes": 62786,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/create_channel_light@2x.png",
+      "sha256": "75a5987fefe4caa39dcfb309a68077b0dcc6632d45094bba0648d9349a884590",
+      "bytes": 34916,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/create_channel_light@3x.png",
+      "sha256": "a74a6a6998711e819c7738b5692bb152f912d3638cf0d4a4971784b9ef731cc9",
+      "bytes": 71602,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/create_group@2x.png",
+      "sha256": "82f5c07e7997f854eb03c596d10ae7ad38ccbb991932bb72cf9a9637093f6223",
+      "bytes": 33037,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/create_group@3x.png",
+      "sha256": "6ed0af0bc703f330c9faa20de8ba03a7c73c4fdf2b2abe12271eb34147dfbd1d",
+      "bytes": 66181,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/create_group_light@2x.png",
+      "sha256": "c26f824ea77fe5ee1d34c6ff549ab7faa20892280c4205915b069de09384d2a1",
+      "bytes": 31323,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/create_group_light@3x.png",
+      "sha256": "0a0622610586770f8c1643c89e0a2edfe2e0e8a5781d3f67fe5812c57193cb66",
+      "bytes": 61914,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/create_profile@2x.png",
+      "sha256": "61f6d8e18f0510878b1797fd8811da06d6b65cbf6eccf281e85f88389f908f67",
+      "bytes": 14626,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/create_profile@3x.png",
+      "sha256": "aabc096addf8ee1254eddcb0531f23863990ecf08807f19655f10e82e9ade0aa",
+      "bytes": 26880,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/create_profile_light@2x.png",
+      "sha256": "7640cc8c0c5683b750610608c4e9dfeddc389cba6d74b343036d652b26d8548b",
+      "bytes": 14443,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/create_profile_light@3x.png",
+      "sha256": "1af94c53d841032c0056c1316dfff92772f155a40880eaa8f9bea78834f85106",
+      "bytes": 25822,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/crowdfunding_1@2x.jpg",
+      "sha256": "b207b74050f58192fb770f48a45eef90f86b3a1a9ca59c3270ee2f1584c61f69",
+      "bytes": 63533,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/crowdfunding_1@3x.jpg",
+      "sha256": "967e3842bcad3ae8d24c877d3a376ec7ad05bc78b0a66dba97f66b02ec16823e",
+      "bytes": 115353,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/crowdfunding_2@2x.jpg",
+      "sha256": "5032edf9642b835cf887c53a69b6942171d527876d3c7c8f2de2f5b1795c1c91",
+      "bytes": 50780,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/crowdfunding_2@3x.jpg",
+      "sha256": "514afc7e0289cf79b011e8cc76c7445f141f1e1c44c081afeb2d9c6b429809b2",
+      "bytes": 91426,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/crowdfunding_3@2x.jpg",
+      "sha256": "19f54998211ea3f5d048fcde42152ca26ca2d0858110d51d7a7b48fe63bfd928",
+      "bytes": 61791,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/crowdfunding_3@3x.jpg",
+      "sha256": "67e1a3dfee58d65fbd034d2f3e8d3408167ad098ccf0e4316dce8ba134a99eb7",
+      "bytes": 116953,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/crowdfunding_4@2x.jpg",
+      "sha256": "899fd8032b3523a60afe29c644e79df838f781aa4bb691d5e3432130ed3fac03",
+      "bytes": 96187,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/crowdfunding_4@3x.jpg",
+      "sha256": "8dacde12b6fab537d8dbb2fdc91a6b52ff3c4b5b98827cb38dd81efbd7c8f53b",
+      "bytes": 174711,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/intro@2x.png",
+      "sha256": "876b35e8fba26690a1f9a06d9a901db4d8d5e6bd3abe14ff7210e42f56988c5c",
+      "bytes": 155174,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/intro@3x.png",
+      "sha256": "17edcbce2248cce4a0a806e0c830dd7dd2421876a9b5a1d782aa760a8d870c29",
+      "bytes": 334390,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/intro_light@2x.png",
+      "sha256": "d15f227cc078ce3306345bdf69c210650f7d225dd72e6638b157e486f9361c98",
+      "bytes": 141600,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/intro_light@3x.png",
+      "sha256": "c73cd7b46b195df206aea139fc9453fb34dacf144fd10de8da8582e6bbd6f3ec",
+      "bytes": 307488,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/network_commitments@2x.png",
+      "sha256": "c9838713ace153c7f272e631aabaa2936ef9fc08b70df1975d37a88c04e18b74",
+      "bytes": 37714,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/network_commitments@3x.png",
+      "sha256": "70e0b1dbcadb0f8ae30d17bce2e68f894f78ede134f0fcd7c7966c8a80390376",
+      "bytes": 76579,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/network_commitments_light@2x.png",
+      "sha256": "4d3a6f3612eb302ca001f31d8354176c35d59b835dbb20759802beeca97ac287",
+      "bytes": 35903,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/network_commitments_light@3x.png",
+      "sha256": "27c42e0b534750c2dbf4d400619e4e707da7c28df24fe26bccbf948923a89fe8",
+      "bytes": 74248,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/one_time_link@2x.png",
+      "sha256": "69fe3c1309795f204b2e0522a6bb1039c1a4a5360746a834ce41cf276948ea41",
+      "bytes": 54383,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/one_time_link@3x.png",
+      "sha256": "f94f85a32ebf5ea49a9f4f5bce7a31d0d222a0414892fb7a0bf8df69fe07022e",
+      "bytes": 124289,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/one_time_link_light@2x.png",
+      "sha256": "563a47b02cb316db5a2e9b2c5a91bafe464b1f45c1883eb1199dc694c717a856",
+      "bytes": 29950,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/one_time_link_light@3x.png",
+      "sha256": "e090cccfb8ef63dc9d706c8d98ca3442f485d4813f0bd2e678c543231d56c293",
+      "bytes": 65712,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/one_time_link_small@2x.png",
+      "sha256": "282598fcec24eb2b8dae68dca1d3c418b1e9cfd91b58d0cf3a4acf644277e992",
+      "bytes": 17088,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/one_time_link_small@3x.png",
+      "sha256": "c1b447954442bcc0f4f03df95f42ab6ffe0f33f96c83c049af61e07b22b89553",
+      "bytes": 35733,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/one_time_link_small_light@2x.png",
+      "sha256": "e62a9b3df47e721c079ebdf922e1d831d351c335b15bcbe7cbb3c26370bb0f6a",
+      "bytes": 11283,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/one_time_link_small_light@3x.png",
+      "sha256": "bbd5148fd4df1ec61e0302eeb3747c6bdfd60dd034cc5227241eb7a7ceb284fe",
+      "bytes": 22624,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/own_stake@2x.png",
+      "sha256": "897e55a8b26b8d60bdc8edc91cb7d79ba319f497358a7077381877309bfdf0de",
+      "bytes": 23490,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/own_stake@3x.png",
+      "sha256": "f16af59b2f0b0f1181a0154443afe3b4fe8f98352f162ad73237509d1dfabb94",
+      "bytes": 47775,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/own_stake_light@2x.png",
+      "sha256": "d5aababfcf1f7405f14d4dfbb673ff940bf6bd0ca56138c0e2de6e3b2484f765",
+      "bytes": 23676,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/own_stake_light@3x.png",
+      "sha256": "c6285f0f9e3b8b3213c6d8a07b047cb05b11be90b95866e9a1fb2c26cfbc8471",
+      "bytes": 47093,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/simplex_address@2x.png",
+      "sha256": "5843093807635826276be815d7635098249a7b1c269269ba48963d74d89b3dff",
+      "bytes": 29997,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/simplex_address@3x.png",
+      "sha256": "a8b9aa175d40efd3f44b50f29dfc535bbd737080a28d37c1e7e1430f5642368e",
+      "bytes": 62343,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/simplex_address_light@2x.png",
+      "sha256": "6dd4aaac9347ea7ef53e2920ba63eb30388178a95dc2ccef3526d3f329838c96",
+      "bytes": 32587,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/simplex_address_light@3x.png",
+      "sha256": "fb9a27f47faafff1348560bce9cde074065cb7929c16abd983062685ea7adec2",
+      "bytes": 65330,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/simplex_address_small@2x.png",
+      "sha256": "79f8af8dc07821ad96a76c4a95b16486c0778d139388f8dda353b224889b4ea3",
+      "bytes": 16224,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/simplex_address_small@3x.png",
+      "sha256": "d72e14a41cf59a6242e81c53a5f4bde0093e48a7168689e7bb96cc9669ed409d",
+      "bytes": 30956,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/simplex_address_small_light@2x.png",
+      "sha256": "62297e1bf112a158ce370de331fe5af7f188dcf252900ff315cad4b86a784065",
+      "bytes": 18175,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/simplex_address_small_light@3x.png",
+      "sha256": "29fc8fb1e24ca24e537e179f0f182ec61816cdbb24bcd129d3476b4e3865218d",
+      "bytes": 34483,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/your_network@2x.png",
+      "sha256": "0cbfb7c1a0765325c2e90a353b86437dbddf2ddd4d5aef7f16c4034070ddb2d6",
+      "bytes": 77123,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/your_network@3x.png",
+      "sha256": "20fbb5cee9318adde4e72efbc3d5923dedd6e65c558602f64b4aa704eb532ba9",
+      "bytes": 161831,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/your_network_light@2x.png",
+      "sha256": "c3f70dd97f0ce173cc31b5656a64df0b55fa96bf4fb3810584f562c6bc8d4620",
+      "bytes": 64730,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/your_network_light@3x.png",
+      "sha256": "cd296d0ba6a164c330bdc446fb7450d3184531838c61e3c7a153eef8d05547e6",
+      "bytes": 133590,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/your_profile@2x.png",
+      "sha256": "b2a8d28e4a02dc23160aea97543245d0f35b31a5a02634299dd57e0d4b5575da",
+      "bytes": 22855,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/your_profile@3x.png",
+      "sha256": "3ebbbf2019f0768d0ed4a3bc8ed68e2cb1786f00bdfdff8146409c683c52bbb5",
+      "bytes": 47771,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/your_profile_light@2x.png",
+      "sha256": "bb8d3f18e30c11fe4d9128635d398aa3d82759bd52f8a8c34c1203a2c9153015",
+      "bytes": 22008,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    },
+    {
+      "path": "assets/multiplatform/resources/MR/images/your_profile_light@3x.png",
+      "sha256": "05ccfdf7c116225e412471466bcc79ad4b6cb943f8be1295b98bddb8e11fb2af",
+      "bytes": 45086,
+      "decision": "removed-from-current-tree",
+      "history": "retained-in-private-git-history"
+    }
+  ],
+  "selected_swift_branches": 17,
+  "swift_files": [
+    "apps/ios/Shared/Views/NewChat/AddChannelView.swift",
+    "apps/ios/Shared/Views/NewChat/AddGroupView.swift",
+    "apps/ios/Shared/Views/NewChat/NewChatView.swift",
+    "apps/ios/Shared/Views/NewChat/OnboardingCards.swift",
+    "apps/ios/Shared/Views/Onboarding/ChooseServerOperators.swift",
+    "apps/ios/Shared/Views/Onboarding/ConnectBannerCard.swift",
+    "apps/ios/Shared/Views/Onboarding/CreateProfile.swift",
+    "apps/ios/Shared/Views/Onboarding/SimpleXInfo.swift",
+    "apps/ios/Shared/Views/Onboarding/WhatsNewView.swift",
+    "apps/ios/Shared/Views/Onboarding/YourNetwork.swift",
+    "apps/ios/Shared/Views/UserSettings/UserAddressView.swift"
+  ],
+  "remaining": [
+    "Older icons, logos, wallpaper images, screenshots and other artwork remain under review.",
+    "The original files remain in Git history; no history rewrite or public visibility change was performed.",
+    "Default vector placeholders retain generated resource names for Kotlin compilation and are not the deleted PNG artwork."
+  ]
+}

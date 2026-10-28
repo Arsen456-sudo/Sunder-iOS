@@ -1,0 +1,947 @@
+{
+  "scope": "Development notice collection, not a final IPA SBOM or publication clearance",
+  "generator": "scripts/ios/generate-sunder-notices.py",
+  "repository_url": "https://github.com/Arsen456-sudo/Sunder-iOS",
+  "source_ref": "preview-20261028-1",
+  "normalization": "Input and output content hashes use LF line endings",
+  "output": "apps/ios/Shared/SunderNotices.txt",
+  "output_sha256_lf": "3ef227b097ee651b037d9745c352a015244bc20af5d7832912b38468169afeae",
+  "inputs": [
+    {
+      "path": "NOTICE.md",
+      "title": "Sunder and upstream attribution",
+      "provenance": "Repository notice",
+      "sha256_lf": "d397a784d232f87f3714f0981e14f9b11586c057ac35af3f30d8b5310d5e5808"
+    },
+    {
+      "path": "LICENSE",
+      "title": "GNU Affero General Public License, version 3",
+      "provenance": "Root source-code license",
+      "sha256_lf": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"
+    },
+    {
+      "path": "docs/fork/licenses/simplexmq-root-LICENSE.txt",
+      "title": "simplexmq-root",
+      "provenance": "https://github.com/simplex-chat/simplexmq @ efaad8e73436d60f5052f07dda6b71151ad5039b",
+      "sha256_lf": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"
+    },
+    {
+      "path": "docs/fork/licenses/hs-socks-root-LICENSE.txt",
+      "title": "hs-socks-root",
+      "provenance": "https://github.com/simplex-chat/hs-socks @ a30cc7a79a08d8108316094f8f2f82a0c5e1ac51",
+      "sha256_lf": "db10da7ebf4700ddf9c5e72ba4a18b48c0d652d8d0e25966fcb8f609ded8e55c"
+    },
+    {
+      "path": "docs/fork/licenses/direct-sqlcipher-root-LICENSE.txt",
+      "title": "direct-sqlcipher-root",
+      "provenance": "https://github.com/simplex-chat/direct-sqlcipher @ f814ee68b16a9447fbb467ccc8f29bdd3546bfd9",
+      "sha256_lf": "4bbfcbc9a857b509bfebc40b83f6794dc2cb177a452fb4374fe0db93d52bf1d7"
+    },
+    {
+      "path": "docs/fork/licenses/sqlcipher-simple-root-LICENSE.txt",
+      "title": "sqlcipher-simple-root",
+      "provenance": "https://github.com/simplex-chat/sqlcipher-simple @ a46bd361a19376c5211f1058908fc0ae6bf42446",
+      "sha256_lf": "971995bc10410a4b0429a8e30c2a1ab91806a78cbcdfb44c334392e70c04f116"
+    },
+    {
+      "path": "docs/fork/licenses/aeson-root-LICENSE.txt",
+      "title": "aeson-root",
+      "provenance": "https://github.com/simplex-chat/aeson @ aab7b5a14d6c5ea64c64dcaee418de1bb00dcc2b",
+      "sha256_lf": "0447823bc7935d43958ae6fe9a779b7f78cac08df3b4f6a89b61b80d3af1cca0"
+    },
+    {
+      "path": "docs/fork/licenses/haskell-terminal-root-LICENSE.txt",
+      "title": "haskell-terminal-root",
+      "provenance": "https://github.com/simplex-chat/haskell-terminal @ f708b00009b54890172068f168bf98508ffcd495",
+      "sha256_lf": "d595f1b1632edc9173edad936d6bc328c70a7ea5795abc1cf6deb6fec72812ca"
+    },
+    {
+      "path": "docs/fork/licenses/zip-root-LICENSE.txt",
+      "title": "zip-root",
+      "provenance": "https://github.com/simplex-chat/zip @ 2eff156c3aac389e35d38bf10a52733d7061640a",
+      "sha256_lf": "350d88bfac03b94f9ceec64ba546a1f0b7c5fc1f3247440b2eead6a0528ea5b6"
+    },
+    {
+      "path": "docs/fork/licenses/wai-warp-tls-LICENSE.txt",
+      "title": "wai-warp-tls",
+      "provenance": "https://github.com/yesodweb/wai @ ec5e017d896a78e787a5acea62b37a4e677dec2e",
+      "sha256_lf": "e65b625c104dbe1b961dccc759517381d82d15b6d34fc90ee829f6abb55f7ffc"
+    },
+    {
+      "path": "docs/fork/licenses/wai-warp-LICENSE.txt",
+      "title": "wai-warp",
+      "provenance": "https://github.com/simplex-chat/wai @ 2f6e5aa5f05ba9140ac99e195ee647b4f7d926b0",
+      "sha256_lf": "e65b625c104dbe1b961dccc759517381d82d15b6d34fc90ee829f6abb55f7ffc"
+    },
+    {
+      "path": "docs/fork/licenses/codescanner-LICENSE.txt",
+      "title": "codescanner",
+      "provenance": "https://github.com/twostraws/CodeScanner @ 34da57fb63b47add20de8a85da58191523ccce57",
+      "sha256_lf": "b4d2f1225af9e5a7d179db0fb45ca62ea1c11bd5d1ec3cba1772ced81fa7427d"
+    },
+    {
+      "path": "docs/fork/licenses/elegant-emoji-picker-LICENSE.txt",
+      "title": "elegant-emoji-picker",
+      "provenance": "https://github.com/Finalet/Elegant-Emoji-Picker @ 71d2d46092b4d550cc593614efc06438f845f6e6",
+      "sha256_lf": "fbae41fcf86fee9a5d855966ac1b81d9aa83e40d35b0b49bbe1c9c640664294f"
+    },
+    {
+      "path": "docs/fork/licenses/ink-LICENSE.txt",
+      "title": "ink",
+      "provenance": "https://github.com/johnsundell/ink @ bcc9f219900a62c4210e6db726035d7f03ae757b",
+      "sha256_lf": "1d41e78e97dcad0825b29d4104b32bb95e3e9d23e82e6c5092538a2a2228f696"
+    },
+    {
+      "path": "docs/fork/licenses/lzstring-swift-LICENSE.txt",
+      "title": "lzstring-swift",
+      "provenance": "https://github.com/Ibrahimhass/lzstring-swift @ 7f62f21de5b18582a950e1753b775cc614722407",
+      "sha256_lf": "7637386b5f81e8a719ca336233149005e5fa28b5e6054ea7b67de49355b0ad40"
+    },
+    {
+      "path": "docs/fork/licenses/swiftygif-LICENSE.txt",
+      "title": "swiftygif",
+      "provenance": "https://github.com/kirualex/SwiftyGif @ 5e8619335d394901379c9add5c4c1c2f420b3800",
+      "sha256_lf": "ca136c5ebb10cf8ee95b08222ee6acc92da0bd67ff6633abbde614c28ad07634"
+    },
+    {
+      "path": "docs/fork/licenses/webrtc-LICENSE.txt",
+      "title": "webrtc",
+      "provenance": "https://github.com/simplex-chat/WebRTC @ 34bedc50f9c58dccf4967ea59c7e6a47d620803b",
+      "sha256_lf": "843529896bae499c92af3ecade86855128f930334ba97530695ccecef56e966d"
+    },
+    {
+      "path": "docs/fork/licenses/yams-LICENSE.txt",
+      "title": "yams",
+      "provenance": "https://github.com/jpsim/Yams @ 9234124cff5e22e178988c18d8b95a8ae8007f76",
+      "sha256_lf": "0354b0ea403d2e78059c5ae0510a2cfae9f8eb306fcef094ac9fff5b47e20bed"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/OneTuple-0.4.1.1/LICENSE",
+      "title": "OneTuple-0.4.1.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "32834a07f32ee71f13b28ee19f4c49532630c99bd115267713b8e3b727db0250"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/Only-0.1/LICENSE",
+      "title": "Only-0.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "11a5b1f0c369358d5b4d0baee31232033b8b0dc3ec034f2dcc9ad393d1dc75a4"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/QuickCheck-2.14.3/LICENSE",
+      "title": "QuickCheck-2.14.3 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "17035f93180f20bc9c9eb2fd5e0c8836c699b6dedae654b3f2a7a76e737bf2b9"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/SHA-1.6.4.4/LICENSE",
+      "title": "SHA-1.6.4.4 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "4ea216e808d50a9ac9fc023f3136e55e9f873fbf43f5daf23bab58b6fcaab337"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/StateVar-1.2.2/LICENSE",
+      "title": "StateVar-1.2.2 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "0e64a0908ba147b6c38f3e905a6d193bf1b0a4cd9af2a1cd8d58a60509e7cfa2"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/ansi-terminal-1.0/LICENSE",
+      "title": "ansi-terminal-1.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "abd0e48b1e64960c413b9475e10cdc96470ced8afc3418cc10041c17cbe4822c"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/ansi-terminal-types-0.11.5/LICENSE",
+      "title": "ansi-terminal-types-0.11.5 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "23223541e76095e2f012e77a27a83dca005542f75c33e925844c3d07f39cf36f"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/appar-0.1.8/LICENSE",
+      "title": "appar-0.1.8 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "cb2bd43a3d0c123d0d373fc6808492d477730473d480ab518865aeb797733045"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/asn1-encoding-0.9.6/LICENSE",
+      "title": "asn1-encoding-0.9.6 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "43d820ad7c467c6c9cd6eedb385cfe89d1545a48eca4d40bfe3b7bcd80c298cb"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/asn1-parse-0.9.5/LICENSE",
+      "title": "asn1-parse-0.9.5 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "43d820ad7c467c6c9cd6eedb385cfe89d1545a48eca4d40bfe3b7bcd80c298cb"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/asn1-types-0.3.4/LICENSE",
+      "title": "asn1-types-0.3.4 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "43d820ad7c467c6c9cd6eedb385cfe89d1545a48eca4d40bfe3b7bcd80c298cb"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/assoc-1.1/LICENSE",
+      "title": "assoc-1.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "5f3facf95bb7d0de63aac65ff31e1c071cf37cfa28a56cadf236eac1bd9c9fa3"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/async-2.2.5/LICENSE",
+      "title": "async-2.2.5 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "27a80f1809158dc95425c19854cf49aa04fa321d430787c768a39de6f55c264e"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/attoparsec-0.14.4/LICENSE",
+      "title": "attoparsec-0.14.4 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "b0400f7ccef7de35184d413828dabcd15e6970b11972d11c6100f869f6de1831"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/auto-update-0.1.6/LICENSE",
+      "title": "auto-update-0.1.6 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "65de0a8e48d57e0cc0613c21eabecfbb18156af328d3cc599322d1f15ea332f5"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/base-orphans-0.9.1/LICENSE",
+      "title": "base-orphans-0.9.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "924b65e4acfff34d5b46f3de783d051b591d25932d113d2cf2332bcd2bf9f82a"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/base64-bytestring-1.2.1.0/LICENSE",
+      "title": "base64-bytestring-1.2.1.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "16406f8e5ee186592c093f03eaeae85526c14e835a6cb432086520faf4faab27"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/basement-0.0.16/LICENSE",
+      "title": "basement-0.0.16 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "9004e1b16805f7609340b2d9d16a7aba4da5e528c8f35ed4e3ebc85d41360215"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/bifunctors-5.6.1/LICENSE",
+      "title": "bifunctors-5.6.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "bcc90708feb8a742f4702201849b51b6fc99d48308ddccdecc5498d144c3a223"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/blaze-builder-0.4.2.3/LICENSE",
+      "title": "blaze-builder-0.4.2.3 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "bec6f66f6cbb3a5b133710c60c73aee9ac1ba2d5d2bd2405fee3909fe4796346"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/boring-0.2.1/LICENSE",
+      "title": "boring-0.2.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "5f3facf95bb7d0de63aac65ff31e1c071cf37cfa28a56cadf236eac1bd9c9fa3"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/byteorder-1.0.4/LICENSE",
+      "title": "byteorder-1.0.4 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "6d92c13569f0ca969b373aa7535bb99190df460be730b7ce0e58e2f9b727b2e5"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/bytestring-builder-0.10.8.2.0/LICENSE",
+      "title": "bytestring-builder-0.10.8.2.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "6f4c31b34f7d24a8c1e8688305c731d233d1546b960cad1e42e509a2a41c8f25"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/case-insensitive-1.2.1.0/LICENSE",
+      "title": "case-insensitive-1.2.1.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "0d54a7110b8278011cbd3d7da1e1b7aea5641ad4439f69945ffd84d059a6eb80"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/cereal-0.5.8.3/LICENSE",
+      "title": "cereal-0.5.8.3 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "e7f7c5e8b93b49eff6c78a18e0c64ecbf07e9d039a424d71387e832a11f543b0"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/clock-0.8.4/LICENSE",
+      "title": "clock-0.8.4 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "825aa93c70e68e17dce4ab3aa2c9a4a25885b0890770bb8a2dfeee45436b601b"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/colour-2.3.6/LICENSE",
+      "title": "colour-2.3.6 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "1f1db3ff571e88a62840f88706fb97cea9eca3c7d21852d8859a6ae5718c7622"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/comonad-5.0.8/LICENSE",
+      "title": "comonad-5.0.8 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "1cd5d1f57ac61339dbad8f0a0b2e7dcf977c17e0b93021fbad3650a52c8d4975"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/composition-1.0.2.2/LICENSE",
+      "title": "composition-1.0.2.2 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "30c351afe2ea084e0c0fcd8d945398366358b8c737dd336ef05222d88c5cd658"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/contravariant-1.5.5/LICENSE",
+      "title": "contravariant-1.5.5 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "ca552b03f51300af9f01341076808d7df603a1dab4dbbf47e2cae276cb15c770"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/cryptohash-md5-0.11.101.0/LICENSE",
+      "title": "cryptohash-md5-0.11.101.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "85cba5053cc10efdbf66295af758de7c6d2c0e29533638f6bde5a4f31a6eab9b"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/cryptohash-sha1-0.11.101.0/LICENSE",
+      "title": "cryptohash-sha1-0.11.101.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "85cba5053cc10efdbf66295af758de7c6d2c0e29533638f6bde5a4f31a6eab9b"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/crypton-0.34/LICENSE",
+      "title": "crypton-0.34 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "a9554df9870ec3e4c0bdd98013c93d54c9159b250aeae43b0c26033a4c7fac0a"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/crypton-x509-1.7.6/LICENSE",
+      "title": "crypton-x509-1.7.6 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "43d820ad7c467c6c9cd6eedb385cfe89d1545a48eca4d40bfe3b7bcd80c298cb"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/crypton-x509-store-1.6.9/LICENSE",
+      "title": "crypton-x509-store-1.6.9 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "43d820ad7c467c6c9cd6eedb385cfe89d1545a48eca4d40bfe3b7bcd80c298cb"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/crypton-x509-validation-1.6.12/LICENSE",
+      "title": "crypton-x509-validation-1.6.12 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "43d820ad7c467c6c9cd6eedb385cfe89d1545a48eca4d40bfe3b7bcd80c298cb"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/cryptostore-0.3.0.1/LICENSE",
+      "title": "cryptostore-0.3.0.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "29788862c884b91d846aea58758c3fbb109d4cb9d32242f3e75fea82d000afd2"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/data-default-0.7.1.1/LICENSE",
+      "title": "data-default-0.7.1.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "b8d4c7a7e39894a73d288b7a648077b12dd703d432107f281bf3df357ae6b62c"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/data-default-class-0.1.2.0/LICENSE",
+      "title": "data-default-class-0.1.2.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "b8d4c7a7e39894a73d288b7a648077b12dd703d432107f281bf3df357ae6b62c"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/data-default-instances-containers-0.0.1/LICENSE",
+      "title": "data-default-instances-containers-0.0.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "9287b59c798c900647a7459537ceddcba3189ad3d387dd854daf42e34f1ad6d2"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/data-default-instances-dlist-0.0.1/LICENSE",
+      "title": "data-default-instances-dlist-0.0.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "9287b59c798c900647a7459537ceddcba3189ad3d387dd854daf42e34f1ad6d2"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/data-default-instances-old-locale-0.0.1/LICENSE",
+      "title": "data-default-instances-old-locale-0.0.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "9287b59c798c900647a7459537ceddcba3189ad3d387dd854daf42e34f1ad6d2"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/data-fix-0.3.2/LICENSE",
+      "title": "data-fix-0.3.2 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "a79799c00ff9b9e0edec255f12f2b27f459db1f166a584f6779efcb957ec2ddf"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/digest-0.0.1.7/LICENSE",
+      "title": "digest-0.0.1.7 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "3c1b9842d0cc7db64fb406f43de35bbf2c5af04bbb31a52c976197c8476af545"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/distributive-0.6.2.1/LICENSE",
+      "title": "distributive-0.6.2.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "7d94212fab30a5dd88ff193657043cf9c3df8353380ad4c7de6bc10b45d6fed8"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/dlist-1.0/license.md",
+      "title": "dlist-1.0 / license.md",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "9b659a8f7227402615c243adf2db24b97d1cbaa6b29f79ea4991289b0b37c7be"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/easy-file-0.2.5/LICENSE",
+      "title": "easy-file-0.2.5 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "cb2bd43a3d0c123d0d373fc6808492d477730473d480ab518865aeb797733045"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/entropy-0.4.1.10/LICENSE",
+      "title": "entropy-0.4.1.10 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "5c443f60296a11439fdb6405032025da73f5a5a2355b89b67085d1d84ff3e567"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/fast-logger-3.2.2/LICENSE",
+      "title": "fast-logger-3.2.2 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "cb2bd43a3d0c123d0d373fc6808492d477730473d480ab518865aeb797733045"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/file-embed-0.0.15.0/LICENSE",
+      "title": "file-embed-0.0.15.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "8681da769bea4d67080fe8d9d997fac6fcbda3bae9c5582bf643eefb5f05d490"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/generically-0.1.1/LICENSE",
+      "title": "generically-0.1.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "abfea45fdedacd302144b70472b4888aa34f00f466baeff10fb619f8391677d4"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/hashable-1.4.3.0/LICENSE",
+      "title": "hashable-1.4.3.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "3112022b0b06d7f529bc5bf8cc767973191d3d6502693c9e4ad9c79de9318db0"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/hourglass-0.2.12/LICENSE",
+      "title": "hourglass-0.2.12 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "d71955c9331fe47022510736c0e390d5f374cfcc2a830fa6fe176cdd83964d52"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/http-types-0.12.4/LICENSE",
+      "title": "http-types-0.12.4 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "18fdcbbfc576fa4da1473406dfb266c33183c6a3858bc8886283493130b25455"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/indexed-traversable-0.1.3/LICENSE",
+      "title": "indexed-traversable-0.1.3 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "c40d7afbc07af51f50301617e1f9dd122a3517caab8564ad3baa4d2c85491796"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/indexed-traversable-instances-0.1.1.2/LICENSE",
+      "title": "indexed-traversable-instances-0.1.1.2 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "c40d7afbc07af51f50301617e1f9dd122a3517caab8564ad3baa4d2c85491796"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/integer-conversion-0.1.0.1/LICENSE",
+      "title": "integer-conversion-0.1.0.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "acdcccb0242a8497e4d1deaca0692770d55e8cd30298634382f4b6505bb1766b"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/integer-logarithms-1.0.3.1/LICENSE",
+      "title": "integer-logarithms-1.0.3.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "ce24460cb902fe28fef98b8d3ce0cc4105d9d8204dccc819a8233452de3b38b7"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/iproute-1.7.12/LICENSE",
+      "title": "iproute-1.7.12 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "cb2bd43a3d0c123d0d373fc6808492d477730473d480ab518865aeb797733045"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/lifted-base-0.2.3.12/LICENSE",
+      "title": "lifted-base-0.2.3.12 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "809674ffd20970dad25480561763808456f31c7a018850d2651e74bd920087b7"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/memory-0.18.0/LICENSE",
+      "title": "memory-0.18.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "3c884b61cafcadb60def61d439681ddb17d5f492d82d3ba9f870faf403814da8"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/monad-control-1.0.3.1/LICENSE",
+      "title": "monad-control-1.0.3.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "46e3f68b53ff42e79829eb54d9529340141548cb792a5e6d6a4e780d4daf5cff"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/network-3.1.4.0/LICENSE",
+      "title": "network-3.1.4.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "52b7b34c66e567678e498103d010a1bd163ef8b06e7e044016b04286a08db982"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/network-byte-order-0.1.7/LICENSE",
+      "title": "network-byte-order-0.1.7 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "f0ff7b454d293caf38d5d7354697affd230c36308fe343ebb33d43b48fad02b9"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/network-info-0.2.1/LICENSE",
+      "title": "network-info-0.2.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "ae8c99a5c46ea9eab7a069c4f1df018dbae43968788091efe11960f931b7913b"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/network-transport-0.5.6/LICENSE",
+      "title": "network-transport-0.5.6 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "239a4271ae2eb6b810f5cc46f239f2d35d7976a0d06c899a32f00eefa7e90e1a"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/network-udp-0.0.0/LICENSE",
+      "title": "network-udp-0.0.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "1d663523fed456dbf9c832eeff7f7100ed863444d7c8d40cddf63f7fd6782b28"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/network-uri-2.6.4.2/LICENSE",
+      "title": "network-uri-2.6.4.2 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "52b7b34c66e567678e498103d010a1bd163ef8b06e7e044016b04286a08db982"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/old-locale-1.0.0.7/LICENSE",
+      "title": "old-locale-1.0.0.7 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "e06262d9e31494d84bb3a2f3ef5805502deb7568cea6e677a81a28b69153f557"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/old-time-1.1.0.4/LICENSE",
+      "title": "old-time-1.1.0.4 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "e06262d9e31494d84bb3a2f3ef5805502deb7568cea6e677a81a28b69153f557"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/optparse-applicative-0.18.1.0/LICENSE",
+      "title": "optparse-applicative-0.18.1.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "1919d7ec1ccf5f83f13c3070a25fd6ac4b5be91e1c99972d0eb3e564a61e8a2f"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/pem-0.2.4/LICENSE",
+      "title": "pem-0.2.4 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "e0052d930bc2dca032782ac06ea4066fa3fc0589701d978ac0d246c3d068b63c"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/prettyprinter-1.7.1/LICENSE.md",
+      "title": "prettyprinter-1.7.1 / LICENSE.md",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "bb5195c6ad2f073268f918f33a7b6beac68203365c5d82122b87d2de0a93c153"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/prettyprinter-ansi-terminal-1.1.3/LICENSE.md",
+      "title": "prettyprinter-ansi-terminal-1.1.3 / LICENSE.md",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "bb5195c6ad2f073268f918f33a7b6beac68203365c5d82122b87d2de0a93c153"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/primitive-0.9.0.0/LICENSE",
+      "title": "primitive-0.9.0.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "cd6b51ecce7bc97a7bbd8500797c350a72f2f9c8e3aaf9d7154b9064d16316ea"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/psqueues-0.2.8.0/LICENSE",
+      "title": "psqueues-0.2.8.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "7904b49880da042ab0e3125ef4da8ba2322b7b5e13de13bc6a322e5e2670bc5c"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/random-1.2.1.1/LICENSE",
+      "title": "random-1.2.1.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "e06262d9e31494d84bb3a2f3ef5805502deb7568cea6e677a81a28b69153f557"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/record-hasfield-1.0/LICENSE",
+      "title": "record-hasfield-1.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "7010c30e7ee0d412771e7b12bfd0f56fa957a05bbb4de7aa4cb94057fcc15d1d"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/resourcet-1.3.0/LICENSE",
+      "title": "resourcet-1.3.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "0b154140d607038387f735e6f519365f2c13d6c1bd4ad5ab43e2b7c0f142e093"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/safe-exceptions-0.1.7.4/LICENSE",
+      "title": "safe-exceptions-0.1.7.4 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "02ca618c790d2c26452399a678bba409a15bb1b8284484c321598ab58b3623a3"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/scientific-0.3.7.0/LICENSE",
+      "title": "scientific-0.3.7.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "4809f8a687a81a714ca99fc2a9a366d3fa5dec4adc284a5e026c909da924ba53"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/semialign-1.3/LICENSE",
+      "title": "semialign-1.3 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "ac2ed60fbb868f568b86a26cfe93b608359decaf125f506bd5fdf04975fb35f8"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/semigroupoids-6.0.0.1/LICENSE",
+      "title": "semigroupoids-6.0.0.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "c9ed0c32e5332899f31bfad68cdb6e949a712a155318a0eb4872cc8f5bf4c95b"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/socks-0.6.1/LICENSE",
+      "title": "socks-0.6.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "db10da7ebf4700ddf9c5e72ba4a18b48c0d652d8d0e25966fcb8f609ded8e55c"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/split-0.2.4/LICENSE",
+      "title": "split-0.2.4 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "9a7e7299feb31a257fc0cd08c49dfea35ec186c9bb59b0a3ff67c63fc29a8a58"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/splitmix-0.1.0.5/LICENSE",
+      "title": "splitmix-0.1.0.5 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "5f3facf95bb7d0de63aac65ff31e1c071cf37cfa28a56cadf236eac1bd9c9fa3"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/stm-chans-3.0.0.9/LICENSE",
+      "title": "stm-chans-3.0.0.9 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "224432bac5cd2cc0cd5b1df4dbcfac815a8b60a569db2c4542177ff5e1873ccb"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/streaming-commons-0.2.2.6/LICENSE",
+      "title": "streaming-commons-0.2.2.6 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "4b11a4597745ba028689093b5121e9e87b022169534c5d5e7317a5911d56e336"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/strict-0.5/LICENSE",
+      "title": "strict-0.5 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "79c71a6ece44448f34b5395c358367e1c94c2c3924cbf690f251551bd392a185"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/tagged-0.8.8/LICENSE",
+      "title": "tagged-0.8.8 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "3b9fcb04037a8eb1389717d322ed727c60080a9dab2cb6f76882f45f56e6cb12"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/temporary-1.3/LICENSE",
+      "title": "temporary-1.3 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "a219a531e2ab495cb53f30041f688d52c114bb566c1b245856c9dcb4e72fe7d2"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/terminal-0.2.0.0/LICENSE",
+      "title": "terminal-0.2.0.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "d595f1b1632edc9173edad936d6bc328c70a7ea5795abc1cf6deb6fec72812ca"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/text-iso8601-0.1/LICENSE",
+      "title": "text-iso8601-0.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "e885635ca8d75bf5e3988aa4cb77d13793133ab2b4f6c6416a4d8d4fec6a6aa3"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/text-short-0.1.5/LICENSE",
+      "title": "text-short-0.1.5 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "11a5b1f0c369358d5b4d0baee31232033b8b0dc3ec034f2dcc9ad393d1dc75a4"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/th-abstraction-0.6.0.0/LICENSE",
+      "title": "th-abstraction-0.6.0.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "499e8e5638d8d217fc7b8e0aa4dfcc1852495fe3d1f8ac9e8dd707a8ee213009"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/th-compat-0.1.4/LICENSE",
+      "title": "th-compat-0.1.4 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "24132d6adf696164c3cc6e3fdbec6f095934aaff90bca1d330ef01eff7ade6f4"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/these-1.2/LICENSE",
+      "title": "these-1.2 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "ac2ed60fbb868f568b86a26cfe93b608359decaf125f506bd5fdf04975fb35f8"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/time-compat-1.9.6.1/LICENSE",
+      "title": "time-compat-1.9.6.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "1bfcfa37bada908246a9908f61535a116f53283bdbb3550504c46c28da402e5c"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/time-manager-0.0.1/LICENSE",
+      "title": "time-manager-0.0.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "bebc00cb81ab4a16c3f27768fad205a203d0d7b56944299808dc3c35b53e198d"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/tls-1.9.0/LICENSE",
+      "title": "tls-1.9.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "3fe741bf922f037e71e35d0b30d113d93131435d05623bc04ba69a426259424d"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/transformers-base-0.4.6/LICENSE",
+      "title": "transformers-base-0.4.6 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "f933a281071d2ef8400155a032f705dcf1c17a140cc220efd1b03cd34f516dd1"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/transformers-compat-0.7.2/LICENSE",
+      "title": "transformers-compat-0.7.2 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "bbb4823c79bfc2d482513e9f7020d63bf490b91639cc5812a8500c5cbe167618"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/type-equality-1/LICENSE",
+      "title": "type-equality-1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "2da3d857e1506436ffecb2772e11c50f8a3ae1e519dc7fa4aaaed1deafcbd7a3"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/typed-process-0.2.11.1/LICENSE",
+      "title": "typed-process-0.2.11.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "474de2827f06a0123585d55def9e113d94059376cf367eff01a0021e9fa531a7"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/unix-compat-0.7.1/LICENSE",
+      "title": "unix-compat-0.7.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "3e715c949187f0c6ef1c8d94a8f8af00280441cbf19dec52711153d6e7ef141d"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/unix-time-0.4.11/LICENSE",
+      "title": "unix-time-0.4.11 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "cb2bd43a3d0c123d0d373fc6808492d477730473d480ab518865aeb797733045"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/unliftio-0.2.25.0/LICENSE",
+      "title": "unliftio-0.2.25.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "c125e5ab10ec8805d3e3b648ac3f522a61a8a55306de0b130d322863fa7a7327"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/unliftio-core-0.2.1.0/LICENSE",
+      "title": "unliftio-core-0.2.1.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "c125e5ab10ec8805d3e3b648ac3f522a61a8a55306de0b130d322863fa7a7327"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/unordered-containers-0.2.19.1/LICENSE",
+      "title": "unordered-containers-0.2.19.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "f48ff1f157f254305a224bbb92978b44d562cd735504008575f53201e6ae410b"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/uuid-1.3.15/LICENSE",
+      "title": "uuid-1.3.15 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "9fd9cbfc86dd7e1831281a4ba4edf63a03a1f7adf59fc9fdc243b8600f08164d"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/uuid-types-1.0.5.1/LICENSE",
+      "title": "uuid-types-1.0.5.1 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "9fd9cbfc86dd7e1831281a4ba4edf63a03a1f7adf59fc9fdc243b8600f08164d"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/vector-0.13.1.0/LICENSE",
+      "title": "vector-0.13.1.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "a2bb7af96394e2cf79f5ceb0b7c85b088219814339fd0edb61d4fafb6dfd1c71"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/vector-stream-0.1.0.0/LICENSE",
+      "title": "vector-stream-0.1.0.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "a2bb7af96394e2cf79f5ceb0b7c85b088219814339fd0edb61d4fafb6dfd1c71"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/witherable-0.4.2/LICENSE",
+      "title": "witherable-0.4.2 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "acdbcfe3ef2b455b38bcec8fa9184a9fefb950cf9d6c6b10e092d72581345b16"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/zlib-0.6.3.0/LICENSE",
+      "title": "zlib-0.6.3.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "120037d064ebb78667967287d30f39502f35b8f3114044727943de0b326bd8e5"
+    },
+    {
+      "path": "docs/dependencies/licences/haskell/zstd-0.1.3.0/LICENSE",
+      "title": "zstd-0.1.3.0 / LICENSE",
+      "provenance": "Historical Haskell report evidence; match against the actual native build before release",
+      "sha256_lf": "2c1a7fa704df8f3a606f6fc010b8b5aaebf403f3aeec339a12048f1ba7331a0b"
+    },
+    {
+      "path": "docs/dependencies/licences/apps/sqlcipher/LICENSE.md",
+      "title": "sqlcipher",
+      "provenance": "Preserved upstream dependency notice",
+      "sha256_lf": "2a2826f6acf46fa650730cf42cbb22a642be33a7ef119c9c4f4bf6daf3bef48e"
+    },
+    {
+      "path": "docs/dependencies/licences/apps/webrtc/LICENSE",
+      "title": "webrtc",
+      "provenance": "Preserved upstream dependency notice",
+      "sha256_lf": "bf00119ffa2a621ec890938443032ca1c014e52d07055b6daa4f6a4ba55b1910"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-aeson-2.2.1.0-LICENSE.txt",
+      "title": "aeson-2.2.1.0 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/aeson-2.2.1.0/src/LICENSE",
+      "sha256_lf": "0447823bc7935d43958ae6fe9a779b7f78cac08df3b4f6a89b61b80d3af1cca0"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-bitvec-1.1.5.0-LICENSE.txt",
+      "title": "bitvec-1.1.5.0 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/bitvec-1.1.5.0/src/LICENSE",
+      "sha256_lf": "5f7cb32fbcb073e1a536b178aea87d0a52e7ce7d6d6d816054a51421e4183cec"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-blaze-textual-0.2.3.1-LICENSE.txt",
+      "title": "blaze-textual-0.2.3.1 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/blaze-textual-0.2.3.1/src/LICENSE",
+      "sha256_lf": "ad33b0ce49deffa788aa9b8867a4c4fbbeff7b67f0a004a760eac9aecbf21a8b"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-conduit-1.3.5-LICENSE.txt",
+      "title": "conduit-1.3.5 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/conduit-1.3.5/src/LICENSE",
+      "sha256_lf": "bebc00cb81ab4a16c3f27768fad205a203d0d7b56944299808dc3c35b53e198d"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-conduit-extra-1.3.6-LICENSE.txt",
+      "title": "conduit-extra-1.3.6 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/conduit-extra-1.3.6/src/LICENSE",
+      "sha256_lf": "bebc00cb81ab4a16c3f27768fad205a203d0d7b56944299808dc3c35b53e198d"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-constraints-0.14-LICENSE.txt",
+      "title": "constraints-0.14 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/constraints-0.14/src/LICENSE",
+      "sha256_lf": "c9ed0c32e5332899f31bfad68cdb6e949a712a155318a0eb4872cc8f5bf4c95b"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-email-validate-2.3.2.19-LICENSE.txt",
+      "title": "email-validate-2.3.2.19 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/email-validate-2.3.2.19/src/LICENSE",
+      "sha256_lf": "6d6dd1c178f27bcda14a24c9ceabc20663d9f84c3e1ac0a7fc6074de89f1bef2"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-http2-5.0.0-LICENSE.txt",
+      "title": "http2-5.0.0 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/http2-5.0.0/src/LICENSE",
+      "sha256_lf": "ba1850df60eee7d108835ab7c669b67be159fb47e104321e79c35ca74d5184f5"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-ini-0.4.2-LICENSE.txt",
+      "title": "ini-0.4.2 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/ini-0.4.2/src/LICENSE",
+      "sha256_lf": "18d5d2248a51ab29a488c8ea8c3786b00f50db4fea52f61766beffe3426bb85a"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-libyaml-0.1.2-LICENSE.txt",
+      "title": "libyaml-0.1.2 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/libyaml-0.1.2/src/LICENSE",
+      "sha256_lf": "8681da769bea4d67080fe8d9d997fac6fcbda3bae9c5582bf643eefb5f05d490"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-monad-logger-0.3.40-LICENSE.txt",
+      "title": "monad-logger-0.3.40 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/monad-logger-0.3.40/src/LICENSE",
+      "sha256_lf": "bebc00cb81ab4a16c3f27768fad205a203d0d7b56944299808dc3c35b53e198d"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-mono-traversable-1.0.15.3-LICENSE.txt",
+      "title": "mono-traversable-1.0.15.3 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/mono-traversable-1.0.15.3/src/LICENSE",
+      "sha256_lf": "49993c21a514d0ea769e899737fa3b1df2d76b7e23846fcc46db6f5e6d07d14b"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-network-control-0.0.2-LICENSE.txt",
+      "title": "network-control-0.0.2 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/network-control-0.0.2/src/LICENSE",
+      "sha256_lf": "2a247ae4bf4cf5465f8847a39abf7f642e306148fbf7aa0a3eda468d4b7f7c56"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-simple-logger-0.1.1-LICENSE.txt",
+      "title": "simple-logger-0.1.1 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/simple-logger-0.1.1/src/LICENSE",
+      "sha256_lf": "ad847c3158a7e55b21fb6b8805debfd32cb4c4413343fefb5b62da538fc58e63"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-vector-algorithms-0.9.0.1-LICENSE.txt",
+      "title": "vector-algorithms-0.9.0.1 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/vector-algorithms-0.9.0.1/src/LICENSE",
+      "sha256_lf": "c188f9ee5859b8d2f7d7e3c9ec729953d7297ee5c09e7491cac1f5a44cf7e4df"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-websockets-0.12.7.3-LICENCE.txt",
+      "title": "websockets-0.12.7.3 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/websockets-0.12.7.3/src/LICENCE",
+      "sha256_lf": "41c4e5a4786871195fc4f5949b60f273fec0b8540710b75a4f33a67e70326318"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-yaml-0.11.11.2-LICENSE.txt",
+      "title": "yaml-0.11.11.2 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/yaml-0.11.11.2/src/LICENSE",
+      "sha256_lf": "8681da769bea4d67080fe8d9d997fac6fcbda3bae9c5582bf643eefb5f05d490"
+    },
+    {
+      "path": "docs/fork/ios/sources/hackage-zip-2.0.0-LICENSE_md.txt",
+      "title": "zip-2.0.0 / recovered notice",
+      "provenance": "https://hackage-content.haskell.org/package/zip-2.0.0/src/LICENSE.md",
+      "sha256_lf": "350d88bfac03b94f9ceec64ba546a1f0b7c5fc1f3247440b2eead6a0528ea5b6"
+    },
+    {
+      "path": "docs/fork/ios/sources/libyaml-upstream-License.txt",
+      "title": "libyaml / supplemental upstream notice",
+      "provenance": "https://raw.githubusercontent.com/yaml/libyaml/2c891fc7a770e8ba2fec34fc6b545c672beb37e6/License — exact Yams vendored revision remains to be matched",
+      "sha256_lf": "c40112449f254b9753045925248313e9270efa36d226b22d82d4cc6c43c57f29"
+    },
+    {
+      "path": "docs/fork/ios/sources/webrtc-archive-notice-0.txt",
+      "title": "WebRTC / notice inside the checksum-verified archive",
+      "provenance": "https://github.com/simplex-chat/WebRTC/releases/download/110.0.0/WebRTC-M110.0.0.xcframework.zip / WebRTC.xcframework/LICENSE",
+      "sha256_lf": "ab00a482b6a3902e40211b43c5d0441962ea99b6cc7c25c0f243fa270b78d482"
+    }
+  ]
+}
