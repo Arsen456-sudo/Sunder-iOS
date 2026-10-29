@@ -120,7 +120,7 @@ The NSE is a separate process that iOS launches when a push notification arrives
 - ~30 second execution window per notification
 - No access to main app's in-memory state
 
-### [Processing Flow](../../SimpleX NSE/NotificationService.swift#L300)
+### [Processing Flow](../../SimpleX NSE/NotificationService.swift#L301)
 
 ```
 1. didReceive(request:, withContentHandler:)                          L300
@@ -143,8 +143,8 @@ The NSE uses a subset of the chat API:
 
 | Command | Purpose | Line |
 |---------|---------|------|
-| [`apiGetNtfConns(nonce:, encNtfInfo:)`](../../SimpleX NSE/NotificationService.swift#L1123) | Decrypt notification connection info | [1123](../../SimpleX NSE/NotificationService.swift#L1123) |
-| [`apiGetConnNtfMessages(connMsgReqs:)`](../../SimpleX NSE/NotificationService.swift#L1140) | Fetch messages for notification connections | [1140](../../SimpleX NSE/NotificationService.swift#L1140) |
+| [`apiGetNtfConns(nonce:, encNtfInfo:)`](../../SimpleX NSE/NotificationService.swift#L1128) | Decrypt notification connection info | [1123](../../SimpleX NSE/NotificationService.swift#L1128) |
+| [`apiGetConnNtfMessages(connMsgReqs:)`](../../SimpleX NSE/NotificationService.swift#L1145) | Fetch messages for notification connections | [1140](../../SimpleX NSE/NotificationService.swift#L1145) |
 
 ### Database Coordination
 
@@ -166,25 +166,25 @@ The NSE uses a subset of the chat API:
 
 | Type | Purpose | Line |
 |------|---------|------|
-| [`NSENotificationData`](../../SimpleX NSE/NotificationService.swift#L27) | Enum of possible notification payloads | [27](../../SimpleX NSE/NotificationService.swift#L27) |
-| [`NSEThreads`](../../SimpleX NSE/NotificationService.swift#L82) | Concurrency coordinator for multiple NSE instances | [82](../../SimpleX NSE/NotificationService.swift#L82) |
-| [`NotificationEntity`](../../SimpleX NSE/NotificationService.swift#L245) | Per-connection processing state | [245](../../SimpleX NSE/NotificationService.swift#L245) |
-| [`NotificationService`](../../SimpleX NSE/NotificationService.swift#L287) | Main NSE class (`UNNotificationServiceExtension`) | [287](../../SimpleX NSE/NotificationService.swift#L287) |
-| [`NSEChatState`](../../SimpleX NSE/NotificationService.swift#L781) | Singleton managing NSE lifecycle state | [781](../../SimpleX NSE/NotificationService.swift#L781) |
+| [`NSENotificationData`](../../SimpleX NSE/NotificationService.swift#L28) | Enum of possible notification payloads | [27](../../SimpleX NSE/NotificationService.swift#L28) |
+| [`NSEThreads`](../../SimpleX NSE/NotificationService.swift#L83) | Concurrency coordinator for multiple NSE instances | [82](../../SimpleX NSE/NotificationService.swift#L83) |
+| [`NotificationEntity`](../../SimpleX NSE/NotificationService.swift#L246) | Per-connection processing state | [245](../../SimpleX NSE/NotificationService.swift#L246) |
+| [`NotificationService`](../../SimpleX NSE/NotificationService.swift#L288) | Main NSE class (`UNNotificationServiceExtension`) | [287](../../SimpleX NSE/NotificationService.swift#L288) |
+| [`NSEChatState`](../../SimpleX NSE/NotificationService.swift#L786) | Singleton managing NSE lifecycle state | [781](../../SimpleX NSE/NotificationService.swift#L786) |
 
 ### Key Internal Functions
 
 | Function | Purpose | Line |
 |----------|---------|------|
-| [`startChat()`](../../SimpleX NSE/NotificationService.swift#L836) | Initializes Haskell core for NSE | [836](../../SimpleX NSE/NotificationService.swift#L836) |
-| [`doStartChat()`](../../SimpleX NSE/NotificationService.swift#L861) | Performs actual chat initialization (migration, config) | [861](../../SimpleX NSE/NotificationService.swift#L861) |
-| [`activateChat()`](../../SimpleX NSE/NotificationService.swift#L907) | Reactivates suspended chat controller | [907](../../SimpleX NSE/NotificationService.swift#L907) |
-| [`suspendChat(_:)`](../../SimpleX NSE/NotificationService.swift#L921) | Suspends chat controller with timeout | [921](../../SimpleX NSE/NotificationService.swift#L921) |
-| [`receiveMessages()`](../../SimpleX NSE/NotificationService.swift#L954) | Main message-receive loop | [954](../../SimpleX NSE/NotificationService.swift#L954) |
-| [`receivedMsgNtf(_:)`](../../SimpleX NSE/NotificationService.swift#L1003) | Maps chat events to notification data | [1003](../../SimpleX NSE/NotificationService.swift#L1003) |
-| [`receiveNtfMessages(_:)`](../../SimpleX NSE/NotificationService.swift#L403) | Orchestrates notification message fetch and delivery | [403](../../SimpleX NSE/NotificationService.swift#L403) |
-| [`deliverBestAttemptNtf()`](../../SimpleX NSE/NotificationService.swift#L604) | Delivers the best available notification content | [604](../../SimpleX NSE/NotificationService.swift#L604) |
-| [`didReceive(_:withContentHandler:)`](../../SimpleX%20NSE/NotificationService.swift#L300) | Main NSE entry point -- processes incoming notification | [300](../../SimpleX%20NSE/NotificationService.swift#L300) |
+| [`startChat()`](../../SimpleX NSE/NotificationService.swift#L841) | Initializes Haskell core for NSE | [836](../../SimpleX NSE/NotificationService.swift#L841) |
+| [`doStartChat()`](../../SimpleX NSE/NotificationService.swift#L866) | Performs actual chat initialization (migration, config) | [861](../../SimpleX NSE/NotificationService.swift#L866) |
+| [`activateChat()`](../../SimpleX NSE/NotificationService.swift#L912) | Reactivates suspended chat controller | [907](../../SimpleX NSE/NotificationService.swift#L912) |
+| [`suspendChat(_:)`](../../SimpleX NSE/NotificationService.swift#L926) | Suspends chat controller with timeout | [921](../../SimpleX NSE/NotificationService.swift#L926) |
+| [`receiveMessages()`](../../SimpleX NSE/NotificationService.swift#L959) | Main message-receive loop | [954](../../SimpleX NSE/NotificationService.swift#L959) |
+| [`receivedMsgNtf(_:)`](../../SimpleX NSE/NotificationService.swift#L1008) | Maps chat events to notification data | [1003](../../SimpleX NSE/NotificationService.swift#L1008) |
+| [`receiveNtfMessages(_:)`](../../SimpleX NSE/NotificationService.swift#L408) | Orchestrates notification message fetch and delivery | [403](../../SimpleX NSE/NotificationService.swift#L408) |
+| [`deliverBestAttemptNtf()`](../../SimpleX NSE/NotificationService.swift#L609) | Delivers the best available notification content | [604](../../SimpleX NSE/NotificationService.swift#L609) |
+| [`didReceive(_:withContentHandler:)`](../../SimpleX%20NSE/NotificationService.swift#L301) | Main NSE entry point -- processes incoming notification | [300](../../SimpleX%20NSE/NotificationService.swift#L301) |
 
 ---
 
@@ -301,7 +301,7 @@ NtfManager.shared.setNtfBadgeCount(chatModel.totalUnreadCountForAllUsers())
 
 | Method | Purpose | Line |
 |--------|---------|------|
-| [`setBadgeCount()`](../../SimpleX NSE/NotificationService.swift#L592) | Increments badge via `ntfBadgeCountGroupDefault` | [592](../../SimpleX NSE/NotificationService.swift#L592) |
+| [`setBadgeCount()`](../../SimpleX NSE/NotificationService.swift#L597) | Increments badge via `ntfBadgeCountGroupDefault` | [592](../../SimpleX NSE/NotificationService.swift#L597) |
 | [`setNtfBadgeCount(_:)`](../../Shared/Model/NtfManager.swift#L264) | Sets badge on `UIApplication` | [264](../../Shared/Model/NtfManager.swift#L264) |
 | [`changeNtfBadgeCount(by:)`](../../Shared/Model/NtfManager.swift#L270) | Adjusts badge by delta | [270](../../Shared/Model/NtfManager.swift#L270) |
 
@@ -388,3 +388,7 @@ Maximum task duration: `maxTaskDuration = 15` seconds.
 | NSE service | [`SimpleX NSE/NotificationService.swift`](../../SimpleX NSE/NotificationService.swift) |
 | App delegate (token) | `Shared/AppDelegate.swift` |
 | Notification settings UI | `Shared/Views/UserSettings/NotificationsView.swift` |
+
+## NSE without shared storage — 2026-10-29
+
+[`NotificationService.didReceive`](../../SimpleX%20NSE/NotificationService.swift#L301) immediately delivers the original request content when appGroupContainerURL is nil. It does not register shared defaults, initialize the chat core, read a database or decrypt messages in that branch. Existing behavior is preserved for entitled shared-container installations. This is a safe fallback, not a replacement for an independently configured push service.

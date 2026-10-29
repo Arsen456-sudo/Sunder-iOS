@@ -1,3 +1,4 @@
+// Modified for Sunder on 2026-10-29: handle unavailable shared storage after sideload signing.
 //
 //  ShareModel.swift
 //  SimpleX SE
@@ -74,6 +75,11 @@ class ShareModel: ObservableObject {
     }
 
     func setup(context: NSExtensionContext) {
+        completion = { context.completeRequest(returningItems: nil, completionHandler: nil) }
+        guard appGroupContainerURL != nil else {
+            errorAlert = sharedStorageError
+            return
+        }
         if appLocalAuthEnabledGroupDefault.get() && !allowShareExtensionGroupDefault.get() {
             errorAlert = ErrorAlert(title: "App is locked!", message: "You can allow sharing in Your privacy / SimpleX Lock settings.")
             return
@@ -172,6 +178,7 @@ class ShareModel: ObservableObject {
     }
 
     private func initChat(with dbKey: String? = nil) -> ErrorAlert? {
+        guard appGroupContainerURL != nil else { return sharedStorageError }
         do {
             if hasChatCtrl() && dbKey == nil {
                 try apiActivateChat()
@@ -193,6 +200,13 @@ class ShareModel: ObservableObject {
             try apiSetEncryptLocalFiles(privacyEncryptLocalFilesGroupDefault.get())
         } catch { return ErrorAlert(error) }
         return nil
+    }
+
+    private var sharedStorageError: ErrorAlert {
+        ErrorAlert(
+            title: "Shared storage unavailable",
+            message: "This installation cannot share its chat database with extensions. Open Sunder to send messages."
+        )
     }
 
     private func migrationError(_ r: DBMigrationResult) -> ErrorAlert? {

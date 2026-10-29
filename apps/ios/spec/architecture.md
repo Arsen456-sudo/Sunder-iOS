@@ -5,7 +5,7 @@
 > Related specs: [README](README.md) | [API Reference](api.md) | [State Management](state.md) | [Database](database.md)
 > Related product: [Product Overview](../product/README.md)
 
-**Source:** [`SimpleXApp.swift`](../Shared/SimpleXApp.swift#L1-L183) | [`AppDelegate.swift`](../Shared/AppDelegate.swift#L1-L209) | [`ContentView.swift`](../Shared/ContentView.swift#L1-L513) | [`ChatModel.swift`](../Shared/Model/ChatModel.swift#L1-L1373) | [`SimpleXAPI.swift`](../Shared/Model/SimpleXAPI.swift#L1-L2915) | [`AppAPITypes.swift`](../Shared/Model/AppAPITypes.swift#L1-L2357) | [`APITypes.swift`](../SimpleXChat/APITypes.swift#L1-L1071) | [`API.swift`](../SimpleXChat/API.swift#L1-L388)
+**Source:** [`SimpleXApp.swift`](../Shared/SimpleXApp.swift#L2-L192) | [`AppDelegate.swift`](../Shared/AppDelegate.swift#L1-L209) | [`ContentView.swift`](../Shared/ContentView.swift#L1-L513) | [`ChatModel.swift`](../Shared/Model/ChatModel.swift#L1-L1373) | [`SimpleXAPI.swift`](../Shared/Model/SimpleXAPI.swift#L1-L2915) | [`AppAPITypes.swift`](../Shared/Model/AppAPITypes.swift#L1-L2357) | [`APITypes.swift`](../SimpleXChat/APITypes.swift#L1-L1071) | [`API.swift`](../SimpleXChat/API.swift#L1-L388)
 
 ---
 
@@ -21,7 +21,7 @@
 
 ---
 
-## [1. Layered Architecture](../Shared/SimpleXApp.swift#L17-L184)
+## [1. Layered Architecture](../Shared/SimpleXApp.swift#L18-L193)
 
 The app follows a strict layered model where each layer communicates only with its immediate neighbor:
 
@@ -163,7 +163,7 @@ Events are decoded as [`ChatEvent`](../Shared/Model/AppAPITypes.swift#L1055) enu
 
 ---
 
-## [4. Database Architecture](../SimpleXChat/FileUtils.swift#L70-L294)
+## [4. Database Architecture](../SimpleXChat/FileUtils.swift#L71-L295)
 
 Two SQLite databases in the app group container (shared with NSE):
 
@@ -172,15 +172,15 @@ Two SQLite databases in the app group container (shared with NSE):
 | Chat DB | `simplex_v1_chat.db` | Messages, contacts, groups, profiles, files, tags, preferences |
 | Agent DB | `simplex_v1_agent.db` | SMP connections, keys, queues, server info |
 
-Both databases use the `DB_FILE_PREFIX = "simplex_v1"` prefix. The database path is resolved via [`getAppDatabasePath()`](../SimpleXChat/FileUtils.swift#L70) in `SimpleXChat/FileUtils.swift`, which checks `dbContainerGroupDefault` to determine whether to use the app group container or legacy documents directory.
+Both databases use the `DB_FILE_PREFIX = "simplex_v1"` prefix. The database path is resolved via [`getAppDatabasePath()`](../SimpleXChat/FileUtils.swift#L71) in `SimpleXChat/FileUtils.swift`, which checks `dbContainerGroupDefault` to determine whether to use the app group container or legacy documents directory.
 
 See [Database & Storage specification](database.md) for full details.
 
 ---
 
-## [5. App Lifecycle](../Shared/SimpleXApp.swift#L17-L184)
+## [5. App Lifecycle](../Shared/SimpleXApp.swift#L18-L193)
 
-### [Initialization Sequence (SimpleXApp.swift)](../Shared/SimpleXApp.swift#L17-L38)
+### [Initialization Sequence (SimpleXApp.swift)](../Shared/SimpleXApp.swift#L18-L39)
 
 ```swift
 // SimpleXApp.init()
@@ -220,7 +220,7 @@ See [Database & Storage specification](database.md) for full details.
               └──────────┘
 ```
 
-### [Scene Phase Handling (SimpleXApp.swift)](../Shared/SimpleXApp.swift#L38-L123)
+### [Scene Phase Handling (SimpleXApp.swift)](../Shared/SimpleXApp.swift#L39-L124)
 
 - **`.active`**: Calls `startChatAndActivate()`, processes pending notification responses, refreshes chat list and call invitations
 - **`.background`**: Records authentication timestamp, calls `suspendChat()` (unless CallKit call active), schedules `BGManager` background refresh, updates badge count
@@ -232,11 +232,11 @@ When a CallKit call is active during backgrounding, chat suspension is deferred 
 
 ---
 
-## [6. Extension Architecture](../SimpleX%20NSE/NotificationService.swift#L1-L1228)
+## [6. Extension Architecture](../SimpleX%20NSE/NotificationService.swift#L2-L1228)
 
-### [Notification Service Extension (NSE)](../SimpleX%20NSE/NotificationService.swift#L1-L1228)
+### [Notification Service Extension (NSE)](../SimpleX%20NSE/NotificationService.swift#L2-L1228)
 
-The NSE ([`SimpleX NSE/NotificationService.swift`](../SimpleX%20NSE/NotificationService.swift#L1-L1228)) is a separate process that:
+The NSE ([`SimpleX NSE/NotificationService.swift`](../SimpleX%20NSE/NotificationService.swift#L2-L1228)) is a separate process that:
 
 1. Receives encrypted push notification payload from APNs
 2. Initializes its own Haskell core instance (`chat_ctrl`) with shared database access
@@ -319,7 +319,7 @@ Chat relays are SMP servers that forward messages to channel subscribers. They a
 
 | File | Path | Line |
 |------|------|------|
-| App entry point | [`Shared/SimpleXApp.swift`](../Shared/SimpleXApp.swift#L17) | L17 |
+| App entry point | [`Shared/SimpleXApp.swift`](../Shared/SimpleXApp.swift#L18) | L17 |
 | App delegate | [`Shared/AppDelegate.swift`](../Shared/AppDelegate.swift#L15) | L15 |
 | Root view | [`Shared/ContentView.swift`](../Shared/ContentView.swift#L24) | L24 |
 | FFI bridge | [`Shared/Model/SimpleXAPI.swift`](../Shared/Model/SimpleXAPI.swift#L93) | L93 |
@@ -328,7 +328,7 @@ Chat relays are SMP servers that forward messages to channel subscribers. They a
 | API types | [`Shared/Model/AppAPITypes.swift`](../Shared/Model/AppAPITypes.swift#L15) | L15 |
 | Shared types | [`SimpleXChat/APITypes.swift`](../SimpleXChat/APITypes.swift#L27) | L27 |
 | C header | [`SimpleXChat/SimpleX.h`](../SimpleXChat/SimpleX.h#L1-L49) | |
-| NSE | [`SimpleX NSE/NotificationService.swift`](../SimpleX%20NSE/NotificationService.swift#L1-L1228) | |
+| NSE | [`SimpleX NSE/NotificationService.swift`](../SimpleX%20NSE/NotificationService.swift#L2-L1228) | |
 | Haskell core | `../../src/Simplex/Chat/Controller.hs` — see `processCommand` in `Controller.hs` | |
 | Chat protocol (x-events, message envelopes) | `../../src/Simplex/Chat/Protocol.hs` | |
 
@@ -363,3 +363,13 @@ before Swift package resolution or Xcode compilation. This avoids discarding a
 completed core build after a later Swift failure. Cache availability and build
 success are not guaranteed. In-flight workflows retain their initial configuration.
 No application behavior, FFI, permissions or supported protocol changes.
+
+## Sunder signing without App Groups — 2026-10-29
+
+[`appGroupContainerURL / groupDefaults`](../SimpleXChat/AppGroup.swift#L72) caches the actual optional group container; defaults use the group suite only when it is accessible, otherwise app-private standard defaults.
+
+[`setDbContainer()`](../Shared/SimpleXApp.swift#L125) selects existing documents mode for unavailable-group installs. Offer/postponed/ready states become postponed (chat can start); interrupted export/import and migrated states are retained. Entitled installations keep their previous path/migration selection.
+
+[`ShareModel.setup(context:)`](../SimpleX%20SE/ShareModel.swift#L77) sets a valid close callback before showing unavailable-storage or app-lock errors; it refuses content/DB setup without the group. [`ShareModel.initChat(with:)`](../SimpleX%20SE/ShareModel.swift#L180) also guards retry/direct entry points, returning [`sharedStorageError`](../SimpleX%20SE/ShareModel.swift#L205). No private extension DB is substituted for the main chat DB.
+
+The startup trap was reproduced in two USB crash reports (SIGTRAP, getAppDirectory → getWallpaperDirectory → AppDelegate.prepareForLaunch). Raw reports and device identifiers stay outside Git. Fix validation requires compiling and reinstalling the updated IPA. This does not provision App Groups or APNs.

@@ -1,3 +1,4 @@
+// Modified for Sunder on 2026-10-29: handle unavailable shared storage after sideload signing.
 // Modified for Sunder on 2026-10-28: neutral resources and independent support.
 //
 //  MigrateToGroupView.swift
@@ -185,6 +186,13 @@ struct MigrateToAppGroupView: View {
     }
 
     func migrateDatabaseToV3() {
+        guard appGroupContainerURL != nil else {
+            AlertManager.shared.showAlertMsg(
+                title: "Shared storage unavailable",
+                message: "This installation cannot access a shared container. Continue using the current database."
+            )
+            return
+        }
         setV3DBMigration(.exporting)
         let archiveTime = Date.now
         let archiveName = "simplex-chat.\(archiveTime.ISO8601Format()).zip"

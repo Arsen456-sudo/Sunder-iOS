@@ -89,6 +89,7 @@ apps/multiplatform/.kotlin/sessions
 
 
 # Independent fork: local credentials, signing and diagnostic outputs.
+/build/
 /.codex/
 /.codex-remote-attachments/
 /local-audit/

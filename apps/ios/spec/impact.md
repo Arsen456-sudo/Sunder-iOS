@@ -173,3 +173,9 @@ not change app runtime, signing, private history or GitHub visibility. See plans
 at repository root and docs/fork/PUBLIC_SOURCE_EXPORT.md for export omissions/limits.
 
 Sunder UIKit top bar: ChatListView.swift still maps to PC1/PC28; the standalone bar does not change chat filtering, profile switching, status polling or conversation navigation.
+
+| SimpleXChat/AppGroup.swift; Shared/SimpleXApp.swift | PC18, PC23, PC26 | High | Capability-aware shared/defaults storage and existing documents mode |
+| SimpleX SE/ShareModel.swift | PC4, PC23 | High | Refuse shared database work without group; valid dismissal callback |
+| Shared/Views/Database/MigrateToAppGroupView.swift | PC23, PC26 | High | Block migration to unavailable group before any export/path change |
+
+FileUtils.swift also affects PC24 wallpaper initialization; missing group paths no longer trap on launch. NSE access is guarded before DB work.

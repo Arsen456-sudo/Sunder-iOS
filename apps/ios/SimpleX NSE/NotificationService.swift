@@ -1,3 +1,4 @@
+// Modified for Sunder on 2026-10-29: handle unavailable shared storage after sideload signing.
 //
 //  NotificationService.swift
 //  SimpleX NSE
@@ -298,6 +299,10 @@ class NotificationService: UNNotificationServiceExtension {
 
     // Spec: spec/services/notifications.md#didReceive
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
+        guard appGroupContainerURL != nil else {
+            contentHandler(request.content)
+            return
+        }
         logger.debug("DEBUGGING: NotificationService.didReceive")
         let receivedNtf = if let ntf_ = request.content.mutableCopy() as? UNMutableNotificationContent { ntf_ } else { UNMutableNotificationContent() }
         setServiceBestAttemptNtf(receivedNtf)

@@ -1,3 +1,4 @@
+// Modified for Sunder on 2026-10-29: handle unavailable shared storage after sideload signing.
 //
 //  GroupDefaults.swift
 //  SimpleX (iOS)
@@ -68,7 +69,14 @@ public let GROUP_DEFAULT_CHAT_BOTTOM_BAR = "chatBottomBar"
 
 public let APP_GROUP_NAME = "group.chat.simplex.app"
 
-public let groupDefaults = UserDefaults(suiteName: APP_GROUP_NAME)!
+public let appGroupContainerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: APP_GROUP_NAME)
+
+public let groupDefaults: UserDefaults = {
+    if appGroupContainerURL != nil, let defaults = UserDefaults(suiteName: APP_GROUP_NAME) {
+        return defaults
+    }
+    return .standard
+}()
 
 public let groupAppDefaults: [String: Any] = [
     GROUP_DEFAULT_NTF_ENABLE_LOCAL: false,

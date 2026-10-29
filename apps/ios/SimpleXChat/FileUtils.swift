@@ -1,3 +1,4 @@
+// Modified for Sunder on 2026-10-29: handle unavailable shared storage after sideload signing.
 //
 //  FileUtils.swift
 //  SimpleX (iOS)
@@ -54,7 +55,7 @@ public func getDocumentsDirectory() -> URL {
 
 // Spec: spec/database.md#getGroupContainerDirectory
 public func getGroupContainerDirectory() -> URL {
-    FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: APP_GROUP_NAME)!
+    appGroupContainerURL ?? getDocumentsDirectory()
 }
 
 func getAppDirectory() -> URL {

@@ -233,3 +233,7 @@ See [preparation scope](../../spec/client/navigation.md#sunder-publication-prepa
 Visible extension names and permission captions now identify Sunder. Copyright text is
 retained. Source links use both SunderRepositoryURL and SunderSourceRef; support uses the
 repository root. The development ref points at the working branch, with no public URL invented.
+
+## Sunder shared-storage availability
+
+Without an accessible App Group, the main app uses local documents storage. Migration into shared storage shows an error before changing files. The share extension explains that shared storage is unavailable and can be dismissed; it does not open a separate chat database. This does not enable APNs for a free sideload signature.

@@ -37,7 +37,7 @@ Both databases are initialized and migrated via the C FFI function `chat_migrate
 
 ## 2. Database Files & Paths
 
-### [Path Resolution](../SimpleXChat/FileUtils.swift#L63-L73) (FileUtils.swift)
+### [Path Resolution](../SimpleXChat/FileUtils.swift#L64-L74) (FileUtils.swift)
 
 ```swift
 let DB_FILE_PREFIX = "simplex_v1"
@@ -54,7 +54,7 @@ func getAppDatabasePath() -> URL {
 // Agent: {container}/simplex_v1_agent.db
 ```
 
-### [File Constants](../SimpleXChat/FileUtils.swift#L38-L44)
+### [File Constants](../SimpleXChat/FileUtils.swift#L39-L45)
 
 ```swift
 let CHAT_DB: String = "_chat.db"
@@ -65,7 +65,7 @@ private let AGENT_DB_BAK: String = "_agent.db.bak"
 
 ### Container Locations
 
-See [`getDocumentsDirectory()`](../SimpleXChat/FileUtils.swift#L47) and [`getGroupContainerDirectory()`](../SimpleXChat/FileUtils.swift#L52).
+See [`getDocumentsDirectory()`](../SimpleXChat/FileUtils.swift#L48) and [`getGroupContainerDirectory()`](../SimpleXChat/FileUtils.swift#L53).
 
 | Container | Path | Used When |
 |-----------|------|-----------|
@@ -182,7 +182,7 @@ The encryption key is stored in the iOS Keychain via `kcDatabasePassword`:
 │   └── ...
 ```
 
-### [File Size Constants](../SimpleXChat/FileUtils.swift#L18-L36) (FileUtils.swift)
+### [File Size Constants](../SimpleXChat/FileUtils.swift#L19-L37) (FileUtils.swift)
 
 ```swift
 public let MAX_IMAGE_SIZE: Int64 = 261_120        // 255 KB -- inline image compression target
@@ -203,7 +203,7 @@ When `apiSetEncryptLocalFiles(enable: true)` is set, files stored on device are 
 - Each file gets a unique key and nonce stored alongside the file reference
 - The `CryptoFile` type wraps `(filePath: String, cryptoArgs: CryptoFileArgs?)` where `CryptoFileArgs` contains `(fileKey: String, fileNonce: String)`
 
-### [File Path Helpers](../SimpleXChat/FileUtils.swift#L219-L221)
+### [File Path Helpers](../SimpleXChat/FileUtils.swift#L220-L222)
 
 ```swift
 public func getDocumentsDirectory() -> URL      // Standard documents dir
@@ -213,14 +213,14 @@ func getTempFilesDirectory() -> URL             // {appDir}/temp_files/
 func getWallpaperDirectory() -> URL             // {appDir}/assets/wallpapers/
 ```
 
-See also [`saveFile()`](../SimpleXChat/FileUtils.swift#L226), [`removeFile()`](../SimpleXChat/FileUtils.swift#L243), and [`getMaxFileSize()`](../SimpleXChat/FileUtils.swift#L276).
+See also [`saveFile()`](../SimpleXChat/FileUtils.swift#L227), [`removeFile()`](../SimpleXChat/FileUtils.swift#L244), and [`getMaxFileSize()`](../SimpleXChat/FileUtils.swift#L277).
 
-### [Cleanup](../SimpleXChat/FileUtils.swift#L86-L116)
+### [Cleanup](../SimpleXChat/FileUtils.swift#L87-L117)
 
-- Files are deleted when their associated `ChatItem` is deleted. See [`cleanupFile()`](../SimpleXChat/FileUtils.swift#L267) and [`cleanupDirectFile()`](../SimpleXChat/FileUtils.swift#L260).
+- Files are deleted when their associated `ChatItem` is deleted. See [`cleanupFile()`](../SimpleXChat/FileUtils.swift#L268) and [`cleanupDirectFile()`](../SimpleXChat/FileUtils.swift#L261).
 - Timed message expiry triggers file deletion
-- [`deleteAppDatabaseAndFiles()`](../SimpleXChat/FileUtils.swift#L86) removes all databases, files, temp files, and wallpapers
-- [`deleteAppFiles()`](../SimpleXChat/FileUtils.swift#L108) removes only the files directory (preserving databases)
+- [`deleteAppDatabaseAndFiles()`](../SimpleXChat/FileUtils.swift#L87) removes all databases, files, temp files, and wallpapers
+- [`deleteAppFiles()`](../SimpleXChat/FileUtils.swift#L109) removes only the files directory (preserving databases)
 
 ---
 
@@ -296,3 +296,9 @@ The NSE checks this flag to determine whether to process notifications (it avoid
 | C FFI (migration, file ops) | `SimpleXChat/SimpleX.h` |
 | Haskell store root | `../../src/Simplex/Chat/Store/` |
 | Haskell migrations | `../../src/Simplex/Chat/Store/SQLite/Migrations/` |
+
+## Unavailable shared storage in sideload installs — 2026-10-29
+
+[`getGroupContainerDirectory()`](../SimpleXChat/FileUtils.swift#L57) returns the entitled URL or the process documents directory without force-unwrapping a missing container. The main app uses documents mode (mobile_v1 databases) and private defaults when no group is available. Wallpaper and local process-state paths therefore remain usable before/after app initialization. No existing database is deleted or moved. Extensions explicitly refuse DB work without the group.
+
+[`migrateDatabaseToV3()`](../Shared/Views/Database/MigrateToAppGroupView.swift#L188) refuses migration before exporting/changing paths when shared storage is unavailable, avoiding aliasing the migration destination to local storage. Interrupted migration states are not silently marked ready.

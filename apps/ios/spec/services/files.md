@@ -49,14 +49,14 @@ All files are end-to-end encrypted. The XFTP protocol adds a second encryption l
 
 ### Inline Transfer
 
-- Files up to [`MAX_IMAGE_SIZE`](../../SimpleXChat/FileUtils.swift#L18) (255KB) are base64-encoded and embedded directly in the SMP message body
+- Files up to [`MAX_IMAGE_SIZE`](../../SimpleXChat/FileUtils.swift#L19) (255KB) are base64-encoded and embedded directly in the SMP message body
 - No additional protocol or server needed
 - Delivered with the same reliability guarantees as regular messages
 - Used primarily for compressed images
 
 ### XFTP Transfer
 
-For files exceeding the inline threshold (up to [`MAX_FILE_SIZE_XFTP`](../../SimpleXChat/FileUtils.swift#L30) = 1GB):
+For files exceeding the inline threshold (up to [`MAX_FILE_SIZE_XFTP`](../../SimpleXChat/FileUtils.swift#L31) = 1GB):
 
 1. **Sender side**:
    - File is AES-encrypted with a random key
@@ -75,7 +75,7 @@ For files exceeding the inline threshold (up to [`MAX_FILE_SIZE_XFTP`](../../Sim
 
 ### SMP Transfer (legacy)
 
-[`MAX_FILE_SIZE_SMP`](../../SimpleXChat/FileUtils.swift#L34) (8MB) exists as a constant for larger inline transfers through SMP, used in specific scenarios.
+[`MAX_FILE_SIZE_SMP`](../../SimpleXChat/FileUtils.swift#L35) (8MB) exists as a constant for larger inline transfers through SMP, used in specific scenarios.
 
 ---
 
@@ -85,9 +85,9 @@ Files below certain size thresholds are automatically accepted and downloaded wi
 
 | Media Type | Auto-Receive Threshold | Constant | Line |
 |------------|----------------------|----------|------|
-| Images | 510 KB | [`MAX_IMAGE_SIZE_AUTO_RCV`](../../SimpleXChat/FileUtils.swift#L21) | [L21](../../SimpleXChat/FileUtils.swift#L21) |
-| Voice messages | 510 KB | [`MAX_VOICE_SIZE_AUTO_RCV`](../../SimpleXChat/FileUtils.swift#L24) | [L24](../../SimpleXChat/FileUtils.swift#L24) |
-| Video | 1023 KB | [`MAX_VIDEO_SIZE_AUTO_RCV`](../../SimpleXChat/FileUtils.swift#L27) | [L27](../../SimpleXChat/FileUtils.swift#L27) |
+| Images | 510 KB | [`MAX_IMAGE_SIZE_AUTO_RCV`](../../SimpleXChat/FileUtils.swift#L22) | [L21](../../SimpleXChat/FileUtils.swift#L22) |
+| Voice messages | 510 KB | [`MAX_VOICE_SIZE_AUTO_RCV`](../../SimpleXChat/FileUtils.swift#L25) | [L24](../../SimpleXChat/FileUtils.swift#L25) |
+| Video | 1023 KB | [`MAX_VIDEO_SIZE_AUTO_RCV`](../../SimpleXChat/FileUtils.swift#L28) | [L27](../../SimpleXChat/FileUtils.swift#L28) |
 | Other files | Not auto-received | Requires manual acceptance | -- |
 
 ### Behavior
@@ -104,20 +104,20 @@ Files below certain size thresholds are automatically accepted and downloaded wi
 
 ---
 
-## [4. File Size Constants](../../SimpleXChat/FileUtils.swift#L18)
+## [4. File Size Constants](../../SimpleXChat/FileUtils.swift#L19)
 
 Defined in [`SimpleXChat/FileUtils.swift`](../../SimpleXChat/FileUtils.swift):
 
 | Constant | Value | Line |
 |----------|-------|------|
-| `MAX_IMAGE_SIZE` | 261,120 (255 KB) | [L18](../../SimpleXChat/FileUtils.swift#L18) |
-| `MAX_IMAGE_SIZE_AUTO_RCV` | 522,240 (510 KB) | [L21](../../SimpleXChat/FileUtils.swift#L21) |
-| `MAX_VOICE_SIZE_AUTO_RCV` | 522,240 (510 KB) | [L24](../../SimpleXChat/FileUtils.swift#L24) |
-| `MAX_VIDEO_SIZE_AUTO_RCV` | 1,047,552 (1023 KB) | [L27](../../SimpleXChat/FileUtils.swift#L27) |
-| `MAX_FILE_SIZE_XFTP` | 1,073,741,824 (1 GB) | [L30](../../SimpleXChat/FileUtils.swift#L30) |
-| `MAX_FILE_SIZE_LOCAL` | Int64.max (no limit) | [L32](../../SimpleXChat/FileUtils.swift#L32) |
-| `MAX_FILE_SIZE_SMP` | 8,000,000 (~7.6 MB) | [L34](../../SimpleXChat/FileUtils.swift#L34) |
-| `MAX_VOICE_MESSAGE_LENGTH` | 300 s (5 min) | [L36](../../SimpleXChat/FileUtils.swift#L36) |
+| `MAX_IMAGE_SIZE` | 261,120 (255 KB) | [L18](../../SimpleXChat/FileUtils.swift#L19) |
+| `MAX_IMAGE_SIZE_AUTO_RCV` | 522,240 (510 KB) | [L21](../../SimpleXChat/FileUtils.swift#L22) |
+| `MAX_VOICE_SIZE_AUTO_RCV` | 522,240 (510 KB) | [L24](../../SimpleXChat/FileUtils.swift#L25) |
+| `MAX_VIDEO_SIZE_AUTO_RCV` | 1,047,552 (1023 KB) | [L27](../../SimpleXChat/FileUtils.swift#L28) |
+| `MAX_FILE_SIZE_XFTP` | 1,073,741,824 (1 GB) | [L30](../../SimpleXChat/FileUtils.swift#L31) |
+| `MAX_FILE_SIZE_LOCAL` | Int64.max (no limit) | [L32](../../SimpleXChat/FileUtils.swift#L33) |
+| `MAX_FILE_SIZE_SMP` | 8,000,000 (~7.6 MB) | [L34](../../SimpleXChat/FileUtils.swift#L35) |
+| `MAX_VOICE_MESSAGE_LENGTH` | 300 s (5 min) | [L36](../../SimpleXChat/FileUtils.swift#L37) |
 
 ```swift
 // Image compression target for inline transfer
@@ -144,7 +144,7 @@ public let MAX_VOICE_MESSAGE_LENGTH = TimeInterval(300) // 5 minutes (300 second
 ### Compression Pipeline
 
 1. User selects image (camera or photo library)
-2. Image is compressed to fit within [`MAX_IMAGE_SIZE`](../../SimpleXChat/FileUtils.swift#L18) (255KB):
+2. Image is compressed to fit within [`MAX_IMAGE_SIZE`](../../SimpleXChat/FileUtils.swift#L19) (255KB):
    - Progressive JPEG compression with decreasing quality
    - Resize if dimensions are too large
 3. Compressed image is base64-encoded into the message content
@@ -170,12 +170,12 @@ public let MAX_VOICE_MESSAGE_LENGTH = TimeInterval(300) // 5 minutes (300 second
 1. `ComposeVoiceView` manages the recording UI
 2. `AudioRecPlay` handles `AVAudioRecorder` lifecycle
 3. Recorded in compressed audio format
-4. Maximum duration: [`MAX_VOICE_MESSAGE_LENGTH`](../../SimpleXChat/FileUtils.swift#L36) = 300 seconds (5 minutes)
+4. Maximum duration: [`MAX_VOICE_MESSAGE_LENGTH`](../../SimpleXChat/FileUtils.swift#L37) = 300 seconds (5 minutes)
 5. Waveform data extracted for visualization
 
 ### Transfer
 
-- Voice files up to [`MAX_VOICE_SIZE_AUTO_RCV`](../../SimpleXChat/FileUtils.swift#L24) (510KB) are auto-received
+- Voice files up to [`MAX_VOICE_SIZE_AUTO_RCV`](../../SimpleXChat/FileUtils.swift#L25) (510KB) are auto-received
 - Larger voice files follow standard file transfer flow
 - Voice messages include waveform metadata for UI rendering
 
@@ -227,17 +227,17 @@ Implemented in [`CryptoFile.swift`](../../SimpleXChat/CryptoFile.swift):
 
 ---
 
-## [8. File Storage Paths](../../SimpleXChat/FileUtils.swift#L199)
+## [8. File Storage Paths](../../SimpleXChat/FileUtils.swift#L200)
 
 ### Directory Structure
 
 | Function | Path | Line |
 |----------|------|------|
-| [`getAppFilesDirectory()`](../../SimpleXChat/FileUtils.swift#L208) | `Documents/files/` | [L208](../../SimpleXChat/FileUtils.swift#L208) |
-| [`getTempFilesDirectory()`](../../SimpleXChat/FileUtils.swift#L199) | `Documents/temp_files/` | [L199](../../SimpleXChat/FileUtils.swift#L199) |
-| [`getWallpaperDirectory()`](../../SimpleXChat/FileUtils.swift#L217) | `Documents/wallpapers/` | [L217](../../SimpleXChat/FileUtils.swift#L217) |
-| [`getAppFilePath(_:)`](../../SimpleXChat/FileUtils.swift#L212) | `Documents/files/{filename}` | [L212](../../SimpleXChat/FileUtils.swift#L212) |
-| [`getWallpaperFilePath(_:)`](../../SimpleXChat/FileUtils.swift#L221) | `Documents/wallpapers/{filename}` | [L221](../../SimpleXChat/FileUtils.swift#L221) |
+| [`getAppFilesDirectory()`](../../SimpleXChat/FileUtils.swift#L209) | `Documents/files/` | [L208](../../SimpleXChat/FileUtils.swift#L209) |
+| [`getTempFilesDirectory()`](../../SimpleXChat/FileUtils.swift#L200) | `Documents/temp_files/` | [L199](../../SimpleXChat/FileUtils.swift#L200) |
+| [`getWallpaperDirectory()`](../../SimpleXChat/FileUtils.swift#L218) | `Documents/wallpapers/` | [L217](../../SimpleXChat/FileUtils.swift#L218) |
+| [`getAppFilePath(_:)`](../../SimpleXChat/FileUtils.swift#L213) | `Documents/files/{filename}` | [L212](../../SimpleXChat/FileUtils.swift#L213) |
+| [`getWallpaperFilePath(_:)`](../../SimpleXChat/FileUtils.swift#L222) | `Documents/wallpapers/{filename}` | [L221](../../SimpleXChat/FileUtils.swift#L222) |
 
 ```swift
 func getAppFilesDirectory() -> URL    // Documents/files/
@@ -300,18 +300,18 @@ Cancels an in-progress upload or download. For XFTP transfers, also requests chu
 
 | Function | Purpose | Line |
 |----------|---------|------|
-| [`cleanupFile(_:)`](../../SimpleXChat/FileUtils.swift#L267) | Remove file associated with a chat item | [L267](../../SimpleXChat/FileUtils.swift#L267) |
-| [`cleanupDirectFile(_:)`](../../SimpleXChat/FileUtils.swift#L260) | Remove file only for direct chats | [L260](../../SimpleXChat/FileUtils.swift#L260) |
-| [`removeFile(_:)`](../../SimpleXChat/FileUtils.swift#L243) | Delete file at URL | [L243](../../SimpleXChat/FileUtils.swift#L243) |
-| [`removeFile(_:)`](../../SimpleXChat/FileUtils.swift#L251) | Delete file by name | [L251](../../SimpleXChat/FileUtils.swift#L251) |
-| [`deleteAppFiles()`](../../SimpleXChat/FileUtils.swift#L108) | Remove all app files (preserving databases) | [L108](../../SimpleXChat/FileUtils.swift#L108) |
-| [`deleteAppDatabaseAndFiles()`](../../SimpleXChat/FileUtils.swift#L86) | Remove everything | [L86](../../SimpleXChat/FileUtils.swift#L86) |
+| [`cleanupFile(_:)`](../../SimpleXChat/FileUtils.swift#L268) | Remove file associated with a chat item | [L267](../../SimpleXChat/FileUtils.swift#L268) |
+| [`cleanupDirectFile(_:)`](../../SimpleXChat/FileUtils.swift#L261) | Remove file only for direct chats | [L260](../../SimpleXChat/FileUtils.swift#L261) |
+| [`removeFile(_:)`](../../SimpleXChat/FileUtils.swift#L244) | Delete file at URL | [L243](../../SimpleXChat/FileUtils.swift#L244) |
+| [`removeFile(_:)`](../../SimpleXChat/FileUtils.swift#L252) | Delete file by name | [L251](../../SimpleXChat/FileUtils.swift#L252) |
+| [`deleteAppFiles()`](../../SimpleXChat/FileUtils.swift#L109) | Remove all app files (preserving databases) | [L108](../../SimpleXChat/FileUtils.swift#L109) |
+| [`deleteAppDatabaseAndFiles()`](../../SimpleXChat/FileUtils.swift#L87) | Remove everything | [L86](../../SimpleXChat/FileUtils.swift#L87) |
 
 - When a `ChatItem` is deleted, its associated file is deleted from disk
 - When a timed message expires, its file is deleted
 - `ChatModel.filesToDelete` queues files for deferred deletion
-- [`deleteAppFiles()`](../../SimpleXChat/FileUtils.swift#L108) removes all files (preserving databases)
-- [`deleteAppDatabaseAndFiles()`](../../SimpleXChat/FileUtils.swift#L86) removes everything
+- [`deleteAppFiles()`](../../SimpleXChat/FileUtils.swift#L109) removes all files (preserving databases)
+- [`deleteAppDatabaseAndFiles()`](../../SimpleXChat/FileUtils.swift#L87) removes everything
 
 ---
 
@@ -366,3 +366,7 @@ Cancels an in-progress upload or download. For XFTP transfers, also requests chu
 | C FFI (file encryption) | [`SimpleXChat/SimpleX.h`](../../SimpleXChat/SimpleX.h) | `chat_write_file`, `chat_read_file`, `chat_encrypt_file`, `chat_decrypt_file` |
 | Haskell file logic | `../../src/Simplex/Chat/Files.hs` | -- |
 | Haskell file store | `../../src/Simplex/Chat/Store/Files.hs` | -- |
+
+## Missing App Group capability — 2026-10-29
+
+[`getGroupContainerDirectory()`](../../SimpleXChat/FileUtils.swift#L57) no longer force-unwraps the optional App Group URL. It falls back to process documents for wallpaper/local state paths. Main database selection uses existing documents mode; extensions guard access before opening a database. See the [database storage fallback](../database.md#unavailable-shared-storage-in-sideload-installs--2026-10-29).

@@ -245,3 +245,7 @@ The current YourNetwork/profile/operator-conditions transitions, validation and 
 handlers are retained; the historical onboarding overview above is not a new flow design.
 See [onboarding view](../views/onboarding.md) and
 [presentation specification](../../spec/client/navigation.md#sunder-presentation-preparation--2026-10-28).
+
+## Sunder sideload installation without App Groups
+
+An installation without access to the shared App Group can start using its own documents database and private settings. It does not require migration into a container it cannot access. Entitled installations retain shared storage. Sharing through extensions and shared-database notification processing require the shared container; existing interrupted migration recovery is preserved.

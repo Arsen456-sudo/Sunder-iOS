@@ -1,3 +1,4 @@
+// Modified for Sunder on 2026-10-29: handle unavailable shared storage after sideload signing.
 //
 //  SimpleXApp.swift
 //  Shared
@@ -122,6 +123,14 @@ struct SimpleXApp: App {
     }
 
     private func setDbContainer() {
+        if appGroupContainerURL == nil {
+            dbContainerGroupDefault.set(.documents)
+            switch v3DBMigrationDefault.get() {
+            case .offer, .postponed, .ready: v3DBMigrationDefault.set(.postponed)
+            case .exporting, .export_error, .exported, .migrating, .migration_error, .migrated: break
+            }
+            return
+        }
 // Uncomment and run once to open DB in app documents folder:
 //         dbContainerGroupDefault.set(.documents)
 //         v3DBMigrationDefault.set(.offer)

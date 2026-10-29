@@ -115,3 +115,7 @@ Stage 5 also updates 44 localized InfoPlist caption files and four extension dis
 build settings. Copyright statements, executable/module identities and all signing/entitlement
 settings are retained. SunderSourceRef supplements the HTTPS repository URL for accurate
 source navigation; publication/binary configuration must point to the final source revision.
+
+## 2026-10-29 — sideload launch crash
+
+Use capability-aware App Group paths/defaults, existing local-documents database mode, and explicit extension/migration guards for installs without shared-container access. Preserve entitled behavior, cryptography and Keychain policy. No Haskell core changes or raw device logs are included. Fix derived from two local USB crash reports; native compilation/device recheck are separate validation steps.
