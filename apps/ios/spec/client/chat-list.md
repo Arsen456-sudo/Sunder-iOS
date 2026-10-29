@@ -317,10 +317,10 @@ one-hand preference. `ChatListChromeState` carries only display data. UIKit owns
 buttons, constraints, image rendering and accessibility; closures preserve all
 existing profile, compose, stopped-chat and server-summary actions.
 
-Both top and one-hand modes use `UIGlassContainerEffect` with three
-capsule/circle `UIGlassEffect` children. The placement preference changes only
-the safe-area edge, not whether islands are installed. Each control is at least
-56 points high at the default text size; 8-point vertical gaps keep it floating. Only controls use glass, not rows.
+Both top and one-hand modes use `UIGlassContainerEffect` with two
+circular `UIGlassEffect` children and a transparent central title area. The placement preference changes only
+the safe-area edge, not whether islands are installed. Each side control is
+44 points high at the default text size; 8-point vertical gaps keep it floating. Only controls use glass, not rows.
 Native search delegates update the original bindings, retaining link/name resolution,
 debounce, cancellation and filters. The unread button uses native glass configuration.
 
@@ -337,25 +337,50 @@ Reduce Motion disables interactive bounce; Reduce Transparency uses opaque fallb
 SwiftUI still owns list rows, swipes, tags, onboarding, routes and modal contents.
 This is not a full-application UIKit migration. Device appearance needs verification.
 
-Native source entry points (private helpers are included for lifecycle auditing):
 
-- [`init(floating: Bool)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L38)
-- [`override func viewDidLoad()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L46)
-- [`private func installFloatingBar()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L77)
-- [`private func updateMaterials()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L123)
-- [`override func viewDidLayoutSubviews()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L159)
-- [`func update(_ state: ChatListChromeState)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L167)
-- [`private func render()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L176)
-- [`func bindScrollView(_ scrollView: UIScrollView)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L226)
-- [`func unbindScrollView()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L246)
-- [`override func viewDidAppear(_ animated: Bool)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L252)
-- [`override func viewWillDisappear(_ animated: Bool)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L258)
-- [`func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool`](../../Shared/Views/ChatList/ChatListChromeController.swift#L265)
-- [`@objc private func openProfile()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L274)
-- [`@objc private func openStatus()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L275)
-- [`@objc private func openCompose()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L276)
-- [`@objc private func openSearch()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L277)
-- [`deinit`](../../Shared/Views/ChatList/ChatListChromeController.swift#L279)
+The app-level `UIDesignRequiresCompatibility` flag is false, enabling the OS's
+current UI design. This prerequisite is global: system-owned bars, sheets and
+controls elsewhere may also adopt the current appearance, although only the
+chat-list layout is redesigned. Explicit glass stays availability-guarded.
+
+## 11. Compact native chrome and server information
+
+The native controller renders the central area with a nil effect and clear
+background in every OS/accessibility path. Chats remains a UIButton with the
+existing action; the server-screen title is static accessibility text. Display-only
+state fields provide leading/trailing symbols, labels and share enablement.
+The default toolbar is 60 points, including 8-point top/bottom gaps and 44-point
+circles. Avatar rasterization is cached at 28 points. A missing compose action
+retains transparent layout space, preventing the title from shifting.
+
+ServersSummaryView retains NavigationView and its four data branches. Root chrome
+is replaced by ServersSummaryNativeChrome; dismiss uses the modal presentation
+binding, and shareSummary exports the same JSON via the existing share sheet.
+summaryFilters binds native UISegmentedControl indexes to the existing enums.
+Selectors sit in the root safe-area inset, statistics use insetGrouped List, and
+ChatListScrollProbe binds only that modal's own scope. Child SMP/XFTP pages explicitly
+restore their navigation bars. Statistics, networking, timer, reset/reconnect alerts
+and detail destinations remain unchanged. Statistics/rows are still SwiftUI.
+
+### Native control and server-screen source entry points
+
+- [`init(floating: Bool)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L44)
+- [`override func viewDidLoad()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L52)
+- [`private func installFloatingBar()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L83)
+- [`private func updateMaterials()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L129)
+- [`override func viewDidLayoutSubviews()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L165)
+- [`func update(_ state: ChatListChromeState)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L173)
+- [`private func render()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L182)
+- [`func bindScrollView(_ scrollView: UIScrollView)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L237)
+- [`func unbindScrollView()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L257)
+- [`override func viewDidAppear(_ animated: Bool)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L263)
+- [`override func viewWillDisappear(_ animated: Bool)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L269)
+- [`func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool`](../../Shared/Views/ChatList/ChatListChromeController.swift#L276)
+- [`@objc private func openProfile()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L285)
+- [`@objc private func openStatus()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L286)
+- [`@objc private func openCompose()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L287)
+- [`@objc private func openSearch()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L288)
+- [`deinit`](../../Shared/Views/ChatList/ChatListChromeController.swift#L290)
 - [`func bind()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L10)
 - [`func makeCoordinator() -> Coordinator`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L31)
 - [`func makeUIViewController(context: Context) -> ChatListChromeController`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L33)
@@ -388,8 +413,17 @@ Native source entry points (private helpers are included for lifecycle auditing)
 - [`func updateUIView(_ button: UIButton, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L301)
 - [`init(_ action: @escaping () -> Void)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L319)
 - [`@objc func tap()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L320)
-
-The app-level `UIDesignRequiresCompatibility` flag is false, enabling the OS's
-current UI design. This prerequisite is global: system-owned bars, sheets and
-controls elsewhere may also adopt the current appearance, although only the
-chat-list layout is redesigned. Explicit glass stays availability-guarded.
+- [`func makeUIViewController(context: Context) -> ChatListChromeController`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L333)
+- [`func updateUIViewController(_ controller: ChatListChromeController, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L342)
+- [`static func dismantleUIViewController(_ controller: ChatListChromeController, coordinator: ())`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L360)
+- [`func makeCoordinator() -> Coordinator`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L373)
+- [`func makeUIView(context: Context) -> UISegmentedControl`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L374)
+- [`func updateUIView(_ control: UISegmentedControl, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L379)
+- [`init(_ parent: ServersSummarySegment)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L391)
+- [`@objc func select(_ control: UISegmentedControl)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L392)
+- [`var body: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L39)
+- [`private func shareSummary()`](../../Shared/Views/ChatList/ServersSummaryView.swift#L94)
+- [`private var summaryFilters: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L100)
+- [`@ViewBuilder private func viewBody() -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L130)
+- [`private func smpServerView(_ srvSumm: SMPServerSummary, _ statsStartedAt: Date) -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L288)
+- [`private func xftpServerView(_ srvSumm: XFTPServerSummary, _ statsStartedAt: Date) -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L358)

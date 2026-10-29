@@ -24,8 +24,8 @@ Main screen of the SimpleX Chat app. Displays all conversations sorted by last a
 | New chat button (pencil icon) | Trailing | Opens `NewChatSheet` modal |
 
 The toolbar supports two layout modes:
-- **Standard (top)**: Three floating UIKit glass islands in the root list top safe area: circular avatar, central Chats/status capsule and circular compose action. Existing avatar, localized Chats/status control and new-chat actions are retained. Search hides this bar; pushed screens own their navigation bars.
-- **One-hand UI (bottom)**: Floating avatar, status capsule and compose button share a native glass container, inset 10 points from the screen edges. Only the list is vertically flipped; controls remain upright. iOS 26 uses interactive system Liquid Glass. Older versions use system materials; Reduce Transparency uses opaque accessible surfaces.
+- **Standard (top)**: Three floating UIKit glass islands in the root list top safe area: circular avatar, plain tappable Chats/status text and circular compose action. Existing avatar, localized Chats/status control and new-chat actions are retained. Search hides this bar; pushed screens own their navigation bars.
+- **One-hand UI (bottom)**: Floating avatar and compose buttons share a native glass container, with plain tappable Chats/status text between them, inset 10 points from the screen edges. Only the list is vertically flipped; controls remain upright. iOS 26 uses interactive system Liquid Glass. Older versions use system materials; Reduce Transparency uses opaque accessible surfaces.
 
 ### Search Bar
 
@@ -148,3 +148,14 @@ The app-level `UIDesignRequiresCompatibility` flag is false, enabling the OS's
 current UI design. This prerequisite is global: system-owned bars, sheets and
 controls elsewhere may also adopt the current appearance, although only the
 chat-list layout is redesigned. Explicit glass stays availability-guarded.
+
+### Compact controls and server information (2026-10-29)
+The avatar/compose circles are 44 points at the default text size, with a 28-point
+avatar. Chats has no material or outline and remains tappable over the system
+scroll-edge effect. Header height remains Dynamic Type-aware.
+
+Tapping Chats opens Servers info with the same compact glass close/share buttons
+and plain centered title. Native profile and Messages/Files segmented selectors
+remain above the grouped scrolling statistics. Sharing stays disabled until data
+is available. Reconnect/reset confirmations, percentage setting, server details
+and all statistics are preserved. Detail pages keep system back navigation.

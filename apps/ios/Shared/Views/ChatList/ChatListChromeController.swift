@@ -12,6 +12,12 @@ struct ChatListChromeState {
     var running: Bool?
     var tint: UIColor = .systemBlue
     var interfaceStyle: UIUserInterfaceStyle = .unspecified
+    var leadingSymbolSize: CGFloat = 28
+    var leadingLabel = NSLocalizedString("Your profile", comment: "Chat-list profile button")
+    var trailingSymbol = "square.and.pencil"
+    var trailingLabel = NSLocalizedString("New chat", comment: "Chat-list compose button")
+    var trailingEnabled = true
+    var titleInteractive = true
 }
 
 final class ChatListChromeController: UIViewController, UIGestureRecognizerDelegate {
@@ -126,7 +132,7 @@ final class ChatListChromeController: UIViewController, UIGestureRecognizerDeleg
             containerEffect.spacing = 8
             glassContainer.effect = containerEffect
             for (index, island) in islands.enumerated() {
-                if index == 1 && !state.showsStatus {
+                if index == 1 {
                     island.effect = nil
                     island.backgroundColor = .clear
                     continue
@@ -140,7 +146,7 @@ final class ChatListChromeController: UIViewController, UIGestureRecognizerDeleg
         } else {
             glassContainer.effect = nil
             for (index, island) in islands.enumerated() {
-                if index == 1 && !state.showsStatus {
+                if index == 1 {
                     island.effect = nil
                     island.backgroundColor = .clear
                     continue
@@ -177,10 +183,11 @@ final class ChatListChromeController: UIViewController, UIGestureRecognizerDeleg
         overrideUserInterfaceStyle = state.interfaceStyle
         var avatarConfig = UIButton.Configuration.plain()
         avatarConfig.image = state.avatar ?? UIImage(systemName: "person.crop.circle.fill")
-        avatarConfig.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 32)
+        avatarConfig.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: state.leadingSymbolSize)
         avatarConfig.baseForegroundColor = .secondaryLabel
         avatarConfig.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6)
         avatarButton.configuration = avatarConfig
+        avatarButton.accessibilityLabel = state.leadingLabel
         unreadDot.isHidden = !state.unreadProfiles
         avatarButton.accessibilityValue = state.unreadProfiles
             ? NSLocalizedString("Unread messages", comment: "Other profiles have unread messages") : nil
@@ -208,16 +215,20 @@ final class ChatListChromeController: UIViewController, UIGestureRecognizerDeleg
             return result
         }
         statusButton.configuration = titleConfig
-        statusButton.isEnabled = state.running == true
+        statusButton.isEnabled = !state.titleInteractive || state.running == true
+        statusButton.isUserInteractionEnabled = state.titleInteractive
+        statusButton.accessibilityTraits = state.titleInteractive ? .button : .staticText
         statusButton.isHidden = !state.showsStatus
         statusButton.accessibilityLabel = state.title
         statusButton.accessibilityValue = state.percentage
         var composeConfig = UIButton.Configuration.plain()
-        composeConfig.image = UIImage(systemName: state.running == false ? "exclamationmark.octagon.fill" : "square.and.pencil")
-        composeConfig.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 22)
+        composeConfig.image = UIImage(systemName: state.running == false ? "exclamationmark.octagon.fill" : state.trailingSymbol)
+        composeConfig.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 20)
         composeConfig.baseForegroundColor = state.running == false ? .systemRed : state.tint
         composeButton.configuration = composeConfig
-        islands[2].isHidden = state.running == nil
+        composeButton.accessibilityLabel = state.trailingLabel
+        composeButton.isEnabled = state.trailingEnabled
+        islands[2].alpha = state.running == nil ? 0 : 1
         view.setNeedsLayout()
     }
 

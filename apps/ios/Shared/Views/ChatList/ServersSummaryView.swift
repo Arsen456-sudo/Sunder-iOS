@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import UIKit
 import SimpleXChat
 
 struct ServersSummaryView: View {
@@ -19,6 +20,9 @@ struct ServersSummaryView: View {
     @State private var selectedXFTPServer: String? = nil
     @State private var timer: Timer? = nil
     @State private var alert: SomeAlert?
+    @Environment(\.presentationMode) private var presentationMode
+    @StateObject private var chromeScope = ChatListChromeScope()
+    @ScaledMetric(relativeTo: .headline) private var chromeHeight = 44
 
     @AppStorage(DEFAULT_SHOW_SUBSCRIPTION_PERCENTAGE) private var showSubscriptionPercentage = false
 
@@ -36,11 +40,20 @@ struct ServersSummaryView: View {
         NavigationView {
             viewBody()
                 .navigationTitle("Servers info")
-                .navigationBarTitleDisplayMode(.large)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarHidden(true)
                 .modifier(ThemedBackground(grouped: true))
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        shareButton()
+                .safeAreaInset(edge: .top, spacing: 0) {
+                    VStack(spacing: 0) {
+                        ServersSummaryNativeChrome(
+                            canShare: serversSummary != nil,
+                            tint: UIColor(theme.colors.primary),
+                            scope: chromeScope,
+                            close: { presentationMode.wrappedValue.dismiss() },
+                            share: shareSummary
+                        )
+                        .frame(height: min(chromeHeight, 88) + 16)
+                        if serversSummary != nil { summaryFilters }
                     }
                 }
         }
@@ -78,15 +91,33 @@ struct ServersSummaryView: View {
         timer = nil
     }
 
-    private func shareButton() -> some View {
-        Button {
-            if let serversSummary = serversSummary {
-                showShareSheet(items: [encodePrettyPrinted(serversSummary)])
-            }
-        } label: {
-            Image(systemName: "square.and.arrow.up")
+    private func shareSummary() {
+        if let serversSummary {
+            showShareSheet(items: [encodePrettyPrinted(serversSummary)])
         }
-        .disabled(serversSummary == nil)
+    }
+
+    private var summaryFilters: some View {
+        VStack(spacing: 8) {
+            if m.users.filter({ $0.user.activeUser || !$0.user.hidden }).count > 1 {
+                ServersSummarySegment(
+                    titles: [NSLocalizedString("All profiles", comment: "Server filter"), NSLocalizedString("Current profile", comment: "Server filter")],
+                    selection: Binding(get: { selectedUserCategory == .allUsers ? 0 : 1 }, set: { selectedUserCategory = $0 == 0 ? .allUsers : .currentUser }),
+                    label: NSLocalizedString("User selection", comment: "Server filter"),
+                    tint: UIColor(theme.colors.primary)
+                )
+                .frame(height: 36)
+            }
+            ServersSummarySegment(
+                titles: [NSLocalizedString("Messages", comment: "Server filter"), NSLocalizedString("Files", comment: "Server filter")],
+                selection: Binding(get: { selectedServerType == .smp ? 0 : 1 }, set: { selectedServerType = $0 == 0 ? .smp : .xftp }),
+                label: NSLocalizedString("Server type", comment: "Server filter"),
+                tint: UIColor(theme.colors.primary)
+            )
+            .frame(height: 36)
+        }
+        .padding(.horizontal, 10)
+        .padding(.bottom, 8)
     }
 
     public func encodePrettyPrinted<T: Encodable>(_ value: T) -> String {
@@ -99,25 +130,6 @@ struct ServersSummaryView: View {
     @ViewBuilder private func viewBody() -> some View {
         if let summ = serversSummary {
             List {
-                Group {
-                    if m.users.filter({ u in u.user.activeUser || !u.user.hidden }).count > 1 {
-                        Picker("User selection", selection: $selectedUserCategory) {
-                            Text("All profiles").tag(PresentedUserCategory.allUsers)
-                            Text("Current profile").tag(PresentedUserCategory.currentUser)
-                        }
-                        .pickerStyle(.segmented)
-                    }
-
-                    Picker("Server type", selection: $selectedServerType) {
-                        Text("Messages").tag(PresentedServerType.smp)
-                        Text("Files").tag(PresentedServerType.xftp)
-                    }
-                    .pickerStyle(.segmented)
-                }
-                .listRowBackground(Color.clear)
-                .listRowSeparator(.hidden)
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-
                 switch (selectedUserCategory, selectedServerType) {
                 case (.allUsers, .smp):
                     let smpSumm = summ.allUsersSMP
@@ -192,6 +204,8 @@ struct ServersSummaryView: View {
                     resetStatsButton()
                 }
             }
+            .listStyle(.insetGrouped)
+            .background(ChatListScrollProbe(scope: chromeScope))
         } else {
             Text("No info, try to reload")
                 .foregroundColor(theme.colors.secondary)
@@ -277,6 +291,7 @@ struct ServersSummaryView: View {
                 summary: srvSumm,
                 statsStartedAt: statsStartedAt
             )
+            .navigationBarHidden(false)
             .navigationBarTitle("SMP server")
             .navigationBarTitleDisplayMode(.large)
             .modifier(ThemedBackground(grouped: true))
@@ -346,6 +361,7 @@ struct ServersSummaryView: View {
                 summary: srvSumm,
                 statsStartedAt: statsStartedAt
             )
+            .navigationBarHidden(false)
             .navigationBarTitle("XFTP server")
             .navigationBarTitleDisplayMode(.large)
             .modifier(ThemedBackground(grouped: true))

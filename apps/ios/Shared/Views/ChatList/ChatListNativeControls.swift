@@ -72,13 +72,13 @@ struct ChatListNativeChrome: UIViewControllerRepresentable {
             if avatarSource != parent.avatar {
                 avatarSource = parent.avatar
                 avatarImage = imageFromBase64(parent.avatar).map { image in
-                    let size = CGSize(width: 32, height: 32)
+                    let size = CGSize(width: 28, height: 28)
                     return UIGraphicsImageRenderer(size: size).image { context in
                         context.cgContext.addEllipse(in: CGRect(origin: .zero, size: size))
                         context.cgContext.clip()
                         let scale = max(size.width / max(image.size.width, 1), size.height / max(image.size.height, 1))
                         let drawn = CGSize(width: image.size.width * scale, height: image.size.height * scale)
-                        image.draw(in: CGRect(x: (32 - drawn.width) / 2, y: (32 - drawn.height) / 2,
+                        image.draw(in: CGRect(x: (28 - drawn.width) / 2, y: (28 - drawn.height) / 2,
                                               width: drawn.width, height: drawn.height))
                     }
                 }
@@ -318,5 +318,80 @@ struct ChatListUnreadButton: UIViewRepresentable {
         var action: () -> Void
         init(_ action: @escaping () -> Void) { self.action = action }
         @objc func tap() { action() }
+    }
+}
+
+
+struct ServersSummaryNativeChrome: UIViewControllerRepresentable {
+    var canShare: Bool
+    var tint: UIColor
+    var scope: ChatListChromeScope
+    var close: () -> Void
+    var share: () -> Void
+    @Environment(\.colorScheme) private var colorScheme
+
+    func makeUIViewController(context: Context) -> ChatListChromeController {
+        let controller = ChatListChromeController(floating: false)
+        scope.controller = controller
+        controller.visibilityChanged = { [weak scope] visible in
+            if visible { scope?.bind() }
+        }
+        return controller
+    }
+
+    func updateUIViewController(_ controller: ChatListChromeController, context: Context) {
+        controller.profileAction = close
+        controller.composeAction = share
+        controller.update(ChatListChromeState(
+            avatar: UIImage(systemName: "xmark"),
+            title: NSLocalizedString("Servers info", comment: "Server information title"),
+            running: true, tint: tint,
+            interfaceStyle: colorScheme == .dark ? .dark : .light,
+            leadingSymbolSize: 18,
+            leadingLabel: NSLocalizedString("Close", comment: "Close server information"),
+            trailingSymbol: "square.and.arrow.up",
+            trailingLabel: NSLocalizedString("Share", comment: "Share server information"),
+            trailingEnabled: canShare,
+            titleInteractive: false
+        ))
+        scope.bind()
+    }
+
+    static func dismantleUIViewController(_ controller: ChatListChromeController, coordinator: ()) {
+        controller.unbindScrollView()
+        controller.visibilityChanged = nil
+    }
+}
+
+struct ServersSummarySegment: UIViewRepresentable {
+    var titles: [String]
+    @Binding var selection: Int
+    var label: String
+    var tint: UIColor
+    @Environment(\.colorScheme) private var colorScheme
+
+    func makeCoordinator() -> Coordinator { Coordinator(self) }
+    func makeUIView(context: Context) -> UISegmentedControl {
+        let control = UISegmentedControl(items: titles)
+        control.addTarget(context.coordinator, action: #selector(Coordinator.select(_:)), for: .valueChanged)
+        return control
+    }
+    func updateUIView(_ control: UISegmentedControl, context: Context) {
+        context.coordinator.parent = self
+        control.overrideUserInterfaceStyle = colorScheme == .dark ? .dark : .light
+        control.selectedSegmentIndex = selection
+        control.accessibilityLabel = label
+        control.tintColor = tint
+        for (index, title) in titles.enumerated() where control.titleForSegment(at: index) != title {
+            control.setTitle(title, forSegmentAt: index)
+        }
+    }
+    @MainActor final class Coordinator: NSObject {
+        var parent: ServersSummarySegment
+        init(_ parent: ServersSummarySegment) { self.parent = parent }
+        @objc func select(_ control: UISegmentedControl) {
+            guard control.selectedSegmentIndex >= 0 else { return }
+            parent.selection = control.selectedSegmentIndex
+        }
     }
 }

@@ -172,7 +172,7 @@ struct ChatListView: View {
 
     @StateObject private var chromeScope = ChatListChromeScope()
     @State private var showServersSummary = false
-    @ScaledMetric(relativeTo: .headline) private var chromeHeight = 56
+    @ScaledMetric(relativeTo: .headline) private var chromeHeight = 44
 
     @AppStorage(GROUP_DEFAULT_ONE_HAND_UI, store: groupDefaults) private var oneHandUI = true
     @AppStorage(DEFAULT_ONE_HAND_UI_CARD_SHOWN) private var oneHandUICardShown = false

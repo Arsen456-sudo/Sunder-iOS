@@ -74,3 +74,5 @@ SimpleXApp (root entry point)
 | `SimpleXChat/SimpleX.h` | C header for Haskell FFI functions |
 
 Chat-list native controls: `Shared/Views/ChatList/ChatListChromeController.swift` and `ChatListNativeControls.swift` are covered by [client/chat-list.md](client/chat-list.md) and [../product/views/chat-list.md](../product/views/chat-list.md). SwiftUI still owns rows and modal contents.
+
+Server-information chrome and its preserved statistics view (`Shared/Views/ChatList/ServersSummaryView.swift`) are documented in [client/chat-list.md](client/chat-list.md#11-compact-native-chrome-and-server-information).
