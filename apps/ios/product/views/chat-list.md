@@ -20,16 +20,16 @@ Main screen of the SimpleX Chat app. Displays all conversations sorted by last a
 | Element | Location | Behavior |
 |---|---|---|
 | User avatar button | Leading | Opens `UserPicker` sheet (profile switcher, address, settings, preferences, connect to desktop) |
-| Connection status indicator | Center (`SubsStatusIndicator`) | Shows server subscription status; taps navigate to `ServersSummaryView` |
+| Connection status indicator | Center (native status button) | Shows server subscription status; taps navigate to `ServersSummaryView` |
 | New chat button (pencil icon) | Trailing | Opens `NewChatSheet` modal |
 
 The toolbar supports two layout modes:
 - **Standard (top)**: UIKit `UINavigationBar` in the root list top safe area; native item backgrounds follow the installed iOS design. Existing avatar, localized Chats/status control and new-chat actions are retained. Search hides this bar; pushed screens own their navigation bars.
-- **One-hand UI (bottom)**: Toolbar items placed in `.bottomBar` with the list vertically flipped via `scaleEffect(y: -1)`
+- **One-hand UI (bottom)**: Floating avatar, status capsule and compose button share a native glass container, inset 10 points from the screen edges. Only the list is vertically flipped; controls remain upright. iOS 26 uses interactive system Liquid Glass. Older versions use system materials; Reduce Transparency uses opaque accessible surfaces.
 
 ### Search Bar
 
-- Text field with magnifying glass icon
+- Native UIKit search bar with magnifying glass, clear and cancel controls; a separate native unread-filter button
 - When active, `searchMode = true` hides the navigation bar and shows inline search
 - Filters chat list in real-time by contact/group name and message content
 - Detects pasted SimpleX links (`searchShowingSimplexLink`) and offers to connect
@@ -136,3 +136,10 @@ Triggers `reconnectAllServers()` after user confirmation alert ("Reconnect serve
 The investment banner/sheet and country-gated promotion are removed. Search, onboarding, one-hand cards, chat ordering and ordinary list actions retain their behavior.
 
 See [preparation scope](../../spec/client/navigation.md#sunder-publication-preparation--2026-10-28).
+
+### Scoped UIKit redesign (2026-10-29)
+
+Only the chat-list controls are redesigned. Chat rows, tags, onboarding, profile
+switcher and modal content retain their existing SwiftUI implementation and actions.
+The root list uses the system soft scroll-edge effect behind its controls on iOS 26;
+the effect detaches when leaving this screen. No conversation or settings UI changes.

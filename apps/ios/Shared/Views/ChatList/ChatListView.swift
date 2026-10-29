@@ -170,13 +170,13 @@ struct ChatListView: View {
     @StateObject private var chatTagsModel = ChatTagsModel.shared
     @State private var scrollToItemId: ChatItem.ID? = nil
 
-    // iOS 15 is required it to show/hide toolbar while chat is hidden/visible
-    @State private var viewOnScreen = true
+    @StateObject private var chromeScope = ChatListChromeScope()
+    @State private var showServersSummary = false
+    @ScaledMetric(relativeTo: .headline) private var chromeHeight = 56
 
     @AppStorage(GROUP_DEFAULT_ONE_HAND_UI, store: groupDefaults) private var oneHandUI = true
     @AppStorage(DEFAULT_ONE_HAND_UI_CARD_SHOWN) private var oneHandUICardShown = false
     @AppStorage(DEFAULT_ADDRESS_CREATION_CARD_SHOWN) private var addressCreationCardShown = false
-    @AppStorage(DEFAULT_TOOLBAR_MATERIAL) private var toolbarMaterial = ToolbarMaterial.defaultMaterial
     
     // Spec: spec/client/chat-list.md#body
     var body: some View {
@@ -213,6 +213,10 @@ struct ChatListView: View {
             NewChatSheet()
                 .environment(\EnvironmentValues.refresh as! WritableKeyPath<EnvironmentValues, RefreshAction?>, nil)
         }
+        .appSheet(isPresented: $showServersSummary) {
+            ServersSummaryView()
+                .environment(\EnvironmentValues.refresh as! WritableKeyPath<EnvironmentValues, RefreshAction?>, nil)
+        }
         .onChange(of: activeUserPickerSheet) {
             if $0 != nil {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -224,24 +228,15 @@ struct ChatListView: View {
     }
     
     private var chatListView: some View {
-        let tm = ToolbarMaterial.material(toolbarMaterial)
-        return withToolbar(tm) {
+        withToolbar {
             chatList
                 .background(theme.colors.background)
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarHidden(true)
-        }
-        .scaleEffect(x: 1, y: oneHandUI ? -1 : 1, anchor: .center)
-        .onAppear {
-            if #unavailable(iOS 16.0), !viewOnScreen {
-                viewOnScreen = true
-            }
+                .scaleEffect(x: 1, y: oneHandUI ? -1 : 1, anchor: .center)
         }
         .onDisappear {
             activeUserPickerSheet = nil
-            if #unavailable(iOS 16.0) {
-                viewOnScreen = false
-            }
         }
         .refreshable {
             AlertManager.shared.showAlert(Alert(
@@ -259,14 +254,6 @@ struct ChatListView: View {
                 secondaryButton: .cancel()
             ))
         }
-        .safeAreaInset(edge: .top) {
-            if oneHandUI { Divider().background(tm) }
-        }
-        .safeAreaInset(edge: .bottom) {
-            if oneHandUI {
-                Divider().padding(.bottom, Self.hasHomeIndicator ? 0 : 8).background(tm)
-            }
-        }
         .sheet(item: $sheet) { sheet in
             if #available(iOS 16.0, *) {
                 sheet.content.presentationDetents([.fraction(sheet.fraction)])
@@ -276,107 +263,40 @@ struct ChatListView: View {
         }
     }
     
-    static var hasHomeIndicator: Bool = {
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            window.safeAreaInsets.bottom > 0
-        } else { false }
-    }()
-    
-    @ViewBuilder func withToolbar(_ material: Material, content: () -> some View) -> some View {
-        if #available(iOS 16.0, *) {
-            if oneHandUI {
-                content()
-                    .toolbarBackground(.hidden, for: .bottomBar)
-                    .toolbar { bottomToolbar }
-            } else {
-                content()
-                    .safeAreaInset(edge: .top, spacing: 0) { nativeTopBar }
-            }
-        } else {
-            if oneHandUI {
-                content().toolbar { bottomToolbarGroup() }
-            } else {
-                content().safeAreaInset(edge: .top, spacing: 0) { nativeTopBar }
-            }
-        }
-    }
-
-    @ViewBuilder private var nativeTopBar: some View {
-        if !searchMode {
-            ChatListNavigationBar(
-                avatar: AnyView(leadingToolbarItem.accessibilityAddTraits(.isButton)
-                    .environmentObject(chatModel).environmentObject(theme)),
-                status: AnyView(Group { if !shouldShowOnboarding { SubsStatusIndicator() } }
-                    .environmentObject(chatModel).environmentObject(theme)),
-                compose: AnyView(trailingToolbarItem.environmentObject(chatModel).environmentObject(theme)),
-                tint: UIColor(theme.colors.primary)
-            )
-            .frame(height: 44)
-        }
-    }
-    
-    @ToolbarContentBuilder var topToolbar: some ToolbarContent {
-        ToolbarItem(placement: .topBarLeading) { leadingToolbarItem }
-        ToolbarItem(placement: .principal) { if !shouldShowOnboarding { SubsStatusIndicator() } }
-        ToolbarItem(placement: .topBarTrailing) { trailingToolbarItem }
-    }
-
-    @ToolbarContentBuilder var bottomToolbar: some ToolbarContent {
-        let padding: Double = Self.hasHomeIndicator ? 0 : 14
-        ToolbarItem(placement: .bottomBar) {
-            HStack {
-                leadingToolbarItem.padding(.bottom, padding)
-                Spacer()
-                if !shouldShowOnboarding {
-                    SubsStatusIndicator().padding(.bottom, padding)
-                    Spacer()
+    @ViewBuilder private func withToolbar(content: () -> some View) -> some View {
+        content()
+            .safeAreaInset(edge: oneHandUI ? .bottom : .top, spacing: 0) {
+                if oneHandUI || !searchMode {
+                    ChatListNativeChrome(
+                        floating: oneHandUI,
+                        avatar: chatModel.currentUser?.image,
+                        unreadProfiles: chatModel.users.contains { !$0.user.activeUser && !$0.user.hidden && $0.unreadCount > 0 },
+                        running: chatModel.chatRunning,
+                        showsStatus: !shouldShowOnboarding,
+                        primary: theme.colors.primary,
+                        online: chatModel.networkInfo.online,
+                        scope: chromeScope,
+                        profileAction: { userPickerShown = true },
+                        composeAction: {
+                            if chatModel.chatRunning == true {
+                                connectProgressManager.cancelConnectProgress()
+                                showNewChatSheet = true
+                            } else if chatModel.chatRunning == false {
+                                AlertManager.shared.showAlertMsg(
+                                    title: "Chat is stopped",
+                                    message: "You can start chat via app Settings / Database or by restarting the app"
+                                )
+                            }
+                        },
+                        statusAction: { showServersSummary = true },
+                        searchAction: { scrollToSearchBar = true }
+                    )
+                    .frame(height: min(chromeHeight, 88) + (oneHandUI ? 16 : 0))
+                    .id(oneHandUI)
                 }
-                trailingToolbarItem.padding(.bottom, padding)
             }
-            .contentShape(Rectangle())
-            .onTapGesture { scrollToSearchBar = true }
-        }
     }
 
-    @ToolbarContentBuilder func bottomToolbarGroup() -> some ToolbarContent {
-        let padding: Double = Self.hasHomeIndicator ? 0 : 14
-        ToolbarItemGroup(placement: viewOnScreen ? .bottomBar : .principal) {
-            leadingToolbarItem.padding(.bottom, padding)
-            Spacer()
-            if !shouldShowOnboarding {
-                SubsStatusIndicator().padding(.bottom, padding)
-                Spacer()
-            }
-            trailingToolbarItem.padding(.bottom, padding)
-        }
-    }
-
-    @ViewBuilder var leadingToolbarItem: some View {
-        let user = chatModel.currentUser ?? User.sampleData
-        ZStack(alignment: .topTrailing) {
-            ProfileImage(imageStr: user.image, size: 32, color: Color(uiColor: .quaternaryLabel))
-                .padding([.top, .trailing], 3)
-            let allRead = chatModel.users
-                .filter { u in !u.user.activeUser && !u.user.hidden }
-                .allSatisfy { u in u.unreadCount == 0 }
-            if !allRead {
-                unreadBadge(size: 12)
-            }
-        }
-        .onTapGesture {
-            userPickerShown = true
-        }
-    }
-    
-    @ViewBuilder var trailingToolbarItem: some View {
-        switch chatModel.chatRunning {
-        case .some(true): NewChatMenuButton(showNewChatSheet: $showNewChatSheet)
-        case .some(false): chatStoppedIcon()
-        case .none: EmptyView()
-        }
-    }
-    
     private var shouldShowOnboarding: Bool {
         !addressCreationCardShown && !chatModel.chats.isEmpty && !hasConversations
     }
@@ -462,6 +382,7 @@ struct ChatListView: View {
                     }
                 }
                 .listStyle(.plain)
+                .background(ChatListScrollProbe(scope: chromeScope))
                 .onChange(of: chatModel.chatId) { currentChatId in
                     if let chatId = chatModel.chatToTop, currentChatId != chatId {
                         chatModel.chatToTop = nil
@@ -508,13 +429,6 @@ struct ChatListView: View {
         }
     }
 
-    
-    // Spec: spec/client/chat-list.md#unreadBadge
-    private func unreadBadge(size: CGFloat = 18) -> some View {
-        Circle()
-            .frame(width: size, height: size)
-            .foregroundColor(theme.colors.primary)
-    }
     
     @ViewBuilder private func chatView() -> some View {
         if let chatId = chatModel.chatId, let chat = chatModel.getChat(chatId) {
@@ -584,128 +498,6 @@ struct ChatListView: View {
     }
 }
 
-struct SubsStatusIndicator: View {
-    @State private var subs: SMPServerSubs = SMPServerSubs.newSMPServerSubs
-    @State private var hasSess: Bool = false
-    @State private var task: Task<Void, Never>?
-    @State private var showServersSummary = false
-
-    @AppStorage(DEFAULT_SHOW_SUBSCRIPTION_PERCENTAGE) private var showSubscriptionPercentage = false
-
-    var body: some View {
-        Button {
-            showServersSummary = true
-        } label: {
-            HStack(spacing: 4) {
-                Text("Chats").foregroundStyle(Color.primary).fixedSize().font(.headline)
-                SubscriptionStatusIndicatorView(subs: subs, hasSess: hasSess)
-                if showSubscriptionPercentage {
-                    SubscriptionStatusPercentageView(subs: subs, hasSess: hasSess)
-                }
-            }
-        }
-        .disabled(ChatModel.shared.chatRunning != true)
-        .onAppear {
-            startTask()
-        }
-        .onDisappear {
-            stopTask()
-        }
-        .appSheet(isPresented: $showServersSummary) {
-            ServersSummaryView()
-                .environment(\EnvironmentValues.refresh as! WritableKeyPath<EnvironmentValues, RefreshAction?>, nil)
-        }
-    }
-
-    private func startTask() {
-        task = Task {
-            while !Task.isCancelled {
-                if AppChatState.shared.value == .active, ChatModel.shared.chatRunning == true {
-                    do {
-                        let (subs, hasSess) = try await getAgentSubsTotal()
-                        await MainActor.run {
-                            self.subs = subs
-                            self.hasSess = hasSess
-                        }
-                    } catch let error {
-                        logger.error("getSubsTotal error: \(responseError(error))")
-                    }
-                }
-                try? await Task.sleep(nanoseconds: 1_000_000_000) // Sleep for 1 second
-            }
-        }
-    }
-
-    func stopTask() {
-        task?.cancel()
-        task = nil
-    }
-}
-
-private struct ChatListNavigationBar: UIViewControllerRepresentable {
-    var avatar: AnyView
-    var status: AnyView
-    var compose: AnyView
-    var tint: UIColor
-
-    func makeUIViewController(context: Context) -> BarController {
-        BarController(avatar: avatar, status: status, compose: compose)
-    }
-
-    func updateUIViewController(_ controller: BarController, context: Context) {
-        controller.avatar.rootView = avatar
-        controller.status.rootView = status
-        controller.compose.rootView = compose
-        controller.bar.tintColor = tint
-        for host in [controller.avatar, controller.status, controller.compose] {
-            host.view.invalidateIntrinsicContentSize()
-        }
-    }
-
-    final class BarController: UIViewController {
-        let bar = UINavigationBar()
-        let avatar: UIHostingController<AnyView>
-        let status: UIHostingController<AnyView>
-        let compose: UIHostingController<AnyView>
-
-        init(avatar: AnyView, status: AnyView, compose: AnyView) {
-            self.avatar = UIHostingController(rootView: avatar)
-            self.status = UIHostingController(rootView: status)
-            self.compose = UIHostingController(rootView: compose)
-            super.init(nibName: nil, bundle: nil)
-        }
-
-        required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            view.backgroundColor = .clear
-            bar.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(bar)
-            NSLayoutConstraint.activate([
-                bar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                bar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                bar.topAnchor.constraint(equalTo: view.topAnchor),
-                bar.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ])
-            for host in [avatar, status, compose] {
-                addChild(host)
-                host.view.backgroundColor = .clear
-                if #available(iOS 16.0, *) { host.sizingOptions = .intrinsicContentSize }
-            }
-            let item = UINavigationItem()
-            avatar.view.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-            compose.view.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-            status.view.frame = CGRect(x: 0, y: 0, width: 180, height: 44)
-            item.leftBarButtonItem = UIBarButtonItem(customView: avatar.view)
-            item.rightBarButtonItem = UIBarButtonItem(customView: compose.view)
-            item.titleView = status.view
-            bar.setItems([item], animated: false)
-            for host in [avatar, status, compose] { host.didMove(toParent: self) }
-        }
-    }
-}
-
 // Spec: spec/client/chat-list.md#ChatListSearchBar
 struct ChatListSearchBar: View {
     @EnvironmentObject var m: ChatModel
@@ -739,38 +531,17 @@ struct ChatListSearchBar: View {
             } else {
                 ScrollView([.horizontal], showsIndicators: false) { TagsView(parentSheet: $parentSheet, searchText: $searchText) }
             }
-            HStack(spacing: 12) {
-                HStack(spacing: 4) {
-                    Image(systemName: "magnifyingglass")
-                    TextField("Search or paste SimpleX link", text: $searchText)
-                        .foregroundColor(searchShowingSimplexLink ? theme.colors.secondary : theme.colors.onBackground)
-                        .disabled(searchShowingSimplexLink)
-                        .focused($searchFocussed)
-                        .frame(maxWidth: .infinity)
-                    if connectProgressManager.showConnectProgress != nil {
-                        ProgressView()
-                    }
-                    if !searchText.isEmpty {
-                        Image(systemName: "xmark.circle.fill")
-                            .onTapGesture {
-                                searchText = ""
-                            }
-                    }
-                }
-                .padding(EdgeInsets(top: 7, leading: 7, bottom: 7, trailing: 7))
-                .foregroundColor(theme.colors.secondary)
-                .background(Color(.tertiarySystemFill))
-                .cornerRadius(10.0)
-
-                if searchFocussed {
-                    Text("Cancel")
-                        .foregroundColor(theme.colors.primary)
-                        .onTapGesture {
-                            searchText = ""
-                            searchFocussed = false
-                        }
-                } else if m.chats.count > 0 {
-                    toggleFilterButton()
+            HStack(spacing: 8) {
+                ChatListNativeSearch(
+                    text: $searchText,
+                    focused: Binding(get: { searchFocussed }, set: { searchFocussed = $0 }),
+                    linking: searchShowingSimplexLink,
+                    busy: connectProgressManager.showConnectProgress != nil,
+                    tint: UIColor(theme.colors.primary)
+                )
+                .frame(height: 52)
+                if !searchFocussed && !m.chats.isEmpty {
+                    toggleFilterButton().frame(width: 44, height: 44)
                 }
             }
             if !oneHandUI, let candidate = connectNameCandidate {
@@ -844,21 +615,8 @@ struct ChatListSearchBar: View {
 
     private func toggleFilterButton() -> some View {
         let showUnread = chatTagsModel.activeFilter == .unread
-        return ZStack {
-            Color.clear
-                .frame(width: 22, height: 22)
-            Image(systemName: showUnread ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease")
-                .resizable()
-                .scaledToFit()
-                .foregroundColor(showUnread ? theme.colors.primary : theme.colors.secondary)
-                .frame(width: showUnread ? 22 : 16, height: showUnread ? 22 : 16)
-                .onTapGesture {
-                    if chatTagsModel.activeFilter == .unread {
-                        chatTagsModel.activeFilter = nil
-                    } else {
-                        chatTagsModel.activeFilter = .unread
-                    }
-                }
+        return ChatListUnreadButton(selected: showUnread, tint: UIColor(theme.colors.primary)) {
+            chatTagsModel.activeFilter = showUnread ? nil : .unread
         }
     }
 

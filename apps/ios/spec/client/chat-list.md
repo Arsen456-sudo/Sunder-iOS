@@ -63,13 +63,13 @@ The root list view. Key responsibilities:
 ### Data Source
 - Reads `ChatModel.shared.chats` (all conversations)
 - Applies active filter from `ChatTagsModel.shared.activeFilter`
-- Applies search query filtering via [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L541)
+- Applies search query filtering via [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L453)
 - Sorts by last activity (most recent first), with pinned chats at top
 
 ### Layout
 - Uses SwiftUI `List` with `ForEach` over filtered chats
 - Each row is a `ChatListNavLink` wrapping a `ChatPreviewView`
-- Pull-to-refresh triggers `updateChats()` API call
+- Pull-to-refresh confirms and invokes `reconnectAllServers()`
 - Empty state: `ChatHelp` view with getting-started guidance
 
 ### Connection Cards
@@ -80,11 +80,10 @@ The root list view. Key responsibilities:
 
 | Function | Line | Description |
 |----------|------|-------------|
-| [`body`](../../Shared/Views/ChatList/ChatListView.swift#L182) | 183 | Main view body |
-| [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L541) | 555 | Applies active filter and search to chat list |
-| [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L584) | 598 | Normalizes search text for comparison |
-| [`unreadBadge()`](../../Shared/Views/ChatList/ChatListView.swift#L515) | 529 | Renders unread count circle badge |
-| [`stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L535) | 549 | Stops any playing voice message |
+| [`body`](../../Shared/Views/ChatList/ChatListView.swift#L88) | See link | Main view body |
+| [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L453) | See link | Applies active filter and search to chat list |
+| [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L496) | See link | Normalizes search text for comparison |
+| [`stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L447) | See link | Stops any playing voice message |
 
 ---
 
@@ -172,7 +171,7 @@ Horizontal scrolling tab bar below the navigation bar. Tabs:
 | Group Reports | `.presetTag(.groupReports)` | Groups with pending reports |
 | User tags | `.userTag(ChatTag)` | User-defined custom tags |
 
-Filter matching is handled by [`presetTagMatchesChat()`](../../Shared/Views/ChatList/ChatListView.swift#L1184) and the in-view [`TagsView`](../../Shared/Views/ChatList/ChatListView.swift#L978) struct.
+Filter matching is handled by [`presetTagMatchesChat()`](../../Shared/Views/ChatList/ChatListView.swift#L940) and the in-view [`TagsView`](../../Shared/Views/ChatList/ChatListView.swift#L734) struct.
 
 ### ChatTagsModel State
 
@@ -197,7 +196,7 @@ class ChatTagsModel: ObservableObject {
 |------|------|------|-------------|
 | [`PresetTag`](../../Shared/Views/ChatList/ChatListView.swift#L38) | ChatListView.swift | 36 | Enum of built-in filter categories |
 | [`ActiveFilter`](../../Shared/Views/ChatList/ChatListView.swift#L55) | ChatListView.swift | 53 | Enum wrapping preset, user-tag, or unread filter |
-| [`setActiveFilter()`](../../Shared/Views/ChatList/ChatListView.swift#L1163) | ChatListView.swift | 1113 | Applies a filter and persists selection |
+| [`setActiveFilter()`](../../Shared/Views/ChatList/ChatListView.swift#L921) | ChatListView.swift | 1113 | Applies a filter and persists selection |
 
 ### Tag Management Commands
 - `apiCreateChatTag(tag: ChatTagData)` -- create tag
@@ -212,7 +211,7 @@ class ChatTagsModel: ObservableObject {
 
 Search is available via pull-down gesture or search button in the navigation bar.
 
-**Search bar UI:** [`ChatListSearchBar`](../../Shared/Views/ChatList/ChatListView.swift#L712)
+**Search bar UI:** [`ChatListSearchBar`](../../Shared/Views/ChatList/ChatListView.swift#L502)
 
 ### Filtering Logic
 - Filters `ChatModel.chats` by matching search text against:
@@ -220,7 +219,7 @@ Search is available via pull-down gesture or search button in the navigation bar
   - `chatInfo.localAlias` (local alias)
   - `chatInfo.fullName` (full name)
 - For deeper message content search, uses `apiGetChat(chatId:, search:)` parameter
-- Core logic in [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L541) and [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L584)
+- Core logic in [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L453) and [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L496)
 
 ### Search Results
 - Matching chats are displayed in the same list format
@@ -311,12 +310,83 @@ padding, rounding and dismissal behavior are retained. No replacement donation i
 
 ## 11. Sunder UIKit top bar
 
-- [`private var nativeTopBar:`](../../Shared/Views/ChatList/ChatListView.swift#L305): Scopes UIKit to the visible top toolbar, injects ChatModel/AppTheme into hosted controls and keeps search and one-hand mode intact.
-- [`private struct ChatListNavigationBar:`](../../Shared/Views/ChatList/ChatListView.swift#L645): UIViewControllerRepresentable owns a standalone native navigation bar, with no enclosing-navigation delegate or appearance mutation.
-- [`func makeUIViewController(context:`](../../Shared/Views/ChatList/ChatListView.swift#L651): Creates one BarController for the representable lifetime.
-- [`func updateUIViewController(_ controller: BarController`](../../Shared/Views/ChatList/ChatListView.swift#L655): Refreshes existing hosting roots and tint without rebuilding navigation items.
-- [`init(avatar: AnyView, status:`](../../Shared/Views/ChatList/ChatListView.swift#L671): Creates stable hosting controllers for the avatar, connection status and compose controls.
-- [`required init?(coder:`](../../Shared/Views/ChatList/ChatListView.swift#L678): Rejects unsupported storyboard construction; only programmatic creation is used.
-- [`override func viewDidLoad()`](../../Shared/Views/ChatList/ChatListView.swift#L680): Pins the bar, establishes child containment and installs the three UIKit navigation-item views.
+### Native chat-list controls (2026-10-29)
 
-No custom bar background or blur is installed. iOS 26 renders standard UIKit item glass when compiled with the current SDK. The lower reachable toolbar, chat list and conversation navigation are unchanged. Native build/device appearance remain pending CI/device validation.
+`withToolbar` inserts native chrome outside the list inversion, using the existing
+one-hand preference. `ChatListChromeState` carries only display data. UIKit owns
+buttons, constraints, image rendering and accessibility; closures preserve all
+existing profile, compose, stopped-chat and server-summary actions.
+
+Top mode uses `UINavigationBar`; one-hand mode uses `UIGlassContainerEffect` with
+three capsule/circle `UIGlassEffect` children. Only controls use glass, not rows.
+Native search delegates update the original bindings, retaining link/name resolution,
+debounce, cancellation and filters. The unread button uses native glass configuration.
+
+`ChatListChromeScope` weakly connects the screen's List to its controller. The probe
+checks geometry and UITableView/UICollectionView type within the local hierarchy,
+never searches the entire window, and caches the match. The controller attaches one
+`UIScrollEdgeElementContainerInteraction`, setting logical top `.soft` (physical
+bottom for the inverted one-hand list), and restores the previous edge on detach.
+Subscription polling is visibility-scoped, cancellable, and preserves existing
+formatting/proxy colors. Avatar decoding/cropping is cached by image string.
+
+All iOS 26 APIs have availability guards; deployment target remains iOS 15.
+Reduce Motion disables interactive bounce; Reduce Transparency uses opaque fallback.
+SwiftUI still owns list rows, swipes, tags, onboarding, routes and modal contents.
+This is not a full-application UIKit migration. Device appearance needs verification.
+
+Native source entry points (private helpers are included for lifecycle auditing):
+
+- [`init(floating: Bool)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L41)
+- [`super.init(nibName: nil, bundle: nil)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L43)
+- [`override func viewDidLoad()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L49)
+- [`private func installNavigationBar()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L80)
+- [`private func installFloatingBar()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L95)
+- [`private func updateMaterials()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L141)
+- [`override func viewDidLayoutSubviews()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L178)
+- [`func update(_ state: ChatListChromeState)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L186)
+- [`private func render()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L195)
+- [`func bindScrollView(_ scrollView: UIScrollView)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L269)
+- [`func unbindScrollView()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L289)
+- [`override func viewDidAppear(_ animated: Bool)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L295)
+- [`override func viewWillDisappear(_ animated: Bool)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L301)
+- [`func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool`](../../Shared/Views/ChatList/ChatListChromeController.swift#L308)
+- [`@objc private func openProfile()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L317)
+- [`@objc private func openStatus()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L318)
+- [`@objc private func openCompose()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L319)
+- [`@objc private func openSearch()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L320)
+- [`deinit`](../../Shared/Views/ChatList/ChatListChromeController.swift#L322)
+- [`func bind()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L10)
+- [`func makeCoordinator() -> Coordinator`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L31)
+- [`func makeUIViewController(context: Context) -> ChatListChromeController`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L33)
+- [`func updateUIViewController(_ controller: ChatListChromeController, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L44)
+- [`static func dismantleUIViewController(_ controller: ChatListChromeController, coordinator: Coordinator)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L54)
+- [`init(_ parent: ChatListNativeChrome)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L69)
+- [`func render()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L71)
+- [`func start()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L113)
+- [`func stop()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L135)
+- [`func makeUIView(context: Context) -> Probe`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L145)
+- [`func updateUIView(_ view: Probe, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L146)
+- [`init(scope: ChatListChromeScope)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L152)
+- [`super.init(frame: .zero)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L154)
+- [`override func didMoveToWindow()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L161)
+- [`override func layoutSubviews()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L162)
+- [`func resolve()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L164)
+- [`private func findList(in root: UIView, rect: CGRect, window: UIWindow) -> UIScrollView?`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L191)
+- [`func makeCoordinator() -> Coordinator`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L215)
+- [`func makeUIView(context: Context) -> UISearchBar`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L217)
+- [`func updateUIView(_ search: UISearchBar, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L234)
+- [`init(_ parent: ChatListNativeSearch)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L263)
+- [`super.init()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L265)
+- [`func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L275)
+- [`func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L276)
+- [`func searchBarTextDidEndEditing(_ searchBar: UISearchBar)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L277)
+- [`func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L278)
+- [`func searchBarSearchButtonClicked(_ searchBar: UISearchBar)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L279)
+- [`func searchBarCancelButtonClicked(_ searchBar: UISearchBar)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L280)
+- [`@objc func clearText()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L285)
+- [`func makeCoordinator() -> Coordinator`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L295)
+- [`func makeUIView(context: Context) -> UIButton`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L296)
+- [`func updateUIView(_ button: UIButton, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L301)
+- [`init(_ action: @escaping () -> Void)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L319)
+- [`@objc func tap()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L320)

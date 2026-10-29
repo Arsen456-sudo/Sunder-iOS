@@ -72,3 +72,5 @@ SimpleXApp (root entry point)
 | `SimpleXChat/APITypes.swift` | APIResult, ChatError, ChatCmdProtocol (shared framework) |
 | `SimpleXChat/ChatTypes.swift` | User, ChatInfo, Contact, GroupInfo, ChatItem data types |
 | `SimpleXChat/SimpleX.h` | C header for Haskell FFI functions |
+
+Chat-list native controls: `Shared/Views/ChatList/ChatListChromeController.swift` and `ChatListNativeControls.swift` are covered by [client/chat-list.md](client/chat-list.md) and [../product/views/chat-list.md](../product/views/chat-list.md). SwiftUI still owns rows and modal contents.
