@@ -465,3 +465,8 @@ navigation on the actual development branch rather than the original default bra
 The issue destination remains rooted at the repository. The final binary must name its
 corresponding immutable source ref. Visible extension and permission captions use Sunder;
 original copyright strings, bundle IDs, entitlements and signing remain unchanged.
+
+### Native system design compatibility (2026-10-29)
+The application Info.plist sets `UIDesignRequiresCompatibility` to false. The OS
+can render its current system chrome. This is an app-wide UIKit prerequisite;
+no other screen's layout or navigation route is rewritten by the chat-list change.

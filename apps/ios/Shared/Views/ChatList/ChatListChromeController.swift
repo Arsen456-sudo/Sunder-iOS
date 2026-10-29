@@ -27,13 +27,10 @@ final class ChatListChromeController: UIViewController, UIGestureRecognizerDeleg
     private let statusButton = UIButton(type: .system)
     private let composeButton = UIButton(type: .system)
     private let unreadDot = UIView()
-    private let bar = UINavigationBar()
-    private let item = UINavigationItem()
     private let glassContainer = UIVisualEffectView()
     private let stack = UIStackView()
     private var islands: [UIVisualEffectView] = []
     private var state = ChatListChromeState(title: "")
-    private var renderedAction = -1
     private weak var boundScrollView: UIScrollView?
     private var detachEdge: (() -> Void)?
     private var accessibilityObservers: [NSObjectProtocol] = []
@@ -67,7 +64,7 @@ final class ChatListChromeController: UIViewController, UIGestureRecognizerDeleg
             unreadDot.trailingAnchor.constraint(equalTo: avatarButton.trailingAnchor, constant: -5)
         ])
 
-        if floating { installFloatingBar() } else { installNavigationBar() }
+        installFloatingBar()
         for notification in [UIAccessibility.reduceMotionStatusDidChangeNotification,
                              UIAccessibility.reduceTransparencyStatusDidChangeNotification] {
             accessibilityObservers.append(NotificationCenter.default.addObserver(
@@ -75,21 +72,6 @@ final class ChatListChromeController: UIViewController, UIGestureRecognizerDeleg
             ) { [weak self] _ in self?.updateMaterials() })
         }
         render()
-    }
-
-    private func installNavigationBar() {
-        bar.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bar)
-        NSLayoutConstraint.activate([
-            bar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bar.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            bar.heightAnchor.constraint(equalToConstant: 44)
-        ])
-        avatarButton.frame.size = CGSize(width: 44, height: 44)
-        item.leftBarButtonItem = UIBarButtonItem(customView: avatarButton)
-        item.titleView = statusButton
-        bar.setItems([item], animated: false)
     }
 
     private func installFloatingBar() {
@@ -139,7 +121,6 @@ final class ChatListChromeController: UIViewController, UIGestureRecognizerDeleg
     }
 
     private func updateMaterials() {
-        guard floating else { return }
         if #available(iOS 26.0, *), !UIAccessibility.isReduceTransparencyEnabled {
             let containerEffect = UIGlassContainerEffect()
             containerEffect.spacing = 8
@@ -194,12 +175,7 @@ final class ChatListChromeController: UIViewController, UIGestureRecognizerDeleg
 
     private func render() {
         overrideUserInterfaceStyle = state.interfaceStyle
-        bar.tintColor = state.tint
         var avatarConfig = UIButton.Configuration.plain()
-        if #available(iOS 26.0, *), !floating, !UIAccessibility.isReduceTransparencyEnabled {
-            avatarConfig = .glass()
-            avatarConfig.cornerStyle = .capsule
-        }
         avatarConfig.image = state.avatar ?? UIImage(systemName: "person.crop.circle.fill")
         avatarConfig.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 32)
         avatarConfig.baseForegroundColor = .secondaryLabel
@@ -236,31 +212,12 @@ final class ChatListChromeController: UIViewController, UIGestureRecognizerDeleg
         statusButton.isHidden = !state.showsStatus
         statusButton.accessibilityLabel = state.title
         statusButton.accessibilityValue = state.percentage
-        if !floating {
-            item.titleView = state.showsStatus ? statusButton : nil
-            statusButton.sizeToFit()
-        }
-
-        if floating {
-            var composeConfig = UIButton.Configuration.plain()
-            composeConfig.image = UIImage(systemName: state.running == false ? "exclamationmark.octagon.fill" : "square.and.pencil")
-            composeConfig.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 22)
-            composeConfig.baseForegroundColor = state.running == false ? .systemRed : state.tint
-            composeButton.configuration = composeConfig
-            islands[2].isHidden = state.running == nil
-        } else if renderedAction == (state.running == true ? 1 : state.running == false ? 0 : 2) {
-            // Keep system bar items stable while subscription percentages refresh.
-        } else if state.running == true {
-            item.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(openCompose))
-        } else if state.running == false {
-            let stopped = UIBarButtonItem(image: UIImage(systemName: "exclamationmark.octagon.fill"), style: .plain,
-                                          target: self, action: #selector(openCompose))
-            stopped.tintColor = .systemRed
-            item.rightBarButtonItem = stopped
-        } else {
-            item.rightBarButtonItem = nil
-        }
-        renderedAction = state.running == true ? 1 : state.running == false ? 0 : 2
+        var composeConfig = UIButton.Configuration.plain()
+        composeConfig.image = UIImage(systemName: state.running == false ? "exclamationmark.octagon.fill" : "square.and.pencil")
+        composeConfig.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 22)
+        composeConfig.baseForegroundColor = state.running == false ? .systemRed : state.tint
+        composeButton.configuration = composeConfig
+        islands[2].isHidden = state.running == nil
         view.setNeedsLayout()
     }
 

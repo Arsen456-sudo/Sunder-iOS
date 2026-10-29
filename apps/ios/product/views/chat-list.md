@@ -24,7 +24,7 @@ Main screen of the SimpleX Chat app. Displays all conversations sorted by last a
 | New chat button (pencil icon) | Trailing | Opens `NewChatSheet` modal |
 
 The toolbar supports two layout modes:
-- **Standard (top)**: UIKit `UINavigationBar` in the root list top safe area; native item backgrounds follow the installed iOS design. Existing avatar, localized Chats/status control and new-chat actions are retained. Search hides this bar; pushed screens own their navigation bars.
+- **Standard (top)**: Three floating UIKit glass islands in the root list top safe area: circular avatar, central Chats/status capsule and circular compose action. Existing avatar, localized Chats/status control and new-chat actions are retained. Search hides this bar; pushed screens own their navigation bars.
 - **One-hand UI (bottom)**: Floating avatar, status capsule and compose button share a native glass container, inset 10 points from the screen edges. Only the list is vertically flipped; controls remain upright. iOS 26 uses interactive system Liquid Glass. Older versions use system materials; Reduce Transparency uses opaque accessible surfaces.
 
 ### Search Bar
@@ -143,3 +143,8 @@ Only the chat-list controls are redesigned. Chat rows, tags, onboarding, profile
 switcher and modal content retain their existing SwiftUI implementation and actions.
 The root list uses the system soft scroll-edge effect behind its controls on iOS 26;
 the effect detaches when leaving this screen. No conversation or settings UI changes.
+
+The app-level `UIDesignRequiresCompatibility` flag is false, enabling the OS's
+current UI design. This prerequisite is global: system-owned bars, sheets and
+controls elsewhere may also adopt the current appearance, although only the
+chat-list layout is redesigned. Explicit glass stays availability-guarded.

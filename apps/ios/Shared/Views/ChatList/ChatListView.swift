@@ -291,7 +291,7 @@ struct ChatListView: View {
                         statusAction: { showServersSummary = true },
                         searchAction: { scrollToSearchBar = true }
                     )
-                    .frame(height: min(chromeHeight, 88) + (oneHandUI ? 16 : 0))
+                    .frame(height: min(chromeHeight, 88) + 16)
                     .id(oneHandUI)
                 }
             }
