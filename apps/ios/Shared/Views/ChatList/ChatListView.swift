@@ -279,17 +279,17 @@ struct ChatListView: View {
     @ViewBuilder private func withToolbar(content: () -> some View) -> some View {
         if oneHandUI {
             content().navigationBarHidden(true).toolbar { systemBottomToolbar }
+        } else if searchMode {
+            content().navigationBarHidden(true)
         } else {
-            content().navigationBarHidden(searchMode).toolbar { systemTopToolbar }
+            content().navigationBarHidden(false).toolbar { systemTopToolbar }
         }
     }
 
     @ToolbarContentBuilder private var systemTopToolbar: some ToolbarContent {
-        if !searchMode {
-            ToolbarItem(placement: .navigationBarLeading) { profileButton }
-            ToolbarItem(placement: .principal) { statusButton }
-            ToolbarItem(placement: .navigationBarTrailing) { composeButton }
-        }
+        ToolbarItem(placement: .navigationBarLeading) { profileButton }
+        ToolbarItem(placement: .principal) { statusButton }
+        ToolbarItem(placement: .navigationBarTrailing) { composeButton }
     }
 
     @ToolbarContentBuilder private var systemBottomToolbar: some ToolbarContent {

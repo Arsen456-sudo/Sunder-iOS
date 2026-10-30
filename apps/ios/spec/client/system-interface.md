@@ -170,7 +170,12 @@ View-level iOS 16 modifier. SystemInterface provides the guarded scroll-backgrou
 helper used by ServersSummaryView. The deployment target remains iOS 15 and the
 system presentation/actions remain the same.
 
-- [`@ToolbarContentBuilder private var systemTopToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L287)
+- [`@ToolbarContentBuilder private var systemTopToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L289)
 - [`@ToolbarContentBuilder private var systemBottomToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L295)
 - [`@ViewBuilder private var statusButton: some View`](../../Shared/Views/ChatList/ChatListView.swift#L305)
 - [`ifAvailableHideScrollBackground()`](../../Shared/Views/ChatList/SystemInterface.swift#L74)
+
+The toolbar definitions are unconditional for iOS 15 compatibility. withToolbar's
+ViewBuilder selects bottom, search-hidden or top presentation; it does not use
+ToolbarContentBuilder.buildIf (introduced in iOS 16). Search visibility, actions and
+appearance remain unchanged.

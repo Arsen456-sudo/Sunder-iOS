@@ -1334,7 +1334,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/ChatListView.swift",
-      "sha256": "cb6237829d99a718ad23c398255a4f73454852125dd156d9acc46e4e6a73c7ec",
+      "sha256": "2a1e325bdfcd5f6a7de7b7cb5a7ef9064793c7126c8478a6563a64cee8b929e5",
       "swiftui_view_declarations": [
         "UserPickerSheetView",
         "ChatListView",
@@ -1353,7 +1353,8 @@
       ],
       "system_controls": [],
       "hidden_navigation": [
-        281
+        281,
+        283
       ],
       "legacy_material_references": [],
       "native_bridges": [],
