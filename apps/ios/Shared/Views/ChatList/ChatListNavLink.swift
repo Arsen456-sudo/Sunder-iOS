@@ -20,12 +20,12 @@ typealias DynamicSizes = (
 )
 
 private let dynamicSizes: [DynamicTypeSize: DynamicSizes] = [
-    .xSmall: (68, 55, 33, 22, 18, 9, 3),
-    .small: (72, 57, 34, 22, 18, 9, 3),
-    .medium: (76, 60, 36, 22, 18, 10, 4),
-    .large: (80, 63, 38, 24, 20, 10, 4),
-    .xLarge: (88, 67, 41, 24, 20, 10, 4),
-    .xxLarge: (100, 71, 44, 27, 22, 11, 4),
+    .xSmall: (62, 44, 28, 18, 16, 9, 3),
+    .small: (64, 46, 30, 18, 16, 9, 3),
+    .medium: (68, 48, 30, 18, 17, 10, 4),
+    .large: (72, 52, 32, 20, 18, 10, 4),
+    .xLarge: (80, 56, 35, 22, 19, 10, 4),
+    .xxLarge: (92, 62, 40, 24, 21, 11, 4),
     .xxxLarge: (110, 75, 48, 30, 24, 12, 5),
     .accessibility1: (110, 75, 48, 30, 24, 12, 5),
     .accessibility2: (114, 75, 48, 30, 24, 12, 5),
@@ -46,7 +46,10 @@ struct ChatListNavLink: View {
     @EnvironmentObject var theme: AppTheme
     @EnvironmentObject var chatTagsModel: ChatTagsModel
     @Environment(\.dynamicTypeSize) private var userFont: DynamicTypeSize
-    @AppStorage(GROUP_DEFAULT_ONE_HAND_UI, store: groupDefaults) private var oneHandUI = false
+    @AppStorage(GROUP_DEFAULT_ONE_HAND_UI, store: groupDefaults) private var legacyOneHandUI = false
+    private var oneHandUI: Bool {
+        if #available(iOS 26.0, *) { return false }; return legacyOneHandUI
+    }
     @ObservedObject var chat: Chat
     @Binding var parentSheet: SomeSheet<AnyView>?
     @State private var showContactRequestDialog = false

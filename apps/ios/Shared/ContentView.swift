@@ -50,6 +50,7 @@ struct ContentView: View {
     @State private var showSetPasscode = false
     @State private var waitingForOrPassedAuth = true
     @State private var chatListUserPickerSheet: UserPickerSheet? = nil
+    @StateObject private var mainNavigation = SunderMainNavigation()
 
     private let callTopPadding: CGFloat = 40
 
@@ -252,9 +253,29 @@ struct ContentView: View {
         )
     }
 
+    private func mainTabs() -> some View {
+        let redaction = appSheetState.redactionReasons(protectScreen)
+        func root<V: View>(_ view: V) -> AnyView {
+            AnyView(view
+                .environmentObject(chatModel)
+                .environmentObject(theme)
+                .environmentObject(sceneDelegate)
+                .environmentObject(ChatTagsModel.shared)
+                .environment(\.sunderFolderSaveBusy, $mainNavigation.savingFolder)
+                .redacted(reason: redaction))
+        }
+        return SunderMainTabs(navigation: mainNavigation, roots: [
+            root(ChatListView(activeUserPickerSheet: $chatListUserPickerSheet, navigation: mainNavigation)),
+            root(UserPickerSheetView(sheet: .settings).id(chatModel.currentUser?.userId)),
+            root(UserPickerSheetView(sheet: .currentProfile).id(chatModel.currentUser?.userId))
+        ], avatar: chatModel.currentUser?.image, conversationOpen: chatModel.chatId != nil)
+        .ignoresSafeArea(.container)
+        .onChange(of: chatModel.chatId) { if $0 != nil { mainNavigation.selected = 0 } }
+    }
+
     private func mainView() -> some View {
         ZStack(alignment: .top) {
-            ChatListView(activeUserPickerSheet: $chatListUserPickerSheet)
+            mainTabs()
                 .redacted(reason: appSheetState.redactionReasons(protectScreen))
             .onAppear {
                 // Connect only after the notifications prompt is resolved: the system prompt suspends

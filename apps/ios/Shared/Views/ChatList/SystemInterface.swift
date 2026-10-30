@@ -96,3 +96,10 @@ struct SunderConversationScrollExtent: ViewModifier {
         }
     }
 }
+
+struct SunderChatListEdges: ViewModifier {
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) { content.scrollEdgeEffectStyle(.soft, for: [.top, .bottom]) }
+        else { content }
+    }
+}

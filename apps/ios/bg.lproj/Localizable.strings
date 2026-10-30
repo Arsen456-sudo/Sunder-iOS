@@ -4618,3 +4618,6 @@ server test failure */
 /* No comment provided by engineer. */
 "Your SimpleX address" = "Вашият адрес в SimpleX";
 
+
+/* Sunder: user-managed chat folders. */
+"Chat folders" = "Папки с чатове";

@@ -51,3 +51,14 @@ must include large text, keyboard/cancel, search links, dark/light and push/back
 
 Safe-area review: only the message-list layer extends under the top navigation
 bar. Composer, search inset and overlay controls retain their safe-area layout.
+
+## Main navigation revision (2026-10-30)
+- UIKit UITabBarController with three persistent roots and native UISearchTab.
+- Profile tab uses a circular, original-color avatar; UIKit button image views use
+  fixed centered bounds to avoid inherited symbol baseline placement.
+- Main Edit/folder manager, smaller normal chat rows, explicit native top search
+  with a separate Close action, and one pinned UIKit folder selector.
+- Folder membership reuses ChatTag APIs, including non-destructive multi-folder
+  selection and retry of partially saved folders. Other account routes are retained.
+- Main roots remain SwiftUI content hosted by UIKit; this is not a full rewrite of
+  each settings/chat/profile implementation. Device checks are still required.

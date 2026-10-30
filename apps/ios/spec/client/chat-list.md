@@ -63,7 +63,7 @@ The root list view. Key responsibilities:
 ### Data Source
 - Reads `ChatModel.shared.chats` (all conversations)
 - Applies active filter from `ChatTagsModel.shared.activeFilter`
-- Applies search query filtering via [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L532)
+- Applies search query filtering via [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L572)
 - Sorts by last activity (most recent first), with pinned chats at top
 
 ### Layout
@@ -81,9 +81,9 @@ The root list view. Key responsibilities:
 | Function | Line | Description |
 |----------|------|-------------|
 | [`body`](../../Shared/Views/ChatList/ChatListView.swift#L88) | See link | Main view body |
-| [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L532) | See link | Applies active filter and search to chat list |
-| [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L575) | See link | Normalizes search text for comparison |
-| [`stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L526) | See link | Stops any playing voice message |
+| [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L572) | See link | Applies active filter and search to chat list |
+| [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L615) | See link | Normalizes search text for comparison |
+| [`stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L566) | See link | Stops any playing voice message |
 
 ---
 
@@ -123,11 +123,11 @@ Renders a single row in the chat list. Shows:
 Wraps `ChatPreviewView` in a navigation link with tap and swipe behavior:
 
 ### Tap Behavior
-- Direct chat: navigates to `ChatView` via `ItemsModel.loadOpenChat(chatId)` -- [`contactNavLink()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L95) L93
-- Group chat: navigates to `ChatView` -- [`groupNavLink()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L217) L214
-- Contact request: shows `ContactRequestView` with accept/reject -- [`contactRequestNavLink()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L495) L486
-- Contact connection: shows `ContactConnectionInfo` -- [`contactConnectionNavLink()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L530) L520
-- Notes folder: navigates to `ChatView` -- [`noteFolderNavLink()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L302) L298
+- Direct chat: navigates to `ChatView` via `ItemsModel.loadOpenChat(chatId)` -- [`contactNavLink()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L98) L93
+- Group chat: navigates to `ChatView` -- [`groupNavLink()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L220) L214
+- Contact request: shows `ContactRequestView` with accept/reject -- [`contactRequestNavLink()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L498) L486
+- Contact connection: shows `ContactConnectionInfo` -- [`contactConnectionNavLink()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L533) L520
+- Notes folder: navigates to `ChatView` -- [`noteFolderNavLink()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L305) L298
 
 ### Navigation
 - Uses `NavigationLink` (iOS 15) or programmatic navigation (iOS 16+)
@@ -171,7 +171,7 @@ Horizontal scrolling tab bar below the navigation bar. Tabs:
 | Group Reports | `.presetTag(.groupReports)` | Groups with pending reports |
 | User tags | `.userTag(ChatTag)` | User-defined custom tags |
 
-Filter matching is handled by [`presetTagMatchesChat()`](../../Shared/Views/ChatList/ChatListView.swift#L998) and the in-view [`TagsView`](../../Shared/Views/ChatList/ChatListView.swift#L813) struct.
+Filter matching is handled by [`presetTagMatchesChat()`](../../Shared/Views/ChatList/ChatListView.swift#L1022) and the in-view [`TagsView`](../../Shared/Views/ChatList/ChatListView.swift#L837) struct.
 
 ### ChatTagsModel State
 
@@ -196,7 +196,7 @@ class ChatTagsModel: ObservableObject {
 |------|------|------|-------------|
 | [`PresetTag`](../../Shared/Views/ChatList/ChatListView.swift#L38) | ChatListView.swift | 36 | Enum of built-in filter categories |
 | [`ActiveFilter`](../../Shared/Views/ChatList/ChatListView.swift#L55) | ChatListView.swift | 53 | Enum wrapping preset, user-tag, or unread filter |
-| [`setActiveFilter()`](../../Shared/Views/ChatList/ChatListView.swift#L979) | ChatListView.swift | 1113 | Applies a filter and persists selection |
+| [`setActiveFilter()`](../../Shared/Views/ChatList/ChatListView.swift#L1003) | ChatListView.swift | 1113 | Applies a filter and persists selection |
 
 ### Tag Management Commands
 - `apiCreateChatTag(tag: ChatTagData)` -- create tag
@@ -211,7 +211,7 @@ class ChatTagsModel: ObservableObject {
 
 Search is available via pull-down gesture or search button in the navigation bar.
 
-**Search bar UI:** [`ChatListSearchBar`](../../Shared/Views/ChatList/ChatListView.swift#L581)
+**Search bar UI:** [`ChatListSearchBar`](../../Shared/Views/ChatList/ChatListView.swift#L621)
 
 ### Filtering Logic
 - Filters `ChatModel.chats` by matching search text against:
@@ -219,7 +219,7 @@ Search is available via pull-down gesture or search button in the navigation bar
   - `chatInfo.localAlias` (local alias)
   - `chatInfo.fullName` (full name)
 - For deeper message content search, uses `apiGetChat(chatId:, search:)` parameter
-- Core logic in [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L532) and [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L575)
+- Core logic in [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L572) and [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L615)
 
 ### Search Results
 - Matching chats are displayed in the same list format
@@ -236,15 +236,15 @@ Search is available via pull-down gesture or search button in the navigation bar
 
 | Action | Icon | Handler | Line | API | Condition |
 |--------|------|---------|------|-----|-----------|
-| Pin / Unpin | pin | [`toggleFavoriteButton()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L353) | 347 | `apiSetChatSettings` (favorite) | Always |
-| Read / Unread | envelope | [`markReadButton()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L333) | 328 | `apiChatRead` / `apiChatUnread` | Always |
+| Pin / Unpin | pin | [`toggleFavoriteButton()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L356) | 347 | `apiSetChatSettings` (favorite) | Always |
+| Read / Unread | envelope | [`markReadButton()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L336) | 328 | `apiChatRead` / `apiChatUnread` | Always |
 
 ### Trailing Swipe (right-to-left)
 
 | Action | Icon | Handler | Line | API | Condition |
 |--------|------|---------|------|-----|-----------|
-| Mute / Unmute | bell.slash | [`toggleNtfsButton()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L372) | 365 | `apiSetChatSettings` (enableNtfs) | Always |
-| Clear | trash | [`clearChatButton()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L393) | 385 | `apiClearChat` | Has messages |
+| Mute / Unmute | bell.slash | [`toggleNtfsButton()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L375) | 365 | `apiSetChatSettings` (enableNtfs) | Always |
+| Clear | trash | [`clearChatButton()`](../../Shared/Views/ChatList/ChatListNavLink.swift#L396) | 385 | `apiClearChat` | Has messages |
 | Delete | trash.fill | -- | -- | `apiDeleteChat` | Not active chat |
 | Tag | tag | -- | -- | `apiSetChatTags` | Always |
 
@@ -339,3 +339,30 @@ SwiftUI toolbar shared backgrounds are suppressed only for those controls.
 Neutral settings/compose foregrounds do not replace semantic action colors.
 Conversation uses automatic system navigation background and extends under its
 top safe area; virtualized scrolling and message/voice handlers are unchanged.
+
+## Native tabs and explicit folders (2026-10-30)
+ContentView.mainTabs embeds SunderMainTabs (UITabBarController) below the unchanged
+authentication/call gates. Three persistent UIHostingControllers receive model,
+theme, scene, tags, folder-save binding and privacy redaction explicitly. UIKit
+UITab/UISearchTab delegates drive selection and search without an empty search
+screen; older systems use standard tab items. Conversation opens select Chats and
+hide the tab bar using the system API; repeated layout updates do not restart it.
+
+ChatListView.pinnedControls uses safeAreaInset: optional search/Close first, then
+one SunderFolderSegments UIKit UISegmentedControl if custom folders exist. Native
+soft scroll-edge effects follow the resulting inset. Automatic preset counts stay
+internal for existing unread/report logic; they do not create/render folders.
+Edit is localized using the existing Edit resource and opens TagListView. Main-list
+reachable inversion is disabled on iOS 26 with the new tab/navigation composition.
+
+SunderFolderEditor uses the existing create/update/set-tag APIs and preserves
+other tag IDs on every membership write. Folder ID survives a partial failure so
+retry updates the same folder. Successful writes update the existing chat model;
+errors refresh counts and remain visible. Saving blocks tab switching and back
+navigation; profile changes dismiss the editor and stop subsequent writes. Folder
+names are localized in all 17 app locale resources; user names remain user data.
+
+ShareSheet.getTopViewController now descends through selected tabs, visible native
+navigation and visible children as well as presentations, preserving modal routes.
+No cryptographic, transport, database-schema or notification implementation changes.
+Source checks and CI compilation are distinct from pending device visual checks.

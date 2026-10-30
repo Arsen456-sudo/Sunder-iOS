@@ -13,10 +13,17 @@ func getTopViewController() -> UIViewController? {
     let keyWindowScene = UIApplication.shared.connectedScenes.first { $0.activationState == .foregroundActive } as? UIWindowScene
     if let keyWindow = keyWindowScene?.windows.filter(\.isKeyWindow).first,
        let rootViewController = keyWindow.rootViewController {
-        // Find the top-most presented view controller
         var topController = rootViewController
-        while let presentedViewController = topController.presentedViewController {
-            topController = presentedViewController
+        while true {
+            if let presented = topController.presentedViewController, !presented.isBeingDismissed {
+                topController = presented
+            } else if let tabs = topController as? UITabBarController, let selected = tabs.selectedViewController {
+                topController = selected
+            } else if let navigation = topController as? UINavigationController, let visible = navigation.visibleViewController {
+                topController = visible
+            } else if let child = topController.children.last(where: { $0.viewIfLoaded?.window != nil }) {
+                topController = child
+            } else { break }
         }
         return topController
     }

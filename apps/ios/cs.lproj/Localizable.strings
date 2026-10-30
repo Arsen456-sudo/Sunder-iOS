@@ -3694,3 +3694,6 @@ server test failure */
 /* No comment provided by engineer. */
 "Your SimpleX address" = "Vaše SimpleX adresa";
 
+
+/* Sunder: user-managed chat folders. */
+"Chat folders" = "Složky chatů";

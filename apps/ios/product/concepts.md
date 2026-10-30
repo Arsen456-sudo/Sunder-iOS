@@ -114,3 +114,8 @@ migration-error support destination. Core edits only substitute two embedded med
 See views/{chat-list,chat,settings,call}.md and spec scope in client/navigation.md.
 
 Shared presentation for all feature concepts: [system interface specification](../spec/client/system-interface.md), [adoption report](../../../docs/fork/ios/SYSTEM_UI_ADOPTION.md). AppearanceSettings is the unchanged visual reference; every main-app route inherits SunderSystemInterface, with specialized content/controls retained.
+
+Native main navigation (2026-10-30): PC1, PC19 and PC28 additionally use
+SunderMainTabs/SunderFolderSegments in ChatListNativeControls.swift and
+SunderFolderEditor in TagListView.swift. See client/navigation and client/chat-list
+specifications. User folders retain the existing ChatTag storage model.

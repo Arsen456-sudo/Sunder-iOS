@@ -247,3 +247,11 @@ spec](../../spec/client/system-interface.md) for scope and validation limits.
 
 ### Native geometry correction (2026-10-30)
 Avatar-menu and settings navigation labels use semantic primary text, independently of blue action tint. Light/dark themes and semantic warning/destructive colors remain supported.
+
+## Native main navigation and folders (2026-10-30)
+
+Settings is an independent tab root. Chat folders opens the database-backed list
+manager, where a folder has a name and selected existing contact/group/channel
+chats. Chats can belong to several folders. Account management, address,
+preferences and desktop access remain available here after removing the avatar
+menu button. Creating a chat/group/channel does not create a visible folder.

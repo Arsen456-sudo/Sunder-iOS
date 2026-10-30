@@ -70,7 +70,7 @@ SimpleXApp
 | [`waitingForOrPassedAuth`](../../Shared/ContentView.swift#L51) | `Bool` | Whether auth gate should show |
 | [`chatListUserPickerSheet`](../../Shared/ContentView.swift#L52) | `UserPickerSheet?` | Active user picker sheet |
 
-### [View Selection Logic](../../Shared/ContentView.swift#L60-L80)
+### [View Selection Logic](../../Shared/ContentView.swift#L61-L81)
 
 ```swift
 // Simplified decision tree in ContentView.body:
@@ -81,8 +81,8 @@ if !prefPerformLA || accessAuthenticated {
 }
 ```
 
-The [`contentView()`](../../Shared/ContentView.swift#L169) function further decides:
-- If `chatModel.onboardingStage != .onboardingComplete`: show [onboarding](../../Shared/ContentView.swift#L174)
+The [`contentView()`](../../Shared/ContentView.swift#L170) function further decides:
+- If `chatModel.onboardingStage != .onboardingComplete`: show [onboarding](../../Shared/ContentView.swift#L175)
 - If `chatModel.migrationState != nil`: show migration UI
 - Otherwise: show `ChatListView` in a navigation container
 
@@ -157,7 +157,7 @@ Sheets are presented modally on top of the navigation stack:
 | ConnectDesktopView | Settings > Desktop | Remote desktop pairing |
 | MigrateFromDevice | Settings > Migration | Device export |
 | MigrateToDevice | Onboarding migration | Device import |
-| [LocalAuthView](../../Shared/ContentView.swift#L95) | App foreground after background | Biometric/passcode auth |
+| [LocalAuthView](../../Shared/ContentView.swift#L96) | App foreground after background | Biometric/passcode auth |
 
 ### Sheet Management
 
@@ -184,9 +184,9 @@ When the user taps a notification:
 3. Sets `ChatModel.chatId = chatId` to navigate to the conversation
 4. If the app was in background: the notification response is stored in `ChatModel.notificationResponse` and processed when the app becomes active
 
-### [URL Deep Link](../../Shared/ContentView.swift#L281)
+### [URL Deep Link](../../Shared/ContentView.swift#L302)
 
-SimpleX links (`simplex:/chat#...`) are handled via [`connectViaUrl()`](../../Shared/ContentView.swift#L439):
+SimpleX links (`simplex:/chat#...`) are handled via [`connectViaUrl()`](../../Shared/ContentView.swift#L460):
 
 ```swift
 .onOpenURL { url in
@@ -213,14 +213,14 @@ Call invitations from notifications:
 
 The call UI overlays the entire app when a call is active:
 
-### [Call Banner](../../Shared/ContentView.swift#L203)
+### [Call Banner](../../Shared/ContentView.swift#L204)
 
 When `ChatModel.activeCall != nil` and call is in connecting/active state:
-- A banner appears at the top of ContentView (height: [`callTopPadding = 40`](../../Shared/ContentView.swift#L54))
+- A banner appears at the top of ContentView (height: [`callTopPadding = 40`](../../Shared/ContentView.swift#L55))
 - Shows contact name, call duration, tap to return to full-screen call
 - Main content is padded down to accommodate the banner
 
-### [Full-Screen Call View](../../Shared/ContentView.swift#L185)
+### [Full-Screen Call View](../../Shared/ContentView.swift#L186)
 
 When `ChatModel.showCallView == true`:
 - `ActiveCallView` covers the entire screen as a ZStack overlay
@@ -251,13 +251,13 @@ ZStack {
 
 ## 7. Authentication Gate
 
-### [Local Authentication](../../Shared/ContentView.swift#L359)
+### [Local Authentication](../../Shared/ContentView.swift#L380)
 
 When [`DEFAULT_PERFORM_LA`](../../Shared/ContentView.swift#L44) is enabled:
 
 1. App enters background: `chatModel.contentViewAccessAuthenticated = false`
-2. App returns to foreground: `ContentView` shows [`lockButton()`](../../Shared/ContentView.swift#L238) instead of content
-3. User taps lock button: [`LocalAuthView`](../../Shared/ContentView.swift#L95) presented
+2. App returns to foreground: `ContentView` shows [`lockButton()`](../../Shared/ContentView.swift#L239) instead of content
+3. User taps lock button: [`LocalAuthView`](../../Shared/ContentView.swift#L96) presented
 4. On successful auth: `chatModel.contentViewAccessAuthenticated = true`, content revealed
 
 ### Authentication Methods
@@ -265,8 +265,8 @@ When [`DEFAULT_PERFORM_LA`](../../Shared/ContentView.swift#L44) is enabled:
 - Custom numeric passcode
 - Custom alphanumeric passcode
 
-### [Extended Authentication](../../Shared/ContentView.swift#L351)
-- After successful auth, a grace period prevents re-auth for brief background/foreground cycles ([`unlockedRecently()`](../../Shared/ContentView.swift#L351))
+### [Extended Authentication](../../Shared/ContentView.swift#L372)
+- After successful auth, a grace period prevents re-auth for brief background/foreground cycles ([`unlockedRecently()`](../../Shared/ContentView.swift#L372))
 - [`contentAccessAuthenticationExtended`](../../Shared/ContentView.swift#L35) is computed at `ContentView.init` to avoid render-time race conditions
 - The `enteredBackgroundAuthenticated` timestamp tracks when the app was last authenticated in background
 
@@ -287,7 +287,7 @@ enum OnboardingStage: String, Identifiable {
 }
 ```
 
-Each stage is a dedicated view presented in place of `ChatListView` within [`ContentView`](../../Shared/ContentView.swift#L174).
+Each stage is a dedicated view presented in place of `ChatListView` within [`ContentView`](../../Shared/ContentView.swift#L175).
 
 Migration state (`ChatModel.migrationState != nil`) takes precedence over onboarding.
 
@@ -322,7 +322,7 @@ Migration state (`ChatModel.migrationState != nil`) takes precedence over onboar
 
 ## 10. Relay URL Interception
 
-**Source:** [`Shared/ContentView.swift`](../../Shared/ContentView.swift#L454)
+**Source:** [`Shared/ContentView.swift`](../../Shared/ContentView.swift#L475)
 
 In `connectViaUrl_()`, relay address links (URL path `/r`) are intercepted before processing:
 
@@ -430,7 +430,7 @@ See product views: [new chat](../../product/views/new-chat.md),
 
 ## Sunder offline notices — 2026-10-28
 
-[`SettingsView.legalNoticesView`](../../Shared/Views/UserSettings/SettingsView.swift#L475) is a
+[`SettingsView.legalNoticesView`](../../Shared/Views/UserSettings/SettingsView.swift#L499) is a
 standard NavigationLink destination from Help & support. [`legalNoticeSections`](../../Shared/Views/UserSettings/SettingsView.swift#L310) caches
 the parsed text for the settings view lifetime. The destination's task resolves the main
 bundle resource URL, reads UTF-8 in a utility detached task, splits form-feed sections and
@@ -484,3 +484,30 @@ SwiftUI toolbar shared backgrounds are suppressed only for those controls.
 Neutral settings/compose foregrounds do not replace semantic action colors.
 Conversation uses automatic system navigation background and extends under its
 top safe area; virtualized scrolling and message/voice handlers are unchanged.
+
+## Native tabs and explicit folders (2026-10-30)
+ContentView.mainTabs embeds SunderMainTabs (UITabBarController) below the unchanged
+authentication/call gates. Three persistent UIHostingControllers receive model,
+theme, scene, tags, folder-save binding and privacy redaction explicitly. UIKit
+UITab/UISearchTab delegates drive selection and search without an empty search
+screen; older systems use standard tab items. Conversation opens select Chats and
+hide the tab bar using the system API; repeated layout updates do not restart it.
+
+ChatListView.pinnedControls uses safeAreaInset: optional search/Close first, then
+one SunderFolderSegments UIKit UISegmentedControl if custom folders exist. Native
+soft scroll-edge effects follow the resulting inset. Automatic preset counts stay
+internal for existing unread/report logic; they do not create/render folders.
+Edit is localized using the existing Edit resource and opens TagListView. Main-list
+reachable inversion is disabled on iOS 26 with the new tab/navigation composition.
+
+SunderFolderEditor uses the existing create/update/set-tag APIs and preserves
+other tag IDs on every membership write. Folder ID survives a partial failure so
+retry updates the same folder. Successful writes update the existing chat model;
+errors refresh counts and remain visible. Saving blocks tab switching and back
+navigation; profile changes dismiss the editor and stop subsequent writes. Folder
+names are localized in all 17 app locale resources; user names remain user data.
+
+ShareSheet.getTopViewController now descends through selected tabs, visible native
+navigation and visible children as well as presentations, preserving modal routes.
+No cryptographic, transport, database-schema or notification implementation changes.
+Source checks and CI compilation are distinct from pending device visual checks.

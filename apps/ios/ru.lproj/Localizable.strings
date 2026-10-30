@@ -7367,3 +7367,6 @@ alert title */
 /* No comment provided by engineer. */
 "Your SimpleX name" = "Ваше SimpleX имя";
 
+
+/* Sunder: user-managed chat folders. */
+"Chat folders" = "Папки чатов";

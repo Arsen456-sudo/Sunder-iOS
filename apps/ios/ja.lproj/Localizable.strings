@@ -3661,3 +3661,6 @@ server test failure */
 /* No comment provided by engineer. */
 "Your SimpleX address" = "あなたのSimpleXアドレス";
 
+
+/* Sunder: user-managed chat folders. */
+"Chat folders" = "チャットフォルダ";

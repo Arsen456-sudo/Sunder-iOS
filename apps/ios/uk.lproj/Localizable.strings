@@ -6318,3 +6318,6 @@ alert title */
 /* No comment provided by engineer. */
 "Your SimpleX address" = "Ваша адреса SimpleX";
 
+
+/* Sunder: user-managed chat folders. */
+"Chat folders" = "Папки чатів";

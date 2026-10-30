@@ -154,3 +154,14 @@ Picker rows in a Section. Its black appearance and statistics are retained.
 
 ### Native geometry correction (2026-10-30)
 Main controls use fixed-size circular UIKit glass buttons, a circular avatar and a shared native UISearchBar. UIKit owns search/cancel metrics; link handling, filters, unread state and account routes remain unchanged.
+
+## Native main navigation and folders (2026-10-30)
+
+The main area uses a UIKit tab controller: Chats, Settings and Your profile are
+independent persistent roots. A native search action at the trailing end selects
+Chats and opens the top search field; Close clears/hides it. Top Edit opens folder
+management, while compose and unread retain their actions. Search is above the
+pinned folder control, not a scrolling row. Only user-created folders are shown;
+computed type categories no longer appear automatically. One UISegmentedControl
+contains All and the folder names. Ordinary chat rows are smaller; accessibility
+metrics remain at the original sizes. Tabs hide while a conversation is open.

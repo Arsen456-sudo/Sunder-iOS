@@ -84,6 +84,7 @@ struct UserPickerSheetView: View {
     @StateObject private var ss = SaveableSettings()
 
     @State private var loaded = false
+    @State private var ownerUserId: Int64?
 
     var body: some View {
         NavigationView {
@@ -120,12 +121,14 @@ struct UserPickerSheetView: View {
             }
         }
         .task {
+            ownerUserId = chatModel.currentUser?.userId
             withAnimation(
                 .easeOut(duration: 0.1),
                 { loaded = true }
             )
         }
         .onDisappear {
+            guard ownerUserId == chatModel.currentUser?.userId else { return }
             if serversCanBeSaved(
                 ss.servers.currUserServers,
                 ss.servers.userServers,
@@ -169,14 +172,20 @@ struct ChatListView: View {
     @State private var pendingUserPickerSheet: UserPickerSheet?
     @State private var sheet: SomeSheet<AnyView>? = nil
     @StateObject private var chatTagsModel = ChatTagsModel.shared
+    @ObservedObject var navigation: SunderMainNavigation
     @State private var scrollToItemId: ChatItem.ID? = nil
 
     @State private var showServersSummary = false
 
-    @AppStorage(GROUP_DEFAULT_ONE_HAND_UI, store: groupDefaults) private var oneHandUI = true
+    @AppStorage(GROUP_DEFAULT_ONE_HAND_UI, store: groupDefaults) private var legacyOneHandUI = true
     @AppStorage(DEFAULT_ONE_HAND_UI_CARD_SHOWN) private var oneHandUICardShown = false
     @AppStorage(DEFAULT_ADDRESS_CREATION_CARD_SHOWN) private var addressCreationCardShown = false
     
+    private var oneHandUI: Bool {
+        if #available(iOS 26.0, *) { return false }
+        return legacyOneHandUI
+    }
+
     // Spec: spec/client/chat-list.md#body
     var body: some View {
         if #available(iOS 16.0, *) {
@@ -244,12 +253,31 @@ struct ChatListView: View {
     private var chatListView: some View {
         withToolbar {
             chatList
+                .safeAreaInset(edge: .top, spacing: 0) { pinnedControls }
+                .modifier(SunderChatListEdges())
                 .background(theme.colors.background)
                 .navigationBarTitleDisplayMode(.inline)
                 .scaleEffect(x: 1, y: oneHandUI ? -1 : 1, anchor: .center)
         }
         .onDisappear {
             activeUserPickerSheet = nil
+        }
+        .onChange(of: navigation.searchGeneration) { _ in searchFocussed = true }
+        .onChange(of: chatModel.currentUser?.userId) { _ in
+            navigation.searchVisible = false
+            chatTagsModel.activeFilter = nil
+        }
+        .onChange(of: navigation.searchVisible) { visible in
+            searchMode = visible
+            searchFocussed = visible
+            if !visible {
+                searchText = ""
+                searchShowingSimplexLink = false
+                searchChatFilteredBySimplexLink = []
+            }
+        }
+        .onAppear {
+            if case .presetTag = chatTagsModel.activeFilter { chatTagsModel.activeFilter = nil }
         }
         .refreshable {
             AlertManager.shared.showAlert(Alert(
@@ -276,6 +304,34 @@ struct ChatListView: View {
         }
     }
     
+    @ViewBuilder private var pinnedControls: some View {
+        VStack(spacing: 8) {
+            if navigation.searchVisible {
+                ChatListSearchBar(searchMode: $searchMode, searchFocussed: $searchFocussed,
+                                  searchText: $searchText, searchShowingSimplexLink: $searchShowingSimplexLink,
+                                  searchChatFilteredBySimplexLink: $searchChatFilteredBySimplexLink, parentSheet: $sheet,
+                                  close: { navigation.searchVisible = false })
+            }
+            if !chatTagsModel.userTags.isEmpty {
+                SunderFolderSegments(titles: [NSLocalizedString("All", comment: "All chats")] + chatTagsModel.userTags.map(\.chatTagText),
+                                     selected: selectedFolder) { index in
+                    guard index >= 0 && index <= chatTagsModel.userTags.count else { return }
+                    searchText = ""
+                    chatTagsModel.activeFilter = index == 0 ? nil : .userTag(chatTagsModel.userTags[index - 1])
+                }
+                .frame(height: 44)
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, navigation.searchVisible || !chatTagsModel.userTags.isEmpty ? 8 : 0)
+    }
+
+    private var selectedFolder: Int {
+        guard case let .userTag(tag) = chatTagsModel.activeFilter,
+              let index = chatTagsModel.userTags.firstIndex(where: { $0.chatTagId == tag.chatTagId }) else { return 0 }
+        return index + 1
+    }
+
     @ViewBuilder private func withToolbar(content: () -> some View) -> some View {
         if oneHandUI {
             if #available(iOS 26.0, *) {
@@ -283,8 +339,6 @@ struct ChatListView: View {
             } else {
                 content().navigationBarHidden(true).toolbar { systemBottomToolbar }
             }
-        } else if searchMode {
-            content().navigationBarHidden(true)
         } else if #available(iOS 26.0, *) {
             content().navigationBarHidden(false).toolbar { glassTopToolbar }
         } else {
@@ -294,11 +348,24 @@ struct ChatListView: View {
 
     @available(iOS 26.0, *)
     @ToolbarContentBuilder private var glassTopToolbar: some ToolbarContent {
-        ToolbarItem(placement: .navigationBarLeading) { profileButton }
-            .sharedBackgroundVisibility(.hidden)
+        ToolbarItem(placement: .navigationBarLeading) {
+            NavigationLink {
+                TagListView().navigationTitle("Chat folders")
+            } label: { Text("Edit") }
+                .foregroundColor(Color(uiColor: .label))
+        }
         ToolbarItem(placement: .principal) { statusButton }
             .sharedBackgroundVisibility(.hidden)
-        ToolbarItem(placement: .navigationBarTrailing) { composeButton }
+        ToolbarItem(placement: .navigationBarTrailing) {
+            HStack(spacing: 8) {
+                if !chatModel.chats.isEmpty {
+                    ChatListUnreadButton(selected: chatTagsModel.activeFilter == .unread, tint: .label) {
+                        chatTagsModel.activeFilter = chatTagsModel.activeFilter == .unread ? nil : .unread
+                    }
+                }
+                composeButton
+            }
+        }
             .sharedBackgroundVisibility(.hidden)
     }
 
@@ -411,38 +478,14 @@ struct ChatListView: View {
         return ZStack {
             ScrollViewReader { scrollProxy in
                 List {
-                    if !chatModel.chats.isEmpty {
-                        ChatListSearchBar(
-                            searchMode: $searchMode,
-                            searchFocussed: $searchFocussed,
-                            searchText: $searchText,
-                            searchShowingSimplexLink: $searchShowingSimplexLink,
-                            searchChatFilteredBySimplexLink: $searchChatFilteredBySimplexLink,
-                            parentSheet: $sheet
-                        )
-                        .scaleEffect(x: 1, y: oneHandUI ? -1 : 1, anchor: .center)
-                        .listRowSeparator(.hidden)
-                        .listRowBackground(Color.clear)
-                        .frame(maxWidth: .infinity)
-                        .padding(.top, oneHandUI ? 8 : 0)
-                        .id("searchBar")
-                    }
-                    if !oneHandUICardShown {
-                        OneHandUICard()
-                            .padding(.vertical, 6)
-                            .scaleEffect(x: 1, y: oneHandUI ? -1 : 1, anchor: .center)
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
-                    }
                     if #available(iOS 16.0, *) {
                         ForEach(cs, id: \.viewId) { chat in
                             ChatListNavLink(chat: chat, parentSheet: $sheet)
                                 .scaleEffect(x: 1, y: oneHandUI ? -1 : 1, anchor: .center)
-                                .padding(.trailing, -16)
+                                .listRowInsets(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 8))
                                 .disabled(chatModel.chatRunning != true || chatModel.deletedChats.contains(chat.chatInfo.id))
                                 .listRowBackground(Color.clear)
                         }
-                        .offset(x: -8)
                     } else {
                         ForEach(cs, id: \.viewId) { chat in
                             ChatListNavLink(chat: chat,  parentSheet: $sheet)
@@ -595,47 +638,31 @@ struct ChatListSearchBar: View {
     @State private var connectNameCandidate: String? = nil
     @State private var nameSearchTask: Task<Void, Never>? = nil
 
+    var close: () -> Void
+
     var body: some View {
-        VStack(spacing: 12) {
-            // a typed name shows a row to connect to it (as on Android mobile): with the reachable toolbar it
-            // replaces the tags above the search field; in top bar mode the tags stay and it moves below (end of VStack)
-            if oneHandUI, let candidate = connectNameCandidate {
-                ConnectByNameRow(
-                    name: candidate,
-                    searchText: $searchText,
-                    connectNameCandidate: $connectNameCandidate,
-                    searchFocussed: $searchFocussed,
-                    dismiss: false
-                )
-            } else {
-                ScrollView([.horizontal], showsIndicators: false) { TagsView(parentSheet: $parentSheet, searchText: $searchText) }
-            }
+        VStack(spacing: 8) {
             HStack(spacing: 8) {
-                ChatListNativeSearch(
-                    text: $searchText,
+                ChatListNativeSearch(text: $searchText,
                     focused: Binding(get: { searchFocussed }, set: { searchFocussed = $0 }),
-                    linking: searchShowingSimplexLink,
-                    busy: connectProgressManager.showConnectProgress != nil,
-                    tint: UIColor(theme.colors.primary)
-                )
-                .frame(height: 52)
-                if !searchFocussed && !m.chats.isEmpty {
-                    toggleFilterButton().frame(width: 44, height: 44)
-                }
+                    linking: searchShowingSimplexLink, busy: connectProgressManager.showConnectProgress != nil,
+                    tint: .label, allowsCancel: false)
+                    .frame(height: 52)
+                SunderCircleButton(symbol: "xmark", label: NSLocalizedString("Close", comment: "Close search")) {
+                    nameSearchTask?.cancel()
+                    connectProgressManager.cancelConnectProgress()
+                    searchText = ""
+                    searchFocussed = false
+                    close()
+                }.frame(width: 44, height: 44)
             }
-            if !oneHandUI, let candidate = connectNameCandidate {
-                ConnectByNameRow(
-                    name: candidate,
-                    searchText: $searchText,
-                    connectNameCandidate: $connectNameCandidate,
-                    searchFocussed: $searchFocussed,
-                    dismiss: false
-                )
+            if let candidate = connectNameCandidate {
+                ConnectByNameRow(name: candidate, searchText: $searchText,
+                                 connectNameCandidate: $connectNameCandidate,
+                                 searchFocussed: $searchFocussed, dismiss: false)
             }
         }
-        .onChange(of: searchFocussed) { sf in
-            withAnimation { searchMode = sf }
-        }
+        .onDisappear { nameSearchTask?.cancel() }
         .onChange(of: searchText) { t in
             if ignoreSearchTextChange {
                 ignoreSearchTextChange = false
@@ -1061,9 +1088,9 @@ struct ChatListView_Previews: PreviewProvider {
 
         ])
         return Group {
-            ChatListView(activeUserPickerSheet: $userPickerSheet)
+            ChatListView(activeUserPickerSheet: $userPickerSheet, navigation: SunderMainNavigation())
                 .environmentObject(chatModel)
-            ChatListView(activeUserPickerSheet: $userPickerSheet)
+            ChatListView(activeUserPickerSheet: $userPickerSheet, navigation: SunderMainNavigation())
                 .environmentObject(ChatModel())
         }
     }

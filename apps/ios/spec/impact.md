@@ -199,3 +199,8 @@ FileUtils.swift also affects PC24 wallpaper initialization; missing group paths 
 Native control correction: ChatListNativeControls supplies UIKit search and circular
 buttons to PC1/PC2/PC3/PC12/PC14. Settings row foreground changes affect PC18; compose
 foregrounds affect PC4/PC9. No transport, storage or security APIs are changed.
+
+Native tabs/folders: ContentView and ChatListNativeControls affect PC1/PC19/PC22;
+ChatListView, ChatListNavLink and ChatPreviewView affect PC1/PC28. TagListView and
+SettingsView affect PC18/PC19/PC28. ShareSheet traversal affects existing modal,
+share and confirmation presentation across these roots. Crypto/network remain intact.

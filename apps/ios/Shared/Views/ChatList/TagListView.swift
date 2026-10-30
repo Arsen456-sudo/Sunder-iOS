@@ -53,7 +53,7 @@ struct TagListView: View {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         if let c = chat {
-                            setChatTag(tagId: selected ? nil : tagId, chat: c) { dismiss() }
+                            setChatTag(tagId: tagId, chat: c, remove: selected) { dismiss() }
                         } else {
                             tagEditorNavParams = TagEditorNavParams(chat: nil, chatListTag: ChatTagData(emoji: emoji, text: text), tagId: tagId)
                         }
@@ -91,12 +91,16 @@ struct TagListView: View {
                         // isActive required to navigate to edit view from any possible tag edited in swipe action
                         NavigationLink(isActive: Binding(get: { tagEditorNavParams != nil }, set: { _ in tagEditorNavParams = nil })) {
                             if let params = tagEditorNavParams {
+                                if params.chat == nil {
+                                    SunderFolderEditor(tagId: params.tagId, name: params.chatListTag?.text ?? "", emoji: params.chatListTag?.emoji)
+                                } else {
                                 TagListEditor(
                                     chat: params.chat,
                                     tagId: params.tagId,
                                     emoji: params.chatListTag?.emoji,
                                     name: params.chatListTag?.text ?? ""
                                 )
+                                }
                             }
                         } label: {
                             EmptyView()
@@ -107,7 +111,8 @@ struct TagListView: View {
                 .onMove(perform: moveItem)
                 
                 NavigationLink {
-                    TagListEditor(chat: chat)
+                    if chat == nil { SunderFolderEditor() }
+                    else { TagListEditor(chat: chat) }
                 } label: {
                     Label("Create list", systemImage: "plus")
                 }
@@ -184,10 +189,11 @@ struct TagListView: View {
     }
 }
 
-private func setChatTag(tagId: Int64?, chat: Chat, closeSheet: @escaping () -> Void) {
+private func setChatTag(tagId: Int64, chat: Chat, remove: Bool = false, closeSheet: @escaping () -> Void) {
     Task {
         do {
-            let tagIds: [Int64] = if let t = tagId { [t] } else {[]}
+            let existing = chat.chatInfo.chatTags ?? []
+            let tagIds = remove ? existing.filter { $0 != tagId } : Array(Set(existing + [tagId])).sorted()
             let (userTags, chatTags) = try await apiSetChatTags(
                 type: chat.chatInfo.chatType,
                 id: chat.chatInfo.apiId,
@@ -399,6 +405,134 @@ struct TagListEditor: View {
                         NSLocalizedString("Error creating list", comment: "alert title"),
                         message: responseError(error)
                     )
+                }
+            }
+        }
+    }
+}
+
+struct SunderFolderEditor: View {
+    @EnvironmentObject var model: ChatModel
+    @EnvironmentObject var tags: ChatTagsModel
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.sunderFolderSaveBusy) private var folderBusy
+    var tagId: Int64? = nil
+    var name = ""
+    var emoji: String? = nil
+    @State private var title = ""
+    @State private var selection: Set<String> = []
+    @State private var initialSelection: Set<String> = []
+    @State private var owner: Int64?
+    @State private var savedId: Int64?
+    @State private var loaded = false
+    @State private var saving = false
+
+    private var chats: [Chat] {
+        model.chats.filter { chat in
+            switch chat.chatInfo {
+            case let .direct(contact): return !contact.chatDeleted && !contact.isContactCard
+            case .group: return true
+            default: return false
+            }
+        }
+    }
+    private var trimmedTitle: String { title.trimmingCharacters(in: .whitespacesAndNewlines) }
+    private var duplicate: Bool {
+        tags.userTags.contains { $0.chatTagId != (savedId ?? tagId) && $0.chatTagText.localizedCaseInsensitiveCompare(trimmedTitle) == .orderedSame }
+    }
+
+    var body: some View {
+        List {
+            Section {
+                TextField("List name...", text: $title)
+            }
+            Section("Chats") {
+                ForEach(chats, id: \.id) { chat in
+                    Button {
+                        if selection.contains(chat.id) { selection.remove(chat.id) }
+                        else { selection.insert(chat.id) }
+                    } label: {
+                        HStack(spacing: 12) {
+                            ChatInfoImage(chat: chat, size: 36)
+                            Text(chat.chatInfo.chatViewName).foregroundColor(Color(uiColor: .label))
+                            Spacer()
+                            Image(systemName: selection.contains(chat.id) ? "checkmark.circle.fill" : "circle")
+                                .foregroundColor(selection.contains(chat.id) ? .accentColor : .secondary)
+                        }
+                    }
+                    .accessibilityAddTraits(selection.contains(chat.id) ? .isSelected : [])
+                }
+            }
+        }
+        .navigationTitle("Chat folders")
+        .modifier(ThemedBackground(grouped: true))
+        .disabled(saving)
+        .navigationBarBackButtonHidden(saving)
+        .interactiveDismissDisabled(saving)
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Save") { save() }
+                    .disabled(saving || trimmedTitle.isEmpty || duplicate || (trimmedTitle == name && selection == initialSelection))
+            }
+        }
+        .onAppear {
+            guard !loaded else { return }
+            loaded = true
+            owner = model.currentUser?.userId
+            title = name
+            selection = Set(chats.filter { chat in tagId.map { chat.chatInfo.chatTags?.contains($0) == true } ?? false }.map(\.id))
+            initialSelection = selection
+        }
+        .onChange(of: model.currentUser?.userId) { _ in dismiss() }
+    }
+
+    private func save() {
+        saving = true
+        folderBusy.wrappedValue = true
+        Task { @MainActor in
+            defer { folderBusy.wrappedValue = false }
+            do {
+                guard owner == model.currentUser?.userId else { dismiss(); return }
+                let id: Int64
+                if let existing = savedId ?? tagId {
+                    id = existing
+                    try await apiUpdateChatTag(tagId: id, tag: ChatTagData(emoji: emoji, text: trimmedTitle))
+                    guard owner == model.currentUser?.userId else { dismiss(); return }
+                    if let index = tags.userTags.firstIndex(where: { $0.chatTagId == id }) {
+                        tags.userTags[index] = ChatTag(chatTagId: id, chatTagText: trimmedTitle, chatTagEmoji: emoji)
+                    }
+                } else {
+                    let created = try await apiCreateChatTag(tag: ChatTagData(emoji: emoji, text: trimmedTitle))
+                    guard owner == model.currentUser?.userId else { dismiss(); return }
+                    tags.userTags = created
+                    guard let tag = created.first(where: { $0.chatTagText == trimmedTitle }) else { throw NSError(domain: "SunderFolder", code: 1) }
+                    id = tag.chatTagId
+                    savedId = id
+                }
+                for chat in chats {
+                    guard owner == model.currentUser?.userId else { dismiss(); return }
+                    let current = chat.chatInfo.chatTags ?? []
+                    let wants = selection.contains(chat.id)
+                    guard current.contains(id) != wants else { continue }
+                    let newTags = wants ? current + [id] : current.filter { $0 != id }
+                    let (allTags, applied) = try await apiSetChatTags(type: chat.chatInfo.chatType, id: chat.chatInfo.apiId, tagIds: newTags)
+                    guard owner == model.currentUser?.userId else { dismiss(); return }
+                    tags.userTags = allTags
+                    if var contact = chat.chatInfo.contact {
+                        contact.chatTags = applied
+                        model.updateContact(contact)
+                    } else if var group = chat.chatInfo.groupInfo {
+                        group.chatTags = applied
+                        model.updateGroup(group)
+                    }
+                }
+                tags.updateChatTags(model.chats)
+                dismiss()
+            } catch {
+                if owner == model.currentUser?.userId {
+                    saving = false
+                    tags.updateChatTags(model.chats)
+                    showAlert(NSLocalizedString("Error saving chat list", comment: "Folder save error"), message: responseError(error))
                 }
             }
         }

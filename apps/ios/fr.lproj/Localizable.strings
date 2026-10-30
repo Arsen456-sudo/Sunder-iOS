@@ -6804,3 +6804,6 @@ server test failure */
 /* No comment provided by engineer. */
 "Your SimpleX address" = "Votre adresse SimpleX";
 
+
+/* Sunder: user-managed chat folders. */
+"Chat folders" = "Dossiers de discussion";

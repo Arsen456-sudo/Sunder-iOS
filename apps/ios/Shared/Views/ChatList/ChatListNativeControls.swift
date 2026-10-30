@@ -12,6 +12,7 @@ struct ChatListNativeSearch: UIViewRepresentable {
     var tint: UIColor
     var placeholder = NSLocalizedString("Search or paste SimpleX link", comment: "Search placeholder")
     var onCancel: (() -> Void)? = nil
+    var allowsCancel = true
 
     func makeCoordinator() -> Coordinator { Coordinator(self) }
 
@@ -32,7 +33,7 @@ struct ChatListNativeSearch: UIViewRepresentable {
         bar.placeholder = placeholder
         bar.tintColor = tint
         bar.isUserInteractionEnabled = !linking
-        bar.setShowsCancelButton(focused && !linking, animated: !UIAccessibility.isReduceMotionEnabled)
+        bar.setShowsCancelButton(allowsCancel && focused && !linking, animated: !UIAccessibility.isReduceMotionEnabled)
         let field = bar.searchTextField
         if busy {
             context.coordinator.spinner.startAnimating()
@@ -93,6 +94,8 @@ struct SunderCircleButton: UIViewRepresentable {
     func makeUIView(context: Context) -> UIButton {
         let button = CircleControl(frame: .zero)
         button.addTarget(context.coordinator, action: #selector(Coordinator.activate), for: .touchUpInside)
+        button.contentHorizontalAlignment = .center
+        button.contentVerticalAlignment = .center
         button.setContentHuggingPriority(.required, for: .horizontal)
         button.setContentHuggingPriority(.required, for: .vertical)
         return button
@@ -141,6 +144,14 @@ struct SunderCircleButton: UIViewRepresentable {
 
     class CircleControl: UIButton {
         override var intrinsicContentSize: CGSize { CGSize(width: 44, height: 44) }
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            guard let imageView else { return }
+            let side: CGFloat = configuration?.image?.renderingMode == .alwaysOriginal ? 28 : 24
+            imageView.contentMode = .scaleAspectFit
+            imageView.bounds = CGRect(x: 0, y: 0, width: side, height: side)
+            imageView.center = CGPoint(x: bounds.midX, y: bounds.midY)
+        }
     }
 
     class Coordinator: NSObject {
@@ -216,5 +227,171 @@ struct ChatListStatusButton: View {
                 do { try await Task.sleep(nanoseconds: 1_000_000_000) } catch { return }
             }
         }
+    }
+}
+
+final class SunderMainNavigation: ObservableObject {
+    @Published var selected = 0
+    @Published var searchVisible = false
+    @Published var savingFolder = false
+    @Published var searchGeneration = 0
+}
+
+struct SunderMainTabs: UIViewControllerRepresentable {
+    @ObservedObject var navigation: SunderMainNavigation
+    var roots: [AnyView]
+    var avatar: String?
+    var conversationOpen: Bool
+
+    func makeCoordinator() -> Coordinator { Coordinator(navigation) }
+
+    func makeUIViewController(context: Context) -> UITabBarController {
+        let controller = UITabBarController()
+        let hosts = roots.map { UIHostingController(rootView: $0) }
+        context.coordinator.hosts = hosts
+        let titles = [NSLocalizedString("Chats", comment: "Tab"), NSLocalizedString("Settings", comment: "Tab"), NSLocalizedString("Your profile", comment: "Tab")]
+        let symbols = ["bubble.left.and.bubble.right", "gearshape", "person.crop.circle"]
+        let search = UIViewController()
+        context.coordinator.search = search
+        if #available(iOS 26.0, *) {
+            var tabs = hosts.enumerated().map { index, host in
+                UITab(title: titles[index], image: UIImage(systemName: symbols[index]), identifier: "sunder.\(index)") { _ in host }
+            }
+            let searchTab = UISearchTab { _ in search }
+            context.coordinator.searchIdentifier = searchTab.identifier
+            tabs.append(searchTab)
+            controller.tabs = tabs
+        } else {
+            for (index, host) in hosts.enumerated() {
+                host.tabBarItem = UITabBarItem(title: titles[index], image: UIImage(systemName: symbols[index]), tag: index)
+            }
+            search.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 3)
+            controller.setViewControllers(hosts + [search], animated: false)
+        }
+        controller.delegate = context.coordinator
+        return controller
+    }
+
+    func updateUIViewController(_ controller: UITabBarController, context: Context) {
+        context.coordinator.navigation = navigation
+        for (host, root) in zip(context.coordinator.hosts, roots) { host.rootView = root }
+        controller.tabBar.isUserInteractionEnabled = !navigation.savingFolder
+        if controller.selectedIndex != navigation.selected { controller.selectedIndex = navigation.selected }
+        if context.coordinator.avatarSource != avatar {
+            context.coordinator.avatarSource = avatar
+            let image = SunderCircleButton.Coordinator({}).avatarImage(avatar, unread: false)
+                ?? UIImage(systemName: "person.crop.circle")
+            context.coordinator.hosts.last?.tabBarItem.image = image
+            context.coordinator.hosts.last?.tabBarItem.selectedImage = image
+            if #available(iOS 26.0, *), controller.tabs.count > 2 { controller.tabs[2].image = image }
+        }
+        if context.coordinator.barHidden != conversationOpen {
+            context.coordinator.barHidden = conversationOpen
+            if #available(iOS 18.0, *) { controller.setTabBarHidden(conversationOpen, animated: !UIAccessibility.isReduceMotionEnabled) }
+            else { controller.tabBar.isHidden = conversationOpen }
+        }
+    }
+
+    class Coordinator: NSObject, UITabBarControllerDelegate {
+        var navigation: SunderMainNavigation
+        var hosts: [UIHostingController<AnyView>] = []
+        var search: UIViewController?
+        var avatarSource: String?
+        var searchIdentifier: String?
+        var barHidden = false
+        init(_ navigation: SunderMainNavigation) { self.navigation = navigation }
+        func tabBarController(_ controller: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+            guard !navigation.savingFolder else { return false }
+            if viewController === search { requestSearch(controller); return false }
+            return true
+        }
+        private func requestSearch(_ controller: UITabBarController) {
+            navigation.selected = 0
+            navigation.searchVisible = true
+            navigation.searchGeneration += 1
+            controller.selectedIndex = 0
+        }
+        @available(iOS 18.0, *)
+        func tabBarController(_ controller: UITabBarController, shouldSelectTab tab: UITab) -> Bool {
+            guard !navigation.savingFolder else { return false }
+            if tab.identifier == searchIdentifier { requestSearch(controller); return false }
+            return true
+        }
+        @available(iOS 18.0, *)
+        func tabBarController(_ controller: UITabBarController, didSelectTab selectedTab: UITab, previousTab: UITab?) {
+            if let index = controller.tabs.firstIndex(where: { $0.identifier == selectedTab.identifier }), index < hosts.count {
+                navigation.selected = index
+            }
+        }
+        func tabBarController(_ controller: UITabBarController, didSelect viewController: UIViewController) {
+            if let index = hosts.firstIndex(where: { $0 === viewController }) { navigation.selected = index }
+        }
+    }
+}
+
+struct SunderFolderSegments: UIViewRepresentable {
+    var titles: [String]
+    var selected: Int
+    var changed: (Int) -> Void
+    func makeCoordinator() -> Coordinator { Coordinator(changed) }
+    func makeUIView(context: Context) -> FolderControl {
+        let view = FolderControl()
+        view.control.addTarget(context.coordinator, action: #selector(Coordinator.select(_:)), for: .valueChanged)
+        return view
+    }
+    func updateUIView(_ view: FolderControl, context: Context) {
+        context.coordinator.changed = changed
+        if view.titles != titles {
+            view.titles = titles
+            view.control.removeAllSegments()
+            for (index, title) in titles.enumerated() { view.control.insertSegment(withTitle: title, at: index, animated: false) }
+            view.width.constant = CGFloat(titles.count) * 90
+        }
+        view.control.selectedSegmentIndex = selected
+    }
+    class FolderControl: UIView {
+        let control = UISegmentedControl()
+        let scroll = UIScrollView()
+        var titles: [String] = []
+        var width: NSLayoutConstraint!
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            scroll.showsHorizontalScrollIndicator = false
+            scroll.translatesAutoresizingMaskIntoConstraints = false
+            control.translatesAutoresizingMaskIntoConstraints = false
+            control.apportionsSegmentWidthsByContent = false
+            addSubview(scroll)
+            scroll.addSubview(control)
+            width = control.widthAnchor.constraint(greaterThanOrEqualToConstant: 0)
+            NSLayoutConstraint.activate([
+                scroll.topAnchor.constraint(equalTo: topAnchor), scroll.bottomAnchor.constraint(equalTo: bottomAnchor),
+                scroll.leadingAnchor.constraint(equalTo: leadingAnchor), scroll.trailingAnchor.constraint(equalTo: trailingAnchor),
+                control.topAnchor.constraint(equalTo: scroll.contentLayoutGuide.topAnchor),
+                control.bottomAnchor.constraint(equalTo: scroll.contentLayoutGuide.bottomAnchor),
+                control.leadingAnchor.constraint(equalTo: scroll.contentLayoutGuide.leadingAnchor),
+                control.trailingAnchor.constraint(equalTo: scroll.contentLayoutGuide.trailingAnchor),
+                control.heightAnchor.constraint(equalTo: scroll.frameLayoutGuide.heightAnchor),
+                control.widthAnchor.constraint(greaterThanOrEqualTo: scroll.frameLayoutGuide.widthAnchor), width
+            ])
+            let ideal = control.widthAnchor.constraint(equalTo: scroll.frameLayoutGuide.widthAnchor)
+            ideal.priority = .defaultHigh
+            ideal.isActive = true
+        }
+        required init?(coder: NSCoder) { fatalError("init(coder:) is not supported") }
+    }
+    class Coordinator: NSObject {
+        var changed: (Int) -> Void
+        init(_ changed: @escaping (Int) -> Void) { self.changed = changed }
+        @objc func select(_ control: UISegmentedControl) { changed(control.selectedSegmentIndex) }
+    }
+}
+
+private struct SunderFolderSaveKey: EnvironmentKey {
+    static let defaultValue = Binding.constant(false)
+}
+extension EnvironmentValues {
+    var sunderFolderSaveBusy: Binding<Bool> {
+        get { self[SunderFolderSaveKey.self] }
+        set { self[SunderFolderSaveKey.self] = newValue }
     }
 }

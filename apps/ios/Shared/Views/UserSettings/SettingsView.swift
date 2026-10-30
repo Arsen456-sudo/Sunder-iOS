@@ -320,6 +320,30 @@ struct SettingsView: View {
 
     func settingsView() -> some View {
         List {
+            Section {
+                NavigationLink {
+                    TagListView().navigationTitle("Chat folders")
+                } label: {
+                    settingsRow("folder", color: theme.colors.secondary) { Text("Chat folders") }
+                }
+                NavigationLink {
+                    UserProfilesView().navigationTitle("Your chat profiles").modifier(ThemedBackground(grouped: true))
+                } label: {
+                    settingsRow("person.crop.rectangle.stack", color: theme.colors.secondary) { Text("Your chat profiles") }
+                }
+                if let user = chatModel.currentUser {
+                    NavigationLink {
+                        UserAddressView(shareViaProfile: user.addressShared).navigationTitle("Your SimpleX address").modifier(ThemedBackground(grouped: true))
+                    } label: { settingsRow("qrcode", color: theme.colors.secondary) { Text("Your SimpleX address") } }
+                    NavigationLink {
+                        PreferencesView(profile: user.profile, preferences: user.fullPreferences, currentPreferences: user.fullPreferences)
+                            .navigationTitle("Your preferences").modifier(ThemedBackground(grouped: true))
+                    } label: { settingsRow("switch.2", color: theme.colors.secondary) { Text("Chat preferences") } }
+                }
+                NavigationLink {
+                    ConnectDesktopView().navigationTitle("Connect to desktop").modifier(ThemedBackground(grouped: true))
+                } label: { settingsRow("desktopcomputer", color: theme.colors.secondary) { Text("Use from desktop") } }
+            }
             Section(header: Text(verbatim: "").foregroundColor(theme.colors.secondary)) {
                 if UIApplication.shared.supportsAlternateIcons {
                     NavigationLink {

@@ -7225,3 +7225,6 @@ alert title */
 /* No comment provided by engineer. */
 "Your SimpleX address" = "您的 SimpleX 地址";
 
+
+/* Sunder: user-managed chat folders. */
+"Chat folders" = "聊天文件夹";

@@ -142,3 +142,10 @@ profile destination after dismissal. Its content scrolls at large text sizes.
 Account loading/switching, hidden profile rules and theme gestures are unchanged.
 
 The current avatar menu has one native List, a system navigation title/Done and standard profile/settings sections. Appearance choices are in a native Menu.
+
+## Native main navigation and folders (2026-10-30)
+
+Your profile is an independent root tab, displaying the existing current-profile
+editor, with the current avatar as its tab image. Profile management remains a
+settings destination. Existing profile saving, account isolation and authentication
+are preserved; selecting another tab does not replace the app authentication gate.

@@ -3222,3 +3222,6 @@ server test failure */
 /* No comment provided by engineer. */
 "Your SimpleX address" = "ที่อยู่ SimpleX ของคุณ";
 
+
+/* Sunder: user-managed chat folders. */
+"Chat folders" = "โฟลเดอร์แชต";

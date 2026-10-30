@@ -47,8 +47,8 @@ struct ChatPreviewView: View {
                         chatPreviewTitle()
                         Spacer()
                         (formatTimestampText(chatTs))
-                            .font(.subheadline)
-                            .frame(minWidth: 60, alignment: .trailing)
+                            .font(.caption)
+                            .frame(minWidth: 48, alignment: .trailing)
                             .foregroundColor(theme.colors.secondary)
                             .padding(.top, 4)
                     }
@@ -162,7 +162,7 @@ struct ChatPreviewView: View {
     }
 
     @ViewBuilder private func chatPreviewTitle() -> some View {
-        let t = Text(chat.chatInfo.chatViewName).font(.title3).fontWeight(.bold)
+        let t = Text(chat.chatInfo.chatViewName).font(.headline).fontWeight(.semibold)
         switch chat.chatInfo {
         case let .direct(contact):
             let color =
@@ -173,7 +173,7 @@ struct ChatPreviewView: View {
                 : !contact.sndReady
                 ? theme.colors.secondary
                 : nil
-            NameWithBadge((contact.verified == true ? verifiedIcon + t : t).foregroundColor(color), chat.chatInfo.nameBadge, .title3)
+            NameWithBadge((contact.verified == true ? verifiedIcon + t : t).foregroundColor(color), chat.chatInfo.nameBadge, .headline)
                 .lineLimit(1)
                 .frame(alignment: .topLeading)
         case let .group(groupInfo, _):
@@ -231,7 +231,7 @@ struct ChatPreviewView: View {
             HStack(alignment: .center, spacing: 2) {
                 if s.unreadMentions > 0 && s.unreadCount > 1 {
                     Text("\(MENTION_START)")
-                        .font(userFont <= .xxxLarge ? .body : .callout)
+                        .font(userFont <= .xxxLarge ? .subheadline : .callout)
                         .foregroundColor(mentionColor)
                         .frame(minWidth: dynamicChatInfoSize, minHeight: dynamicChatInfoSize)
                         .cornerRadius(dynamicSize(userFont).unreadCorner)
