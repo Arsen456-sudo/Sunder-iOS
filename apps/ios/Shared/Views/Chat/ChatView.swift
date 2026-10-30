@@ -458,7 +458,7 @@ struct ChatView: View {
         }
         .sunderConversationToolbar(modern: usesModernAvatarToolbar,
                                     modernToolbar: { modernConversationToolbar },
-                                    legacyToolbar: { legacyConversationToolbar })
+                                    legacyToolbar: { legacyConversationToolbar(userMemberKnockingChat: userMemberKnockingChat) })
         .background {
             if usesModernAvatarToolbar { SunderToolbarIdentity().frame(width: 0, height: 0) }
         }
@@ -482,7 +482,7 @@ struct ChatView: View {
         return false
     }
 
-    @ToolbarContentBuilder private var legacyConversationToolbar: some ToolbarContent {
+    @ToolbarContentBuilder private func legacyConversationToolbar(userMemberKnockingChat: Bool) -> some ToolbarContent {
         ToolbarItem(placement: .principal) {
             if im.secondaryIMFilter == nil {
                 primaryPrincipalToolbarContent()

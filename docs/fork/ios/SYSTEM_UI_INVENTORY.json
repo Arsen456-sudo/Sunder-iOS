@@ -654,7 +654,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatView.swift",
-      "sha256": "2fe23a11bec7e1d946fb49a799ffda47d49489470b918793e41ee9d161569948",
+      "sha256": "546560d97e7c42d9a898a55638751ca70ff1df1aef84e59e431ee1f9d52e84c6",
       "swiftui_view_declarations": [
         "ChatView",
         "ChatBannerView",

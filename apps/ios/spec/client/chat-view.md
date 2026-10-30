@@ -462,3 +462,8 @@ commands. Notes, secondary chats and message selection keep the legacy toolbar.
 SunderFolderEditor confirms deletion, uses the existing delete-tag API and clears
 only folder metadata/selection/counts. List swipe deletion now reports API errors.
 Compile and on-device animation/layout checks are separate; iOS 27 is not verified.
+
+## CI scope repair after run 41122521689
+legacyConversationToolbar now receives userMemberKnockingChat explicitly from
+viewBody. This preserves the same pending-member condition without referring to
+a local outside its scope. No navigation behavior or action changes are intended.
