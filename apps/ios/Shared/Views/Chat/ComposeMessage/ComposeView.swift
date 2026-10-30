@@ -1401,7 +1401,7 @@ struct ComposeView: View {
         .padding(12)
         .frame(minHeight: 54)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(ToolbarMaterial.material(toolbarMaterial))
+        .modifier(SunderCommandSurface(legacyMaterial: ToolbarMaterial.material(toolbarMaterial)))
     }
 
     private func reportReasonView(_ reason: ReportReason) -> some View {

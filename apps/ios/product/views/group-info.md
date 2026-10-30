@@ -256,3 +256,8 @@ Group and channel profiles reuse the compact native close header and 144-point
 circular photo, grouped information and glass action buttons. Action widths depend
 on the actual visible action count and include gaps. All role gates, member/link
 flows, moderation, relay details and child navigation remain unchanged.
+
+### Member-detail system navigation (2026-10-30)
+Member profiles use system navigation on iOS 26, retaining the existing pushed back
+action and providing a close button in modal use. Member roles, restriction alerts
+and direct-message/call actions remain unchanged.

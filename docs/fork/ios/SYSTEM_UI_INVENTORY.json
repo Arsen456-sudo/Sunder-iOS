@@ -1,0 +1,3169 @@
+{
+  "reference": "apps/ios/Shared/Views/UserSettings/AppearanceSettings.swift",
+  "policy": "SunderSystemInterface at app root, themed screens and presentation boundaries",
+  "scope": "Main app view sources and share-extension sources, including content components and non-UI helpers",
+  "meaning": "Lexical coverage only; entries are not necessarily distinct screens or reachable routes",
+  "file_count": 187,
+  "records": [
+    {
+      "path": "apps/ios/Shared/ContentView.swift",
+      "sha256": "460fea9c00d26a64aa592e27d4544ede46ba5b20c3d78116d01bc4292aae4c0e",
+      "swiftui_view_declarations": [
+        "ContentView",
+        "CallDuration"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/SimpleXApp.swift",
+      "sha256": "3d8ebb97f29302865f64682deca8f479cccfb976fbcd22e839c361308598a3ad",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Theme/Theme.swift",
+      "sha256": "90e6f5b7ad9781b8d0038410f1093365e84169590727c9d97bda2549041ad711",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Call/ActiveCallView.swift",
+      "sha256": "c7428b43e27d3b75b06cde99141008adc4b1fa2df13081bbf1da99ae623d54fc",
+      "swiftui_view_declarations": [
+        "ActiveCallView",
+        "ActiveCallOverlay"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Call/AudioDevicePicker.swift",
+      "sha256": "42021781ae41bca4135a04ed4c341050f0185532b2770609578dee9e8007eac1",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        14
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Call/CallAudioDeviceManager.swift",
+      "sha256": "83d63cb89065aabd5fdc78d3a428cb51f469b701caff45b42c59d4ed27ccab02",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Call/CallController.swift",
+      "sha256": "bd43f9df9d1a0c1ef6906c878198a110ca73e2923f65da82d0d743e0ccd0715d",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Call/CallManager.swift",
+      "sha256": "5cc7ab571454757f0fe2c34d7015e1dc54689df05df3e700cbd62d57b2f55317",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Call/CallViewRenderers.swift",
+      "sha256": "a2461d2ab844c9a3e29962b944a5c954453349dcbec1ce791b281ecc9ea09986",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        11,
+        211
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Call/IncomingCallView.swift",
+      "sha256": "278942baf8487bf0bd8b8c6aaff9344fdb764024e33f09eccca9acaeab301ba2",
+      "swiftui_view_declarations": [
+        "IncomingCallView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Call/SoundPlayer.swift",
+      "sha256": "4b3a7389f86a1c8acb1b0ca52bcc10cf5f29afb2c1f7662a98f72115cb710d35",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Call/WebRTC.swift",
+      "sha256": "a10d11db461c94ecc7f282532e3c0a2c6a7d667aad38c6487e533bf01439f953",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Call/WebRTCClient.swift",
+      "sha256": "d2d0d94a7a0a9bf6fdc0fa8fe28487fdf950f98e830e9eb6f0883d3c4c52f190",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatInfoToolbar.swift",
+      "sha256": "1b8bcf6d0a4e1ec8123236feb008ffb5f24609da996100fc492634c28bc94365",
+      "swiftui_view_declarations": [
+        "ChatInfoToolbar",
+        "SubStatusView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatInfoView.swift",
+      "sha256": "1e0438e6e79ba12e8218b9d9e510cfffa02a6865904fc556ce9a5c2c4fbd9241",
+      "swiftui_view_declarations": [
+        "ChatInfoView",
+        "SubStatusRow",
+        "ChatTTLOption",
+        "AudioCallButton",
+        "VideoButton",
+        "CallButton",
+        "InfoViewButton",
+        "ChatWallpaperEditorSheet",
+        "DeleteActiveContactDialog",
+        "SimplexNameView"
+      ],
+      "native_lists_forms": [
+        145,
+        1290
+      ],
+      "navigation_containers": [
+        143,
+        1289
+      ],
+      "system_controls": [
+        420,
+        1292
+      ],
+      "hidden_navigation": [
+        299
+      ],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/AnimatedImageView.swift",
+      "sha256": "e07c298bba0703b2c6ae856bb5dda2dcc36791469414851d76ecedbb5d77a9dd",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        52
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CICallItemView.swift",
+      "sha256": "30162bc6722d5192033515dc4846523506b71e27a2f7e2f7d373ee89310eb8ad",
+      "swiftui_view_declarations": [
+        "CICallItemView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CIChatFeatureView.swift",
+      "sha256": "ada1af81773983a230896769edce1d4a11e6e931fb68f8244f7e1e47925d8574",
+      "swiftui_view_declarations": [
+        "CIChatFeatureView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CIChatLinkHeader.swift",
+      "sha256": "097a611e065e83463c734eb5a8ee620d785c14fb6de8f60e922235e36ad4b5c7",
+      "swiftui_view_declarations": [
+        "CIChatLinkHeader"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CIEventView.swift",
+      "sha256": "9e3247f9dfd2ed82e9cb34558b51a5990c846ee837d94b1f9fdf7614eb000c99",
+      "swiftui_view_declarations": [
+        "CIEventView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CIFeaturePreferenceView.swift",
+      "sha256": "75c4cca721359443f9cc64836d0d45cd1b3a1f253c1d106426cfc8b058027393",
+      "swiftui_view_declarations": [
+        "CIFeaturePreferenceView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CIFileView.swift",
+      "sha256": "20226ceee0541f964792dd85e285a051d402cf0e8b04ad640d8dbc81af7bd28f",
+      "swiftui_view_declarations": [
+        "CIFileView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CIGroupInvitationView.swift",
+      "sha256": "ec18092838d9e282814a8865616669f5e2f0d9d2a4adb171fa6c604c242bb966",
+      "swiftui_view_declarations": [
+        "CIGroupInvitationView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CIImageView.swift",
+      "sha256": "31927a26e499b735fc38c74ce6d3771289c5d37df498e55aa029923b9667bce2",
+      "swiftui_view_declarations": [
+        "CIImageView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CIInvalidJSONView.swift",
+      "sha256": "1473b23bf3e0a73cd949993116d847b274762c7357f9cb4fece53f95578d4c6a",
+      "swiftui_view_declarations": [
+        "CIInvalidJSONView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CILinkView.swift",
+      "sha256": "3177a2e9bc54c2f50583297d91fa5adaad453432138efad66be38a4bb035eb58",
+      "swiftui_view_declarations": [
+        "CILinkView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CIMemberCreatedContactView.swift",
+      "sha256": "ca6c3bb264e64c643a6c49b33dab5e1c58e9324d07e702542b2f6a1f9a5828c1",
+      "swiftui_view_declarations": [
+        "CIMemberCreatedContactView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CIMetaView.swift",
+      "sha256": "1e08f6e589c599f9f8c6c1d07405991029126c37b8324a39c674f259c76b5abf",
+      "swiftui_view_declarations": [
+        "CIMetaView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CIRcvDecryptionError.swift",
+      "sha256": "7b43e492b8e464386c21ff00b36b6d059ff0544e4ac1e6bcd621beb6ac762cff",
+      "swiftui_view_declarations": [
+        "CIRcvDecryptionError"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CIVideoView.swift",
+      "sha256": "b6f41e5eef1728c881db24c59348a60e93ffb04f949a88207963cdea7e5026c0",
+      "swiftui_view_declarations": [
+        "CIVideoView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/CIVoiceView.swift",
+      "sha256": "d6b71cc2b852af8809023f51678e101ad054675cd86975c128552fe89560ecd9",
+      "swiftui_view_declarations": [
+        "CIVoiceView",
+        "VoiceMessagePlayerTime",
+        "VoiceMessagePlayer",
+        "ProgressCircle"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/DeletedItemView.swift",
+      "sha256": "c1e7e2760e7d5ef2c0fe9551292fe418c5fd34e85eccb9a83948d6a1db0594b6",
+      "swiftui_view_declarations": [
+        "DeletedItemView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/EmojiItemView.swift",
+      "sha256": "8377b7f100dcce1e39dfa2777849bcee65c5b2b4353352ffdb1f6d648f230b66",
+      "swiftui_view_declarations": [
+        "EmojiItemView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/FramedCIVoiceView.swift",
+      "sha256": "edf39065cdbc3175c302fcf038c02fadb024bf646154a84d3d9c4d9eac0bc5f0",
+      "swiftui_view_declarations": [
+        "FramedCIVoiceView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/FramedItemView.swift",
+      "sha256": "287117cffdcaa6eb0f027204f665c5cc6ba8c84a19cd14219f6ddbdc0c3a1e14",
+      "swiftui_view_declarations": [
+        "FramedItemView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/FullScreenMediaView.swift",
+      "sha256": "70bb71c0eea78e1536244c2e5dda3a5df2292fc0e3c13bf3c3fd8a65e7a31776",
+      "swiftui_view_declarations": [
+        "FullScreenMediaView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/IntegrityErrorItemView.swift",
+      "sha256": "cf805797590eea45fe56ef63908c204714b3fb285810e9460fba4b711d7fc51b",
+      "swiftui_view_declarations": [
+        "IntegrityErrorItemView",
+        "CIMsgError",
+        "RcvMsgErrorItemView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/MarkedDeletedItemView.swift",
+      "sha256": "7dc3fb9508b93b4559f660c0821f0f0014caf795d8a7d6ca87a790b56959911e",
+      "swiftui_view_declarations": [
+        "MarkedDeletedItemView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItem/MsgContentView.swift",
+      "sha256": "1ca6f8f0d2801a8a27d59a992b2167262fd84a73ea43856f0d7f04e7df07a7a0",
+      "swiftui_view_declarations": [
+        "MsgContentView",
+        "ProfileDescriptionView",
+        "FullProfileDescriptionView"
+      ],
+      "native_lists_forms": [
+        301
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItemForwardingView.swift",
+      "sha256": "f540cdad8e2269d63f31f051cdaba36b34e2de73aa9e2c043d56cea2c281d2f3",
+      "swiftui_view_declarations": [
+        "ChatItemForwardingView"
+      ],
+      "native_lists_forms": [
+        51
+      ],
+      "navigation_containers": [
+        30
+      ],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItemInfoView.swift",
+      "sha256": "b360ef245a952f075ee805f1f2c54bde9c0fd8c1c15814472a70e284d9b578bf",
+      "swiftui_view_declarations": [
+        "ChatItemInfoView",
+        "TextBubble"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [
+        44
+      ],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItemView.swift",
+      "sha256": "0760243f21277969e38f5212ba1c904b5150f5e7bf7a755cc9917b899ae6aa39",
+      "swiftui_view_declarations": [
+        "ChatItemView",
+        "ChatItemContentView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItemsLoader.swift",
+      "sha256": "ca705aa3b003baf782d4942665134f2464740c3e5f5393b94e4e2b062932097e",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatItemsMerger.swift",
+      "sha256": "8c755acb87c7cc56d275b59d4e65763cafcd9a797b14dd5e6dbd2664fbe73cf6",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatScrollHelpers.swift",
+      "sha256": "baa547773f8a1ce0ad7274e10fa39f31fba0837f0134dae1244ef05d5a1495bc",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ChatView.swift",
+      "sha256": "68a1e9d09f07b86cb094d09ab812c6ab377e8f6fd67123bce4ddae87fdae9118",
+      "swiftui_view_declarations": [
+        "ChatView",
+        "ChatBannerView",
+        "FloatingButtons",
+        "DateSeparator",
+        "ChatItemWithMenu",
+        "SelectedChatItem",
+        "ReactionContextMenu",
+        "ToggleNtfsButton"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [
+        872
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [
+        238,
+        509,
+        737
+      ],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/CommandsMenuView.swift",
+      "sha256": "7a49a65891002b504f474e4b8e7127efa89825236aa9acca04dbdf0e19ff7fda",
+      "swiftui_view_declarations": [
+        "CommandsMenuView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/ComposeChatLinkView.swift",
+      "sha256": "34ab95d73a87197e20262bedbaa350e14957f8a61e9c12e7737becc4484cbeb0",
+      "swiftui_view_declarations": [
+        "ComposeChatLinkView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/ComposeFileView.swift",
+      "sha256": "f756e9f4a3de04c94106942e117a72526df39fd605717b319f1030d1a5e8ea6a",
+      "swiftui_view_declarations": [
+        "ComposeFileView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/ComposeImageView.swift",
+      "sha256": "de1b6876a68334cdb925a1271a96d00877194af6ed6e2d4924cb70c79dfeeff8",
+      "swiftui_view_declarations": [
+        "ComposeImageView",
+        "ComposeImageView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/ComposeLinkView.swift",
+      "sha256": "3635f46278c58b633c2ddc7a4b2761bb934c6c2989457004525a094b0787163f",
+      "swiftui_view_declarations": [
+        "ComposeLinkView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/ComposeView.swift",
+      "sha256": "7f9b807baaaea3cfa15cf614262c39caaecfda8f4d43225115efff7c27870307",
+      "swiftui_view_declarations": [
+        "ComposeView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [
+        1404
+      ],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/ComposeVoiceView.swift",
+      "sha256": "cb670fb132c272b0f98d629200419b18412e105371baf1dc850ded499a5072ae",
+      "swiftui_view_declarations": [
+        "ComposeVoiceView",
+        "SliderBar",
+        "ProgressBar"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [
+        160
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/ContextContactRequestActionsView.swift",
+      "sha256": "6b5fc84520a9f99305655407dc740b3a0ff8ca8ca8cfacd629ea36907249155b",
+      "swiftui_view_declarations": [
+        "ContextContactRequestActionsView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [
+        39
+      ],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/ContextItemView.swift",
+      "sha256": "d66384810f4dbb50cfd11f7244923ccfad495649ec19093103cf60ded3abc19e",
+      "swiftui_view_declarations": [
+        "ContextItemView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/ContextMemberContactActionsView.swift",
+      "sha256": "8b4129bbc5862b12cb2ec29be234f7fbf343b6e6c81257b0a3213ef73032b8a4",
+      "swiftui_view_declarations": [
+        "ContextMemberContactActionsView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [
+        46
+      ],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/ContextPendingMemberActionsView.swift",
+      "sha256": "a55ba8342e2e44b4e31f9da452635313b3f8a1ea7ba68cdadc3606bfcb8f9872",
+      "swiftui_view_declarations": [
+        "ContextPendingMemberActionsView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [
+        43
+      ],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/ContextProfilePickerView.swift",
+      "sha256": "89a7fd10a9b07797516ab7a9c8d0b770339bfec1ca3abbbe272630fef0661bb5",
+      "swiftui_view_declarations": [
+        "ContextProfilePickerView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/NativeTextEditor.swift",
+      "sha256": "f67e3e4813fb653046573bdac53feb8049bb33e09540eff301a34c89ec90010d",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        14
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ComposeMessage/SendMessageView.swift",
+      "sha256": "736c8c90279814dd4bbf473bf5ce238b5c0873d2b990e38b9d0a49f0090f7952",
+      "swiftui_view_declarations": [
+        "SendMessageView",
+        "RecordVoiceMessageButton"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ContactPreferencesView.swift",
+      "sha256": "21515021c6bbcbfd7b80f91bc78b0c2c8a4235f537c619514f272412ae659a55",
+      "swiftui_view_declarations": [
+        "ContactPreferencesView"
+      ],
+      "native_lists_forms": [
+        26
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        66,
+        86
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Emoji.swift",
+      "sha256": "4910adb93052892c5ca513ecb05a6071ec017a03375de28390e06bf0a9d16fea",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/EndlessScrollView.swift",
+      "sha256": "a517e11ec580f615bc34092ace353802421a50f786240424a016e878d5497d91",
+      "swiftui_view_declarations": [
+        "ScrollRepresentable"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        11
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/AddGroupMembersView.swift",
+      "sha256": "342aa0f8f9d15df5c434e5f11d80622a13c0d446420d67bdf2afc222e1849201",
+      "swiftui_view_declarations": [
+        "AddGroupMembersView",
+        "AddGroupMembersViewCommon"
+      ],
+      "native_lists_forms": [
+        66
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        185,
+        245
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/AddGroupRelayView.swift",
+      "sha256": "ac57f8fbfefa6568356218b850f8cb10bf6558b865d649a4446cb946dd43df34",
+      "swiftui_view_declarations": [
+        "AddGroupRelayView"
+      ],
+      "native_lists_forms": [
+        25
+      ],
+      "navigation_containers": [
+        24
+      ],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/ChannelMembersView.swift",
+      "sha256": "4752c6a57a0cdd53a9a30a5f447dcb916a5383562e4c81340b1883a0ba345d23",
+      "swiftui_view_declarations": [
+        "ChannelMembersView"
+      ],
+      "native_lists_forms": [
+        30,
+        46
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/ChannelRelaysView.swift",
+      "sha256": "f6ffc67781efc6cc01a7e9e7473425d897f329d1b5d1f6553b110a80818e5ded",
+      "swiftui_view_declarations": [
+        "ChannelRelaysView"
+      ],
+      "native_lists_forms": [
+        25
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/ChannelWebAccessView.swift",
+      "sha256": "2e5ac846e6b4c786c2af5d319743ac3f159f6cb9b0a9b6c31b9df6492256f638",
+      "swiftui_view_declarations": [
+        "ChannelWebAccessView"
+      ],
+      "native_lists_forms": [
+        29
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        55,
+        66
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/GroupChatInfoView.swift",
+      "sha256": "c061c7da742dea066cd646c77bf348df100fc039acd39dd30bbd99c3829d8d85",
+      "swiftui_view_declarations": [
+        "GroupChatInfoView",
+        "MemberRowView",
+        "UserSupportChatNavLink",
+        "GroupReportsChatNavLink",
+        "GroupPreferencesButton"
+      ],
+      "native_lists_forms": [
+        80
+      ],
+      "navigation_containers": [
+        74
+      ],
+      "system_controls": [
+        384
+      ],
+      "hidden_navigation": [
+        274
+      ],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/GroupLinkView.swift",
+      "sha256": "c7881ab13f4c5e7a124ebdfaeedf1bf1ee3084e6c1f912b6c4ed66e21826e9bb",
+      "swiftui_view_declarations": [
+        "GroupLinkView"
+      ],
+      "native_lists_forms": [
+        64
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        85
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/GroupMemberInfoView.swift",
+      "sha256": "d766de278f270ed67afba7302945f2a987177774e83be1b2da80cbe499d0c57e",
+      "swiftui_view_declarations": [
+        "GroupMemberInfoView",
+        "MemberInfoSupportChatNavLink"
+      ],
+      "native_lists_forms": [
+        107
+      ],
+      "navigation_containers": [
+        88
+      ],
+      "system_controls": [
+        179
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/GroupMentions.swift",
+      "sha256": "6282457d81f39d693e329142918edac8845cc6be847773e608c924287381a37f",
+      "swiftui_view_declarations": [
+        "GroupMentionsView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/GroupPreferencesView.swift",
+      "sha256": "394fde6e04ff04339c3809f20eb019e5842ac196c32e71928f0780cb1da1c28c",
+      "swiftui_view_declarations": [
+        "GroupPreferencesView",
+        "MemberAdmissionButton"
+      ],
+      "native_lists_forms": [
+        32
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        125,
+        139
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/GroupProfileView.swift",
+      "sha256": "94e964918a8663dfe38986d635e0ceaa09b6b8a3cfce7caf2fff93b183fff2ed",
+      "swiftui_view_declarations": [
+        "GroupProfileView"
+      ],
+      "native_lists_forms": [
+        39
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        45,
+        57,
+        60
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/GroupWelcomeView.swift",
+      "sha256": "889938c6dd39f7d2034bf769f391bade75d2ca0ffee52ad32eb3e90d74823c35",
+      "swiftui_view_declarations": [
+        "GroupWelcomeView"
+      ],
+      "native_lists_forms": [
+        46,
+        69
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/MemberAdmissionView.swift",
+      "sha256": "e768a5cd229da44ad22956a7fd2194aaa33164eba5b12289220640af7973c41a",
+      "swiftui_view_declarations": [
+        "MemberAdmissionView"
+      ],
+      "native_lists_forms": [
+        31
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        69
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/MemberSupportChatToolbar.swift",
+      "sha256": "d8006f45381f9755515d89a3144370ebda09b59ada90497e43fd3bafa0fe5d2f",
+      "swiftui_view_declarations": [
+        "MemberSupportChatToolbar"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/MemberSupportView.swift",
+      "sha256": "4436bbcb89bf3b51259acafdc40be9527d86540debbcd6e4b6875c346ecf99b5",
+      "swiftui_view_declarations": [
+        "MemberSupportView",
+        "MemberSupportChatNavLink",
+        "SupportChatRowView",
+        "SupportChatUnreadIndicator"
+      ],
+      "native_lists_forms": [
+        51
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/Group/SecondaryChatView.swift",
+      "sha256": "9b595402c19d25672b8197132724a2576fd4d3addf91aaaa9df8ed266a0d0497",
+      "swiftui_view_declarations": [
+        "SecondaryChatView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ScanCodeView.swift",
+      "sha256": "aaf0d44b61e4b6ee9ef9655a3c0c37eae118df5d592defb56f117e2b5060f5c1",
+      "swiftui_view_declarations": [
+        "ScanCodeView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/ScrollViewCells.swift",
+      "sha256": "60f5ad032cf645f55433588cf2cf9e7c69da1ad807adfc20ed6a494b34a6088a",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        18
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/SelectableChatItemToolbars.swift",
+      "sha256": "551f4c79eaa5dc104c795739520d8ad6fb333730414715efb0de12f3922df5f1",
+      "swiftui_view_declarations": [
+        "SelectedItemsTopToolbar",
+        "SelectedItemsBottomToolbar"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Chat/VerifyCodeView.swift",
+      "sha256": "7637f293fc06050f9e17339050088edbddf36939edeb04c027cdecce7177a50a",
+      "swiftui_view_declarations": [
+        "VerifyCodeView"
+      ],
+      "native_lists_forms": [
+        29
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/ChatHelp.swift",
+      "sha256": "bc2455a7f11c1ae274aabc3fa619ec2b2d699fefd6cd22fe9820bbce3496d5f7",
+      "swiftui_view_declarations": [
+        "ChatHelp"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/ChatListChromeController.swift",
+      "sha256": "a7e17da3eec51fdf0099600a41d07a4f650d0588ec8c2a40adc105423736d0bc",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        36,
+        38,
+        104
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/ChatListNativeControls.swift",
+      "sha256": "742ad208ec0233b7c139b7164307ce4f9bc48a80f32ce8814d7902465395dc80",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        15,
+        142,
+        207,
+        289,
+        326
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/ChatListNavLink.swift",
+      "sha256": "537b3e687e1287e488121820c761bb803612cf69fbce2de3e675f6a0172a9f3f",
+      "swiftui_view_declarations": [
+        "ChatListNavLink"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [
+        420
+      ],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/ChatListView.swift",
+      "sha256": "8af043764c1df47f7bd485f04edddd6a0d51a48dedd49426fa7fe146c9e91eb3",
+      "swiftui_view_declarations": [
+        "UserPickerSheetView",
+        "ChatListView",
+        "ChatListSearchBar",
+        "ConnectByNameRow",
+        "TagsView"
+      ],
+      "native_lists_forms": [
+        349
+      ],
+      "navigation_containers": [
+        89,
+        193,
+        810,
+        830
+      ],
+      "system_controls": [],
+      "hidden_navigation": [
+        251
+      ],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/ChatPreviewView.swift",
+      "sha256": "5be75e404231adbbc7f1638aead304861540a941534bf276299296d60a3dd079",
+      "swiftui_view_declarations": [
+        "ChatPreviewView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/ContactConnectionInfo.swift",
+      "sha256": "12460730ab652cdc780fdb121fec651b86247c8dfd6a76efd2f3c2d716a9508a",
+      "swiftui_view_declarations": [
+        "ContactConnectionInfo"
+      ],
+      "native_lists_forms": [
+        37
+      ],
+      "navigation_containers": [
+        36
+      ],
+      "system_controls": [
+        54
+      ],
+      "hidden_navigation": [
+        106
+      ],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/ContactConnectionView.swift",
+      "sha256": "259bcab3fe8e7e47c2af44160573ad930f4adf7a54d413406fdf03f3b50a5c47",
+      "swiftui_view_declarations": [
+        "ContactConnectionView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/ContactRequestView.swift",
+      "sha256": "4f22891b330c2c327843a1b2a6506be019edbb1e588ceef4ceee118a460955ab",
+      "swiftui_view_declarations": [
+        "ContactRequestView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/GetStakeBanner.swift",
+      "sha256": "afdc7f9b48bf13cea1c760e7f05a501ccfaa5d1df6bbbc43eed355d6132c95cc",
+      "swiftui_view_declarations": [
+        "BannerDismissButton"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/OneHandUICard.swift",
+      "sha256": "bf96b7019812dff7bb230bfc4c19844b131c7e8b5889b3c72f250313457f96bf",
+      "swiftui_view_declarations": [
+        "OneHandUICard"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [
+        29,
+        51
+      ],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/ServersSummaryView.swift",
+      "sha256": "7f7847a5eee5d663c1dc92af65c5d34c0b3f38e5e127aba0f5f15164ef9219bf",
+      "swiftui_view_declarations": [
+        "ServersSummaryView",
+        "SubscriptionStatusIndicatorView",
+        "SubscriptionStatusPercentageView",
+        "SMPServerSummaryView",
+        "ServerSessionsView",
+        "SMPStatsView",
+        "DetailedSMPStatsView",
+        "XFTPServerSummaryView",
+        "XFTPStatsView",
+        "DetailedXFTPStatsView"
+      ],
+      "native_lists_forms": [
+        133,
+        505,
+        619,
+        684,
+        736
+      ],
+      "navigation_containers": [
+        40
+      ],
+      "system_controls": [
+        223
+      ],
+      "hidden_navigation": [
+        44
+      ],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/SunderGlassDesign.swift",
+      "sha256": "486c6247d7ea90eb7ee71290f52f40e5ac096a327e588359f6ee9178b466497c",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [
+        222
+      ],
+      "legacy_material_references": [],
+      "native_bridges": [
+        5,
+        56,
+        83
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/TagListView.swift",
+      "sha256": "148e1da47b3c3ecdef188da494dc383bba11ce2a8c7496de57852ec7043b5f55",
+      "swiftui_view_declarations": [
+        "TagListView",
+        "TagListEditor"
+      ],
+      "native_lists_forms": [
+        32,
+        287
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        305
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        223
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ChatList/UserPicker.swift",
+      "sha256": "786ca756424d825a4621793b16d49d36d45fe05a471cd28e669b559b331a908e",
+      "swiftui_view_declarations": [
+        "UserPicker",
+        "UnreadBadge"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        231
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Contacts/ContactListNavLink.swift",
+      "sha256": "f2f1ba5b42e999bfda034e2983bf20839a9be70e8d069a5af4d27b5da9559348",
+      "swiftui_view_declarations": [
+        "ContactListNavLink"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Database/DatabaseEncryptionView.swift",
+      "sha256": "2f15dafd3a8ed7f96d022c8f549c2d5fdac34e840d758618618841834de2b7b7",
+      "swiftui_view_declarations": [
+        "DatabaseEncryptionView",
+        "PassphraseField"
+      ],
+      "native_lists_forms": [
+        57
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        72,
+        332,
+        334
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Database/DatabaseErrorView.swift",
+      "sha256": "ca8e5722866a3c830c85c2add0a89d24e3e8335bbed1075f39ffea7bce731bf3",
+      "swiftui_view_declarations": [
+        "DatabaseErrorView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Database/DatabaseView.swift",
+      "sha256": "b4663e45b4f5f6487d9f8158dbdb980430c19adc51fbe4960113ef78c03075be",
+      "swiftui_view_declarations": [
+        "DatabaseView"
+      ],
+      "native_lists_forms": [
+        91,
+        193
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        94,
+        168
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Database/MigrateToAppGroupView.swift",
+      "sha256": "cc56364143b2cf728f9161f0266c73d10003b7ab08bfd62d337b578fe4047a44",
+      "swiftui_view_declarations": [
+        "MigrateToAppGroupView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/AppSheet.swift",
+      "sha256": "5c097d5c23f0986c4f607103fcb4057f64a5a10549b2d89dd0c569bfec48878e",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/ChatInfoImage.swift",
+      "sha256": "14e557f4e158642ee1b791dfe844f82d295e7046ce84b4fcd35e56a71f225eb1",
+      "swiftui_view_declarations": [
+        "ChatInfoImage"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/ChatItemClipShape.swift",
+      "sha256": "da311c2572262ee9c691281ef62fe1faaa460d9d5f740bf6512fbb31700b9d13",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/ChatWallpaper.swift",
+      "sha256": "63e7c72caa41e4ed036714c8e796f4687b92bc4096bc46c6aa86b59c7fc2e6ac",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/CustomTimePicker.swift",
+      "sha256": "1224d85d1a708ef383bd1779175ca32495d9403a36b00bcdf11dffc127d92d4b",
+      "swiftui_view_declarations": [
+        "CustomTimePicker",
+        "CustomTimePickerView",
+        "DropdownCustomTimePicker",
+        "WrappedPicker"
+      ],
+      "native_lists_forms": [
+        127
+      ],
+      "navigation_containers": [
+        103
+      ],
+      "system_controls": [
+        47,
+        55,
+        158,
+        244
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/DetermineWidth.swift",
+      "sha256": "1e568c41e3f6c8a6bc55c155d5492590fbff7f991ab63166a96b3619e7ac7ad1",
+      "swiftui_view_declarations": [
+        "DetermineWidth",
+        "DetermineHeight",
+        "DetermineWidthImageVideoItem"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/DismissSheets.swift",
+      "sha256": "556f2ce1c32016695b84f92d9e928120fff28639ce49bb5f063077352e33ce6d",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/ImagePicker.swift",
+      "sha256": "1f3b1f9b66bfa3397244a8bc3d1735542de63322577efbf981d7d3b36d8d2d3b",
+      "swiftui_view_declarations": [
+        "LibraryImagePicker",
+        "CameraImageListPicker"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        32,
+        182,
+        206,
+        214
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/InvertedForegroundStyle.swift",
+      "sha256": "219a532d5dc28d7a145f601d9e5c504bec2d5bde07aba7a0b616f2384b766c20",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/Keyboard.swift",
+      "sha256": "f5a08a732fe09343608c7647e625658f0d5ec56b3f946cda444d91d42fbe6c7f",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/LocalAuthenticationUtils.swift",
+      "sha256": "86dfe6a283b7abb7c5a1e07c6a4daec384767057a6972d3edde4e6f6d180f7a8",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/MailView.swift",
+      "sha256": "4a6207bb2200a8b6bcabd9b846ba7565e2081e149d9d0077e58266e9d161c2ab",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        13,
+        49,
+        58
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/NameBadge.swift",
+      "sha256": "d5e11dfcbadbcc2d27e37cfa30a2ddfd9667683814dd070cf7ec4e7ac8d40533",
+      "swiftui_view_declarations": [
+        "NameWithBadge",
+        "NameBadge"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/NavLinkPlain.swift",
+      "sha256": "e7f071a115733d8bedc9382cd653e70520ada943cb9ec5c0a08aa7612ecb4b0e",
+      "swiftui_view_declarations": [
+        "NavLinkPlain"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/NavStackCompat.swift",
+      "sha256": "69e91e680cc2d0de5dcd8555fef1a8fb15517e19b80fea04c0fd6f78bbcd731e",
+      "swiftui_view_declarations": [
+        "NavStackCompat"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [
+        18,
+        33
+      ],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/PressedButtonStyle.swift",
+      "sha256": "f731f5750edf353398bb3f363f50ea34eef7bad1e5ee7a80eecf9cf456710b15",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/ProfileImage.swift",
+      "sha256": "abf33bc15874e56bf387909617608fa5d66ea780a9f8d0e865ede6e3b56c548c",
+      "swiftui_view_declarations": [
+        "ProfileImage"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/ShareSheet.swift",
+      "sha256": "3fb6609368b0915e391f2dfaa9a0ae4e58eb966172760a4ba5be34c374d004ae",
+      "swiftui_view_declarations": [
+        "ExternalLink"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        448
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/SheetRepresentable.swift",
+      "sha256": "ad667251ab98b9ffe5f5c8c4005cf8b1cecb3d8ed34f27cdc463800f0018a72e",
+      "swiftui_view_declarations": [
+        "Sheet",
+        "SheetRepresentable"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        50,
+        63,
+        75
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/StickyScrollView.swift",
+      "sha256": "57f9d6702a0321aae579a76349c2e0288cb5db84f73a584d37147b809ccf5a79",
+      "swiftui_view_declarations": [
+        "StickyScrollView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        11,
+        40,
+        43
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/SwipeLabel.swift",
+      "sha256": "cd42f0cb3a824a743c1a42e1bd342cd0497069a3f2eb173effd6405cb8a508d2",
+      "swiftui_view_declarations": [
+        "SwipeLabel"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/ThemeModeEditor.swift",
+      "sha256": "1b65faf88d359060769e688920875fe63ea6597c3f41bfccda8380941f652278",
+      "swiftui_view_declarations": [
+        "UserWallpaperEditor",
+        "ChatWallpaperEditor"
+      ],
+      "native_lists_forms": [
+        26,
+        240
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        113,
+        320
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/UserDefault.swift",
+      "sha256": "af59c7e9df796614add749f23cb4694bfced8ccd896b1dd8122859d1962dc0d0",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/VideoPlayerView.swift",
+      "sha256": "8cdd93d1539f8d4a71a31e5894df97ce809753f29613c210a64203af7075bedf",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        11,
+        29,
+        53
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Helpers/ViewModifiers.swift",
+      "sha256": "9e5e33c27123cb133860f259af90a48b33fc231ec84b571a5b1f5deb11152d9f",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/LocalAuth/LocalAuthView.swift",
+      "sha256": "3670a6cdba71f9d176f892a0ab876ea50fc978a3fcde1c139beea9668bd58a3b",
+      "swiftui_view_declarations": [
+        "LocalAuthView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/LocalAuth/PasscodeEntry.swift",
+      "sha256": "1e54ec8754bdaf3890abc2f6c92c457fb4bcc6cf380a4bce87d65e280875037b",
+      "swiftui_view_declarations": [
+        "PasscodeEntry"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/LocalAuth/PasscodeView.swift",
+      "sha256": "d1497839249bfcc2f555f05dfe8740516f5f6eae9145e6b8fa8625e58411f3b1",
+      "swiftui_view_declarations": [
+        "PasscodeView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/LocalAuth/SetAppPasscodeView.swift",
+      "sha256": "3fb92672389aa6a96deb6002e1c5a95284d64a82bf3fb00187ffc1bf60c7d251",
+      "swiftui_view_declarations": [
+        "SetAppPasscodeView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Migration/MigrateFromDevice.swift",
+      "sha256": "3b7c5e65301079dc9ce57cf33580cc5c25f30eabb9e40acef32fca9d314fc66a",
+      "swiftui_view_declarations": [
+        "MigrateFromDevice",
+        "PassphraseConfirmationView"
+      ],
+      "native_lists_forms": [
+        195,
+        206,
+        236,
+        256,
+        271,
+        286,
+        311,
+        322,
+        364,
+        650
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Migration/MigrateToDevice.swift",
+      "sha256": "29f7d8b1953b6098929f026d50be10209f3dbf9393ab449dcbc1ac1b0ea97026",
+      "swiftui_view_declarations": [
+        "MigrateToDevice",
+        "OnionView",
+        "PassphraseEnteringView"
+      ],
+      "native_lists_forms": [
+        202,
+        278,
+        293,
+        305,
+        333,
+        347,
+        368,
+        417,
+        437,
+        663
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        462,
+        666
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/NewChat/AddChannelView.swift",
+      "sha256": "dc5cf29d43268fba841de1a85f721342f47deccbdf48906ab59425e12c80b307",
+      "swiftui_view_declarations": [
+        "AddChannelView",
+        "RelayProgressIndicator"
+      ],
+      "native_lists_forms": [
+        48,
+        280
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        152
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/NewChat/AddContactLearnMore.swift",
+      "sha256": "3710d193b73605d2b07430de66fe33a37854939a527e11d0cf8e7c2ef8e5688f",
+      "swiftui_view_declarations": [
+        "AddContactLearnMore"
+      ],
+      "native_lists_forms": [
+        15
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/NewChat/AddGroupView.swift",
+      "sha256": "662ea1dbfcbae1006fa76e526571e6eba884ffdede4d021d8bb461ef2b58cdf6",
+      "swiftui_view_declarations": [
+        "AddGroupView"
+      ],
+      "native_lists_forms": [
+        69
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        173
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/NewChat/NewChatMenuButton.swift",
+      "sha256": "2b5b9eccc4fdb94b3e291463a1973e0946155d0bc702cc9502e2b13379307f41",
+      "swiftui_view_declarations": [
+        "NewChatMenuButton",
+        "NewChatSheet",
+        "ContactsList",
+        "ContactsListSearchBar",
+        "DeletedChats"
+      ],
+      "native_lists_forms": [
+        85,
+        433
+      ],
+      "navigation_containers": [
+        58
+      ],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/NewChat/NewChatView.swift",
+      "sha256": "7882596bfaf8ca79ea0876dd5f172441a17e20d9c76b2fd8f4cbd3316a75e81e",
+      "swiftui_view_declarations": [
+        "SomeSheet",
+        "NewChatView",
+        "InviteView",
+        "ActiveProfilePicker",
+        "ConnectView",
+        "ScannerInView",
+        "InfoSheetButton",
+        "IncognitoToggle"
+      ],
+      "native_lists_forms": [
+        262,
+        575,
+        619
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        97,
+        860
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/NewChat/OnboardingCards.swift",
+      "sha256": "e3690a60d7b60a4d011f6d201d77203d15636e27adda7f3fdc63f87f7b8bd7ea",
+      "swiftui_view_declarations": [
+        "OnboardingCardView",
+        "ConnectOnboardingView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [
+        139,
+        146,
+        153
+      ],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [
+        115
+      ],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/NewChat/QRCode.swift",
+      "sha256": "0fde747be5fc498fc32c476d948ede86c685d42e35f6587a8916f4dc84b2cc35",
+      "swiftui_view_declarations": [
+        "MutableQRCode",
+        "SimpleXCreatedLinkQRCode",
+        "SimpleXLinkQRCode",
+        "QRCode"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        110
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Onboarding/ChooseServerOperators.swift",
+      "sha256": "1e1c802dff69ff01c7d0dc70cb3513b39d88a840acb3be334d6d924828a2180b",
+      "swiftui_view_declarations": [
+        "OnboardingConditionsView",
+        "ChooseServerOperators",
+        "ChooseServerOperatorsInfoView"
+      ],
+      "native_lists_forms": [
+        369
+      ],
+      "navigation_containers": [
+        129,
+        368
+      ],
+      "system_controls": [],
+      "hidden_navigation": [
+        127
+      ],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Onboarding/ConnectBannerCard.swift",
+      "sha256": "24e5d82d70fef22597b1684f060c061b83007b78f24f45ce7adaea7f01d5bb9f",
+      "swiftui_view_declarations": [
+        "ConnectBannerCard"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [
+        50,
+        56
+      ],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [
+        78
+      ],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Onboarding/CreateProfile.swift",
+      "sha256": "9a49d3ef4cd55f12b98c040c3775badf4fe9cd2a3557ae23f309d2d23c445cf5",
+      "swiftui_view_declarations": [
+        "CreateProfile",
+        "CreateFirstProfile"
+      ],
+      "native_lists_forms": [
+        47
+      ],
+      "navigation_containers": [
+        255
+      ],
+      "system_controls": [
+        89,
+        95,
+        301
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Onboarding/CreateSimpleXAddress.swift",
+      "sha256": "51b07b534fb02f5943b369f91a50a3067b4e96a7275c91bd89c8bff420ca2883",
+      "swiftui_view_declarations": [
+        "CreateSimpleXAddress",
+        "SendAddressMailView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Onboarding/HowItWorks.swift",
+      "sha256": "419eb509643ac9161b22ee79f7d692d17ce161dcda6b31d18a1cbbe60a8a5597",
+      "swiftui_view_declarations": [
+        "OldHowItWorks",
+        "WhySimpleX"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Onboarding/OnboardingView.swift",
+      "sha256": "3fd9bb903a77926250a75302d5eebc193b1bb708e6335899030d256a111b66b2",
+      "swiftui_view_declarations": [
+        "OnboardingView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [
+        17
+      ],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Onboarding/SetNotificationsMode.swift",
+      "sha256": "e1e137f9c924319da64c1de70119c223ad0de396aeb1099c2fbb8c05b3c488a3",
+      "swiftui_view_declarations": [
+        "SetNotificationsMode",
+        "NtfModeSelector",
+        "NotificationsInfoView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Onboarding/SimpleXInfo.swift",
+      "sha256": "5b9d10d2836fdd363eb405109c3a3637adde0f2ae3acac17d7141232c2c91500",
+      "swiftui_view_declarations": [
+        "SimpleXInfo"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [
+        94
+      ],
+      "system_controls": [],
+      "hidden_navigation": [
+        113
+      ],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Onboarding/WhatsNewView.swift",
+      "sha256": "309c709cf8a74568e369bc8c935766629c0f2465ba2dc5c6967d565339985065",
+      "swiftui_view_declarations": [
+        "NewOperatorsView",
+        "CreateUpdateAddressShortLink",
+        "WhatsNewView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [
+        755
+      ],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/Onboarding/YourNetwork.swift",
+      "sha256": "efbafe3111ddf743c36cc21cc3d6304925bd42768bfcfaf6a4c9320cb68636d2",
+      "swiftui_view_declarations": [
+        "YourNetworkView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [
+        105
+      ],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/RemoteAccess/ConnectDesktopView.swift",
+      "sha256": "fd11b200f6e48497bb967f7b7d8d95762c22dc949f006ce413ee4cad4ed67628",
+      "swiftui_view_declarations": [
+        "ConnectDesktopView"
+      ],
+      "native_lists_forms": [
+        152,
+        169,
+        193,
+        211,
+        245,
+        286,
+        361
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        316,
+        374,
+        375,
+        377
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/TerminalView.swift",
+      "sha256": "858fe78ee7796f1db3b7dd803ce64892e5d6eceb2aaeed8a1bcf4c259c10d1b0",
+      "swiftui_view_declarations": [
+        "TerminalView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [
+        200
+      ],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/AppSettings.swift",
+      "sha256": "da2bc665eeb58e4ccc8eab74b762e52cae873b0896155de985fe9351b6038850",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/AppearanceSettings.swift",
+      "sha256": "1f60de7ca43edf2fba2e1e5297725a8592a58d5a92c5f18eb58efacbcb4958c9",
+      "swiftui_view_declarations": [
+        "AppearanceSettings",
+        "ChatThemePreview",
+        "WallpaperPresetSelector",
+        "CustomizeThemeView",
+        "ImportExportThemeSection",
+        "UserWallpaperEditorSheet",
+        "ThemeDestinationPicker",
+        "CustomizeThemeColorsSection",
+        "WallpaperSetupView",
+        "WallpaperScaleChooser",
+        "WallpaperScaleTypeChooser",
+        "picker",
+        "ColorPickerView"
+      ],
+      "native_lists_forms": [
+        60,
+        508
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        72,
+        73,
+        121,
+        127,
+        189,
+        191,
+        202,
+        829,
+        968,
+        990,
+        1048
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/CallSettings.swift",
+      "sha256": "0590b8aa136ef2e7a7260c9482ae53d353f5b1b4009d7514afa9dcac0146d83f",
+      "swiftui_view_declarations": [
+        "CallSettings"
+      ],
+      "native_lists_forms": [
+        21
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        30,
+        46,
+        47
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/DeveloperView.swift",
+      "sha256": "b9f68bde09f96c7af20ad5a70a430b13b1cd28e57136eb52cdc451ec86ea8e1b",
+      "swiftui_view_declarations": [
+        "DeveloperView"
+      ],
+      "native_lists_forms": [
+        24
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        39,
+        51,
+        66
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/HiddenProfileView.swift",
+      "sha256": "2fad8c9e24ff6a079fe4c2403924400f6653587404577cb17df74731374b01f6",
+      "swiftui_view_declarations": [
+        "HiddenProfileView"
+      ],
+      "native_lists_forms": [
+        24
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/IncognitoHelp.swift",
+      "sha256": "ab41773ec440391824d529119cdbde60d642c2eecb3b4b9109c498781d317181",
+      "swiftui_view_declarations": [
+        "IncognitoHelp"
+      ],
+      "native_lists_forms": [
+        13
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/MarkdownHelp.swift",
+      "sha256": "39cd7a690a9226d73940af1e20d0769e66c96f9bc93b8210352036aaa877cb47",
+      "swiftui_view_declarations": [
+        "MarkdownHelp"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/NetworkAndServers/AdvancedNetworkSettings.swift",
+      "sha256": "aa6c6fb11e678ad52bc2033e096af4cc5b963a88356fd228695259d60245261b",
+      "swiftui_view_declarations": [
+        "AdvancedNetworkSettings"
+      ],
+      "native_lists_forms": [
+        47,
+        50,
+        73
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        96,
+        111,
+        113,
+        114,
+        127,
+        129,
+        181,
+        232,
+        346
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/NetworkAndServers/ChatRelayView.swift",
+      "sha256": "4d05ded5f9eed663a7ac61b1b5aafaa8e69372c685fa01fdfde4856f3f4830cc",
+      "swiftui_view_declarations": [
+        "ChatRelayView",
+        "ChatRelayViewLink",
+        "NewChatRelayView"
+      ],
+      "native_lists_forms": [
+        159,
+        172,
+        307
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        193,
+        235,
+        328,
+        362
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/NetworkAndServers/ConditionsWebView.swift",
+      "sha256": "744e9b3df01afddf0825bd4b26d8770d084d7248f062e9ab70729a8a82cec96c",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        13
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/NetworkAndServers/NetworkAndServers.swift",
+      "sha256": "7144c5b6a79c5b562992db90ef02737c1d9ea747516e38bc0ae3e8111916f858",
+      "swiftui_view_declarations": [
+        "NetworkAndServers",
+        "UsageConditionsView",
+        "ServersErrorView",
+        "ServersWarningView"
+      ],
+      "native_lists_forms": [
+        46
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/NetworkAndServers/NewServerView.swift",
+      "sha256": "089263afc0563ff2689a6c11360751f08fc793f6a722a06348c8dee5ee27ba70",
+      "swiftui_view_declarations": [
+        "NewServerView"
+      ],
+      "native_lists_forms": [
+        47
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        96
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/NetworkAndServers/OperatorView.swift",
+      "sha256": "2eb70175e4ebb220fec401ae3224a7db018a0c475753d171a4669bd5324510b2",
+      "swiftui_view_declarations": [
+        "OperatorView",
+        "OperatorInfoView",
+        "ConditionsTextView",
+        "SingleOperatorUsageConditionsView"
+      ],
+      "native_lists_forms": [
+        48,
+        358
+      ],
+      "navigation_containers": [
+        493
+      ],
+      "system_controls": [
+        107,
+        111,
+        115,
+        192,
+        312
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/NetworkAndServers/ProtocolServerView.swift",
+      "sha256": "90553b56cad9f9793dab74bcf32d6960fd247d018e03134ca88813d4aca80980",
+      "swiftui_view_declarations": [
+        "ProtocolServerView"
+      ],
+      "native_lists_forms": [
+        78,
+        95
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        148,
+        174
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/NetworkAndServers/ProtocolServersView.swift",
+      "sha256": "7d95de180ee71d9a4e7fc4ece85aaf3f9b901dc857e65b2aaa570d4d8a859eee",
+      "swiftui_view_declarations": [
+        "YourServersView",
+        "ProtocolServerViewLink",
+        "TestServersButton"
+      ],
+      "native_lists_forms": [
+        47
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/NetworkAndServers/ScanProtocolServer.swift",
+      "sha256": "ea8f6c7168c31eaea8a0da03863108dde0e955861474c0341a6f0f9db711183b",
+      "swiftui_view_declarations": [
+        "ScanProtocolServer"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/NotificationsView.swift",
+      "sha256": "a3c295c8750c563ce64957e7c324b484c6537c277d3af7580c6a2bd5e61581cb",
+      "swiftui_view_declarations": [
+        "NotificationsView",
+        "SelectionListView"
+      ],
+      "native_lists_forms": [
+        38,
+        41
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/PreferencesView.swift",
+      "sha256": "4edc44dd713f3a28b46253a89a76f5b17ef59029291a02e364f4c1b70a39b8ac",
+      "swiftui_view_declarations": [
+        "PreferencesView"
+      ],
+      "native_lists_forms": [
+        21
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        51,
+        70,
+        73
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/PrivacySettings.swift",
+      "sha256": "a8e687b420f86e4a9acf880ff0bf7d0e465b9082e57579f9cae3209e447bac8b",
+      "swiftui_view_declarations": [
+        "PrivacySettings",
+        "SimplexLockView"
+      ],
+      "native_lists_forms": [
+        54,
+        163,
+        217,
+        528
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        72,
+        78,
+        85,
+        94,
+        121,
+        166,
+        169,
+        178,
+        191,
+        197,
+        200,
+        252,
+        255,
+        530,
+        531,
+        538,
+        555,
+        561,
+        573
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/RTCServers.swift",
+      "sha256": "6d0eb0a8504c5a96346d1269fd317023bbca2e16adf4ee050bf09c4e7ecd2d5e",
+      "swiftui_view_declarations": [
+        "RTCServers"
+      ],
+      "native_lists_forms": [
+        27
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        29
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/SetDeliveryReceiptsView.swift",
+      "sha256": "5148bbd69549564fb592cd9b988710eda067b386f39f31ed2b641a9afb35768c",
+      "swiftui_view_declarations": [
+        "SetDeliveryReceiptsView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/SettingsView.swift",
+      "sha256": "d9a84e6b51cfe7927f81c46f65e421d4de98846f31bfe0a8d58f0077787fa51b",
+      "swiftui_view_declarations": [
+        "SettingsView",
+        "ProfilePreview"
+      ],
+      "native_lists_forms": [
+        322,
+        418
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/StorageView.swift",
+      "sha256": "0747b9102155b9607781b7ca35db8f58e0e58a41c4863e165c00ca43cbca2bff",
+      "swiftui_view_declarations": [
+        "StorageView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/UserAddressLearnMore.swift",
+      "sha256": "abefce2f1dee41610c1fd584d29e534d01864c0b2590e6ace91f9373aa4c12cd",
+      "swiftui_view_declarations": [
+        "UserAddressLearnMore"
+      ],
+      "native_lists_forms": [
+        18
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/UserAddressView.swift",
+      "sha256": "0f5659e3dee7a22ceae2dfc276e93e492bdb5bb9bbcac47ca06c482a2aa45d47",
+      "swiftui_view_declarations": [
+        "UserAddressView",
+        "ToggleShortLinkHeader",
+        "UserAddressSettingsView",
+        "SetSimplexDomainView"
+      ],
+      "native_lists_forms": [
+        77,
+        642,
+        822
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        166,
+        667,
+        724,
+        736,
+        826
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/UserProfile.swift",
+      "sha256": "3abc012418e40ca028407704db35e32b85f3881fc9ac6fa6b15f12dc8a000adc",
+      "swiftui_view_declarations": [
+        "UserProfile",
+        "EditProfileImage",
+        "ProfileDescriptionEditor"
+      ],
+      "native_lists_forms": [
+        31,
+        283
+      ],
+      "navigation_containers": [],
+      "system_controls": [
+        37,
+        48,
+        51,
+        286
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/UserProfilesView.swift",
+      "sha256": "3d282d1056dfca7c5a2dea8b1e714c98e210cec3ceae33c26077171674eec42e",
+      "swiftui_view_declarations": [
+        "UserProfilesView"
+      ],
+      "native_lists_forms": [
+        60,
+        229
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/UserSettings/VersionView.swift",
+      "sha256": "98d9f53dfc78162818d78e368076dcd68edf1e19c432a92a8838128df1468e36",
+      "swiftui_view_declarations": [
+        "VersionView"
+      ],
+      "native_lists_forms": [
+        17
+      ],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/Shared/Views/ZoomableScrollView.swift",
+      "sha256": "614c8f02e20d262c268322e7debc55b99a440bd08f49ea4de19f86a86b1a3497",
+      "swiftui_view_declarations": [
+        "ZoomableScrollView",
+        "ZoomablePageView"
+      ],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        11,
+        39,
+        50,
+        52,
+        62,
+        93,
+        101,
+        103
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/SimpleX SE/SEChatState.swift",
+      "sha256": "07d4aaa4b274b0324b134c1f6b8d79e23242c8e478899916f0eb6734c72883a7",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/SimpleX SE/ShareAPI.swift",
+      "sha256": "527629c338249ef0d27f344b8d517678cb38df24eb3bde33ee00034816d41556",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/SimpleX SE/ShareModel.swift",
+      "sha256": "18eff334bc4911a139a7ba874ebaa45fbc2d6956edcc70048e62b343aad7795d",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/SimpleX SE/ShareView.swift",
+      "sha256": "934cee11eae5e2daa77a4c61978f25247d57af3ca1780170a9516bc52e6cd7fe",
+      "swiftui_view_declarations": [
+        "ShareView"
+      ],
+      "native_lists_forms": [
+        22
+      ],
+      "navigation_containers": [
+        19
+      ],
+      "system_controls": [
+        73,
+        97,
+        99
+      ],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    },
+    {
+      "path": "apps/ios/SimpleX SE/ShareViewController.swift",
+      "sha256": "7507ceaf111a1162f88b428505dbb0d5845229457ecd8b4b702f70c931af894b",
+      "swiftui_view_declarations": [],
+      "native_lists_forms": [],
+      "navigation_containers": [],
+      "system_controls": [],
+      "hidden_navigation": [],
+      "legacy_material_references": [],
+      "native_bridges": [
+        17
+      ],
+      "validation": "Source-pattern inventory; full-screen device validation pending"
+    }
+  ]
+}

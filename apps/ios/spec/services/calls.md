@@ -348,7 +348,7 @@ Full-screen call UI when `ChatModel.showCallView == true`:
 - Control buttons: mute, camera toggle, speaker toggle, camera flip, end call
 - Minimize button (collapses to banner)
 
-### [ActiveCallOverlay](../../Shared/Views/Call/ActiveCallView.swift#L288-L522)
+### [ActiveCallOverlay](../../Shared/Views/Call/ActiveCallView.swift#L288-L528)
 
 | Control | Method | Line |
 |---------|--------|------|
@@ -394,3 +394,9 @@ three original MP3/M4A files are deleted. scripts/ios/generate-sunder-sounds.py 
 22,050-Hz mono PCM with low-amplitude sine tones and fades; SYNTHESIZED_SOUNDS.json records
 hashes/durations. Start/stop, delays, vibration and cancellation logic are retained.
 No copied Telegram or upstream audio is shipped from these resource paths.
+
+## Native control presentation (2026-10-30)
+ActiveCallOverlay.callButton adds a display-only glass flag; controlButton opts in
+while the end-call action retains its red backing. Incoming call actions use native
+button style. Permission, routing and WebRTC state are unchanged. Source links and
+shared policy are in [system-interface.md](../client/system-interface.md).

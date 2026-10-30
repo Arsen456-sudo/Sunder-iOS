@@ -132,3 +132,8 @@ See [logo-removal specification](../../spec/client/navigation.md#sunder-temporar
 Three original sampled cues are replaced by original low-amplitude PCM WAV cues. Existing start/stop, delay, cancellation and vibration paths remain. CallKit defaults and notification behavior are unchanged.
 
 See [preparation scope](../../spec/client/navigation.md#sunder-publication-preparation--2026-10-28).
+
+### Shared native call presentation (2026-10-30)
+Call control/audio-route and incoming-call action surfaces use native system
+styling. End call remains red. Microphone/camera permission, audio routing, call
+accept/reject/end actions, video canvases and CallKit integration are unchanged.

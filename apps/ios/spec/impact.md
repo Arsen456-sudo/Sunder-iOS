@@ -55,7 +55,7 @@
 | Shared/Views/ChatList/ChatListChromeController.swift | PC1, PC28 | High | Main screen rendering and filtering |
 | Shared/Views/ChatList/ChatListNativeControls.swift | PC1, PC28 | High | Main screen rendering and filtering |
 | Shared/Views/ChatList/SunderGlassDesign.swift | PC1, PC2, PC3, PC4, PC25, PC28 | Medium | Shared native glass surfaces and server selector |
-| Shared/Views/ChatList/UserPicker.swift | PC1, PC17 | Medium | Avatar-menu surfaces; account actions unchanged |
+| Shared/Views/ChatList/UserPicker.swift | PC1, PC19, PC21 | Medium | Avatar-menu surfaces; account actions unchanged |
 | Shared/Views/ChatList/ServersSummaryView.swift | PC1, PC25 | Medium | Server-information modal, filters and native chrome |
 | Shared/Views/ChatList/GetStakeBanner.swift | PC1 | Low | Crowdfunding banner and shared banner card chrome |
 | Shared/Views/Chat/ChatView.swift | PC2, PC3, PC4, PC5, PC6, PC7, PC8, PC9, PC11, PC31 | High | Core conversation UI — most messaging features, channel message rendering |
@@ -184,3 +184,15 @@ Sunder UIKit top bar: ChatListView.swift still maps to PC1/PC28; the standalone 
 | Shared/Views/Database/MigrateToAppGroupView.swift | PC23, PC26 | High | Block migration to unavailable group before any export/path change |
 
 FileUtils.swift also affects PC24 wallpaper initialization; missing group paths no longer trap on launch. NSE access is guarded before DB work.
+
+## System presentation boundary (2026-10-30)
+
+| Source | Concepts | Effect |
+|---|---|---|
+| Shared/SimpleXApp.swift; Shared/Theme/Theme.swift; SunderGlassDesign.swift | PC1 through PC31 | Shared presentation defaults; domain state unchanged |
+| Helpers/{AppSheet,SheetRepresentable,ShareSheet}.swift; ChatListView.swift | PC1, PC19, PC21, PC22 | Native sheet routing and preserved privacy redaction |
+| GroupMemberInfoView.swift; ContactConnectionInfo.swift; ProtocolServerView.swift | PC3, PC12, PC14, PC25 | Native navigation only |
+| Onboarding/ChooseServerOperators.swift; LocalAuth/PasscodeView.swift | PC19, PC22, PC23, PC25 | Native action style; roles and guards retained |
+| Call/{ActiveCallView,IncomingCallView}.swift; ChatItem/FullScreenMediaView.swift | PC9, PC10, PC17 | Specialized media/control presentation |
+| NewChat/{NewChatView,NewChatMenuButton}.swift; compose context action views | PC1, PC2, PC3, PC4, PC12 | Native search and command surfaces |
+| SimpleX SE/ShareView.swift | PC4, PC10 | Share UI only |

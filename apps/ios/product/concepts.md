@@ -113,3 +113,5 @@ badge glyphs with verification unchanged; PC24: neutral procedural preset textur
 existing palettes/custom wallpapers; PC17: original generated call cues; PC26: Sunder
 migration-error support destination. Core edits only substitute two embedded media values.
 See views/{chat-list,chat,settings,call}.md and spec scope in client/navigation.md.
+
+Shared presentation for all feature concepts: [system interface specification](../spec/client/system-interface.md), [adoption report](../../../docs/fork/ios/SYSTEM_UI_ADOPTION.md). AppearanceSettings is the unchanged visual reference; every main-app route inherits SunderSystemInterface, with specialized content/controls retained.

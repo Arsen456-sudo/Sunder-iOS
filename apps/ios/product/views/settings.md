@@ -237,3 +237,10 @@ repository root. The development ref points at the working branch, with no publi
 ## Sunder shared-storage availability
 
 Without an accessible App Group, the main app uses local documents storage. Migration into shared storage shows an error before changing files. The share extension explains that shared storage is unavailable and can be dismissed; it does not open a separate chat database. This does not enable APNs for a free sideload signature.
+
+### Application-wide system presentation (2026-10-30)
+Appearance is the reference for shared native lists, sections, pickers, toggles and
+fields. The same defaults now apply to all settings destinations through the app
+root, themed-screen and sheet scopes. Existing field bindings, validation, security
+checks and specialized descendant styles are unchanged. See [system interface
+spec](../../spec/client/system-interface.md) for scope and validation limits.

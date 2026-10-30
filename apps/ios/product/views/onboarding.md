@@ -157,3 +157,9 @@ See [presentation specification](../../spec/client/navigation.md#sunder-presenta
 Kotlin headers use Sunder via app_name. iOS and Kotlin operator selection show the actual provider tradeName with existing network symbols instead of brand logos. Provider selection, identities and acceptance actions are unchanged.
 
 See [logo-removal specification](../../spec/client/navigation.md#sunder-temporary-logo-removal--2026-10-28).
+
+### Shared native action style (2026-10-30)
+Primary onboarding, conditions and recovery actions use native prominent glass
+buttons on iOS 26. Their roles, triggers and existing disabled/validation checks
+remain in force. The controlled full-page onboarding flow retains intentionally
+hidden navigation, preventing changes to consent/progression semantics.

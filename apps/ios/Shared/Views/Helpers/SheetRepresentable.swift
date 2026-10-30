@@ -18,14 +18,31 @@ private let easeOutCubic = UICubicTimingParameters(
 
 struct Sheet<SheetContent: View>: ViewModifier {
     @Binding var isPresented: Bool
+    let onDismiss: (() -> Void)?
     @ViewBuilder let sheetContent: () -> SheetContent
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
-    func body(content: Content) -> some View {
-        ZStack {
-            content
-            SheetRepresentable(isPresented: $isPresented, content: sheetContent())
-                .allowsHitTesting(isPresented)
-                .ignoresSafeArea()
+    init(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil, @ViewBuilder sheetContent: @escaping () -> SheetContent) {
+        _isPresented = isPresented
+        self.onDismiss = onDismiss
+        self.sheetContent = sheetContent
+    }
+
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.sheet(isPresented: $isPresented, onDismiss: onDismiss) {
+                ScrollView { sheetContent() }
+                    .presentationDetents(dynamicTypeSize.isAccessibilitySize ? [.large] : [.medium, .large])
+                    .presentationDragIndicator(.visible)
+                    .sunderPrivateSheet()
+            }
+        } else {
+            ZStack {
+                content
+                SheetRepresentable(isPresented: $isPresented, content: sheetContent())
+                    .allowsHitTesting(isPresented)
+                    .ignoresSafeArea()
+            }
         }
     }
 }

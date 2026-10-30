@@ -198,7 +198,7 @@ SimpleX links (`simplex:/chat#...`) are handled via [`connectViaUrl()`](../../Sh
 }
 ```
 
-URL processing routes to the appropriate connection flow (join group, add contact, etc.) via [`planAndConnect()`](../../Shared/Views/NewChat/NewChatView.swift#L1301).
+URL processing routes to the appropriate connection flow (join group, add contact, etc.) via [`planAndConnect()`](../../Shared/Views/NewChat/NewChatView.swift#L1304).
 
 ### Call Deep Link
 
@@ -470,3 +470,8 @@ original copyright strings, bundle IDs, entitlements and signing remain unchange
 The application Info.plist sets `UIDesignRequiresCompatibility` to false. The OS
 can render its current system chrome. This is an app-wide UIKit prerequisite;
 no other screen's layout or navigation route is rewritten by the chat-list change.
+
+### Application-wide system presentation (2026-10-30)
+See [system-interface.md](system-interface.md) for app/theme/sheet scope, native
+avatar-sheet dismissal ordering, contextual controls and member/connection
+navigation. Both appSheet overloads retain PrivacySensitive redaction.

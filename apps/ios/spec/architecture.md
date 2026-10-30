@@ -5,7 +5,7 @@
 > Related specs: [README](README.md) | [API Reference](api.md) | [State Management](state.md) | [Database](database.md)
 > Related product: [Product Overview](../product/README.md)
 
-**Source:** [`SimpleXApp.swift`](../Shared/SimpleXApp.swift#L2-L192) | [`AppDelegate.swift`](../Shared/AppDelegate.swift#L1-L209) | [`ContentView.swift`](../Shared/ContentView.swift#L1-L513) | [`ChatModel.swift`](../Shared/Model/ChatModel.swift#L1-L1373) | [`SimpleXAPI.swift`](../Shared/Model/SimpleXAPI.swift#L1-L2915) | [`AppAPITypes.swift`](../Shared/Model/AppAPITypes.swift#L1-L2357) | [`APITypes.swift`](../SimpleXChat/APITypes.swift#L1-L1071) | [`API.swift`](../SimpleXChat/API.swift#L1-L388)
+**Source:** [`SimpleXApp.swift`](../Shared/SimpleXApp.swift#L2-L193) | [`AppDelegate.swift`](../Shared/AppDelegate.swift#L1-L209) | [`ContentView.swift`](../Shared/ContentView.swift#L1-L513) | [`ChatModel.swift`](../Shared/Model/ChatModel.swift#L1-L1373) | [`SimpleXAPI.swift`](../Shared/Model/SimpleXAPI.swift#L1-L2915) | [`AppAPITypes.swift`](../Shared/Model/AppAPITypes.swift#L1-L2357) | [`APITypes.swift`](../SimpleXChat/APITypes.swift#L1-L1071) | [`API.swift`](../SimpleXChat/API.swift#L1-L388)
 
 ---
 
@@ -21,7 +21,7 @@
 
 ---
 
-## [1. Layered Architecture](../Shared/SimpleXApp.swift#L18-L193)
+## [1. Layered Architecture](../Shared/SimpleXApp.swift#L18-L194)
 
 The app follows a strict layered model where each layer communicates only with its immediate neighbor:
 
@@ -178,7 +178,7 @@ See [Database & Storage specification](database.md) for full details.
 
 ---
 
-## [5. App Lifecycle](../Shared/SimpleXApp.swift#L18-L193)
+## [5. App Lifecycle](../Shared/SimpleXApp.swift#L18-L194)
 
 ### [Initialization Sequence (SimpleXApp.swift)](../Shared/SimpleXApp.swift#L18-L39)
 
@@ -220,7 +220,7 @@ See [Database & Storage specification](database.md) for full details.
               └──────────┘
 ```
 
-### [Scene Phase Handling (SimpleXApp.swift)](../Shared/SimpleXApp.swift#L39-L124)
+### [Scene Phase Handling (SimpleXApp.swift)](../Shared/SimpleXApp.swift#L39-L125)
 
 - **`.active`**: Calls `startChatAndActivate()`, processes pending notification responses, refreshes chat list and call invitations
 - **`.background`**: Records authentication timestamp, calls `suspendChat()` (unless CallKit call active), schedules `BGManager` background refresh, updates badge count
@@ -368,8 +368,14 @@ No application behavior, FFI, permissions or supported protocol changes.
 
 [`appGroupContainerURL / groupDefaults`](../SimpleXChat/AppGroup.swift#L72) caches the actual optional group container; defaults use the group suite only when it is accessible, otherwise app-private standard defaults.
 
-[`setDbContainer()`](../Shared/SimpleXApp.swift#L125) selects existing documents mode for unavailable-group installs. Offer/postponed/ready states become postponed (chat can start); interrupted export/import and migrated states are retained. Entitled installations keep their previous path/migration selection.
+[`setDbContainer()`](../Shared/SimpleXApp.swift#L126) selects existing documents mode for unavailable-group installs. Offer/postponed/ready states become postponed (chat can start); interrupted export/import and migrated states are retained. Entitled installations keep their previous path/migration selection.
 
 [`ShareModel.setup(context:)`](../SimpleX%20SE/ShareModel.swift#L77) sets a valid close callback before showing unavailable-storage or app-lock errors; it refuses content/DB setup without the group. [`ShareModel.initChat(with:)`](../SimpleX%20SE/ShareModel.swift#L180) also guards retry/direct entry points, returning [`sharedStorageError`](../SimpleX%20SE/ShareModel.swift#L205). No private extension DB is substituted for the main chat DB.
 
 The startup trap was reproduced in two USB crash reports (SIGTRAP, getAppDirectory → getWallpaperDirectory → AppDelegate.prepareForLaunch). Raw reports and device identifiers stay outside Git. Fix validation requires compiling and reinstalling the updated IPA. This does not provision App Groups or APNs.
+
+## Shared native presentation boundary (2026-10-30)
+SimpleXApp installs SunderSystemInterface without changing initialization, lifecycle,
+authentication or database migration. ShareView adopts the same policy in its
+separate extension process. [System interface](client/system-interface.md) records
+the presentation scope; transport, crypto and storage contracts are unchanged.

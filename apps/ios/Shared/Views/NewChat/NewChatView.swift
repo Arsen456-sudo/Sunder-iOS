@@ -810,6 +810,7 @@ struct InfoSheetButton<Content: View>: View {
                 .scaledToFit()
                 .frame(width: 24, height: 24)
         }
+        .modifier(SunderSystemActionButtons())
         .sheet(isPresented: $showInfoSheet) {
             content
         }

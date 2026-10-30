@@ -135,3 +135,8 @@ Two-stage confirmation:
 - `Shared/Views/Onboarding/CreateProfile.swift` -- Profile creation form (shared with onboarding and profiles view)
 - `Shared/Views/UserSettings/UserAddressView.swift` -- User's SimpleX address management (create, share, delete)
 - `Shared/Views/ChatList/UserPicker.swift` -- Profile switcher sheet that navigates to this view
+
+### Native profile-menu presentation (2026-10-30)
+The avatar menu presents as a native iOS 26 sheet and opens each selected settings/
+profile destination after dismissal. Its content scrolls at large text sizes.
+Account loading/switching, hidden profile rules and theme gestures are unchanged.

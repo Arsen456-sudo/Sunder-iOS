@@ -61,6 +61,7 @@ struct ThemedBackground: ViewModifier {
 
     func body(content: Content) -> some View {
         content
+            .modifier(SunderSystemInterface())
             .background(
                 theme.base == DefaultTheme.SIMPLEX
                 ? LinearGradient(

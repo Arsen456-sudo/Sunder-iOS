@@ -36,7 +36,7 @@ struct ContextContactRequestActionsView: View {
         }
         .disabled(inProgress)
         .frame(maxWidth: .infinity)
-        .background(ToolbarMaterial.material(toolbarMaterial))
+        .modifier(SunderCommandSurface(legacyMaterial: ToolbarMaterial.material(toolbarMaterial)))
         .opacity(progressByTimeout ? 0.4 : 1)
         .overlay {
             if progressByTimeout {

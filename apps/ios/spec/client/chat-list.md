@@ -63,7 +63,7 @@ The root list view. Key responsibilities:
 ### Data Source
 - Reads `ChatModel.shared.chats` (all conversations)
 - Applies active filter from `ChatTagsModel.shared.activeFilter`
-- Applies search query filtering via [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L453)
+- Applies search query filtering via [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L469)
 - Sorts by last activity (most recent first), with pinned chats at top
 
 ### Layout
@@ -81,9 +81,9 @@ The root list view. Key responsibilities:
 | Function | Line | Description |
 |----------|------|-------------|
 | [`body`](../../Shared/Views/ChatList/ChatListView.swift#L88) | See link | Main view body |
-| [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L453) | See link | Applies active filter and search to chat list |
-| [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L496) | See link | Normalizes search text for comparison |
-| [`stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L447) | See link | Stops any playing voice message |
+| [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L469) | See link | Applies active filter and search to chat list |
+| [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L512) | See link | Normalizes search text for comparison |
+| [`stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L463) | See link | Stops any playing voice message |
 
 ---
 
@@ -171,7 +171,7 @@ Horizontal scrolling tab bar below the navigation bar. Tabs:
 | Group Reports | `.presetTag(.groupReports)` | Groups with pending reports |
 | User tags | `.userTag(ChatTag)` | User-defined custom tags |
 
-Filter matching is handled by [`presetTagMatchesChat()`](../../Shared/Views/ChatList/ChatListView.swift#L940) and the in-view [`TagsView`](../../Shared/Views/ChatList/ChatListView.swift#L734) struct.
+Filter matching is handled by [`presetTagMatchesChat()`](../../Shared/Views/ChatList/ChatListView.swift#L956) and the in-view [`TagsView`](../../Shared/Views/ChatList/ChatListView.swift#L750) struct.
 
 ### ChatTagsModel State
 
@@ -196,7 +196,7 @@ class ChatTagsModel: ObservableObject {
 |------|------|------|-------------|
 | [`PresetTag`](../../Shared/Views/ChatList/ChatListView.swift#L38) | ChatListView.swift | 36 | Enum of built-in filter categories |
 | [`ActiveFilter`](../../Shared/Views/ChatList/ChatListView.swift#L55) | ChatListView.swift | 53 | Enum wrapping preset, user-tag, or unread filter |
-| [`setActiveFilter()`](../../Shared/Views/ChatList/ChatListView.swift#L921) | ChatListView.swift | 1113 | Applies a filter and persists selection |
+| [`setActiveFilter()`](../../Shared/Views/ChatList/ChatListView.swift#L937) | ChatListView.swift | 1113 | Applies a filter and persists selection |
 
 ### Tag Management Commands
 - `apiCreateChatTag(tag: ChatTagData)` -- create tag
@@ -211,7 +211,7 @@ class ChatTagsModel: ObservableObject {
 
 Search is available via pull-down gesture or search button in the navigation bar.
 
-**Search bar UI:** [`ChatListSearchBar`](../../Shared/Views/ChatList/ChatListView.swift#L502)
+**Search bar UI:** [`ChatListSearchBar`](../../Shared/Views/ChatList/ChatListView.swift#L518)
 
 ### Filtering Logic
 - Filters `ChatModel.chats` by matching search text against:
@@ -219,7 +219,7 @@ Search is available via pull-down gesture or search button in the navigation bar
   - `chatInfo.localAlias` (local alias)
   - `chatInfo.fullName` (full name)
 - For deeper message content search, uses `apiGetChat(chatId:, search:)` parameter
-- Core logic in [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L453) and [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L496)
+- Core logic in [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L469) and [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L512)
 
 ### Search Results
 - Matching chats are displayed in the same list format
@@ -447,14 +447,14 @@ conversation/profile usage; their rows and business state remain SwiftUI.
 - [`func searchBarSearchButtonClicked(_ searchBar: UISearchBar)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L279)
 - [`func searchBarCancelButtonClicked(_ searchBar: UISearchBar)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L280)
 - [`@objc func clearText()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L285)
-- [`func makeCoordinator() -> Coordinator`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L295)
-- [`func makeUIView(context: Context) -> UIButton`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L296)
-- [`func updateUIView(_ button: UIButton, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L301)
-- [`init(_ action: @escaping () -> Void)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L319)
-- [`@objc func tap()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L320)
-- [`func makeUIViewController(context: Context) -> ChatListChromeController`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L335)
-- [`func updateUIViewController(_ controller: ChatListChromeController, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L344)
-- [`static func dismantleUIViewController(_ controller: ChatListChromeController, coordinator: ())`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L362)
+- [`func makeCoordinator() -> Coordinator`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L296)
+- [`func makeUIView(context: Context) -> UIButton`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L297)
+- [`func updateUIView(_ button: UIButton, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L302)
+- [`init(_ action: @escaping () -> Void)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L320)
+- [`@objc func tap()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L321)
+- [`func makeUIViewController(context: Context) -> ChatListChromeController`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L336)
+- [`func updateUIViewController(_ controller: ChatListChromeController, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L345)
+- [`static func dismantleUIViewController(_ controller: ChatListChromeController, coordinator: ())`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L363)
 - [`var body: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L39)
 - [`private var summaryFilters: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L101)
 - [`@ViewBuilder private func viewBody() -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L131)
@@ -462,6 +462,12 @@ conversation/profile usage; their rows and business state remain SwiftUI.
 - [`private func openSheetOnTap(_ icon: String, title: LocalizedStringKey, sheet: UserPickerSheet, showDivider: Bool = true, disabled: Bool = false) -> some View`](../../Shared/Views/ChatList/UserPicker.swift#L162)
 - [`init(transparent: Bool = false, action: @escaping () -> Void)`](../../Shared/Views/ChatList/UserPicker.swift#L210)
 - [`func body(content: Content) -> some View`](../../Shared/Views/ChatList/UserPicker.swift#L215)
-- [`struct TagsView: View`](../../Shared/Views/ChatList/ChatListView.swift#L734)
-- [`@ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L836)
-- [`@ViewBuilder private func collapsedTagsFilterView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L871)
+- [`struct TagsView: View`](../../Shared/Views/ChatList/ChatListView.swift#L750)
+- [`@ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L852)
+- [`@ViewBuilder private func collapsedTagsFilterView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L887)
+
+### Shared presentation policy (2026-10-30)
+ChatListView queues avatar-menu destinations until native sheet dismissal completes.
+The original UserPicker actions remain authoritative. Contacts/deleted-chat search
+uses ChatListNativeSearch and the generic-label unread/favorites filter adapter.
+See [system-interface.md](system-interface.md) for source anchors and coverage.

@@ -40,7 +40,7 @@ struct ContextPendingMemberActionsView: View {
         }
         .frame(minHeight: 54)
         .frame(maxWidth: .infinity)
-        .background(ToolbarMaterial.material(toolbarMaterial))
+        .modifier(SunderCommandSurface(legacyMaterial: ToolbarMaterial.material(toolbarMaterial)))
     }
 }
 

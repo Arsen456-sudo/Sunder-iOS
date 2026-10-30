@@ -26,7 +26,7 @@ struct OneHandUICard: View {
                 withAnimation { oneHandUI = true }
             }
             .background { if oneHandUI { Color(uiColor: .systemGray5) } }
-            .background(ToolbarMaterial.material(toolbarMaterial))
+            .modifier(SunderCommandSurface(legacyMaterial: ToolbarMaterial.material(toolbarMaterial), inset: 0))
             ZStack(alignment: .trailing) {
                 segment(
                     icon: "platter.filled.top.and.arrow.up.iphone",
@@ -48,7 +48,7 @@ struct OneHandUICard: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background { if !oneHandUI { Color(uiColor: .systemGray5) } }
-            .background(ToolbarMaterial.material(toolbarMaterial))
+            .modifier(SunderCommandSurface(legacyMaterial: ToolbarMaterial.material(toolbarMaterial), inset: 0))
         }
         .clipShape(Capsule())
         .alert(isPresented: $showOneHandUIAlert) {

@@ -91,7 +91,13 @@ struct ContactConnectionInfo: View {
                 }
             }
             .modifier(ThemedBackground(grouped: true))
-            if #available(iOS 16, *) {
+            if #available(iOS 26.0, *) {
+                v.modifier(SunderSystemDetailNavigation(
+                    title: NSLocalizedString("Connection", comment: "Connection information"),
+                    modal: true,
+                    close: { dismiss() }
+                ))
+            } else if #available(iOS 16, *) {
                 v
             } else {
                 // navigationBarHidden is added conditionally,

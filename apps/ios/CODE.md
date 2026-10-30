@@ -226,3 +226,13 @@ After completing all changes (code + documentation), you MUST run an adversarial
 | ../../src/Simplex/Chat/Store/Direct.hs | spec/database.md | product/flows/connection.md |
 | ../../src/Simplex/Chat/Store/Files.hs | spec/database.md | product/flows/file-transfer.md |
 | ../../src/Simplex/Chat/Store/Profiles.hs | spec/database.md | product/views/user-profiles.md |
+
+### Shared system presentation
+
+| Source Location | Spec Document | Product Document |
+|---|---|---|
+| Shared/Views/ChatList/SunderGlassDesign.swift; Shared/Theme/Theme.swift; Shared/SimpleXApp.swift | spec/client/system-interface.md, spec/services/theme.md | product/views/settings.md |
+| Shared/Views/Helpers/{AppSheet,SheetRepresentable,ShareSheet}.swift | spec/client/system-interface.md | product/views/chat-list.md, product/views/user-profiles.md |
+| Shared/Views/Onboarding/ChooseServerOperators.swift; Shared/Views/LocalAuth/PasscodeView.swift | spec/client/system-interface.md | product/views/onboarding.md, product/views/settings.md |
+| Shared/Views/NewChat/{NewChatView,NewChatMenuButton}.swift; Shared/Views/ChatList/ContactConnectionInfo.swift | spec/client/system-interface.md | product/views/chat-list.md |
+| Shared/Views/Chat/Group/GroupMemberInfoView.swift; Shared/Views/Call/; Shared/Views/Chat/ChatItem/FullScreenMediaView.swift; SimpleX SE/ShareView.swift | spec/client/system-interface.md | product/views/group-info.md, product/views/call.md, product/views/chat.md |

@@ -78,3 +78,5 @@ Chat-list native controls: `Shared/Views/ChatList/ChatListChromeController.swift
 Server-information chrome and its preserved statistics view (`Shared/Views/ChatList/ServersSummaryView.swift`) are documented in [client/chat-list.md](client/chat-list.md#11-compact-native-chrome-and-server-information).
 
 Shared native glass (`Shared/Views/ChatList/SunderGlassDesign.swift`): [chat-list](client/chat-list.md#12-shared-native-glass-presentation), [conversation/profile](client/chat-view.md), [compose](client/compose.md). Message rendering and data-driven content remain SwiftUI.
+
+[System interface](client/system-interface.md): app/theme/sheet defaults matching AppearanceSettings; source index includes SunderGlassDesign, SimpleXApp, ThemedBackground, AppSheet, SheetRepresentable, member/invitation navigation, call/media/secure-action controls and ShareView.

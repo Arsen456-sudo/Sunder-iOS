@@ -344,49 +344,20 @@ struct ContactsListSearchBar: View {
     @AppStorage(DEFAULT_SHOW_UNREAD_AND_FAVORITES) private var showUnreadAndFavorites = false
 
     var body: some View {
-        HStack(spacing: 12) {
-            HStack(spacing: 4) {
-                Spacer()
-                    .frame(width: 8)
-                Image(systemName: "magnifyingglass")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 16, height: 16)
-                TextField("Search or paste SimpleX link", text: $searchText)
-                    .foregroundColor(searchShowingSimplexLink ? theme.colors.secondary : theme.colors.onBackground)
-                    .disabled(searchShowingSimplexLink)
-                    .focused($searchFocussed)
-                    .frame(maxWidth: .infinity)
-                if connectProgressManager.showConnectProgress != nil {
-                    ProgressView()
-                }
-                if !searchText.isEmpty {
-                    Image(systemName: "xmark.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 16, height: 16)
-                        .onTapGesture {
-                            searchText = ""
-                        }
-                }
-            }
-            .padding(EdgeInsets(top: 7, leading: 7, bottom: 7, trailing: 7))
-            .foregroundColor(theme.colors.secondary)
-            .background(Color(uiColor: .secondarySystemGroupedBackground))
-            .cornerRadius(10.0)
-
-            if searchFocussed {
-                Text("Cancel")
-                    .foregroundColor(theme.colors.primary)
-                    .onTapGesture {
-                        searchText = ""
-                        searchFocussed = false
-                    }
-            } else if m.chats.count > 0 {
-                toggleFilterButton()
+        HStack(spacing: 8) {
+            ChatListNativeSearch(
+                text: $searchText,
+                focused: Binding(get: { searchFocussed }, set: { searchFocussed = $0 }),
+                linking: searchShowingSimplexLink,
+                busy: connectProgressManager.showConnectProgress != nil,
+                tint: UIColor(theme.colors.primary)
+            )
+            .frame(height: 52)
+            if !searchFocussed && !m.chats.isEmpty {
+                toggleFilterButton().frame(width: 44, height: 44)
             }
         }
-        .padding(.top, 24)
+        .padding(.top, 8)
         .onChange(of: searchFocussed) { sf in
             withAnimation { searchMode = sf }
         }
@@ -426,18 +397,12 @@ struct ContactsListSearchBar: View {
     }
 
     private func toggleFilterButton() -> some View {
-        ZStack {
-            Color.clear
-                .frame(width: 22, height: 22)
-            Image(systemName: showUnreadAndFavorites ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease")
-                .resizable()
-                .scaledToFit()
-                .foregroundColor(showUnreadAndFavorites ? theme.colors.primary : theme.colors.secondary)
-                .frame(width: showUnreadAndFavorites ? 22 : 16, height: showUnreadAndFavorites ? 22 : 16)
-                .onTapGesture {
-                    showUnreadAndFavorites = !showUnreadAndFavorites
-                }
-        }
+        ChatListUnreadButton(
+            selected: showUnreadAndFavorites,
+            tint: UIColor(theme.colors.primary),
+            label: NSLocalizedString("Unread and favorites", comment: "Contacts filter"),
+            action: { showUnreadAndFavorites.toggle() }
+        )
     }
 
     private func connect(_ link: String) {

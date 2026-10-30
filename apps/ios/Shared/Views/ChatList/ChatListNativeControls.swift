@@ -289,6 +289,7 @@ struct ChatListNativeSearch: UIViewRepresentable {
 struct ChatListUnreadButton: UIViewRepresentable {
     var selected: Bool
     var tint: UIColor
+    var label = NSLocalizedString("Unread", comment: "Unread chats filter")
     var action: () -> Void
     @Environment(\.colorScheme) private var colorScheme
 
@@ -311,7 +312,7 @@ struct ChatListUnreadButton: UIViewRepresentable {
         button.overrideUserInterfaceStyle = colorScheme == .dark ? .dark : .light
         button.configuration = config
         button.isSelected = selected
-        button.accessibilityLabel = NSLocalizedString("Unread", comment: "Unread chats filter")
+        button.accessibilityLabel = label
         button.accessibilityTraits = selected ? [.button, .selected] : .button
     }
     @MainActor final class Coordinator: NSObject {

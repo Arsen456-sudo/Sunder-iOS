@@ -71,13 +71,16 @@ struct PasscodeView: View {
     }
 
     @ViewBuilder private func buttonsView() -> some View {
-        Button(action: cancel) {
-            Label("Cancel", systemImage: "multiply")
-        }.disabled(!buttonsEnabled)
-        Button(action: submit) {
-            Label(submitLabel, systemImage: "checkmark")
+        Group {
+            Button(action: cancel) {
+                Label("Cancel", systemImage: "multiply")
+            }.disabled(!buttonsEnabled)
+            Button(action: submit) {
+                Label(submitLabel, systemImage: "checkmark")
+            }
+            .disabled(submitEnabled?(passcode) == false || passcode.count < 4 || !buttonsEnabled)
         }
-        .disabled(submitEnabled?(passcode) == false || passcode.count < 4 || !buttonsEnabled)
+        .modifier(SunderSystemActionButtons())
     }
 }
 

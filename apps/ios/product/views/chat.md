@@ -193,3 +193,9 @@ uses a compact glass surface. All message rendering, previews, recording gesture
 selection, menu actions, pagination and send/feature checks remain unchanged.
 Older OS versions use native materials. This is a presentation update, not a full
 rewrite of message rows or business state into UIKit.
+
+### Shared native command states (2026-10-30)
+Connecting, pending-member/contact and report/action strips share compact native
+surfaces on iOS 26, with original material fallback. Actions, state and permission
+checks are unchanged. Full-screen media keeps zoom/swipe/player behavior with dark
+system presentation. Root system defaults do not turn message content into forms.

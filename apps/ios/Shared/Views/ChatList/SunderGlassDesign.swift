@@ -179,3 +179,74 @@ struct SunderGlassSelector: UIViewRepresentable {
         }
     }
 }
+
+
+// Shared defaults match AppearanceSettings. Descendants retain explicit styles.
+struct SunderSystemInterface: ViewModifier {
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content
+                .listStyle(.insetGrouped)
+                .formStyle(.grouped)
+                .buttonStyle(.automatic)
+                .pickerStyle(.automatic)
+                .toggleStyle(.automatic)
+                .toolbarBackground(.automatic, for: .navigationBar, .bottomBar)
+                .scrollEdgeEffectStyle(.automatic, for: [.top, .bottom])
+        } else {
+            content
+        }
+    }
+}
+
+struct SunderSystemDetailNavigation: ViewModifier {
+    let title: String
+    var modal = false
+    var close: () -> Void
+
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content
+                .navigationBarHidden(false)
+                .navigationTitle(title)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    if modal {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button(action: close) { Image(systemName: "xmark") }
+                                .accessibilityLabel(Text("Close"))
+                        }
+                    }
+                }
+        } else {
+            content.navigationBarHidden(true)
+        }
+    }
+}
+
+
+struct SunderCommandSurface: ViewModifier {
+    let legacyMaterial: Material
+    var inset: CGFloat = 10
+
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.sunderGlass(cornerRadius: 24)
+                .padding(.horizontal, inset)
+                .padding(.vertical, 4)
+        } else {
+            content.background(legacyMaterial)
+        }
+    }
+}
+
+
+struct SunderSystemActionButtons: ViewModifier {
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.buttonStyle(.glass).controlSize(.large).buttonBorderShape(.capsule)
+        } else {
+            content
+        }
+    }
+}

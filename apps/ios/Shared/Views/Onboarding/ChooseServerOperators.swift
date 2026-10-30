@@ -13,7 +13,27 @@ import SimpleXChat
 
 let conditionsURL = URL(string: "https://github.com/simplex-chat/simplex-chat/blob/stable/PRIVACY.md")!
 
-struct OnboardingButtonStyle: ButtonStyle {
+struct OnboardingButtonStyle: PrimitiveButtonStyle {
+    @EnvironmentObject var theme: AppTheme
+    var isDisabled = false
+
+    @ViewBuilder func makeBody(configuration: Configuration) -> some View {
+        if #available(iOS 26.0, *) {
+            Button(role: configuration.role, action: configuration.trigger) {
+                configuration.label.frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.glassProminent)
+            .controlSize(.large)
+            .tint(theme.colors.primary)
+            .opacity(isDisabled ? 0.4 : 1)
+        } else {
+            Button(role: configuration.role, action: configuration.trigger) { configuration.label }
+                .buttonStyle(LegacyOnboardingButtonStyle(isDisabled: isDisabled))
+        }
+    }
+}
+
+private struct LegacyOnboardingButtonStyle: ButtonStyle {
     @EnvironmentObject var theme: AppTheme
     var isDisabled: Bool = false
 

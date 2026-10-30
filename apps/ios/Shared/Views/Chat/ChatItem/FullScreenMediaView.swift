@@ -31,6 +31,8 @@ struct FullScreenMediaView: View {
 
     var body: some View {
         GeometryReader(content: mediaScrollView)
+            .preferredColorScheme(.dark)
+            .modifier(SunderSystemInterface())
     }
 
     func mediaScrollView(_ g: GeometryProxy) -> some View {

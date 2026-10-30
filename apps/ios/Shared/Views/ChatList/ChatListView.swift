@@ -166,6 +166,7 @@ struct ChatListView: View {
     @State private var searchChatFilteredBySimplexLink: Set<String> = []
     @State private var scrollToSearchBar = false
     @State private var userPickerShown: Bool = false
+    @State private var pendingUserPickerSheet: UserPickerSheet?
     @State private var sheet: SomeSheet<AnyView>? = nil
     @StateObject private var chatTagsModel = ChatTagsModel.shared
     @State private var scrollToItemId: ChatItem.ID? = nil
@@ -200,8 +201,23 @@ struct ChatListView: View {
             ) { chatListView }
         }
         .modifier(
-            Sheet(isPresented: $userPickerShown) {
-                UserPicker(userPickerShown: $userPickerShown, activeSheet: $activeUserPickerSheet)
+            Sheet(isPresented: $userPickerShown, onDismiss: {
+                if let pending = pendingUserPickerSheet {
+                    pendingUserPickerSheet = nil
+                    activeUserPickerSheet = pending
+                }
+            }) {
+                UserPicker(userPickerShown: $userPickerShown, activeSheet: Binding(
+                    get: { activeUserPickerSheet },
+                    set: { selected in
+                        if #available(iOS 26.0, *), selected != nil {
+                            pendingUserPickerSheet = selected
+                            userPickerShown = false
+                        } else {
+                            activeUserPickerSheet = selected
+                        }
+                    }
+                ))
             }
         )
         .appSheet(

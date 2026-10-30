@@ -383,3 +383,8 @@ material, shape and accessibility implementation.
 - [`var body: some View`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L385)
 - [`@ViewBuilder private func attachmentAndCommandsButtons() -> some View`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1084)
 - [`var body: some View`](../../Shared/Views/Chat/ComposeMessage/SendMessageView.swift#L53)
+
+### Command and extension surfaces (2026-10-30)
+Pending-member/contact and reporting strips use SunderCommandSurface on iOS 26.
+Share-extension input uses the shared glass material; send and password bindings
+remain unchanged. See [system-interface.md](system-interface.md).

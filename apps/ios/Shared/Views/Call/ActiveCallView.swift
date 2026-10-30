@@ -483,7 +483,7 @@ struct ActiveCallOverlay: View {
     }
 
     private func controlButton(_ call: Call, _ imageName: String, padding: CGFloat, _ perform: @escaping () -> Void) -> some View {
-        callButton(imageName, call.peerMediaSources.hasVideo ? Color.black.opacity(0.2) : Color.white.opacity(0.2), padding: padding, perform)
+        callButton(imageName, call.peerMediaSources.hasVideo ? Color.black.opacity(0.2) : Color.white.opacity(0.2), padding: padding, glass: true, perform)
     }
 
     private func audioDevicePickerButton() -> some View {
@@ -492,11 +492,11 @@ struct ActiveCallOverlay: View {
             .scaleEffect(2)
             .padding(10)
             .frame(width: 60, height: 60)
-            .background(call.peerMediaSources.hasVideo ? Color.black.opacity(0.2) : Color.white.opacity(0.2))
+            .sunderGlass(cornerRadius: 30)
             .clipShape(.circle)
     }
 
-    private func callButton(_ imageName: String, _ background: Color, padding: CGFloat, _ perform: @escaping () -> Void) -> some View {
+    private func callButton(_ imageName: String, _ background: Color, padding: CGFloat, glass: Bool = false, _ perform: @escaping () -> Void) -> some View {
         Button {
             perform()
         } label: {
@@ -505,7 +505,13 @@ struct ActiveCallOverlay: View {
                 .scaledToFit()
                 .padding(padding)
                 .frame(width: 60, height: 60)
-                .background(background)
+                .background {
+                    if #available(iOS 26.0, *), glass {
+                        SunderGlassSurface(radius: 30).allowsHitTesting(false)
+                    } else {
+                        background
+                    }
+                }
         }
         .foregroundColor(whiteColorWithAlpha)
         .clipShape(.circle)

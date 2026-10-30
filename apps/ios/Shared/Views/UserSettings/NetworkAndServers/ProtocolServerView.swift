@@ -187,9 +187,14 @@ struct BackButton: ViewModifier {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: action) {
-                    HStack {
+                    if #available(iOS 26.0, *) {
                         Image(systemName: "chevron.left")
-                        Text(label)
+                            .accessibilityLabel(Text(label))
+                    } else {
+                        HStack {
+                            Image(systemName: "chevron.left")
+                            Text(label)
+                        }
                     }
                 }
                 .disabled(disabled)

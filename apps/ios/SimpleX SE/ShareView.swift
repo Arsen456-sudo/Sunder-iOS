@@ -63,6 +63,7 @@ struct ShareView: View {
                 }
             }
         }
+        .modifier(SunderSystemInterface())
         .searchable(
             text: $model.search,
             placement: .navigationBarDrawer(displayMode: .always)
@@ -117,12 +118,7 @@ struct ShareView: View {
                 .padding(6)
 
             }
-            .background(Color(.systemBackground))
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(.secondary, lineWidth: 0.5).opacity(0.7)
-            )
+            .sunderGlass(cornerRadius: 24)
             .padding(8)
         }
         .background(.thinMaterial)

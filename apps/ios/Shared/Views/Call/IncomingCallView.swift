@@ -82,6 +82,7 @@ struct IncomingCallView: View {
             }
             .frame(minWidth: 44)
         })
+        .modifier(SunderSystemActionButtons())
     }
 }
 

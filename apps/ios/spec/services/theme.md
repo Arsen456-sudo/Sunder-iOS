@@ -89,7 +89,7 @@ struct ActiveTheme: Equatable {
 [`currentColors()`](../../Shared/Theme/ThemeManager.swift#L64) in `ThemeManager.swift`:
 
 1. Determine base theme from `currentThemeDefault`:
-   - If `"system"`: use light or dark based on [`systemInDarkThemeCurrently`](../../Shared/Theme/Theme.swift#L95)
+   - If `"system"`: use light or dark based on [`systemInDarkThemeCurrently`](../../Shared/Theme/Theme.swift#L96)
    - Dark mode maps to `systemDarkThemeDefault` (Dark, SimpleX, or Black)
 2. Get base color palette ([`LightColorPalette`](../../SimpleXChat/Theme/ThemeTypes.swift#L650), [`DarkColorPalette`](../../SimpleXChat/Theme/ThemeTypes.swift#L629), [`SimplexColorPalette`](../../SimpleXChat/Theme/ThemeTypes.swift#L671), [`BlackColorPalette`](../../SimpleXChat/Theme/ThemeTypes.swift#L692))
 3. Look up app settings theme override (`themeOverridesDefault`)
@@ -328,7 +328,7 @@ Users can force light or dark mode regardless of system setting by selecting a s
 
 ### Detection
 
-[`systemInDarkThemeCurrently`](../../Shared/Theme/Theme.swift#L95):
+[`systemInDarkThemeCurrently`](../../Shared/Theme/Theme.swift#L96):
 
 ```swift
 var systemInDarkThemeCurrently: Bool {
@@ -396,3 +396,8 @@ with mathematical dots rendered once using UIGraphicsImageRenderer. The original
 catalogs and force-unwrapped preset UIImage lookup are removed. Preset IDs, scale/palette
 tables and custom file decoding/caching are retained. The same neutral dot shape is used
 across six preserved color presets; their former illustrations are intentionally absent.
+
+## Shared system presentation (2026-10-30)
+ThemedBackground installs SunderSystemInterface before applying its existing theme
+backing. Colors, gradients, wallpaper, ThemeManager persistence and AppearanceSettings
+remain unchanged. See [system interface](../client/system-interface.md).

@@ -287,7 +287,11 @@ struct GroupMemberInfoView: View {
 
                 }
             }
-            .navigationBarHidden(true)
+            .modifier(SunderSystemDetailNavigation(
+                title: groupMember.wrapped.chatViewName,
+                modal: navigation,
+                close: { dismiss() }
+            ))
             .task {
                 if #unavailable(iOS 16) {
                     // this condition prevents re-setting picker
@@ -363,7 +367,7 @@ struct GroupMemberInfoView: View {
 
     func infoActionButtons(_ member: GroupMember) -> some View {
         GeometryReader { g in
-            let buttonWidth = g.size.width / 4
+            let buttonWidth = max((g.size.width - 16) / 3, 0)
             HStack(alignment: .center, spacing: 8) {
                 if let chat = knownContactChat, let contact = knownContact {
                     knownDirectChatButton(chat, width: buttonWidth)

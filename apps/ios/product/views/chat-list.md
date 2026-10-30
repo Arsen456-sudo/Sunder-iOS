@@ -169,3 +169,10 @@ its account switching, hidden-profile rules and theme gestures remain unchanged.
 Servers info uses a black background and dark appearance. Its profile and Messages /
 Files selectors use actual UIKit glass with equally sized buttons and a separate
 active capsule. Statistics, sharing, confirmations and detail routes are unchanged.
+
+### Native presentation boundaries (2026-10-30)
+The avatar menu uses the iOS 26 system sheet with a grabber and scrollable content;
+accessibility sizes start at the large detent. Selecting a menu destination closes
+this sheet first, then opens the original destination. Account switching and hidden
+profile behavior are retained. New-chat/contacts/deleted-chat search uses the same
+native field/filter controls as the main list, with existing resolution logic.

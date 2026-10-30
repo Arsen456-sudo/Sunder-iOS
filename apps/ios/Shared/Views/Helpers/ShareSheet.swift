@@ -189,9 +189,20 @@ class OpenChatAlertViewController: UIViewController {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
 
         // Container view
-        let containerView = UIView()
-        containerView.backgroundColor = .systemBackground
-        containerView.layer.cornerRadius = 12
+        let containerView: UIView
+        let containerContent: UIView
+        if #available(iOS 26.0, *) {
+            let glass = SunderGlassEffectView(radius: 28)
+            glass.interactive = true
+            containerView = glass
+            containerContent = glass.contentView
+        } else {
+            let legacy = UIView()
+            legacy.backgroundColor = .systemBackground
+            legacy.layer.cornerRadius = 12
+            containerView = legacy
+            containerContent = legacy
+        }
         containerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(containerView)
 
@@ -367,13 +378,13 @@ class OpenChatAlertViewController: UIViewController {
         vStack.alignment = .fill // important: buttons stretch full width
         vStack.translatesAutoresizingMaskIntoConstraints = false
 
-        containerView.addSubview(vStack)
+        containerContent.addSubview(vStack)
 
         // Add horizontal divider above buttons
         let horizontalDivider = UIView()
         horizontalDivider.backgroundColor = UIColor.separator
         horizontalDivider.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(horizontalDivider)
+        containerContent.addSubview(horizontalDivider)
 
         NSLayoutConstraint.activate([
             // Container view centering and fixed width

@@ -41,6 +41,7 @@ struct SimpleXApp: App {
             // contentAccessAuthenticationExtended has to be passed to ContentView on view initialization,
             // so that it's computed by the time view renders, and not on event after rendering
             ContentView(contentAccessAuthenticationExtended: !authenticationExpired())
+                .modifier(SunderSystemInterface())
                 .environmentObject(chatModel)
                 .environmentObject(AppTheme.shared)
                 .onOpenURL { url in

@@ -506,7 +506,7 @@ struct ChatView: View {
             .padding(12)
             .frame(minHeight: 54)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(ToolbarMaterial.material(toolbarMaterial))
+            .modifier(SunderCommandSurface(legacyMaterial: ToolbarMaterial.material(toolbarMaterial)))
         }
     }
 
@@ -734,7 +734,7 @@ struct ChatView: View {
                  .padding(.top, 8)
                  .padding(.bottom, 14)
                  .frame(maxWidth: .infinity)
-                 .background(ToolbarMaterial.material(toolbarMaterial))
+                 .modifier(SunderCommandSurface(legacyMaterial: ToolbarMaterial.material(toolbarMaterial)))
              Divider()
          }
     }
@@ -882,7 +882,9 @@ struct ChatView: View {
             }
             .padding(EdgeInsets(top: 7, leading: 7, bottom: 7, trailing: 7))
             .foregroundColor(theme.colors.secondary)
-            .background(Color(.tertiarySystemFill))
+            .background {
+                if #unavailable(iOS 26.0) { Color(.tertiarySystemFill) }
+            }
             .cornerRadius(10.0)
 
             Button ("Cancel") {

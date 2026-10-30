@@ -36,7 +36,7 @@ extension View {
         @ViewBuilder content: @escaping () -> Content
     ) -> some View where Content: View {
         sheet(isPresented: isPresented, onDismiss: onDismiss) {
-            content().modifier(PrivacySensitive())
+            content().modifier(SunderSystemInterface()).modifier(PrivacySensitive())
         }
     }
 
@@ -46,7 +46,14 @@ extension View {
         @ViewBuilder content: @escaping (T) -> Content
     ) -> some View where T: Identifiable, Content: View {
         sheet(item: item, onDismiss: onDismiss) { it in
-            content(it).modifier(PrivacySensitive())
+            content(it).modifier(SunderSystemInterface()).modifier(PrivacySensitive())
         }
+    }
+}
+
+
+extension View {
+    func sunderPrivateSheet() -> some View {
+        modifier(SunderSystemInterface()).modifier(PrivacySensitive())
     }
 }

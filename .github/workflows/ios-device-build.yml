@@ -68,6 +68,7 @@ jobs:
           set -euo pipefail
           mkdir -p build
           python3 scripts/ios/generate-sunder-notices.py --check
+          python3 scripts/ios/audit-system-ui.py --check
           xcodebuild -project apps/ios/SimpleX.xcodeproj -scheme 'SimpleX (iOS)' \
             -configuration Release -destination 'generic/platform=iOS' \
             -derivedDataPath .build/DerivedData -clonedSourcePackagesDirPath .build/SourcePackages \
