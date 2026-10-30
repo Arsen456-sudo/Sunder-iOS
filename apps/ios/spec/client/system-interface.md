@@ -69,30 +69,30 @@ must compile before device validation. See [adoption report](../../../../docs/fo
 - [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L88)
 - [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L181)
 - [`@ViewBuilder private func withToolbar(content: () -> some View) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L279)
-- [`@ViewBuilder private func noChatsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L433)
-- [`@ViewBuilder private func chatView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L455)
-- [`func stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L469)
-- [`private func filteredChats() -> [Chat]`](../../Shared/Views/ChatList/ChatListView.swift#L475)
-- [`func filtered(_ chat: Chat) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L503)
-- [`func viewNameContains(_ cInfo: ChatInfo, _ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L512)
-- [`func searchString() -> String`](../../Shared/Views/ChatList/ChatListView.swift#L518)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L541)
-- [`private func toggleFilterButton() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L638)
-- [`private func connect(_ link: String)`](../../Shared/Views/ChatList/ChatListView.swift#L645)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L671)
-- [`private func isNameLabel(_ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L702)
-- [`func knownChatId(_ result: ConnectionPlanResult?) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L710)
-- [`func nameSearchCandidate(_ str: String) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L740)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L763)
-- [`@ViewBuilder private func tagsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L769)
-- [`@ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L831)
-- [`private func expandedPresetTagsFiltersView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L849)
-- [`@ViewBuilder private func collapsedTagsFilterView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L857)
-- [`private func presentTagLists()`](../../Shared/Views/ChatList/ChatListView.swift#L901)
-- [`private func presetTagLabel(tag: PresetTag, active: Bool) -> (item: String, menu: String?, label: LocalizedStringKey)`](../../Shared/Views/ChatList/ChatListView.swift#L916)
-- [`private func setActiveFilter(filter: ActiveFilter)`](../../Shared/Views/ChatList/ChatListView.swift#L929)
-- [`func chatStoppedIcon() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L938)
-- [`func presetTagMatchesChat(_ tag: PresetTag, _ chatInfo: ChatInfo, _ chatStats: ChatStats) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L950)
+- [`@ViewBuilder private func noChatsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L441)
+- [`@ViewBuilder private func chatView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L463)
+- [`func stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L477)
+- [`private func filteredChats() -> [Chat]`](../../Shared/Views/ChatList/ChatListView.swift#L483)
+- [`func filtered(_ chat: Chat) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L511)
+- [`func viewNameContains(_ cInfo: ChatInfo, _ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L520)
+- [`func searchString() -> String`](../../Shared/Views/ChatList/ChatListView.swift#L526)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L549)
+- [`private func toggleFilterButton() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L646)
+- [`private func connect(_ link: String)`](../../Shared/Views/ChatList/ChatListView.swift#L653)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L679)
+- [`private func isNameLabel(_ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L710)
+- [`func knownChatId(_ result: ConnectionPlanResult?) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L718)
+- [`func nameSearchCandidate(_ str: String) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L748)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L771)
+- [`@ViewBuilder private func tagsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L777)
+- [`@ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L839)
+- [`private func expandedPresetTagsFiltersView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L859)
+- [`@ViewBuilder private func collapsedTagsFilterView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L867)
+- [`private func presentTagLists()`](../../Shared/Views/ChatList/ChatListView.swift#L911)
+- [`private func presetTagLabel(tag: PresetTag, active: Bool) -> (item: String, menu: String?, label: LocalizedStringKey)`](../../Shared/Views/ChatList/ChatListView.swift#L926)
+- [`private func setActiveFilter(filter: ActiveFilter)`](../../Shared/Views/ChatList/ChatListView.swift#L939)
+- [`func chatStoppedIcon() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L948)
+- [`func presetTagMatchesChat(_ tag: PresetTag, _ chatInfo: ChatInfo, _ chatStats: ChatStats) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L960)
 
 ### Shared/Views/ChatList/ServersSummaryView.swift
 
@@ -161,3 +161,16 @@ must compile before device validation. See [adoption report](../../../../docs/fo
 - [`func close(_ completion: (() -> Void)?)`](../../Shared/Views/Helpers/ShareSheet.swift#L487)
 - [`var body: some View`](../../Shared/Views/Helpers/ShareSheet.swift#L508)
 
+
+## Build compatibility repair
+ChatListView.withToolbar chooses separately typed systemTopToolbar and
+systemBottomToolbar properties; statusButton isolates the conditional status view
+from ToolbarContent inference. Preset-filter weight applies to Text, not Label's
+View-level iOS 16 modifier. SystemInterface provides the guarded scroll-background
+helper used by ServersSummaryView. The deployment target remains iOS 15 and the
+system presentation/actions remain the same.
+
+- [`@ToolbarContentBuilder private var systemTopToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L287)
+- [`@ToolbarContentBuilder private var systemBottomToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L295)
+- [`@ViewBuilder private var statusButton: some View`](../../Shared/Views/ChatList/ChatListView.swift#L305)
+- [`ifAvailableHideScrollBackground()`](../../Shared/Views/ChatList/SystemInterface.swift#L74)

@@ -277,27 +277,35 @@ struct ChatListView: View {
     }
     
     @ViewBuilder private func withToolbar(content: () -> some View) -> some View {
-        content()
-            .navigationBarHidden(oneHandUI || searchMode)
-            .toolbar {
-                if oneHandUI {
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        profileButton
-                        Spacer()
-                        if !shouldShowOnboarding {
-                            ChatListStatusButton { showServersSummary = true }
-                            Spacer()
-                        }
-                        composeButton
-                    }
-                } else if !searchMode {
-                    ToolbarItem(placement: .navigationBarLeading) { profileButton }
-                    ToolbarItem(placement: .principal) {
-                        if !shouldShowOnboarding { ChatListStatusButton { showServersSummary = true } }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) { composeButton }
-                }
-            }
+        if oneHandUI {
+            content().navigationBarHidden(true).toolbar { systemBottomToolbar }
+        } else {
+            content().navigationBarHidden(searchMode).toolbar { systemTopToolbar }
+        }
+    }
+
+    @ToolbarContentBuilder private var systemTopToolbar: some ToolbarContent {
+        if !searchMode {
+            ToolbarItem(placement: .navigationBarLeading) { profileButton }
+            ToolbarItem(placement: .principal) { statusButton }
+            ToolbarItem(placement: .navigationBarTrailing) { composeButton }
+        }
+    }
+
+    @ToolbarContentBuilder private var systemBottomToolbar: some ToolbarContent {
+        ToolbarItemGroup(placement: .bottomBar) {
+            profileButton
+            Spacer()
+            statusButton
+            Spacer()
+            composeButton
+        }
+    }
+
+    @ViewBuilder private var statusButton: some View {
+        if !shouldShowOnboarding {
+            ChatListStatusButton { showServersSummary = true }
+        }
     }
 
     private var profileButton: some View {
@@ -839,8 +847,10 @@ struct TagsView: View {
         let color: Color = active ? .accentColor : .secondary
 
         Button { setActiveFilter(filter: .presetTag(tag)) } label: {
-            Label(text, systemImage: menuIcon ?? icon)
-                .fontWeight(active ? .semibold : .regular)
+            HStack {
+                Image(systemName: menuIcon ?? icon)
+                Text(text).fontWeight(active ? .semibold : .regular)
+            }
         }
         .buttonStyle(.bordered)
         .tint(color)

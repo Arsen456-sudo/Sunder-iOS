@@ -2,10 +2,10 @@
   "scope": "Development notice collection, not a final IPA SBOM or publication clearance",
   "generator": "scripts/ios/generate-sunder-notices.py",
   "repository_url": "https://github.com/Arsen456-sudo/Sunder-iOS",
-  "source_ref": "preview-20261030-standard-1",
+  "source_ref": "preview-20261030-standard-2",
   "normalization": "Input and output content hashes use LF line endings",
   "output": "apps/ios/Shared/SunderNotices.txt",
-  "output_sha256_lf": "1dd4fadd1f0d98e70e655267322da98c55d5118ceb9797dc712e71d2843a4eb2",
+  "output_sha256_lf": "768259823c85444f5ae887a6faebf5c21ad80a12e046c872fb418659a5ff65c7",
   "inputs": [
     {
       "path": "NOTICE.md",

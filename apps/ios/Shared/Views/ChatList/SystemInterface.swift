@@ -68,3 +68,11 @@ struct SunderSystemActionButtons: ViewModifier {
         }
     }
 }
+
+
+extension View {
+    @ViewBuilder func ifAvailableHideScrollBackground() -> some View {
+        if #available(iOS 16.0, *) { scrollContentBackground(.hidden) }
+        else { self }
+    }
+}

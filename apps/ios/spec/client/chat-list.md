@@ -63,7 +63,7 @@ The root list view. Key responsibilities:
 ### Data Source
 - Reads `ChatModel.shared.chats` (all conversations)
 - Applies active filter from `ChatTagsModel.shared.activeFilter`
-- Applies search query filtering via [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L475)
+- Applies search query filtering via [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L483)
 - Sorts by last activity (most recent first), with pinned chats at top
 
 ### Layout
@@ -81,9 +81,9 @@ The root list view. Key responsibilities:
 | Function | Line | Description |
 |----------|------|-------------|
 | [`body`](../../Shared/Views/ChatList/ChatListView.swift#L88) | See link | Main view body |
-| [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L475) | See link | Applies active filter and search to chat list |
-| [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L518) | See link | Normalizes search text for comparison |
-| [`stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L469) | See link | Stops any playing voice message |
+| [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L483) | See link | Applies active filter and search to chat list |
+| [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L526) | See link | Normalizes search text for comparison |
+| [`stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L477) | See link | Stops any playing voice message |
 
 ---
 
@@ -171,7 +171,7 @@ Horizontal scrolling tab bar below the navigation bar. Tabs:
 | Group Reports | `.presetTag(.groupReports)` | Groups with pending reports |
 | User tags | `.userTag(ChatTag)` | User-defined custom tags |
 
-Filter matching is handled by [`presetTagMatchesChat()`](../../Shared/Views/ChatList/ChatListView.swift#L939) and the in-view [`TagsView`](../../Shared/Views/ChatList/ChatListView.swift#L756) struct.
+Filter matching is handled by [`presetTagMatchesChat()`](../../Shared/Views/ChatList/ChatListView.swift#L949) and the in-view [`TagsView`](../../Shared/Views/ChatList/ChatListView.swift#L764) struct.
 
 ### ChatTagsModel State
 
@@ -196,7 +196,7 @@ class ChatTagsModel: ObservableObject {
 |------|------|------|-------------|
 | [`PresetTag`](../../Shared/Views/ChatList/ChatListView.swift#L38) | ChatListView.swift | 36 | Enum of built-in filter categories |
 | [`ActiveFilter`](../../Shared/Views/ChatList/ChatListView.swift#L55) | ChatListView.swift | 53 | Enum wrapping preset, user-tag, or unread filter |
-| [`setActiveFilter()`](../../Shared/Views/ChatList/ChatListView.swift#L920) | ChatListView.swift | 1113 | Applies a filter and persists selection |
+| [`setActiveFilter()`](../../Shared/Views/ChatList/ChatListView.swift#L930) | ChatListView.swift | 1113 | Applies a filter and persists selection |
 
 ### Tag Management Commands
 - `apiCreateChatTag(tag: ChatTagData)` -- create tag
@@ -211,7 +211,7 @@ class ChatTagsModel: ObservableObject {
 
 Search is available via pull-down gesture or search button in the navigation bar.
 
-**Search bar UI:** [`ChatListSearchBar`](../../Shared/Views/ChatList/ChatListView.swift#L524)
+**Search bar UI:** [`ChatListSearchBar`](../../Shared/Views/ChatList/ChatListView.swift#L532)
 
 ### Filtering Logic
 - Filters `ChatModel.chats` by matching search text against:
@@ -219,7 +219,7 @@ Search is available via pull-down gesture or search button in the navigation bar
   - `chatInfo.localAlias` (local alias)
   - `chatInfo.fullName` (full name)
 - For deeper message content search, uses `apiGetChat(chatId:, search:)` parameter
-- Core logic in [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L475) and [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L518)
+- Core logic in [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L483) and [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L526)
 
 ### Search Results
 - Matching chats are displayed in the same list format
