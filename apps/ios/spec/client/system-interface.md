@@ -197,3 +197,6 @@ SwiftUI toolbar shared backgrounds are suppressed only for those controls.
 Neutral settings/compose foregrounds do not replace semantic action colors.
 Conversation uses automatic system navigation background and extends under its
 top safe area; virtualized scrolling and message/voice handlers are unchanged.
+
+Safe-area review: only the message-list layer extends under the top navigation
+bar. Composer, search inset and overlay controls retain their safe-area layout.

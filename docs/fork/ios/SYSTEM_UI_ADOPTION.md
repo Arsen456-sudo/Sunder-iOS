@@ -48,3 +48,6 @@ incognito distinctions are retained. The conversation no longer forces an opaque
 navigation-bar background, and its top container extends beneath that bar. Existing
 virtualized-list insets, pagination and voice gestures are retained. Device checks
 must include large text, keyboard/cancel, search links, dark/light and push/back.
+
+Safe-area review: only the message-list layer extends under the top navigation
+bar. Composer, search inset and overlay controls retain their safe-area layout.

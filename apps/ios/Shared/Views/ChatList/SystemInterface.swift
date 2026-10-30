@@ -86,3 +86,13 @@ struct SunderComposeButton: ViewModifier {
         }
     }
 }
+
+struct SunderConversationScrollExtent: ViewModifier {
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.ignoresSafeArea(.container, edges: .top)
+        } else {
+            content
+        }
+    }
+}

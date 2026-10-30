@@ -100,7 +100,6 @@ struct ChatView: View {
             viewBody
                 .scrollDismissesKeyboard(.immediately)
                 .toolbarBackground(.automatic, for: .navigationBar)
-                .ignoresSafeArea(.container, edges: .top)
                 .onAppear {
                     scrollView.topEdgeEffect.style = .soft
                     scrollView.bottomEdgeEffect.style = .soft
@@ -138,11 +137,11 @@ struct ChatView: View {
                 ZStack(alignment: .bottomTrailing) {
                     if userMemberKnockingChat {
                         ZStack(alignment: .top) {
-                            chatItemsList()
+                            chatItemsList().modifier(SunderConversationScrollExtent())
                             userMemberKnockingTitleBar()
                         }
                     } else {
-                        chatItemsList()
+                        chatItemsList().modifier(SunderConversationScrollExtent())
                     }
                     if let groupInfo = chat.chatInfo.groupInfo, !composeState.message.isEmpty {
                         GroupMentionsView(im: im, groupInfo: groupInfo, composeState: $composeState, selectedRange: $selectedRange, keyboardVisible: $keyboardVisible)
