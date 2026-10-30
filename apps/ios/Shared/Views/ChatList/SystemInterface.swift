@@ -76,3 +76,13 @@ extension View {
         else { self }
     }
 }
+
+struct SunderComposeButton: ViewModifier {
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.buttonStyle(.glass).buttonBorderShape(.circle)
+        } else {
+            content.buttonStyle(.bordered)
+        }
+    }
+}

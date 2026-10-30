@@ -236,29 +236,11 @@ struct AddGroupMembersViewCommon: View {
 }
 
 func searchFieldView(text: Binding<String>, focussed: FocusState<Bool>.Binding, _ onBackgroundColor: Color, _ secondaryColor: Color) -> some View {
-    HStack {
-        Image(systemName: "magnifyingglass")
-            .resizable()
-            .scaledToFit()
-            .frame(height: 20)
-            .padding(.trailing, 10)
-        TextField("Search", text: text)
-            .focused(focussed)
-            .foregroundColor(onBackgroundColor)
-            .frame(maxWidth: .infinity)
-            .autocorrectionDisabled(true)
-        Image(systemName: "xmark.circle.fill")
-            .resizable()
-            .scaledToFit()
-            .opacity(text.wrappedValue == "" ? 0 : 1)
-            .frame(height: 20)
-            .onTapGesture {
-                text.wrappedValue = ""
-                focussed.wrappedValue = false
-            }
-    }
-    .foregroundColor(secondaryColor)
-    .frame(height: 36)
+    ChatListNativeSearch(text: text,
+                         focused: Binding(get: { focussed.wrappedValue }, set: { focussed.wrappedValue = $0 }),
+                         linking: false, busy: false, tint: .label,
+                         placeholder: NSLocalizedString("Search", comment: "Search members"))
+        .frame(height: 52)
 }
 
 struct AddGroupMembersView_Previews: PreviewProvider {

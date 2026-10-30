@@ -99,7 +99,8 @@ struct ChatView: View {
         if #available(iOS 26.0, *) {
             viewBody
                 .scrollDismissesKeyboard(.immediately)
-                .toolbarBackground(.visible, for: .navigationBar)
+                .toolbarBackground(.automatic, for: .navigationBar)
+                .ignoresSafeArea(.container, edges: .top)
                 .onAppear {
                     scrollView.topEdgeEffect.style = .soft
                     scrollView.bottomEdgeEffect.style = .soft
@@ -860,38 +861,14 @@ struct ChatView: View {
 
     // Spec: spec/client/chat-view.md#searchToolbar
     private func searchToolbar() -> some View {
-        let placeholder: LocalizedStringKey = contentFilter?.searchPlaceholder ?? "Search"
-        return HStack(spacing: 12) {
-            HStack(spacing: 4) {
-                Image(systemName: "magnifyingglass")
-                if let contentFilter {
-                    Image(systemName: contentFilter.icon)
-                }
-                TextField(placeholder, text: $searchText)
-                    .focused($searchFocussed)
-                    .foregroundColor(theme.colors.onBackground)
-                    .frame(maxWidth: .infinity)
-
-                Button {
-                    searchText = ""
-                } label: {
-                    Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
-                }
-            }
-            .padding(EdgeInsets(top: 7, leading: 7, bottom: 7, trailing: 7))
-            .foregroundColor(theme.colors.secondary)
-            .background {
-                if #unavailable(iOS 26.0) { Color(.tertiarySystemFill) }
-            }
-            .cornerRadius(10.0)
-
-            Button ("Cancel") {
-                closeSearch()
-                searchTextChanged("")
-            }
-        }
-        .padding(.horizontal)
-        .padding(.vertical, 8)
+        return ChatListNativeSearch(
+            text: $searchText,
+            focused: Binding(get: { searchFocussed }, set: { searchFocussed = $0 }),
+            linking: false, busy: false, tint: .label,
+            placeholder: contentFilter?.localizedSearchPlaceholder ?? NSLocalizedString("Search", comment: "Search messages"),
+            onCancel: { closeSearch(); searchTextChanged("") }
+        )
+        .frame(height: 52)
     }
 
     private func voiceWithoutFrame(_ ci: ChatItem) -> Bool {
@@ -3304,16 +3281,16 @@ enum ContentFilter: CaseIterable {
         }
     }
 
-    var searchPlaceholder: LocalizedStringKey {
+    var localizedSearchPlaceholder: String {
         switch self {
-        case .images: "Search images"
-        case .videos: "Search videos"
-        case .voice: "Search voice messages"
-        case .files: "Search files"
-        case .links: "Search links"
+        case .images: NSLocalizedString("Search images", comment: "Search images")
+        case .videos: NSLocalizedString("Search videos", comment: "Search videos")
+        case .voice: NSLocalizedString("Search voice messages", comment: "Search voice messages")
+        case .files: NSLocalizedString("Search files", comment: "Search files")
+        case .links: NSLocalizedString("Search links", comment: "Search links")
         }
     }
-    
+
     var icon: String {
         switch self {
         case .images: "photo"

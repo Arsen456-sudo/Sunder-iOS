@@ -195,3 +195,7 @@ FileUtils.swift also affects PC24 wallpaper initialization; missing group paths 
 | Call/{ActiveCallView,IncomingCallView}.swift; ChatItem/FullScreenMediaView.swift | PC9, PC10, PC17 | Specialized media/control presentation |
 | NewChat/{NewChatView,NewChatMenuButton}.swift; compose context action views | PC1, PC2, PC3, PC4, PC12 | Native search and command surfaces |
 | SimpleX SE/ShareView.swift | PC4, PC10 | Share UI only |
+
+Native control correction: ChatListNativeControls supplies UIKit search and circular
+buttons to PC1/PC2/PC3/PC12/PC14. Settings row foreground changes affect PC18; compose
+foregrounds affect PC4/PC9. No transport, storage or security APIs are changed.

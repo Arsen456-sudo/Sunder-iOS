@@ -278,12 +278,40 @@ struct ChatListView: View {
     
     @ViewBuilder private func withToolbar(content: () -> some View) -> some View {
         if oneHandUI {
-            content().navigationBarHidden(true).toolbar { systemBottomToolbar }
+            if #available(iOS 26.0, *) {
+                content().navigationBarHidden(true).toolbar { glassBottomToolbar }
+            } else {
+                content().navigationBarHidden(true).toolbar { systemBottomToolbar }
+            }
         } else if searchMode {
             content().navigationBarHidden(true)
+        } else if #available(iOS 26.0, *) {
+            content().navigationBarHidden(false).toolbar { glassTopToolbar }
         } else {
             content().navigationBarHidden(false).toolbar { systemTopToolbar }
         }
+    }
+
+    @available(iOS 26.0, *)
+    @ToolbarContentBuilder private var glassTopToolbar: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarLeading) { profileButton }
+            .sharedBackgroundVisibility(.hidden)
+        ToolbarItem(placement: .principal) { statusButton }
+            .sharedBackgroundVisibility(.hidden)
+        ToolbarItem(placement: .navigationBarTrailing) { composeButton }
+            .sharedBackgroundVisibility(.hidden)
+    }
+
+    @available(iOS 26.0, *)
+    @ToolbarContentBuilder private var glassBottomToolbar: some ToolbarContent {
+        ToolbarItemGroup(placement: .bottomBar) {
+            profileButton
+            Spacer()
+            statusButton
+            Spacer()
+            composeButton
+        }
+        .sharedBackgroundVisibility(.hidden)
     }
 
     @ToolbarContentBuilder private var systemTopToolbar: some ToolbarContent {
@@ -308,7 +336,19 @@ struct ChatListView: View {
         }
     }
 
-    private var profileButton: some View {
+    @ViewBuilder private var profileButton: some View {
+        if #available(iOS 26.0, *) {
+            SunderCircleButton(symbol: "person.crop.circle.fill", avatar: chatModel.currentUser?.image,
+                               label: NSLocalizedString("Your profile", comment: "Profile toolbar button"),
+                               unread: chatModel.users.contains { !$0.user.activeUser && !$0.user.hidden && $0.unreadCount > 0 },
+                               action: { userPickerShown = true })
+                .frame(width: 44, height: 44)
+        } else {
+            legacyProfileButton
+        }
+    }
+
+    private var legacyProfileButton: some View {
         Button { userPickerShown = true } label: {
             ZStack(alignment: .topTrailing) {
                 ProfileImage(imageStr: chatModel.currentUser?.image, size: 28)
@@ -322,7 +362,16 @@ struct ChatListView: View {
 
     @ViewBuilder private var composeButton: some View {
         switch chatModel.chatRunning {
-        case .some(true): NewChatMenuButton(showNewChatSheet: $showNewChatSheet)
+        case .some(true):
+            if #available(iOS 26.0, *) {
+                SunderCircleButton(symbol: "square.and.pencil", label: NSLocalizedString("New chat", comment: "Compose toolbar button")) {
+                    ConnectProgressManager.shared.cancelConnectProgress()
+                    showNewChatSheet = true
+                }
+                .frame(width: 44, height: 44)
+            } else {
+                NewChatMenuButton(showNewChatSheet: $showNewChatSheet)
+            }
         case .some(false): chatStoppedIcon()
         case .none: EmptyView()
         }

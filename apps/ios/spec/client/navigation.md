@@ -475,3 +475,12 @@ no other screen's layout or navigation route is rewritten by the chat-list chang
 See [system-interface.md](system-interface.md) for app/theme/sheet scope, native
 avatar-sheet dismissal ordering, contextual controls and member/connection
 navigation. Both appSheet overloads retain PrivacySensitive redaction.
+
+## Native control correction (2026-10-30)
+See [adoption and validation limits](../../../../docs/fork/ios/SYSTEM_UI_ADOPTION.md#maintainer-design-constraint-and-control-correction-2026-10-30).
+UIKit UISearchBar preserves text/focus/progress/link and cancellation bindings.
+Circular UIKit glass toolbar controls own their backgrounds on iOS 26; stock
+SwiftUI toolbar shared backgrounds are suppressed only for those controls.
+Neutral settings/compose foregrounds do not replace semantic action colors.
+Conversation uses automatic system navigation background and extends under its
+top safe area; virtualized scrolling and message/voice handlers are unchanged.

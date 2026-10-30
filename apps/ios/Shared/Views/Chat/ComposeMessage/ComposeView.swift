@@ -1069,7 +1069,7 @@ struct ComposeView: View {
                 keyboardHiddenDate: $keyboardHiddenDate,
                 sendButtonColor: chat.chatInfo.incognito
                 ? .indigo.opacity(colorScheme == .dark ? 1 : 0.7)
-                : theme.colors.primary
+                : Color(uiColor: .label)
             )
             .disabled(!chat.chatInfo.sendMsgEnabled)
 
@@ -1088,11 +1088,11 @@ struct ComposeView: View {
         let showCommands = chat.chatInfo.useCommands && (!showAttachment || msg.isEmpty || msg.starts(with: "/"))
         if showCommands {
             commandsButton()
-                .buttonStyle(.bordered)
+                .modifier(SunderComposeButton())
         }
         if showAttachment {
             attachmentButton()
-                .buttonStyle(.bordered)
+                .modifier(SunderComposeButton())
                 .padding(.trailing, 3)
                 .if(showCommands) { v in v.padding(.leading, 3) }
         }
@@ -1108,7 +1108,7 @@ struct ComposeView: View {
                 .contentShape(Rectangle())
         }
         .disabled(!chat.chatInfo.sendMsgEnabled || chat.chatInfo.menuCommands.isEmpty)
-        .tint(theme.colors.primary)
+        .tint(.primary)
         .padding(.bottom, 2)
     }
 
@@ -1119,7 +1119,7 @@ struct ComposeView: View {
             Image(systemName: "paperclip").font(.title3)
         }
             .disabled(composeState.attachmentDisabled || !chat.chatInfo.sendMsgEnabled)
-            .tint(theme.colors.primary)
+            .tint(.primary)
         if im.secondaryIMFilter == nil,
            !chat.chatInfo.featureEnabled(.files) {
             b.disabled(true).onTapGesture {

@@ -151,3 +151,6 @@ status polling is cancellable. Folder filters use standard bordered Buttons and
 Menu, and native Edit context menus retain the tag-management destination.
 Servers info uses a native large title, Done/share toolbar items and standard
 Picker rows in a Section. Its black appearance and statistics are retained.
+
+### Native geometry correction (2026-10-30)
+Main controls use fixed-size circular UIKit glass buttons, a circular avatar and a shared native UISearchBar. UIKit owns search/cancel metrics; link handling, filters, unread state and account routes remain unchanged.

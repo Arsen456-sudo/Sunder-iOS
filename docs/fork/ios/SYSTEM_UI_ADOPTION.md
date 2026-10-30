@@ -27,3 +27,24 @@ SYSTEM_UI_INVENTORY.json records the current view sources and helpers, not a cou
 of screens or proof of visual verification. Run scripts/ios/audit-system-ui.py and
 --check to update/verify; CI checks it. A successful compile cannot validate all
 routes, accessibility sizes, light/dark variants or presentation sequences.
+
+## Maintainer design constraint and control correction (2026-10-30)
+Navigation and interactive chrome must use Apple's current native design, with
+UIKit controls where explicit geometry/behavior is needed. Do not substitute
+translucent colored rectangles or generic TextFields for system search controls.
+iOS 26 is the available build SDK baseline; iOS 27 appearance is not verified.
+
+ChatListNativeSearch now embeds UISearchBar with delegated text/focus/cancel and
+link-progress bindings, shared by chat/contact/member/message searches. Main
+profile/compose/unread controls use UIButton.Configuration.glass/prominentGlass
+on iOS 26, a 44-point square intrinsic size and capsule corner style. Avatar pixels
+are center-cropped to a 28-point circle once per source image, with original colors.
+Native toolbar shared backgrounds are disabled only where UIKit supplies glass,
+including the reachable toolbar. No extra backdrop is stacked over these buttons.
+
+Settings navigation labels use semantic primary foreground, independent of action
+tint. Compose ordinary actions use semantic label colors; warning/destructive and
+incognito distinctions are retained. The conversation no longer forces an opaque
+navigation-bar background, and its top container extends beneath that bar. Existing
+virtualized-list insets, pagination and voice gestures are retained. Device checks
+must include large text, keyboard/cancel, search links, dark/light and push/back.

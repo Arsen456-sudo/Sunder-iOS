@@ -191,3 +191,6 @@ search and compose areas. Attachment, command, profile and folder actions use
 standard buttons. The fixed 220-point chat-title width and bespoke glass backings
 are removed. Native text editing, messages, voice/send gestures, previews, call
 menus and pagination remain intact; they are not rewritten into settings forms.
+
+### Native geometry correction (2026-10-30)
+Conversation search and member searches use the shared UISearchBar adapter. Ordinary compose controls use neutral adaptive colors. The top background/content extends beneath the native navigation bar without a forced opaque band; message layout/pagination and recording gestures remain unchanged.

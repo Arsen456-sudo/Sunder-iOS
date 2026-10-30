@@ -268,7 +268,7 @@ struct SendMessageView: View {
             .resizable()
             .scaledToFit()
             .frame(width: 20, height: 20)
-            .foregroundColor(isEnabled ? theme.colors.primary : theme.colors.secondary)
+            .foregroundColor(isEnabled ? Color(uiColor: .label) : theme.colors.secondary)
             .opacity(holdingVMR ? 0.7 : 1)
             .disabled(disabled)
             .frame(width: 31, height: 31)
@@ -336,7 +336,7 @@ struct SendMessageView: View {
             Image(systemName: "multiply")
                 .resizable()
                 .scaledToFit()
-                .foregroundColor(theme.colors.primary)
+                .foregroundColor(Color(uiColor: .label))
                 .frame(width: 15, height: 15)
         }
         .frame(width: 29, height: 29)
@@ -353,7 +353,7 @@ struct SendMessageView: View {
             Image(systemName: "bolt.fill")
                 .resizable()
                 .scaledToFit()
-                .foregroundColor(isEnabled ? theme.colors.primary : theme.colors.secondary)
+                .foregroundColor(isEnabled ? Color(uiColor: .label) : theme.colors.secondary)
                 .frame(width: 20, height: 20)
         }
         .frame(width: 29, height: 29)
@@ -423,7 +423,7 @@ struct SendMessageView: View {
     private func finishVoiceMessageRecordingButton() -> some View {
         Button(action: { finishVoiceMessageRecording?() }) {
             Image(systemName: "stop.fill")
-                .foregroundColor(theme.colors.primary)
+                .foregroundColor(Color(uiColor: .label))
         }
         .disabled(composeState.inProgress)
         .frame(width: 31, height: 31)

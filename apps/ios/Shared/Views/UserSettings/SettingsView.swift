@@ -578,7 +578,7 @@ func settingsRow<Content : View>(_ icon: String, color: Color/* = .secondary*/, 
         Image(systemName: icon).frame(maxWidth: 24, maxHeight: 24, alignment: .center)
             .symbolRenderingMode(.monochrome)
             .foregroundColor(color)
-        content().padding(.leading, indent)
+        content().foregroundColor(Color(uiColor: .label)).padding(.leading, indent)
     }
 }
 

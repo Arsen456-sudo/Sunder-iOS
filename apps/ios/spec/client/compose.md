@@ -378,3 +378,12 @@ editor, all previews and voice/send gestures; its field backing uses the standar
 grouped surface. Share-extension input follows the same presentation. There is no
 bespoke glass surface or manual stroke around these fields. See
 [system-interface.md](system-interface.md) for construction and validation limits.
+
+## Native control correction (2026-10-30)
+See [adoption and validation limits](../../../../docs/fork/ios/SYSTEM_UI_ADOPTION.md#maintainer-design-constraint-and-control-correction-2026-10-30).
+UIKit UISearchBar preserves text/focus/progress/link and cancellation bindings.
+Circular UIKit glass toolbar controls own their backgrounds on iOS 26; stock
+SwiftUI toolbar shared backgrounds are suppressed only for those controls.
+Neutral settings/compose foregrounds do not replace semantic action colors.
+Conversation uses automatic system navigation background and extends under its
+top safe area; virtualized scrolling and message/voice handlers are unchanged.

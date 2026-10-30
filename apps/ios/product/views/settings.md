@@ -244,3 +244,6 @@ fields. The same defaults now apply to all settings destinations through the app
 root, themed-screen and sheet scopes. Existing field bindings, validation, security
 checks and specialized descendant styles are unchanged. See [system interface
 spec](../../spec/client/system-interface.md) for scope and validation limits.
+
+### Native geometry correction (2026-10-30)
+Avatar-menu and settings navigation labels use semantic primary text, independently of blue action tint. Light/dark themes and semantic warning/destructive colors remain supported.

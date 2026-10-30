@@ -139,8 +139,8 @@ struct UserPicker: View {
                     Section {
                         Button { activeSheet = .currentProfile } label: {
                             HStack(spacing: 12) {
-                                ProfileImage(imageStr: user.image, size: 44)
-                                profileName(user).foregroundStyle(.primary)
+                                ProfileImage(imageStr: user.image, size: 44).clipShape(Circle())
+                                profileName(user).foregroundColor(Color(uiColor: .label))
                                 Spacer()
                                 Image(systemName: "chevron.right").foregroundStyle(.secondary)
                             }
@@ -153,9 +153,9 @@ struct UserPicker: View {
                         ForEach(users) { info in
                             Button { switchProfile(info) } label: {
                                 HStack(spacing: 12) {
-                                    ProfileImage(imageStr: info.user.image, size: 36)
+                                    ProfileImage(imageStr: info.user.image, size: 36).clipShape(Circle())
                                     NameWithBadge(Text(info.user.displayName), info.user.profile.localBadge, .body)
-                                        .foregroundStyle(.primary)
+                                        .foregroundColor(Color(uiColor: .label))
                                     Spacer()
                                     if info.unreadCount > 0 { userUnreadBadge(info, theme: theme) }
                                 }
@@ -178,6 +178,7 @@ struct UserPicker: View {
                         Button("Dark") { ThemeManager.applyTheme(systemDarkThemeDefault.get()) }
                     } label: {
                         Label("Appearance", systemImage: colorScheme == .light ? "sun.max" : "moon.fill")
+                            .foregroundColor(Color(uiColor: .label))
                     }
                 }
             }
@@ -195,7 +196,7 @@ struct UserPicker: View {
 
     private func systemMenuRow(_ icon: String, title: LocalizedStringKey, sheet: UserPickerSheet, disabled: Bool = false) -> some View {
         Button { activeSheet = sheet } label: {
-            Label(title, systemImage: icon)
+            Label(title, systemImage: icon).foregroundColor(Color(uiColor: .label))
         }
         .disabled(disabled)
     }
