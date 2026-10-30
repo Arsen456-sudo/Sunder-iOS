@@ -96,7 +96,15 @@ struct ChatView: View {
 
     // Spec: spec/client/chat-view.md#body
     var body: some View {
-        if #available(iOS 16.0, *) {
+        if #available(iOS 26.0, *) {
+            viewBody
+                .scrollDismissesKeyboard(.immediately)
+                .toolbarBackground(.visible, for: .navigationBar)
+                .onAppear {
+                    scrollView.topEdgeEffect.style = .soft
+                    scrollView.bottomEdgeEffect.style = .soft
+                }
+        } else if #available(iOS 16.0, *) {
             viewBody
                 .scrollDismissesKeyboard(.immediately)
                 .toolbarBackground(.hidden, for: .navigationBar)
@@ -213,12 +221,22 @@ struct ChatView: View {
                 .hidden()
             }
         }
-        .safeAreaInset(edge: .top) {
-            VStack(spacing: .zero) {
-                if showSearch { searchToolbar() }
-                Divider()
+        .safeAreaInset(edge: .top, spacing: 0) {
+            if #available(iOS 26.0, *) {
+                if showSearch {
+                    searchToolbar()
+                        .padding(10)
+                        .sunderGlass(cornerRadius: 24)
+                        .padding(.horizontal, 10)
+                        .padding(.bottom, 8)
+                }
+            } else {
+                VStack(spacing: .zero) {
+                    if showSearch { searchToolbar() }
+                    Divider()
+                }
+                .background(ToolbarMaterial.material(toolbarMaterial))
             }
-            .background(ToolbarMaterial.material(toolbarMaterial))
         }
         .navigationTitle(
             memberSupportChat == nil
@@ -450,9 +468,9 @@ struct ChatView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 if im.secondaryIMFilter == nil {
-                    primaryTrailingToolbarContent()
+                    primaryTrailingToolbarContent().tint(.primary)
                 } else if !userMemberKnockingChat {
-                    secondaryTrailingToolbarContent()
+                    secondaryTrailingToolbarContent().tint(.primary)
                 }
             }
         }

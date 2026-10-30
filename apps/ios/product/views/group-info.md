@@ -250,3 +250,9 @@ Owner sees relay status from `apiGetGroupRelays`; non-owner sees connection stat
 The new-group presentation uses its existing system-symbol alternative instead of the optional illustration. Group creation, membership and group-information behavior are unchanged.
 
 See [presentation specification](../../spec/client/navigation.md#sunder-presentation-preparation--2026-10-28).
+
+### Native group/channel profile presentation (2026-10-30)
+Group and channel profiles reuse the compact native close header and 144-point
+circular photo, grouped information and glass action buttons. Action widths depend
+on the actual visible action count and include gaps. All role gates, member/link
+flows, moderation, relay details and child navigation remain unchanged.

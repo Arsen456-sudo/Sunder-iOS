@@ -535,11 +535,6 @@ struct ComposeView: View {
                 }
             }
         }
-        .background {
-            Color.clear
-                .overlay(ToolbarMaterial.material(toolbarMaterial))
-                .ignoresSafeArea(.all, edges: .bottom)
-        }
         .onChange(of: composeState.message) { msg in
             if updatingCompose {
                 updatingCompose = false
@@ -1092,9 +1087,13 @@ struct ComposeView: View {
         let showCommands = chat.chatInfo.useCommands && (!showAttachment || msg.isEmpty || msg.starts(with: "/"))
         if showCommands {
             commandsButton()
+                .frame(width: 44, height: 44)
+                .sunderGlass()
         }
         if showAttachment {
             attachmentButton()
+                .frame(width: 44, height: 44)
+                .sunderGlass()
                 .padding(.trailing, 3)
                 .if(showCommands) { v in v.padding(.leading, 3) }
         }

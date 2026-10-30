@@ -224,7 +224,7 @@ final class ChatListChromeController: UIViewController, UIGestureRecognizerDeleg
         var composeConfig = UIButton.Configuration.plain()
         composeConfig.image = UIImage(systemName: state.running == false ? "exclamationmark.octagon.fill" : state.trailingSymbol)
         composeConfig.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 20)
-        composeConfig.baseForegroundColor = state.running == false ? .systemRed : state.tint
+        composeConfig.baseForegroundColor = state.running == false ? .systemRed : .label
         composeButton.configuration = composeConfig
         composeButton.accessibilityLabel = state.trailingLabel
         composeButton.isEnabled = state.trailingEnabled

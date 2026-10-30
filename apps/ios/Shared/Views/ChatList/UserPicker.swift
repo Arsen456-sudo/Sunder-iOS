@@ -24,9 +24,9 @@ struct UserPicker: View {
     private let imageSize: CGFloat = 44
     private let rowPadding: CGFloat = 16
     private let rowVerticalPadding: CGFloat = 11
-    private let sectionSpacing: CGFloat = 35
+    private let sectionSpacing: CGFloat = 20
     private var sectionHorizontalPadding: CGFloat { frameWidth > 375 ? 20 : 16 }
-    private let sectionShape = RoundedRectangle(cornerRadius: 10, style: .continuous)
+    private let sectionShape = RoundedRectangle(cornerRadius: 24, style: .continuous)
 
     var body: some View {
         let otherUsers: [UserInfo] = m.users
@@ -46,7 +46,8 @@ struct UserPicker: View {
                         }
                         .padding(rowPadding)
                         .frame(width: otherUsers.isEmpty ? sectionWidth : currentUserWidth, alignment: .leading)
-                        .modifier(ListRow { activeSheet = .currentProfile })
+                        .modifier(ListRow(transparent: true) { activeSheet = .currentProfile })
+                        .sunderGlass(cornerRadius: 24)
                         .clipShape(sectionShape)
                         .disabled(stopped)
                         .opacity(stopped ? 0.4 : 1)
@@ -92,6 +93,7 @@ struct UserPicker: View {
                         }
                 }
             }
+            .sunderGlass(cornerRadius: 24)
             .clipShape(sectionShape)
             .padding(.horizontal, sectionHorizontalPadding)
             .padding(.bottom, sectionSpacing)
@@ -133,7 +135,7 @@ struct UserPicker: View {
                 .lineLimit(1)
         }
         .padding(rowPadding)
-        .modifier(ListRow {
+        .modifier(ListRow(transparent: true) {
             switchingProfile = true
             Task {
                 do {
@@ -153,6 +155,7 @@ struct UserPicker: View {
                 }
             }
         })
+        .sunderGlass(cornerRadius: 24)
         .clipShape(sectionShape)
     }
 
@@ -164,10 +167,10 @@ struct UserPicker: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, rowPadding)
             .padding(.vertical, rowVerticalPadding)
-            .modifier(ListRow { activeSheet = sheet })
+            .modifier(ListRow(transparent: true) { activeSheet = sheet })
             .disabled(disabled)
             if showDivider {
-                Divider().padding(.leading, 52)
+                Divider().padding(.horizontal, 16)
             }
         }
     }
@@ -202,10 +205,16 @@ struct ListRow: ViewModifier {
     @Environment(\.colorScheme) private var colorScheme: ColorScheme
     @State private var touchDown = false
     let action: () -> Void
+    let transparent: Bool
+
+    init(transparent: Bool = false, action: @escaping () -> Void) {
+        self.transparent = transparent
+        self.action = action
+    }
 
     func body(content: Content) -> some View {
         ZStack {
-            elevatedSecondarySystemGroupedBackground
+            if !transparent { elevatedSecondarySystemGroupedBackground }
             Color(.systemGray4).opacity(touchDown ? 1 : 0)
             content
             TouchOverlay(touchDown: $touchDown, action: action)

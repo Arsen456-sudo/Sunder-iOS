@@ -42,10 +42,10 @@ struct ServersSummaryView: View {
                 .navigationTitle("Servers info")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarHidden(true)
-                .modifier(ThemedBackground(grouped: true))
+                .background(Color.black.ignoresSafeArea())
                 .safeAreaInset(edge: .top, spacing: 0) {
                     VStack(spacing: 0) {
-                        ServersSummaryNativeChrome(
+                        SunderModalChrome(
                             canShare: serversSummary != nil,
                             tint: UIColor(theme.colors.primary),
                             scope: chromeScope,
@@ -57,6 +57,7 @@ struct ServersSummaryView: View {
                     }
                 }
         }
+        .preferredColorScheme(.dark)
         .onAppear {
             if m.users.filter({ u in u.user.activeUser || !u.user.hidden }).count == 1 {
                 selectedUserCategory = .currentUser
@@ -106,7 +107,7 @@ struct ServersSummaryView: View {
                     label: NSLocalizedString("User selection", comment: "Server filter"),
                     tint: UIColor(theme.colors.primary)
                 )
-                .frame(height: 36)
+                .frame(height: 44)
             }
             ServersSummarySegment(
                 titles: [NSLocalizedString("Messages", comment: "Server filter"), NSLocalizedString("Files", comment: "Server filter")],
@@ -114,7 +115,7 @@ struct ServersSummaryView: View {
                 label: NSLocalizedString("Server type", comment: "Server filter"),
                 tint: UIColor(theme.colors.primary)
             )
-            .frame(height: 36)
+            .frame(height: 44)
         }
         .padding(.horizontal, 10)
         .padding(.bottom, 8)
@@ -205,11 +206,13 @@ struct ServersSummaryView: View {
                 }
             }
             .listStyle(.insetGrouped)
+            .ifAvailableHideScrollBackground()
+            .background(Color.black)
             .background(ChatListScrollProbe(scope: chromeScope))
         } else {
             Text("No info, try to reload")
                 .foregroundColor(theme.colors.secondary)
-                .background(theme.colors.background)
+                .background(Color.black)
         }
     }
 

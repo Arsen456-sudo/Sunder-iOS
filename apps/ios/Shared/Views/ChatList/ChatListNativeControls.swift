@@ -322,7 +322,9 @@ struct ChatListUnreadButton: UIViewRepresentable {
 }
 
 
-struct ServersSummaryNativeChrome: UIViewControllerRepresentable {
+struct SunderModalChrome: UIViewControllerRepresentable {
+    var title: String = NSLocalizedString("Servers info", comment: "Server information title")
+    var showsAction = true
     var canShare: Bool
     var tint: UIColor
     var scope: ChatListChromeScope
@@ -344,8 +346,8 @@ struct ServersSummaryNativeChrome: UIViewControllerRepresentable {
         controller.composeAction = share
         controller.update(ChatListChromeState(
             avatar: UIImage(systemName: "xmark"),
-            title: NSLocalizedString("Servers info", comment: "Server information title"),
-            running: true, tint: tint,
+            title: title,
+            running: showsAction ? true : nil, tint: tint,
             interfaceStyle: colorScheme == .dark ? .dark : .light,
             leadingSymbolSize: 18,
             leadingLabel: NSLocalizedString("Close", comment: "Close server information"),
@@ -363,35 +365,4 @@ struct ServersSummaryNativeChrome: UIViewControllerRepresentable {
     }
 }
 
-struct ServersSummarySegment: UIViewRepresentable {
-    var titles: [String]
-    @Binding var selection: Int
-    var label: String
-    var tint: UIColor
-    @Environment(\.colorScheme) private var colorScheme
-
-    func makeCoordinator() -> Coordinator { Coordinator(self) }
-    func makeUIView(context: Context) -> UISegmentedControl {
-        let control = UISegmentedControl(items: titles)
-        control.addTarget(context.coordinator, action: #selector(Coordinator.select(_:)), for: .valueChanged)
-        return control
-    }
-    func updateUIView(_ control: UISegmentedControl, context: Context) {
-        context.coordinator.parent = self
-        control.overrideUserInterfaceStyle = colorScheme == .dark ? .dark : .light
-        control.selectedSegmentIndex = selection
-        control.accessibilityLabel = label
-        control.tintColor = tint
-        for (index, title) in titles.enumerated() where control.titleForSegment(at: index) != title {
-            control.setTitle(title, forSegmentAt: index)
-        }
-    }
-    @MainActor final class Coordinator: NSObject {
-        var parent: ServersSummarySegment
-        init(_ parent: ServersSummarySegment) { self.parent = parent }
-        @objc func select(_ control: UISegmentedControl) {
-            guard control.selectedSegmentIndex >= 0 else { return }
-            parent.selection = control.selectedSegmentIndex
-        }
-    }
-}
+typealias ServersSummarySegment = SunderGlassSelector

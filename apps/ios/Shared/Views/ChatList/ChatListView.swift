@@ -802,6 +802,9 @@ struct TagsView: View {
                     )
                 }
             }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .sunderGlass()
         }
         
         Button {
@@ -826,6 +829,8 @@ struct TagsView: View {
             }
         }
         .foregroundColor(.secondary)
+        .padding(10)
+        .sunderGlass()
     }
 
     @ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View {
@@ -846,6 +851,10 @@ struct TagsView: View {
                 Text(text).fontWeight(active ? .semibold : .regular).foregroundColor(color)
             }
         }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .sunderGlass()
+        .contentShape(Capsule())
         .onTapGesture {
             setActiveFilter(filter: .presetTag(tag))
         }
@@ -901,6 +910,8 @@ struct TagsView: View {
             }
         }
         .frame(minWidth: 28)
+        .padding(10)
+        .sunderGlass()
     }
     
     private func presetTagLabel(tag: PresetTag, active: Bool) -> (item: String, menu: String?, label: LocalizedStringKey) {

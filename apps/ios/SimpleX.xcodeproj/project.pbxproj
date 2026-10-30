@@ -269,6 +269,7 @@
 		B68A27D859297F1587EED412 /* SunderNotices.txt in Resources */ = {isa = PBXBuildFile; fileRef = A741634CB2A681DA7E36127C /* SunderNotices.txt */; };
 		CDF026102900000000000101 /* ChatListChromeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF026102900000000000001 /* ChatListChromeController.swift */; };
 		CDF026102900000000000102 /* ChatListNativeControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF026102900000000000002 /* ChatListNativeControls.swift */; };
+		CDF026103000000000000101 /* SunderGlassDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF026103000000000000001 /* SunderGlassDesign.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -698,6 +699,7 @@
 		A741634CB2A681DA7E36127C /* SunderNotices.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = SunderNotices.txt; sourceTree = "<group>"; };
 		CDF026102900000000000001 /* ChatListChromeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListChromeController.swift; sourceTree = "<group>"; };
 		CDF026102900000000000002 /* ChatListNativeControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListNativeControls.swift; sourceTree = "<group>"; };
+		CDF026103000000000000001 /* SunderGlassDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunderGlassDesign.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1038,6 +1040,7 @@
 			children = (
 				647C9E283061362A0032110E /* GetStakeBanner.swift */,
 				5C2E260A27A30CFA00F70299 /* ChatListView.swift */,
+				CDF026103000000000000001 /* SunderGlassDesign.swift */,
 				CDF026102900000000000002 /* ChatListNativeControls.swift */,
 				CDF026102900000000000001 /* ChatListChromeController.swift */,
 				5C5346A727B59A6A004DF848 /* ChatHelp.swift */,
@@ -1629,6 +1632,7 @@
 				5C2E260F27A30FDC00F70299 /* ChatView.swift in Sources */,
 				CEFB2EDF2CA1BCC7004B1ECE /* SheetRepresentable.swift in Sources */,
 				5C2E260B27A30CFA00F70299 /* ChatListView.swift in Sources */,
+				CDF026103000000000000101 /* SunderGlassDesign.swift in Sources */,
 				CDF026102900000000000102 /* ChatListNativeControls.swift in Sources */,
 				CDF026102900000000000101 /* ChatListChromeController.swift in Sources */,
 				6442E0BA287F169300CEC0F9 /* AddGroupView.swift in Sources */,

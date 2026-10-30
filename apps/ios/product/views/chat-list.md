@@ -159,3 +159,13 @@ and plain centered title. Native profile and Messages/Files segmented selectors
 remain above the grouped scrolling statistics. Sharing stays disabled until data
 is available. Reconnect/reset confirmations, percentage setting, server details
 and all statistics are preserved. Detail pages keep system back navigation.
+
+### Shared native glass controls (2026-10-30)
+Folder filters (preset, custom, collapsed menu and Add list) now use individual
+system-glass surfaces while retaining all tap/long-press routes. Main header action
+symbols use adaptive label color: white in dark appearance, dark in light appearance.
+The avatar menu has rounded glass profile cards and one grouped glass action panel;
+its account switching, hidden-profile rules and theme gestures remain unchanged.
+Servers info uses a black background and dark appearance. Its profile and Messages /
+Files selectors use actual UIKit glass with equally sized buttons and a separate
+active capsule. Statistics, sharing, confirmations and detail routes are unchanged.

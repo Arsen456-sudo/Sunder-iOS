@@ -100,6 +100,8 @@ struct ChatInfoView: View {
     @State var featuresAllowed: ContactFeaturesAllowed
     @State var currentFeaturesAllowed: ContactFeaturesAllowed
     var onSearch: () -> Void
+    @StateObject private var chromeScope = ChatListChromeScope()
+    @ScaledMetric(relativeTo: .headline) private var chromeHeight = 44
     @State private var connectionStats: ConnectionStats? = nil
     @State private var customUserProfile: Profile? = nil
     @State private var connectionCode: String? = nil
@@ -155,7 +157,8 @@ struct ChatInfoView: View {
 
                     GeometryReader { g in
                         HStack(alignment: .center, spacing: 8) {
-                            let buttonWidth = g.size.width / 4
+                            let buttonCount = chat.chatInfo.nextNtfMode == nil ? 3 : 4
+                            let buttonWidth = max((g.size.width - CGFloat(buttonCount - 1) * 8) / CGFloat(buttonCount), 0)
                             searchButton(width: buttonWidth)
                             AudioCallButton(chat: chat, contact: contact, connectionStats: $connectionStats, width: buttonWidth) { alert = .someAlert(alert: $0) }
                             VideoButton(chat: chat, contact: contact, connectionStats: $connectionStats, width: buttonWidth) { alert = .someAlert(alert: $0) }
@@ -292,7 +295,21 @@ struct ChatInfoView: View {
                     }
                 }
                 .modifier(ThemedBackground(grouped: true))
+                .listStyle(.insetGrouped)
                 .navigationBarHidden(true)
+                .background(ChatListScrollProbe(scope: chromeScope))
+                .safeAreaInset(edge: .top, spacing: 0) {
+                    SunderModalChrome(
+                        title: chat.chatInfo.chatViewName,
+                        showsAction: false,
+                        canShare: false,
+                        tint: UIColor(theme.colors.primary),
+                        scope: chromeScope,
+                        close: { dismiss() },
+                        share: {}
+                    )
+                    .frame(height: min(chromeHeight, 88) + 16)
+                }
                 .disabled(progressIndicator)
                 .opacity(progressIndicator ? 0.6 : 1)
 
@@ -369,7 +386,8 @@ struct ChatInfoView: View {
     private func contactInfoHeader() -> some View {
         VStack(spacing: 8) {
             let cInfo = chat.chatInfo
-            ChatInfoImage(chat: chat, size: 192, color: Color(uiColor: .tertiarySystemFill))
+            ChatInfoImage(chat: chat, size: 144, color: Color(uiColor: .tertiarySystemFill))
+                .clipShape(Circle())
                 .padding(.vertical, 12)
             // show actual display name, alias can be edited in this view
             let displayName = contact.profile.displayName.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -906,21 +924,20 @@ struct InfoViewButton: View {
     var action: () -> Void
 
     var body: some View {
-        VStack(spacing: 4) {
-            Image(systemName: image)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 20, height: 20)
-            Text(title)
-                .font(.caption)
+        Button(action: action) {
+            VStack(spacing: 4) {
+                Image(systemName: image)
+                    .font(.system(size: 20, weight: .medium))
+                Text(title).font(.caption)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .contentShape(RoundedRectangle(cornerRadius: 20))
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .foregroundColor(.accentColor)
-        .background(Color(.secondarySystemGroupedBackground))
-        .cornerRadius(10.0)
+        .buttonStyle(.plain)
+        .foregroundColor(.primary)
         .frame(width: width, height: infoViewActionButtonHeight)
-        .disabled(disabledLook)
-        .onTapGesture(perform: action)
+        .sunderGlass(cornerRadius: 20)
+        .opacity(disabledLook ? 0.4 : 1)
     }
 }
 

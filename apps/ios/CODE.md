@@ -168,6 +168,7 @@ After completing all changes (code + documentation), you MUST run an adversarial
 | Shared/Views/ChatList/ChatListView.swift | spec/client/chat-list.md | product/views/chat-list.md |
 | Shared/Views/ChatList/ChatListChromeController.swift | spec/client/chat-list.md | product/views/chat-list.md |
 | Shared/Views/ChatList/ChatListNativeControls.swift | spec/client/chat-list.md | product/views/chat-list.md |
+| Shared/Views/ChatList/SunderGlassDesign.swift | spec/client/chat-list.md, spec/client/chat-view.md, spec/client/compose.md | product/views/chat-list.md, product/views/chat.md, product/views/contact-info.md, product/views/group-info.md |
 | Shared/Views/ChatList/ServersSummaryView.swift | spec/client/chat-list.md | product/views/chat-list.md |
 | Shared/Views/ChatList/GetStakeBanner.swift | spec/client/chat-list.md | product/views/chat-list.md |
 | Shared/Views/Chat/ChatView.swift | spec/client/chat-view.md | product/views/chat.md |

@@ -51,7 +51,6 @@ struct SendMessageView: View {
     @UserDefault(DEFAULT_SIGN_MESSAGE_ALERT_SHOWN) private var signMessageAlertShown = false
 
     var body: some View {
-        let composeShape = RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
         ZStack(alignment: .leading) {
             if case .voicePreview = composeState.preview {
                 Text("Voice message…")
@@ -96,9 +95,7 @@ struct SendMessageView: View {
             }
         }
         .padding(.vertical, 1)
-        .background(theme.colors.background)
-        .clipShape(composeShape)
-        .overlay(composeShape.strokeBorder(.secondary, lineWidth: 0.5).opacity(0.7))
+        .sunderGlass(cornerRadius: 24)
         .onChange(of: composeState.message, perform: { text in updateFont(text) })
         .padding(.vertical, 8)
     }

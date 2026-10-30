@@ -354,16 +354,55 @@ circles. Avatar rasterization is cached at 28 points. A missing compose action
 retains transparent layout space, preventing the title from shifting.
 
 ServersSummaryView retains NavigationView and its four data branches. Root chrome
-is replaced by ServersSummaryNativeChrome; dismiss uses the modal presentation
+is replaced by SunderModalChrome; dismiss uses the modal presentation
 binding, and shareSummary exports the same JSON via the existing share sheet.
-summaryFilters binds native UISegmentedControl indexes to the existing enums.
+summaryFilters binds native glass-selector indexes to the existing enums.
 Selectors sit in the root safe-area inset, statistics use insetGrouped List, and
 ChatListScrollProbe binds only that modal's own scope. Child SMP/XFTP pages explicitly
 restore their navigation bars. Statistics, networking, timer, reset/reconnect alerts
 and detail destinations remain unchanged. Statistics/rows are still SwiftUI.
 
-### Native control and server-screen source entry points
 
+## 12. Shared native glass presentation
+
+SunderGlassDesign.swift provides the native UIVisualEffectView material and a
+UIViewRepresentable background. UIGlassEffect and UICornerConfiguration are guarded
+by iOS 26 availability; older systems use systemMaterial, and Reduce Transparency
+uses an opaque surface. Background surfaces ignore interaction and accessibility.
+The native selector contains equal-width UIKit buttons, one glass material and a
+separate nonglass selection indicator. It preserves bindings and selected traits.
+
+ServersSummarySegment aliases SunderGlassSelector; SunderModalChrome is shared by
+server/contact/group roots. Server selectors are 44 points high over a black root
+background with dark appearance; scrollContentBackground is hidden locally on
+iOS 16+, without global appearance changes. Main action symbols use label color.
+
+Folder filter presentation adds glass around existing views without replacing tap
+or long-press actions. UserPicker's ListRow has a default-false transparent flag;
+only the glass-backed picker rows enable it. Other ListRow callers keep the old
+background. Account loading, switching, hidden-profile checks and theme actions
+remain unchanged. See [chat-view.md](chat-view.md) and [compose.md](compose.md) for
+conversation/profile usage; their rows and business state remain SwiftUI.
+
+### Native source entry points
+
+- [`init(radius: CGFloat = 22)`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L10)
+- [`private func updateMaterial()`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L25)
+- [`override func layoutSubviews()`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L40)
+- [`deinit`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L53)
+- [`func makeUIView(context: Context) -> SunderGlassEffectView`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L60)
+- [`func updateUIView(_ view: SunderGlassEffectView, context: Context)`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L66)
+- [`@ViewBuilder func ifAvailableHideScrollBackground() -> some View`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L73)
+- [`func sunderGlass(cornerRadius: CGFloat = 22) -> some View`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L78)
+- [`func makeCoordinator() -> Coordinator`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L90)
+- [`func makeUIView(context: Context) -> Control`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L91)
+- [`func updateUIView(_ control: Control, context: Context)`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L96)
+- [`init(_ parent: SunderGlassSelector)`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L105)
+- [`@objc func select(_ control: Control)`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L106)
+- [`init(titles: [String])`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L116)
+- [`func update(titles: [String], selection: Int, tint: UIColor)`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L154)
+- [`override func layoutSubviews()`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L166)
+- [`@objc private func choose(_ button: UIButton)`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L175)
 - [`init(floating: Bool)`](../../Shared/Views/ChatList/ChatListChromeController.swift#L44)
 - [`override func viewDidLoad()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L52)
 - [`private func installFloatingBar()`](../../Shared/Views/ChatList/ChatListChromeController.swift#L83)
@@ -413,17 +452,16 @@ and detail destinations remain unchanged. Statistics/rows are still SwiftUI.
 - [`func updateUIView(_ button: UIButton, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L301)
 - [`init(_ action: @escaping () -> Void)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L319)
 - [`@objc func tap()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L320)
-- [`func makeUIViewController(context: Context) -> ChatListChromeController`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L333)
-- [`func updateUIViewController(_ controller: ChatListChromeController, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L342)
-- [`static func dismantleUIViewController(_ controller: ChatListChromeController, coordinator: ())`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L360)
-- [`func makeCoordinator() -> Coordinator`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L373)
-- [`func makeUIView(context: Context) -> UISegmentedControl`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L374)
-- [`func updateUIView(_ control: UISegmentedControl, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L379)
-- [`init(_ parent: ServersSummarySegment)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L391)
-- [`@objc func select(_ control: UISegmentedControl)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L392)
+- [`func makeUIViewController(context: Context) -> ChatListChromeController`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L335)
+- [`func updateUIViewController(_ controller: ChatListChromeController, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L344)
+- [`static func dismantleUIViewController(_ controller: ChatListChromeController, coordinator: ())`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L362)
 - [`var body: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L39)
-- [`private func shareSummary()`](../../Shared/Views/ChatList/ServersSummaryView.swift#L94)
-- [`private var summaryFilters: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L100)
-- [`@ViewBuilder private func viewBody() -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L130)
-- [`private func smpServerView(_ srvSumm: SMPServerSummary, _ statsStartedAt: Date) -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L288)
-- [`private func xftpServerView(_ srvSumm: XFTPServerSummary, _ statsStartedAt: Date) -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L358)
+- [`private var summaryFilters: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L101)
+- [`@ViewBuilder private func viewBody() -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L131)
+- [`var body: some View`](../../Shared/Views/ChatList/UserPicker.swift#L31)
+- [`private func openSheetOnTap(_ icon: String, title: LocalizedStringKey, sheet: UserPickerSheet, showDivider: Bool = true, disabled: Bool = false) -> some View`](../../Shared/Views/ChatList/UserPicker.swift#L162)
+- [`init(transparent: Bool = false, action: @escaping () -> Void)`](../../Shared/Views/ChatList/UserPicker.swift#L210)
+- [`func body(content: Content) -> some View`](../../Shared/Views/ChatList/UserPicker.swift#L215)
+- [`struct TagsView: View`](../../Shared/Views/ChatList/ChatListView.swift#L734)
+- [`@ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L836)
+- [`@ViewBuilder private func collapsedTagsFilterView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L871)

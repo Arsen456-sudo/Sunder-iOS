@@ -30,6 +30,8 @@ struct GroupChatInfoView: View {
     @State private var groupLinkMemberRole: GroupMemberRole = .member
     @State private var groupLinkNavLinkActive: Bool = false
     @State private var addMembersNavLinkActive: Bool = false
+    @StateObject private var chromeScope = ChatListChromeScope()
+    @ScaledMetric(relativeTo: .headline) private var chromeHeight = 44
     @State private var connectionStats: ConnectionStats?
     @State private var connectionCode: String?
     @State private var sendReceipts = SendReceipts.userDefault(true)
@@ -268,7 +270,21 @@ struct GroupChatInfoView: View {
                     }
                 }
                 .modifier(ThemedBackground(grouped: true))
+                .listStyle(.insetGrouped)
                 .navigationBarHidden(true)
+                .background(ChatListScrollProbe(scope: chromeScope))
+                .safeAreaInset(edge: .top, spacing: 0) {
+                    SunderModalChrome(
+                        title: chat.chatInfo.chatViewName,
+                        showsAction: false,
+                        canShare: false,
+                        tint: UIColor(theme.colors.primary),
+                        scope: chromeScope,
+                        close: { dismiss() },
+                        share: {}
+                    )
+                    .frame(height: min(chromeHeight, 88) + 16)
+                }
                 .disabled(progressIndicator)
                 .opacity(progressIndicator ? 0.6 : 1)
 
@@ -319,7 +335,8 @@ struct GroupChatInfoView: View {
             // show actual display name, alias can be edited in this view
             let displayName = (cInfo.groupInfo?.groupProfile.displayName ?? cInfo.displayName).trimmingCharacters(in: .whitespacesAndNewlines)
             let fullName = cInfo.fullName.trimmingCharacters(in: .whitespacesAndNewlines)
-            ChatInfoImage(chat: chat, size: 192, color: Color(uiColor: .tertiarySystemFill))
+            ChatInfoImage(chat: chat, size: 144, color: Color(uiColor: .tertiarySystemFill))
+                .clipShape(Circle())
                 .padding(.top, 12)
                 .padding()
             Text(displayName)
@@ -396,7 +413,9 @@ struct GroupChatInfoView: View {
 
     func infoActionButtons() -> some View {
         GeometryReader { g in
-            let buttonWidth = g.size.width / 4
+            let hasMemberAction = groupInfo.useRelays ? groupInfo.isOwner : groupInfo.canAddMembers
+            let buttonCount = 1 + (hasMemberAction ? 1 : 0) + (chat.chatInfo.nextNtfMode == nil ? 0 : 1)
+            let buttonWidth = max((g.size.width - CGFloat(buttonCount - 1) * 8) / CGFloat(buttonCount), 0)
             HStack(alignment: .center, spacing: 8) {
                 searchButton(width: buttonWidth)
                 if groupInfo.useRelays && groupInfo.isOwner {

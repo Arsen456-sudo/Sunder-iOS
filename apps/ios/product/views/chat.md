@@ -184,3 +184,12 @@ See [logo-removal specification](../../spec/client/navigation.md#sunder-temporar
 Sent and delivered status meanings/colors remain, rendered with checkmark and checkmark.circle.fill. Original sample preview images use a new neutral PNG; user-provided media and decoders are unchanged.
 
 See [preparation scope](../../spec/client/navigation.md#sunder-publication-preparation--2026-10-28).
+
+### Native conversation chrome (2026-10-30)
+On iOS 26 the conversation uses the system navigation material and soft scroll
+edges. The obsolete full-width composer material is removed; the existing editor
+has its own glass surface, with separate glass attachment/command buttons. Search
+uses a compact glass surface. All message rendering, previews, recording gestures,
+selection, menu actions, pagination and send/feature checks remain unchanged.
+Older OS versions use native materials. This is a presentation update, not a full
+rewrite of message rows or business state into UIKit.

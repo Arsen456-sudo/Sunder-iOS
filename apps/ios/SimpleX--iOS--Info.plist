@@ -5,7 +5,7 @@
 	<key>SunderRepositoryURL</key>
 	<string>https://github.com/Arsen456-sudo/Sunder-iOS</string>
 	<key>SunderSourceRef</key>
-	<string>preview-20261029-chat-list-3</string>
+	<string>preview-20261030-glass-1</string>
 	<key>CFBundleDisplayName</key>
 	<string>Sunder</string>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
