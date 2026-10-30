@@ -3697,3 +3697,6 @@ server test failure */
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "Složky chatů";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "Profil";

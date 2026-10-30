@@ -59,36 +59,40 @@ struct ThemedBackground: ViewModifier {
     @EnvironmentObject var theme: AppTheme
     var grouped: Bool = false
 
-    func body(content: Content) -> some View {
-        content
-            .modifier(SunderSystemInterface())
-            .background(
-                theme.base == DefaultTheme.SIMPLEX
-                ? LinearGradient(
-                    colors: [
-                        grouped
-                        ? theme.colors.background.lighter(0.4).asGroupedBackground(theme.base.mode)
-                        : theme.colors.background.lighter(0.4),
-                        grouped
-                        ? theme.colors.background.darker(0.4).asGroupedBackground(theme.base.mode)
-                        : theme.colors.background.darker(0.4)
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *), grouped {
+            content.modifier(SunderSystemInterface()).background(Color(uiColor: .systemGroupedBackground))
+        } else {
+            content
+                .modifier(SunderSystemInterface())
+                .background(
+                    theme.base == DefaultTheme.SIMPLEX
+                    ? LinearGradient(
+                        colors: [
+                            grouped
+                            ? theme.colors.background.lighter(0.4).asGroupedBackground(theme.base.mode)
+                            : theme.colors.background.lighter(0.4),
+                            grouped
+                            ? theme.colors.background.darker(0.4).asGroupedBackground(theme.base.mode)
+                            : theme.colors.background.darker(0.4)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                    : LinearGradient(
+                        colors: [],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
                 )
-                : LinearGradient(
-                    colors: [],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
+                .background(
+                    theme.base == DefaultTheme.SIMPLEX
+                    ? Color.clear
+                    : grouped
+                    ? theme.colors.background.asGroupedBackground(theme.base.mode)
+                    : theme.colors.background
                 )
-            )
-            .background(
-                theme.base == DefaultTheme.SIMPLEX
-                ? Color.clear
-                : grouped
-                ? theme.colors.background.asGroupedBackground(theme.base.mode)
-                : theme.colors.background
-            )
+        }
     }
 }
 

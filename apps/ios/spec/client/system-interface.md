@@ -7,8 +7,8 @@
 Use the same NavigationView/List/Section/Picker/Toggle/Button/toolbar construction
 as the reference. Shared SystemInterface.swift installs system defaults; it does
 not draw navigation panels or glass. Explicit specialized content stays in charge.
-The custom glass controller, modal chrome, scroll probe and selector implementation
-are removed. UIKit bridges for media rendering and the message editor remain.
+The earlier custom rendering/capture layer remains removed. Native navigation
+attachments now configure UIKit search, item identifiers and scroll-edge interactions. UIKit bridges for media rendering and the message editor remain.
 
 Avatar-menu scrolling belongs to List. Its standard Done action and profile/settings
 rows replace nested stacks and glass surfaces. iOS 26 Sheet presents the content
@@ -54,17 +54,16 @@ must compile before device validation. See [adoption report](../../../../docs/fo
 ### Shared/Views/ChatList/ChatListNativeControls.swift
 
 - [`struct ChatListNativeSearch: UIViewRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L7)
-- [`func makeCoordinator() -> Coordinator`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L17)
-- [`func makeUIView(context: Context) -> UISearchBar`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L19)
-- [`func updateUIView(_ bar: UISearchBar, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L30)
-- [`static func dismantleUIView(_ bar: UISearchBar, coordinator: Coordinator)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L55)
 - [`struct SunderCircleButton: UIViewRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L83)
-- [`func makeCoordinator() -> Coordinator`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L92)
-- [`func makeUIView(context: Context) -> UIButton`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L94)
-- [`func updateUIView(_ button: UIButton, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L104)
-- [`func avatarImage(_ source: String?, unread: Bool) -> UIImage?`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L164)
 - [`struct ChatListUnreadButton: View`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L186)
 - [`struct ChatListStatusButton: View`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L199)
+- [`final class SunderMainNavigation: ObservableObject`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L233)
+- [`struct SunderMainTabs: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L241)
+- [`struct SunderFolderSegments: UIViewRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L336)
+- [`@MainActor private func sunderNavigationOwner(_ controller: UIViewController?) -> UIViewController?`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L415)
+- [`@MainActor private final class SunderScrollEdgeBinding`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L425)
+- [`struct SunderToolbarIdentity: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L449)
+- [`struct SunderNavigationSearch: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L467)
 
 ### Shared/Views/ChatList/SystemInterface.swift
 
@@ -75,33 +74,33 @@ must compile before device validation. See [adoption report](../../../../docs/fo
 
 ### Shared/Views/ChatList/ChatListView.swift
 
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L88)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L187)
-- [`@ViewBuilder private func withToolbar(content: () -> some View) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L332)
-- [`@ViewBuilder private func noChatsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L530)
-- [`@ViewBuilder private func chatView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L552)
-- [`func stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L566)
-- [`private func filteredChats() -> [Chat]`](../../Shared/Views/ChatList/ChatListView.swift#L572)
-- [`func filtered(_ chat: Chat) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L600)
-- [`func viewNameContains(_ cInfo: ChatInfo, _ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L609)
-- [`func searchString() -> String`](../../Shared/Views/ChatList/ChatListView.swift#L615)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L640)
-- [`private func toggleFilterButton() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L719)
-- [`private func connect(_ link: String)`](../../Shared/Views/ChatList/ChatListView.swift#L726)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L752)
-- [`private func isNameLabel(_ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L783)
-- [`func knownChatId(_ result: ConnectionPlanResult?) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L791)
-- [`func nameSearchCandidate(_ str: String) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L821)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L844)
-- [`@ViewBuilder private func tagsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L850)
-- [`@ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L912)
-- [`private func expandedPresetTagsFiltersView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L932)
-- [`@ViewBuilder private func collapsedTagsFilterView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L940)
-- [`private func presentTagLists()`](../../Shared/Views/ChatList/ChatListView.swift#L984)
-- [`private func presetTagLabel(tag: PresetTag, active: Bool) -> (item: String, menu: String?, label: LocalizedStringKey)`](../../Shared/Views/ChatList/ChatListView.swift#L999)
-- [`private func setActiveFilter(filter: ActiveFilter)`](../../Shared/Views/ChatList/ChatListView.swift#L1012)
-- [`func chatStoppedIcon() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L1021)
-- [`func presetTagMatchesChat(_ tag: PresetTag, _ chatInfo: ChatInfo, _ chatStats: ChatStats) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L1033)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L89)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L188)
+- [`@ViewBuilder private func withToolbar(content: () -> some View) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L344)
+- [`@ViewBuilder private func noChatsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L539)
+- [`@ViewBuilder private func chatView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L561)
+- [`func stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L575)
+- [`private func filteredChats() -> [Chat]`](../../Shared/Views/ChatList/ChatListView.swift#L581)
+- [`func filtered(_ chat: Chat) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L609)
+- [`func viewNameContains(_ cInfo: ChatInfo, _ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L618)
+- [`func searchString() -> String`](../../Shared/Views/ChatList/ChatListView.swift#L624)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L649)
+- [`private func toggleFilterButton() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L731)
+- [`private func connect(_ link: String)`](../../Shared/Views/ChatList/ChatListView.swift#L738)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L764)
+- [`private func isNameLabel(_ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L795)
+- [`func knownChatId(_ result: ConnectionPlanResult?) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L803)
+- [`func nameSearchCandidate(_ str: String) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L833)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L856)
+- [`@ViewBuilder private func tagsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L862)
+- [`@ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L924)
+- [`private func expandedPresetTagsFiltersView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L944)
+- [`@ViewBuilder private func collapsedTagsFilterView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L952)
+- [`private func presentTagLists()`](../../Shared/Views/ChatList/ChatListView.swift#L996)
+- [`private func presetTagLabel(tag: PresetTag, active: Bool) -> (item: String, menu: String?, label: LocalizedStringKey)`](../../Shared/Views/ChatList/ChatListView.swift#L1011)
+- [`private func setActiveFilter(filter: ActiveFilter)`](../../Shared/Views/ChatList/ChatListView.swift#L1024)
+- [`func chatStoppedIcon() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L1033)
+- [`func presetTagMatchesChat(_ tag: PresetTag, _ chatInfo: ChatInfo, _ chatStats: ChatStats) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L1045)
 
 ### Shared/Views/ChatList/ServersSummaryView.swift
 
@@ -179,9 +178,9 @@ View-level iOS 16 modifier. SystemInterface provides the guarded scroll-backgrou
 helper used by ServersSummaryView. The deployment target remains iOS 15 and the
 system presentation/actions remain the same.
 
-- [`@ToolbarContentBuilder private var systemTopToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L381)
-- [`@ToolbarContentBuilder private var systemBottomToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L387)
-- [`@ViewBuilder private var statusButton: some View`](../../Shared/Views/ChatList/ChatListView.swift#L397)
+- [`@ToolbarContentBuilder private var systemTopToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L389)
+- [`@ToolbarContentBuilder private var systemBottomToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L395)
+- [`@ViewBuilder private var statusButton: some View`](../../Shared/Views/ChatList/ChatListView.swift#L405)
 - [`ifAvailableHideScrollBackground()`](../../Shared/Views/ChatList/SystemInterface.swift#L74)
 
 The toolbar definitions are unconditional for iOS 15 compatibility. withToolbar's
@@ -227,3 +226,32 @@ ShareSheet.getTopViewController now descends through selected tabs, visible nati
 navigation and visible children as well as presentations, preserving modal routes.
 No cryptographic, transport, database-schema or notification implementation changes.
 Source checks and CI compilation are distinct from pending device visual checks.
+
+## Native navigation integration follow-up (2026-10-30)
+SunderNavigationSearch attaches UISearchController to the actual owning navigation
+item on iOS 26: integrated placement, no external/toolbar placement, and native
+bar-item updates. The leading/context/avatar UIKit identifiers connect Edit to
+system back/search, unread to title/Close, and compose to avatar transitions.
+Existing search-text/link handling stays mounted without rendering a duplicate
+field; older systems keep the field. The compose symbol now uses the standard
+SF Symbol toolbar size without imageView frame changes.
+
+SunderScrollEdgeBinding adds UIScrollEdgeElementContainerInteraction to the actual
+folder UIKit container, finds its owning table/vertical collection through public
+view/controller relationships, and binds the native .top/.soft effect. There is
+one interaction per container, no custom blur/shader/timer, and a smaller 40-point
+segment with 4-point spacing. No cross-screen top-controller lookup is used.
+
+Root visibility callbacks are injected per hosting root. Only the selected root's
+push/pop visibility changes its tab-hidden flag. Explicit rootTab marking avoids
+modal settings/profile routes modifying main-tab depth. Grouped iOS 26 settings
+use systemGroupedBackground with native list/section/picker/toggle/button defaults.
+
+Non-note primary chat toolbar content separates title and avatar and sets native
+item sharing off, avoiding a second glass backing. Existing profile sheets remain
+attached to the title action; avatar action uses the same group-load/profile route.
+Avatar context actions preserve call permission checks, mute/search/filter/member
+commands. Notes, secondary chats and message selection keep the legacy toolbar.
+SunderFolderEditor confirms deletion, uses the existing delete-tag API and clears
+only folder metadata/selection/counts. List swipe deletion now reports API errors.
+Compile and on-device animation/layout checks are separate; iOS 27 is not verified.

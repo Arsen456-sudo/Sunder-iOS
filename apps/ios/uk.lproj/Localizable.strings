@@ -6321,3 +6321,6 @@ alert title */
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "Папки чатів";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "Профіль";

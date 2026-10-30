@@ -194,3 +194,12 @@ menus and pagination remain intact; they are not rewritten into settings forms.
 
 ### Native geometry correction (2026-10-30)
 Conversation search and member searches use the shared UISearchBar adapter. Ordinary compose controls use neutral adaptive colors. The top background/content extends beneath the native navigation bar without a forced opaque band; message layout/pagination and recording gestures remain unchanged.
+
+## Native navigation integration follow-up (2026-10-30)
+
+For ordinary direct/group/channel chats on iOS 26, the title and avatar are
+separate native toolbar items. Tapping either opens the existing profile route;
+long-pressing the avatar exposes retained call, search, notification, membership
+and media-filter actions. Verified/incognito/status text and report indicators
+remain; note chats and message-selection toolbars keep their original behavior.
+UIKit bar item identifiers match main leading/context/avatar roles during push/pop.

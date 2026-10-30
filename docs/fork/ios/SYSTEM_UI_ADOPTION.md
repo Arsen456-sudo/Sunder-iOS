@@ -62,3 +62,15 @@ bar. Composer, search inset and overlay controls retain their safe-area layout.
   selection and retry of partially saved folders. Other account routes are retained.
 - Main roots remain SwiftUI content hosted by UIKit; this is not a full rewrite of
   each settings/chat/profile implementation. Device checks are still required.
+
+## Native integration correction (2026-10-30)
+UIScrollEdgeElementContainerInteraction now attaches the 40-point folder control
+to its actual vertical list. UISearchController owns the main navigation search;
+native UIBarButtonItem identifiers and non-shared native backgrounds drive changes
+without custom animation timing. Compose uses an unresized system toolbar symbol.
+Ordinary chat title/avatar are separate items; notes/selection retain old routes.
+The Profile tab has its own localized label. Root-depth callbacks hide tabs below
+settings/profile roots and exclude modal wrappers. Grouped settings use native
+background/default controls; existing SwiftUI content remains hosted by UIKit.
+Delete is visible in folder editing and confirms before removing only its tag.
+All device appearance and transition acceptance checks remain pending installation.

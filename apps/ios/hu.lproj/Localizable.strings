@@ -7370,3 +7370,6 @@ alert title */
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "Csevegésmappák";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "Profil";

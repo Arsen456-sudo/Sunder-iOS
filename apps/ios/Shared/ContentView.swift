@@ -255,19 +255,22 @@ struct ContentView: View {
 
     private func mainTabs() -> some View {
         let redaction = appSheetState.redactionReasons(protectScreen)
-        func root<V: View>(_ view: V) -> AnyView {
+        func root<V: View>(_ view: V, index: Int) -> AnyView {
             AnyView(view
                 .environmentObject(chatModel)
                 .environmentObject(theme)
                 .environmentObject(sceneDelegate)
                 .environmentObject(ChatTagsModel.shared)
                 .environment(\.sunderFolderSaveBusy, $mainNavigation.savingFolder)
+                .environment(\.sunderRootVisibility, { visible in
+                    if visible || mainNavigation.selected == index { mainNavigation.hiddenRoots[index] = !visible }
+                })
                 .redacted(reason: redaction))
         }
         return SunderMainTabs(navigation: mainNavigation, roots: [
-            root(ChatListView(activeUserPickerSheet: $chatListUserPickerSheet, navigation: mainNavigation)),
-            root(UserPickerSheetView(sheet: .settings).id(chatModel.currentUser?.userId)),
-            root(UserPickerSheetView(sheet: .currentProfile).id(chatModel.currentUser?.userId))
+            root(ChatListView(activeUserPickerSheet: $chatListUserPickerSheet, navigation: mainNavigation), index: 0),
+            root(UserPickerSheetView(sheet: .settings, rootTab: true).id(chatModel.currentUser?.userId), index: 1),
+            root(UserPickerSheetView(sheet: .currentProfile, rootTab: true).id(chatModel.currentUser?.userId), index: 2)
         ], avatar: chatModel.currentUser?.image, conversationOpen: chatModel.chatId != nil)
         .ignoresSafeArea(.container)
         .onChange(of: chatModel.chatId) { if $0 != nil { mainNavigation.selected = 0 } }

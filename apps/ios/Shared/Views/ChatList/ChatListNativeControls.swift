@@ -235,6 +235,7 @@ final class SunderMainNavigation: ObservableObject {
     @Published var searchVisible = false
     @Published var savingFolder = false
     @Published var searchGeneration = 0
+    @Published var hiddenRoots: [Int: Bool] = [:]
 }
 
 struct SunderMainTabs: UIViewControllerRepresentable {
@@ -249,7 +250,7 @@ struct SunderMainTabs: UIViewControllerRepresentable {
         let controller = UITabBarController()
         let hosts = roots.map { UIHostingController(rootView: $0) }
         context.coordinator.hosts = hosts
-        let titles = [NSLocalizedString("Chats", comment: "Tab"), NSLocalizedString("Settings", comment: "Tab"), NSLocalizedString("Your profile", comment: "Tab")]
+        let titles = [NSLocalizedString("Chats", comment: "Tab"), NSLocalizedString("Settings", comment: "Tab"), NSLocalizedString("Profile", comment: "Tab")]
         let symbols = ["bubble.left.and.bubble.right", "gearshape", "person.crop.circle"]
         let search = UIViewController()
         context.coordinator.search = search
@@ -285,10 +286,11 @@ struct SunderMainTabs: UIViewControllerRepresentable {
             context.coordinator.hosts.last?.tabBarItem.selectedImage = image
             if #available(iOS 26.0, *), controller.tabs.count > 2 { controller.tabs[2].image = image }
         }
-        if context.coordinator.barHidden != conversationOpen {
-            context.coordinator.barHidden = conversationOpen
-            if #available(iOS 18.0, *) { controller.setTabBarHidden(conversationOpen, animated: !UIAccessibility.isReduceMotionEnabled) }
-            else { controller.tabBar.isHidden = conversationOpen }
+        let hideBar = conversationOpen || navigation.hiddenRoots[navigation.selected] == true
+        if context.coordinator.barHidden != hideBar {
+            context.coordinator.barHidden = hideBar
+            if #available(iOS 18.0, *) { controller.setTabBarHidden(hideBar, animated: !UIAccessibility.isReduceMotionEnabled) }
+            else { controller.tabBar.isHidden = hideBar }
         }
     }
 
@@ -303,6 +305,7 @@ struct SunderMainTabs: UIViewControllerRepresentable {
         func tabBarController(_ controller: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
             guard !navigation.savingFolder else { return false }
             if viewController === search { requestSearch(controller); return false }
+            if let index = hosts.firstIndex(where: { $0 === viewController }) { navigation.selected = index }
             return true
         }
         private func requestSearch(_ controller: UITabBarController) {
@@ -315,6 +318,7 @@ struct SunderMainTabs: UIViewControllerRepresentable {
         func tabBarController(_ controller: UITabBarController, shouldSelectTab tab: UITab) -> Bool {
             guard !navigation.savingFolder else { return false }
             if tab.identifier == searchIdentifier { requestSearch(controller); return false }
+            if let index = controller.tabs.firstIndex(where: { $0.identifier == tab.identifier }), index < hosts.count { navigation.selected = index }
             return true
         }
         @available(iOS 18.0, *)
@@ -354,6 +358,18 @@ struct SunderFolderSegments: UIViewRepresentable {
         let scroll = UIScrollView()
         var titles: [String] = []
         var width: NSLayoutConstraint!
+        private var edgeBinding: AnyObject?
+        override func didMoveToWindow() {
+            super.didMoveToWindow()
+            setNeedsLayout()
+        }
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            if #available(iOS 26.0, *) {
+                if edgeBinding == nil { edgeBinding = SunderScrollEdgeBinding(container: self) }
+                (edgeBinding as? SunderScrollEdgeBinding)?.bind(from: self)
+            }
+        }
         override init(frame: CGRect) {
             super.init(frame: frame)
             scroll.showsHorizontalScrollIndicator = false
@@ -393,5 +409,175 @@ extension EnvironmentValues {
     var sunderFolderSaveBusy: Binding<Bool> {
         get { self[SunderFolderSaveKey.self] }
         set { self[SunderFolderSaveKey.self] = newValue }
+    }
+}
+
+@MainActor private func sunderNavigationOwner(_ controller: UIViewController?) -> UIViewController? {
+    var current = controller
+    while let candidate = current {
+        if let nav = candidate.navigationController, nav.viewControllers.contains(where: { $0 === candidate }) { return candidate }
+        current = candidate.parent
+    }
+    return nil
+}
+
+@available(iOS 26.0, *)
+@MainActor private final class SunderScrollEdgeBinding {
+    let interaction = UIScrollEdgeElementContainerInteraction()
+    init(container: UIView) {
+        interaction.edge = .top
+        container.addInteraction(interaction)
+    }
+    func bind(from view: UIView) {
+        var responder: UIResponder? = view
+        while let current = responder, !(current is UIViewController) { responder = current.next }
+        guard let owner = sunderNavigationOwner(responder as? UIViewController) else { return }
+        func verticalList(_ root: UIView) -> UIScrollView? {
+            if let scroll = root as? UIScrollView, (scroll is UITableView || scroll is UICollectionView),
+               (scroll.alwaysBounceVertical || scroll is UITableView), scroll.window != nil { return scroll }
+            for child in root.subviews {
+                if let found = verticalList(child) { return found }
+            }
+            return nil
+        }
+        guard let list = verticalList(owner.view) else { return }
+        if interaction.scrollView !== list { interaction.scrollView = list }
+        if list.topEdgeEffect.style != .soft { list.topEdgeEffect.style = .soft }
+    }
+}
+
+struct SunderToolbarIdentity: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> Controller { Controller() }
+    func updateUIViewController(_ controller: Controller, context: Context) { controller.apply() }
+    class Controller: UIViewController {
+        override func loadView() { view = UIView(); view.isUserInteractionEnabled = false }
+        override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); apply() }
+        override func viewDidAppear(_ animated: Bool) { super.viewDidAppear(animated); apply() }
+        override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews(); apply() }
+        func apply() {
+            guard #available(iOS 26.0, *), let owner = sunderNavigationOwner(parent) else { return }
+            let items = owner.navigationItem.rightBarButtonItems ?? []
+            items.first?.identifier = "sunder.avatar"
+            if items.count > 1 { items.last?.identifier = "sunder.context" }
+            for item in items where item.sharesBackground { item.sharesBackground = false }
+        }
+    }
+}
+
+struct SunderNavigationSearch: UIViewControllerRepresentable {
+    @Binding var active: Bool
+    @Binding var text: String
+    @Binding var focused: Bool
+    var blocked: Bool
+    var busy: Bool
+    func makeUIViewController(context: Context) -> Controller { Controller(self) }
+    func updateUIViewController(_ controller: Controller, context: Context) { controller.state = self; controller.apply() }
+    static func dismantleUIViewController(_ controller: Controller, coordinator: ()) { controller.detach() }
+
+    class Controller: UIViewController, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
+        var state: SunderNavigationSearch
+        let search = UISearchController(searchResultsController: nil)
+        private weak var owner: UIViewController?
+        private var savedLeft: [UIBarButtonItem]?
+        private var savedRight: [UIBarButtonItem]?
+        private var installed = false
+        private var applying = false
+        private let spinner = UIActivityIndicatorView(style: .medium)
+        private var originalSearchIcon: UIView?
+        private lazy var close = UIBarButtonItem(systemItem: .close, primaryAction: UIAction { [weak self] _ in
+            guard let self else { return }
+            ConnectProgressManager.shared.cancelConnectProgress()
+            self.state.text = ""
+            self.state.focused = false
+            self.state.active = false
+        })
+
+        init(_ state: SunderNavigationSearch) { self.state = state; super.init(nibName: nil, bundle: nil) }
+        required init?(coder: NSCoder) { fatalError("init(coder:) is not supported") }
+        override func loadView() {
+            view = UIView()
+            view.isUserInteractionEnabled = false
+            search.obscuresBackgroundDuringPresentation = false
+            search.hidesNavigationBarDuringPresentation = false
+            search.automaticallyShowsCancelButton = false
+            search.searchResultsUpdater = self
+            search.delegate = self
+            search.searchBar.delegate = self
+            search.searchBar.autocapitalizationType = .none
+            search.searchBar.autocorrectionType = .no
+            search.searchBar.placeholder = NSLocalizedString("Search or paste SimpleX link", comment: "Search")
+            originalSearchIcon = search.searchBar.searchTextField.leftView
+        }
+        override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); apply() }
+        override func viewDidAppear(_ animated: Bool) { super.viewDidAppear(animated); apply() }
+        override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews(); apply() }
+        func apply() {
+            guard #available(iOS 26.0, *), !applying, isViewLoaded, view.window != nil,
+                  let current = sunderNavigationOwner(parent), current.navigationController?.topViewController === current else { return }
+            applying = true
+            defer { applying = false }
+            owner = current
+            let item = current.navigationItem
+            if state.active {
+                if !installed {
+                    savedLeft = item.leftBarButtonItems
+                    savedRight = item.rightBarButtonItems
+                    current.definesPresentationContext = true
+                    item.searchController = search
+                    item.preferredSearchBarPlacement = .integrated
+                    item.searchBarPlacementAllowsToolbarIntegration = false
+                    item.searchBarPlacementAllowsExternalIntegration = false
+                    item.hidesSearchBarWhenScrolling = false
+                    item.searchBarPlacementBarButtonItem.identifier = "sunder.leading"
+                    close.identifier = "sunder.context"
+                    item.setLeftBarButtonItems([], animated: true)
+                    item.setRightBarButtonItems([close], animated: true)
+                    installed = true
+                    search.isActive = true
+                }
+                if search.searchBar.text != state.text { search.searchBar.text = state.text }
+                search.searchBar.searchTextField.isEnabled = !state.blocked
+                if state.busy {
+                    spinner.startAnimating()
+                    search.searchBar.searchTextField.leftView = spinner
+                } else {
+                    spinner.stopAnimating()
+                    search.searchBar.searchTextField.leftView = originalSearchIcon
+                }
+            } else {
+                if installed { detach() }
+                item.leftBarButtonItems?.first?.identifier = "sunder.leading"
+                if item.backBarButtonItem?.identifier != "sunder.leading" {
+                    item.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+                    item.backBarButtonItem?.identifier = "sunder.leading"
+                }
+                if item.backButtonDisplayMode != .minimal { item.backButtonDisplayMode = .minimal }
+                item.rightBarButtonItems?.first?.identifier = "sunder.avatar"
+                if (item.rightBarButtonItems?.count ?? 0) > 1 { item.rightBarButtonItems?.last?.identifier = "sunder.context" }
+                for barItem in item.rightBarButtonItems ?? [] where barItem.sharesBackground { barItem.sharesBackground = false }
+            }
+        }
+        func detach() {
+            guard installed else { return }
+            installed = false
+            search.isActive = false
+            if owner?.navigationItem.searchController === search {
+                owner?.navigationItem.searchController = nil
+                owner?.navigationItem.setLeftBarButtonItems(savedLeft, animated: true)
+                owner?.navigationItem.setRightBarButtonItems(savedRight, animated: true)
+            }
+            savedLeft = nil
+            savedRight = nil
+        }
+        func updateSearchResults(for searchController: UISearchController) {
+            let value = searchController.searchBar.text ?? ""
+            if value != state.text { state.text = value }
+        }
+        func didPresentSearchController(_ searchController: UISearchController) { searchController.searchBar.becomeFirstResponder() }
+        func didDismissSearchController(_ searchController: UISearchController) {
+            if state.active { state.active = false }
+        }
+        func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) { if !state.focused { state.focused = true } }
+        func searchBarTextDidEndEditing(_ searchBar: UISearchBar) { if state.focused { state.focused = false } }
     }
 }

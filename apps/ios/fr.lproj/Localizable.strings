@@ -6807,3 +6807,6 @@ server test failure */
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "Dossiers de discussion";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "Profil";

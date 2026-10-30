@@ -7228,3 +7228,6 @@ alert title */
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "聊天文件夹";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "个人资料";

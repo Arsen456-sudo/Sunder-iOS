@@ -3664,3 +3664,6 @@ server test failure */
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "チャットフォルダ";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "プロフィール";

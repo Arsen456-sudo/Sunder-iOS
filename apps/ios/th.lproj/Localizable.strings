@@ -3225,3 +3225,6 @@ server test failure */
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "โฟลเดอร์แชต";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "โปรไฟล์";

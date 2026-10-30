@@ -103,3 +103,37 @@ struct SunderChatListEdges: ViewModifier {
         else { content }
     }
 }
+
+private struct SunderRootVisibilityKey: EnvironmentKey {
+    static let defaultValue: ((Bool) -> Void)? = nil
+}
+extension EnvironmentValues {
+    var sunderRootVisibility: ((Bool) -> Void)? {
+        get { self[SunderRootVisibilityKey.self] }
+        set { self[SunderRootVisibilityKey.self] = newValue }
+    }
+}
+struct SunderTabRootVisibility: ViewModifier {
+    @Environment(\.sunderRootVisibility) private var visibility
+    func body(content: Content) -> some View {
+        content.onAppear { visibility?(true) }.onDisappear { visibility?(false) }
+    }
+}
+extension View {
+    @ViewBuilder func sunderConversationToolbar<M: ToolbarContent, L: ToolbarContent>(
+        modern: Bool, @ToolbarContentBuilder modernToolbar: () -> M,
+        @ToolbarContentBuilder legacyToolbar: () -> L
+    ) -> some View {
+        if #available(iOS 26.0, *), modern {
+            navigationTitle("").toolbar(content: modernToolbar)
+        } else {
+            toolbar(content: legacyToolbar)
+        }
+    }
+}
+struct SunderTitleButtonStyle: ViewModifier {
+    func body(content: Content) -> some View { content.buttonStyle(.plain) }
+}
+struct SunderAvatarToolbarButtonStyle: ViewModifier {
+    func body(content: Content) -> some View { content.buttonStyle(.plain) }
+}

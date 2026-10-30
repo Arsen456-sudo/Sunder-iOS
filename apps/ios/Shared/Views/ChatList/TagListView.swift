@@ -167,26 +167,20 @@ struct TagListView: View {
     }
     
     private func deleteTag(_ tagId: Int64) {
+        let owner = m.currentUser?.userId
         Task {
-            try await apiDeleteChatTag(tagId: tagId)
-
-            await MainActor.run {
-                chatTagsModel.userTags = chatTagsModel.userTags.filter { $0.chatTagId != tagId }
-                if case let .userTag(tag) = chatTagsModel.activeFilter, tagId == tag.chatTagId {
-                    chatTagsModel.activeFilter = nil
+            do {
+                try await apiDeleteChatTag(tagId: tagId)
+                await MainActor.run {
+                    guard owner == m.currentUser?.userId else { return }
+                    applyDeletedFolder(tagId, model: m, tags: chatTagsModel)
                 }
-                m.chats.forEach { c in
-                    if var contact = c.chatInfo.contact, contact.chatTags.contains(tagId) {
-                        contact.chatTags = contact.chatTags.filter({ $0 != tagId })
-                        m.updateContact(contact)
-                    } else if var group = c.chatInfo.groupInfo, group.chatTags.contains(tagId) {
-                        group.chatTags = group.chatTags.filter({ $0 != tagId })
-                        m.updateGroup(group)
-                    }
-                }
+            } catch {
+                await MainActor.run { showAlert(NSLocalizedString("Delete list?", comment: "Folder deletion"), message: responseError(error)) }
             }
         }
     }
+
 }
 
 private func setChatTag(tagId: Int64, chat: Chat, remove: Bool = false, closeSheet: @escaping () -> Void) {
@@ -426,6 +420,7 @@ struct SunderFolderEditor: View {
     @State private var savedId: Int64?
     @State private var loaded = false
     @State private var saving = false
+    @State private var confirmDelete = false
 
     private var chats: [Chat] {
         model.chats.filter { chat in
@@ -445,6 +440,11 @@ struct SunderFolderEditor: View {
         List {
             Section {
                 TextField("List name...", text: $title)
+            }
+            if savedId != nil || tagId != nil {
+                Section {
+                    Button("Delete", role: .destructive) { confirmDelete = true }
+                }
             }
             Section("Chats") {
                 ForEach(chats, id: \.id) { chat in
@@ -475,6 +475,12 @@ struct SunderFolderEditor: View {
                     .disabled(saving || trimmedTitle.isEmpty || duplicate || (trimmedTitle == name && selection == initialSelection))
             }
         }
+        .confirmationDialog("Delete list?", isPresented: $confirmDelete, titleVisibility: .visible) {
+            Button("Delete", role: .destructive) { deleteFolder() }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text(String.localizedStringWithFormat(NSLocalizedString("All chats will be removed from the list %@, and the list deleted.", comment: "Delete folder"), title))
+        }
         .onAppear {
             guard !loaded else { return }
             loaded = true
@@ -484,6 +490,25 @@ struct SunderFolderEditor: View {
             initialSelection = selection
         }
         .onChange(of: model.currentUser?.userId) { _ in dismiss() }
+    }
+
+    private func deleteFolder() {
+        guard let id = savedId ?? tagId else { return }
+        saving = true
+        folderBusy.wrappedValue = true
+        Task { @MainActor in
+            defer { folderBusy.wrappedValue = false }
+            do {
+                guard owner == model.currentUser?.userId else { dismiss(); return }
+                try await apiDeleteChatTag(tagId: id)
+                guard owner == model.currentUser?.userId else { dismiss(); return }
+                applyDeletedFolder(id, model: model, tags: tags)
+                dismiss()
+            } catch {
+                saving = false
+                showAlert(NSLocalizedString("Delete list?", comment: "Delete folder"), message: responseError(error))
+            }
+        }
     }
 
     private func save() {
@@ -537,4 +562,20 @@ struct SunderFolderEditor: View {
             }
         }
     }
+}
+
+@MainActor private func applyDeletedFolder(_ id: Int64, model: ChatModel, tags: ChatTagsModel) {
+    tags.userTags.removeAll { $0.chatTagId == id }
+    if case let .userTag(tag) = tags.activeFilter, tag.chatTagId == id { tags.activeFilter = nil }
+    tags.unreadTags.removeValue(forKey: id)
+    for chat in model.chats {
+        if var contact = chat.chatInfo.contact, contact.chatTags.contains(id) {
+            contact.chatTags.removeAll { $0 == id }
+            model.updateContact(contact)
+        } else if var group = chat.chatInfo.groupInfo, group.chatTags.contains(id) {
+            group.chatTags.removeAll { $0 == id }
+            model.updateGroup(group)
+        }
+    }
+    tags.updateChatTags(model.chats)
 }

@@ -456,21 +456,11 @@ struct ChatView: View {
         .onChange(of: colorScheme) { _ in
             theme = buildTheme()
         }
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                if im.secondaryIMFilter == nil {
-                    primaryPrincipalToolbarContent()
-                } else if !userMemberKnockingChat { // no toolbar while knocking chat, it's unstable on sheet
-                    secondaryPrincipalToolbarContent()
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if im.secondaryIMFilter == nil {
-                    primaryTrailingToolbarContent().tint(.primary)
-                } else if !userMemberKnockingChat {
-                    secondaryTrailingToolbarContent().tint(.primary)
-                }
-            }
+        .sunderConversationToolbar(modern: usesModernAvatarToolbar,
+                                    modernToolbar: { modernConversationToolbar },
+                                    legacyToolbar: { legacyConversationToolbar })
+        .background {
+            if usesModernAvatarToolbar { SunderToolbarIdentity().frame(width: 0, height: 0) }
         }
         .if(im.secondaryIMFilter == nil) { v in
             v.onChange(of: scrollToItemId) { itemId in
@@ -482,6 +472,79 @@ struct ChatView: View {
                 }
             }
         }
+    }
+
+    private var usesModernAvatarToolbar: Bool {
+        if #available(iOS 26.0, *), im.secondaryIMFilter == nil, selectedChatItems == nil {
+            if case .local = chat.chatInfo { return false }
+            return true
+        }
+        return false
+    }
+
+    @ToolbarContentBuilder private var legacyConversationToolbar: some ToolbarContent {
+        ToolbarItem(placement: .principal) {
+            if im.secondaryIMFilter == nil {
+                primaryPrincipalToolbarContent()
+            } else if !userMemberKnockingChat { // no toolbar while knocking chat, it's unstable on sheet
+                secondaryPrincipalToolbarContent()
+            }
+        }
+        ToolbarItem(placement: .navigationBarTrailing) {
+            if im.secondaryIMFilter == nil {
+                primaryTrailingToolbarContent().tint(.primary)
+            } else if !userMemberKnockingChat {
+                secondaryTrailingToolbarContent().tint(.primary)
+            }
+        }
+    }
+
+    @ToolbarContentBuilder private var modernConversationToolbar: some ToolbarContent {
+        ToolbarItem(id: "sunder.context", placement: .navigationBarTrailing) {
+            primaryPrincipalToolbarContent().modifier(SunderTitleButtonStyle())
+        }
+        ToolbarItem(id: "sunder.avatar", placement: .navigationBarTrailing) {
+            Button { openAvatarProfile() } label: {
+                ChatInfoImage(chat: chat, size: 28, color: Color(uiColor: .tertiaryLabel))
+                    .clipShape(Circle())
+                    .overlay(alignment: .bottomTrailing) {
+                        if chat.chatStats.reportsCount > 0 || chat.supportUnreadCount > 0 {
+                            Image(systemName: "flag.circle.fill").font(.caption2)
+                                .foregroundColor(chat.chatStats.reportsCount > 0 ? .red : .accentColor)
+                        }
+                    }
+            }
+            .modifier(SunderAvatarToolbarButtonStyle())
+            .accessibilityLabel(Text("Profile"))
+            .contextMenu { avatarChatActions() }
+        }
+    }
+
+    private func openAvatarProfile() {
+        if case let .group(groupInfo, _) = chat.chatInfo {
+            Task { await chatModel.loadGroupMembers(groupInfo) { showChatInfoSheet = true } }
+        } else { showChatInfoSheet = true }
+    }
+
+    @ViewBuilder private func avatarChatActions() -> some View {
+        if case let .direct(contact) = chat.chatInfo {
+            let canCall = contact.mergedPreferences.calls.enabled.forUser && contact.ready && contact.active && chatModel.activeCall == nil
+            if let call = chatModel.activeCall, call.contact.id == chat.chatInfo.id {
+                endCallButton(call)
+            } else if canCall {
+                Button { CallController.shared.startCall(contact, .audio) } label: { Label("Audio call", systemImage: "phone") }
+                Button { CallController.shared.startCall(contact, .video) } label: { Label("Video call", systemImage: "video") }
+            }
+            ToggleNtfsButton(chat: chat).disabled(!contact.ready || !contact.active)
+        } else if case let .group(groupInfo, _) = chat.chatInfo {
+            if groupInfo.canAddMembers {
+                if chat.chatInfo.incognito || groupInfo.useRelays { groupLinkButton() }
+                else { addMembersButton() }
+            }
+            ToggleNtfsButton(chat: chat)
+        }
+        searchButton()
+        if !availableContent.isEmpty { contentFilterMenu(withLabel: true) }
     }
 
     private func connectInProgressView(_ s: String) -> some View {
@@ -519,7 +582,7 @@ struct ChatView: View {
                     showChatInfoSheet = true
                 }
             } label: {
-                ChatInfoToolbar(chat: chat)
+                ChatInfoToolbar(chat: chat, showsAvatar: !usesModernAvatarToolbar)
             }
             .appSheet(isPresented: $showChatInfoSheet, onDismiss: { theme = buildTheme() }) {
                 ChatInfoView(
@@ -535,7 +598,7 @@ struct ChatView: View {
             Button {
                 Task { await chatModel.loadGroupMembers(groupInfo) { showChatInfoSheet = true } }
             } label: {
-                ChatInfoToolbar(chat: chat)
+                ChatInfoToolbar(chat: chat, showsAvatar: !usesModernAvatarToolbar)
                     .tint(theme.colors.primary)
             }
             .appSheet(isPresented: $showChatInfoSheet, onDismiss: {
@@ -558,7 +621,7 @@ struct ChatView: View {
                 )
             }
         } else if case .local = cInfo {
-            ChatInfoToolbar(chat: chat)
+            ChatInfoToolbar(chat: chat, showsAvatar: !usesModernAvatarToolbar)
         }
     }
 

@@ -12,7 +12,7 @@ still need review. Inclusion here is not blanket permission for other artwork or
 Graphics and trademarks have separate terms; see the preserved policies in the source.
 The complete source corresponding to any distributed binary must be provided separately.
 Configured source repository: https://github.com/Arsen456-sudo/Sunder-iOS
-Configured source revision/ref: preview-20261030-tabs-folders-1
+Configured source revision/ref: preview-20261030-native-navigation-1
 Development repositories may require permission to access.
 
 License texts follow. Original words are retained; line endings are normalized to LF.

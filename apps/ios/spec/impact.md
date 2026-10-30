@@ -204,3 +204,9 @@ Native tabs/folders: ContentView and ChatListNativeControls affect PC1/PC19/PC22
 ChatListView, ChatListNavLink and ChatPreviewView affect PC1/PC28. TagListView and
 SettingsView affect PC18/PC19/PC28. ShareSheet traversal affects existing modal,
 share and confirmation presentation across these roots. Crypto/network remain intact.
+
+Native navigation follow-up: native controls/ChatListView affect PC1/PC28;
+ChatView/ChatInfoToolbar affect PC2/PC3/PC9/PC17, preserving call checks and note
+behavior. Theme/SystemInterface affect PC18/PC19/PC24 grouped presentation;
+ContentView root visibility affects navigation/privacy PC1/PC19/PC22. No core API
+or database-schema change accompanies folder deletion or native rendering.

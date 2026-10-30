@@ -3327,3 +3327,6 @@ server test failure */
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "Keskustelukansiot";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "Profiili";

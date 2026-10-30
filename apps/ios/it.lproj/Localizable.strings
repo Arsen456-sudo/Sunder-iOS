@@ -7370,3 +7370,6 @@ alert title */
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "Cartelle delle chat";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "Profilo";

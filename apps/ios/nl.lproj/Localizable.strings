@@ -5988,3 +5988,6 @@ server test failure */
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "Chatmappen";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "Profiel";

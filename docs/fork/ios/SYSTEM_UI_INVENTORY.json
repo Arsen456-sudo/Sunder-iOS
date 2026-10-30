@@ -7,7 +7,7 @@
   "records": [
     {
       "path": "apps/ios/Shared/ContentView.swift",
-      "sha256": "6809149e6edeb9400c20329b93bef48b2cf73be50666ebd0be2fac488b6f3b41",
+      "sha256": "a5f0660edc530247d5ba987cd7f253ef16e559c8eebd8f17d90090be9367c20b",
       "swiftui_view_declarations": [
         "ContentView",
         "CallDuration"
@@ -34,7 +34,7 @@
     },
     {
       "path": "apps/ios/Shared/Theme/Theme.swift",
-      "sha256": "90e6f5b7ad9781b8d0038410f1093365e84169590727c9d97bda2549041ad711",
+      "sha256": "b651a8c97b6d6591e10bf3998404ef71e51b3c2d141d14b96a2327386bdb479b",
       "swiftui_view_declarations": [],
       "native_lists_forms": [],
       "navigation_containers": [],
@@ -176,7 +176,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatInfoToolbar.swift",
-      "sha256": "4ca098902f8db273413289afda047e6e747d72d931a641e917fe21c30c0e31c0",
+      "sha256": "14e79b31b3975deb5a0e5b5f42cf1967dbe869bdd206d7a31e7c8fbfe4a2111b",
       "swiftui_view_declarations": [
         "ChatInfoToolbar",
         "SubStatusView"
@@ -654,7 +654,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatView.swift",
-      "sha256": "73ba4c311639ad37bbb1c027d26e5ac9dc698b17d3a6a8066b2640c02d39458d",
+      "sha256": "2fe23a11bec7e1d946fb49a799ffda47d49489470b918793e41ee9d161569948",
       "swiftui_view_declarations": [
         "ChatView",
         "ChatBannerView",
@@ -671,8 +671,8 @@
       "hidden_navigation": [],
       "legacy_material_references": [
         235,
-        507,
-        735
+        570,
+        798
       ],
       "native_bridges": [],
       "validation": "Source-pattern inventory; full-screen device validation pending"
@@ -1297,7 +1297,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/ChatListNativeControls.swift",
-      "sha256": "fc23388855cc049b0349c91659bd142c0aa30a453ff290ac2c2fd0bbca5b2c38",
+      "sha256": "4e3218c09f082af561bb5ce12000828b8c65d2239e713497b1effdbed8df7507",
       "swiftui_view_declarations": [
         "ChatListUnreadButton",
         "ChatListStatusButton"
@@ -1310,10 +1310,12 @@
       "native_bridges": [
         7,
         83,
-        240,
-        250,
-        297,
-        332
+        241,
+        251,
+        299,
+        336,
+        449,
+        467
       ],
       "validation": "Source-pattern inventory; full-screen device validation pending"
     },
@@ -1335,7 +1337,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/ChatListView.swift",
-      "sha256": "e6843c1319463ee3d1b9b22dc69d83e63ed0d2d0e2a55e5d0b0ef2772d1428dd",
+      "sha256": "7919ade1b0d54e53139e31d073746bc288547bf1cf376b9bd3ab8ccc6d50a8cc",
       "swiftui_view_declarations": [
         "UserPickerSheetView",
         "ChatListView",
@@ -1344,18 +1346,18 @@
         "TagsView"
       ],
       "native_lists_forms": [
-        480
+        489
       ],
       "navigation_containers": [
-        90,
-        200,
-        894,
-        993
+        91,
+        201,
+        906,
+        1005
       ],
       "system_controls": [],
       "hidden_navigation": [
-        338,
-        340
+        350,
+        352
       ],
       "legacy_material_references": [],
       "native_bridges": [],
@@ -1492,7 +1494,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/SystemInterface.swift",
-      "sha256": "a17c067af6f515d548346029ae634177f8b92024f2a0869eb550694aac0bac82",
+      "sha256": "d2830486875db059a643e71e957444164a79454489bc396d5c92bbe437e6ebb4",
       "swiftui_view_declarations": [],
       "native_lists_forms": [],
       "navigation_containers": [],
@@ -1506,7 +1508,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/TagListView.swift",
-      "sha256": "f9b0e62c55af534c5fac0b230906595224a87f21de473ac1a12b6be9da80fd84",
+      "sha256": "f9a863624d432f273e674f0e5ed3047e05c53db11ef1c5b30337334bb57b54d0",
       "swiftui_view_declarations": [
         "TagListView",
         "TagListEditor",
@@ -1514,18 +1516,18 @@
       ],
       "native_lists_forms": [
         32,
-        293,
-        445
+        287,
+        440
       ],
       "navigation_containers": [],
       "system_controls": [
-        311,
-        447
+        305,
+        442
       ],
       "hidden_navigation": [],
       "legacy_material_references": [],
       "native_bridges": [
-        229
+        223
       ],
       "validation": "Source-pattern inventory; full-screen device validation pending"
     },

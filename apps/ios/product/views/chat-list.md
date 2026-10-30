@@ -165,3 +165,13 @@ pinned folder control, not a scrolling row. Only user-created folders are shown;
 computed type categories no longer appear automatically. One UISegmentedControl
 contains All and the folder names. Ordinary chat rows are smaller; accessibility
 metrics remain at the original sizes. Tabs hide while a conversation is open.
+
+## Native navigation integration follow-up (2026-10-30)
+
+Folder editors expose a destructive Delete action with confirmation; removing a
+folder keeps its chats/messages. The pinned system segment is 40 points high,
+with 4-point vertical spacing. Its UIKit scroll-edge interaction references the
+owning vertical list, so the native soft edge includes the folder container.
+Search is integrated in UINavigationItem via UISearchController on iOS 26, with
+native Close and stable toolbar identifiers; older OS versions retain a field.
+Native SF Symbol toolbar items replace manually resized compose/filter images.

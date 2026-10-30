@@ -89,7 +89,7 @@ struct ActiveTheme: Equatable {
 [`currentColors()`](../../Shared/Theme/ThemeManager.swift#L64) in `ThemeManager.swift`:
 
 1. Determine base theme from `currentThemeDefault`:
-   - If `"system"`: use light or dark based on [`systemInDarkThemeCurrently`](../../Shared/Theme/Theme.swift#L96)
+   - If `"system"`: use light or dark based on [`systemInDarkThemeCurrently`](../../Shared/Theme/Theme.swift#L100)
    - Dark mode maps to `systemDarkThemeDefault` (Dark, SimpleX, or Black)
 2. Get base color palette ([`LightColorPalette`](../../SimpleXChat/Theme/ThemeTypes.swift#L650), [`DarkColorPalette`](../../SimpleXChat/Theme/ThemeTypes.swift#L629), [`SimplexColorPalette`](../../SimpleXChat/Theme/ThemeTypes.swift#L671), [`BlackColorPalette`](../../SimpleXChat/Theme/ThemeTypes.swift#L692))
 3. Look up app settings theme override (`themeOverridesDefault`)
@@ -328,7 +328,7 @@ Users can force light or dark mode regardless of system setting by selecting a s
 
 ### Detection
 
-[`systemInDarkThemeCurrently`](../../Shared/Theme/Theme.swift#L96):
+[`systemInDarkThemeCurrently`](../../Shared/Theme/Theme.swift#L100):
 
 ```swift
 var systemInDarkThemeCurrently: Bool {
@@ -401,3 +401,32 @@ across six preserved color presets; their former illustrations are intentionally
 ThemedBackground installs SunderSystemInterface before applying its existing theme
 backing. Colors, gradients, wallpaper, ThemeManager persistence and AppearanceSettings
 remain unchanged. See [system interface](../client/system-interface.md).
+
+## Native navigation integration follow-up (2026-10-30)
+SunderNavigationSearch attaches UISearchController to the actual owning navigation
+item on iOS 26: integrated placement, no external/toolbar placement, and native
+bar-item updates. The leading/context/avatar UIKit identifiers connect Edit to
+system back/search, unread to title/Close, and compose to avatar transitions.
+Existing search-text/link handling stays mounted without rendering a duplicate
+field; older systems keep the field. The compose symbol now uses the standard
+SF Symbol toolbar size without imageView frame changes.
+
+SunderScrollEdgeBinding adds UIScrollEdgeElementContainerInteraction to the actual
+folder UIKit container, finds its owning table/vertical collection through public
+view/controller relationships, and binds the native .top/.soft effect. There is
+one interaction per container, no custom blur/shader/timer, and a smaller 40-point
+segment with 4-point spacing. No cross-screen top-controller lookup is used.
+
+Root visibility callbacks are injected per hosting root. Only the selected root's
+push/pop visibility changes its tab-hidden flag. Explicit rootTab marking avoids
+modal settings/profile routes modifying main-tab depth. Grouped iOS 26 settings
+use systemGroupedBackground with native list/section/picker/toggle/button defaults.
+
+Non-note primary chat toolbar content separates title and avatar and sets native
+item sharing off, avoiding a second glass backing. Existing profile sheets remain
+attached to the title action; avatar action uses the same group-load/profile route.
+Avatar context actions preserve call permission checks, mute/search/filter/member
+commands. Notes, secondary chats and message selection keep the legacy toolbar.
+SunderFolderEditor confirms deletion, uses the existing delete-tag API and clears
+only folder metadata/selection/counts. List swipe deletion now reports API errors.
+Compile and on-device animation/layout checks are separate; iOS 27 is not verified.

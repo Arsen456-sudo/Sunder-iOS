@@ -184,9 +184,9 @@ When the user taps a notification:
 3. Sets `ChatModel.chatId = chatId` to navigate to the conversation
 4. If the app was in background: the notification response is stored in `ChatModel.notificationResponse` and processed when the app becomes active
 
-### [URL Deep Link](../../Shared/ContentView.swift#L302)
+### [URL Deep Link](../../Shared/ContentView.swift#L305)
 
-SimpleX links (`simplex:/chat#...`) are handled via [`connectViaUrl()`](../../Shared/ContentView.swift#L460):
+SimpleX links (`simplex:/chat#...`) are handled via [`connectViaUrl()`](../../Shared/ContentView.swift#L463):
 
 ```swift
 .onOpenURL { url in
@@ -251,7 +251,7 @@ ZStack {
 
 ## 7. Authentication Gate
 
-### [Local Authentication](../../Shared/ContentView.swift#L380)
+### [Local Authentication](../../Shared/ContentView.swift#L383)
 
 When [`DEFAULT_PERFORM_LA`](../../Shared/ContentView.swift#L44) is enabled:
 
@@ -265,8 +265,8 @@ When [`DEFAULT_PERFORM_LA`](../../Shared/ContentView.swift#L44) is enabled:
 - Custom numeric passcode
 - Custom alphanumeric passcode
 
-### [Extended Authentication](../../Shared/ContentView.swift#L372)
-- After successful auth, a grace period prevents re-auth for brief background/foreground cycles ([`unlockedRecently()`](../../Shared/ContentView.swift#L372))
+### [Extended Authentication](../../Shared/ContentView.swift#L375)
+- After successful auth, a grace period prevents re-auth for brief background/foreground cycles ([`unlockedRecently()`](../../Shared/ContentView.swift#L375))
 - [`contentAccessAuthenticationExtended`](../../Shared/ContentView.swift#L35) is computed at `ContentView.init` to avoid render-time race conditions
 - The `enteredBackgroundAuthenticated` timestamp tracks when the app was last authenticated in background
 
@@ -322,7 +322,7 @@ Migration state (`ChatModel.migrationState != nil`) takes precedence over onboar
 
 ## 10. Relay URL Interception
 
-**Source:** [`Shared/ContentView.swift`](../../Shared/ContentView.swift#L475)
+**Source:** [`Shared/ContentView.swift`](../../Shared/ContentView.swift#L478)
 
 In `connectViaUrl_()`, relay address links (URL path `/r`) are intercepted before processing:
 
@@ -511,3 +511,32 @@ ShareSheet.getTopViewController now descends through selected tabs, visible nati
 navigation and visible children as well as presentations, preserving modal routes.
 No cryptographic, transport, database-schema or notification implementation changes.
 Source checks and CI compilation are distinct from pending device visual checks.
+
+## Native navigation integration follow-up (2026-10-30)
+SunderNavigationSearch attaches UISearchController to the actual owning navigation
+item on iOS 26: integrated placement, no external/toolbar placement, and native
+bar-item updates. The leading/context/avatar UIKit identifiers connect Edit to
+system back/search, unread to title/Close, and compose to avatar transitions.
+Existing search-text/link handling stays mounted without rendering a duplicate
+field; older systems keep the field. The compose symbol now uses the standard
+SF Symbol toolbar size without imageView frame changes.
+
+SunderScrollEdgeBinding adds UIScrollEdgeElementContainerInteraction to the actual
+folder UIKit container, finds its owning table/vertical collection through public
+view/controller relationships, and binds the native .top/.soft effect. There is
+one interaction per container, no custom blur/shader/timer, and a smaller 40-point
+segment with 4-point spacing. No cross-screen top-controller lookup is used.
+
+Root visibility callbacks are injected per hosting root. Only the selected root's
+push/pop visibility changes its tab-hidden flag. Explicit rootTab marking avoids
+modal settings/profile routes modifying main-tab depth. Grouped iOS 26 settings
+use systemGroupedBackground with native list/section/picker/toggle/button defaults.
+
+Non-note primary chat toolbar content separates title and avatar and sets native
+item sharing off, avoiding a second glass backing. Existing profile sheets remain
+attached to the title action; avatar action uses the same group-load/profile route.
+Avatar context actions preserve call permission checks, mute/search/filter/member
+commands. Notes, secondary chats and message selection keep the legacy toolbar.
+SunderFolderEditor confirms deletion, uses the existing delete-tag API and clears
+only folder metadata/selection/counts. List swipe deletion now reports API errors.
+Compile and on-device animation/layout checks are separate; iOS 27 is not verified.

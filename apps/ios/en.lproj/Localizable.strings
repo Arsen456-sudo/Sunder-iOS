@@ -27,3 +27,6 @@
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "Chat folders";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "Profile";

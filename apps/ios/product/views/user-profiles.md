@@ -149,3 +149,9 @@ Your profile is an independent root tab, displaying the existing current-profile
 editor, with the current avatar as its tab image. Profile management remains a
 settings destination. Existing profile saving, account isolation and authentication
 are preserved; selecting another tab does not replace the app authentication gate.
+
+## Native navigation integration follow-up (2026-10-30)
+
+The root tab is titled Profile in all app languages. The profile root uses the
+system grouped surface and its descendants hide the main tab bar. Modal profile
+routes do not change main-tab depth tracking.

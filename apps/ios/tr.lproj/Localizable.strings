@@ -6309,3 +6309,6 @@ alert title */
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "Sohbet klasörleri";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "Profil";

@@ -15,6 +15,7 @@ struct ChatInfoToolbar: View {
     @EnvironmentObject var m: ChatModel
     @ObservedObject var chat: Chat
     var imageSize: CGFloat = 32
+    var showsAvatar = true
 
     var body: some View {
         let cInfo = chat.chatInfo
@@ -23,29 +24,31 @@ struct ChatInfoToolbar: View {
                 Image(systemName: "theatermasks").frame(maxWidth: 24, maxHeight: 24, alignment: .center).foregroundColor(.indigo)
                 Spacer().frame(width: 16)
             }
-            ZStack(alignment: .bottomTrailing) {
-                ChatInfoImage(
-                    chat: chat,
-                    size: imageSize,
-                    color: Color(uiColor: .tertiaryLabel)
-                )
-                if chat.chatStats.reportsCount > 0 {
-                    Image(systemName: "flag.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 14, height: 14)
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.white, .red)
-                } else if chat.supportUnreadCount > 0 {
-                    Image(systemName: "flag.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 14, height: 14)
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.white, theme.colors.primary)
+            if showsAvatar {
+                ZStack(alignment: .bottomTrailing) {
+                    ChatInfoImage(
+                        chat: chat,
+                        size: imageSize,
+                        color: Color(uiColor: .tertiaryLabel)
+                    )
+                    if chat.chatStats.reportsCount > 0 {
+                        Image(systemName: "flag.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 14, height: 14)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.white, .red)
+                    } else if chat.supportUnreadCount > 0 {
+                        Image(systemName: "flag.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 14, height: 14)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.white, theme.colors.primary)
+                    }
                 }
+                .padding(.trailing, 4)
             }
-            .padding(.trailing, 4)
             let t = Text(cInfo.displayName).font(.headline)
             VStack(alignment: .leading, spacing: 0) {
                 NameWithBadge((cInfo.contact?.verified == true ? contactVerifiedShield + t : t), cInfo.nameBadge, .headline)

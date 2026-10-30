@@ -4621,3 +4621,6 @@ server test failure */
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "Папки с чатове";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "Профил";

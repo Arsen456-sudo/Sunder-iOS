@@ -80,6 +80,7 @@ struct ServerSettings {
 
 struct UserPickerSheetView: View {
     let sheet: UserPickerSheet
+    var rootTab = false
     @EnvironmentObject var chatModel: ChatModel
     @StateObject private var ss = SaveableSettings()
 
@@ -102,11 +103,11 @@ struct UserPickerSheetView: View {
                     case .chatProfiles:
                         UserProfilesView()
                     case .currentProfile:
-                        UserProfile()
+                        UserProfile().if(rootTab) { $0.modifier(SunderTabRootVisibility()) }
                     case .useFromDesktop:
                         ConnectDesktopView()
                     case .settings:
-                        SettingsView()
+                        SettingsView().if(rootTab) { $0.modifier(SunderTabRootVisibility()) }
                     }
                 }
                 Color.clear // Required for list background to be rendered during loading
@@ -262,6 +263,14 @@ struct ChatListView: View {
         .onDisappear {
             activeUserPickerSheet = nil
         }
+        .modifier(SunderTabRootVisibility())
+        .background {
+            if #available(iOS 26.0, *) {
+                SunderNavigationSearch(active: $navigation.searchVisible, text: $searchText, focused: Binding(get: { searchFocussed }, set: { searchFocussed = $0 }),
+                                       blocked: searchShowingSimplexLink, busy: connectProgressManager.showConnectProgress != nil)
+                    .frame(width: 0, height: 0)
+            }
+        }
         .onChange(of: navigation.searchGeneration) { _ in searchFocussed = true }
         .onChange(of: chatModel.currentUser?.userId) { _ in
             navigation.searchVisible = false
@@ -304,14 +313,17 @@ struct ChatListView: View {
         }
     }
     
+    private var usesIntegratedSearch: Bool {
+        if #available(iOS 26.0, *) { return true }
+        return false
+    }
+
     @ViewBuilder private var pinnedControls: some View {
-        VStack(spacing: 8) {
-            if navigation.searchVisible {
-                ChatListSearchBar(searchMode: $searchMode, searchFocussed: $searchFocussed,
+        VStack(spacing: 4) {
+            ChatListSearchBar(searchMode: $searchMode, searchFocussed: $searchFocussed,
                                   searchText: $searchText, searchShowingSimplexLink: $searchShowingSimplexLink,
                                   searchChatFilteredBySimplexLink: $searchChatFilteredBySimplexLink, parentSheet: $sheet,
-                                  close: { navigation.searchVisible = false })
-            }
+                                  close: { navigation.searchVisible = false }, showsField: !usesIntegratedSearch && navigation.searchVisible)
             if !chatTagsModel.userTags.isEmpty {
                 SunderFolderSegments(titles: [NSLocalizedString("All", comment: "All chats")] + chatTagsModel.userTags.map(\.chatTagText),
                                      selected: selectedFolder) { index in
@@ -319,11 +331,11 @@ struct ChatListView: View {
                     searchText = ""
                     chatTagsModel.activeFilter = index == 0 ? nil : .userTag(chatTagsModel.userTags[index - 1])
                 }
-                .frame(height: 44)
+                .frame(height: 40)
             }
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, navigation.searchVisible || !chatTagsModel.userTags.isEmpty ? 8 : 0)
+        .padding(.vertical, !chatTagsModel.userTags.isEmpty || (!usesIntegratedSearch && navigation.searchVisible) ? 4 : 0)
     }
 
     private var selectedFolder: Int {
@@ -348,25 +360,21 @@ struct ChatListView: View {
 
     @available(iOS 26.0, *)
     @ToolbarContentBuilder private var glassTopToolbar: some ToolbarContent {
-        ToolbarItem(placement: .navigationBarLeading) {
-            NavigationLink {
-                TagListView().navigationTitle("Chat folders")
-            } label: { Text("Edit") }
+        ToolbarItem(id: "sunder.leading", placement: .navigationBarLeading) {
+            NavigationLink { TagListView().navigationTitle("Chat folders") } label: { Text("Edit") }
                 .foregroundColor(Color(uiColor: .label))
         }
         ToolbarItem(placement: .principal) { statusButton }
             .sharedBackgroundVisibility(.hidden)
-        ToolbarItem(placement: .navigationBarTrailing) {
-            HStack(spacing: 8) {
-                if !chatModel.chats.isEmpty {
-                    ChatListUnreadButton(selected: chatTagsModel.activeFilter == .unread, tint: .label) {
-                        chatTagsModel.activeFilter = chatTagsModel.activeFilter == .unread ? nil : .unread
-                    }
-                }
-                composeButton
-            }
+        ToolbarItem(id: "sunder.context", placement: .navigationBarTrailing) {
+            Button {
+                chatTagsModel.activeFilter = chatTagsModel.activeFilter == .unread ? nil : .unread
+            } label: { Image(systemName: "line.3.horizontal.decrease") }
+                .tint(chatTagsModel.activeFilter == .unread ? .accentColor : .primary)
+                .accessibilityLabel(Text("Unread"))
         }
-            .sharedBackgroundVisibility(.hidden)
+        ToolbarItem(id: "sunder.avatar", placement: .navigationBarTrailing) { composeButton }
+
     }
 
     @available(iOS 26.0, *)
@@ -431,11 +439,12 @@ struct ChatListView: View {
         switch chatModel.chatRunning {
         case .some(true):
             if #available(iOS 26.0, *) {
-                SunderCircleButton(symbol: "square.and.pencil", label: NSLocalizedString("New chat", comment: "Compose toolbar button")) {
+                Button {
                     ConnectProgressManager.shared.cancelConnectProgress()
                     showNewChatSheet = true
-                }
-                .frame(width: 44, height: 44)
+                } label: { Image(systemName: "square.and.pencil") }
+                    .tint(.primary)
+                    .accessibilityLabel(Text("New chat"))
             } else {
                 NewChatMenuButton(showNewChatSheet: $showNewChatSheet)
             }
@@ -639,22 +648,25 @@ struct ChatListSearchBar: View {
     @State private var nameSearchTask: Task<Void, Never>? = nil
 
     var close: () -> Void
+    var showsField = true
 
     var body: some View {
         VStack(spacing: 8) {
-            HStack(spacing: 8) {
-                ChatListNativeSearch(text: $searchText,
-                    focused: Binding(get: { searchFocussed }, set: { searchFocussed = $0 }),
-                    linking: searchShowingSimplexLink, busy: connectProgressManager.showConnectProgress != nil,
-                    tint: .label, allowsCancel: false)
-                    .frame(height: 52)
-                SunderCircleButton(symbol: "xmark", label: NSLocalizedString("Close", comment: "Close search")) {
-                    nameSearchTask?.cancel()
-                    connectProgressManager.cancelConnectProgress()
-                    searchText = ""
-                    searchFocussed = false
-                    close()
-                }.frame(width: 44, height: 44)
+            if showsField {
+                HStack(spacing: 8) {
+                    ChatListNativeSearch(text: $searchText,
+                        focused: Binding(get: { searchFocussed }, set: { searchFocussed = $0 }),
+                        linking: searchShowingSimplexLink, busy: connectProgressManager.showConnectProgress != nil,
+                        tint: .label, allowsCancel: false)
+                        .frame(height: 52)
+                    SunderCircleButton(symbol: "xmark", label: NSLocalizedString("Close", comment: "Close search")) {
+                        nameSearchTask?.cancel()
+                        connectProgressManager.cancelConnectProgress()
+                        searchText = ""
+                        searchFocussed = false
+                        close()
+                    }.frame(width: 44, height: 44)
+                }
             }
             if let candidate = connectNameCandidate {
                 ConnectByNameRow(name: candidate, searchText: $searchText,

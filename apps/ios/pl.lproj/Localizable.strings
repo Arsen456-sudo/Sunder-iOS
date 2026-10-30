@@ -6368,3 +6368,6 @@ alert title */
 
 /* Sunder: user-managed chat folders. */
 "Chat folders" = "Foldery czatów";
+
+/* Sunder: current-profile root tab. */
+"Profile" = "Profil";

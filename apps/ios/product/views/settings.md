@@ -255,3 +255,11 @@ manager, where a folder has a name and selected existing contact/group/channel
 chats. Chats can belong to several folders. Account management, address,
 preferences and desktop access remain available here after removing the avatar
 menu button. Creating a chat/group/channel does not create a visible folder.
+
+## Native navigation integration follow-up (2026-10-30)
+
+The tab bar appears at root menus and hides while navigating into a settings
+page. Grouped settings/profile surfaces use Apple's system grouped background
+and shared native list/control defaults on iOS 26. Existing specialized content,
+validation, settings bindings and account guards are preserved. This changes
+presentation; it does not claim a SwiftUI-to-UIKit rewrite of every setting.
