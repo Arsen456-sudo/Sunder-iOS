@@ -189,20 +189,10 @@ class OpenChatAlertViewController: UIViewController {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
 
         // Container view
-        let containerView: UIView
-        let containerContent: UIView
-        if #available(iOS 26.0, *) {
-            let glass = SunderGlassEffectView(radius: 28)
-            glass.interactive = true
-            containerView = glass
-            containerContent = glass.contentView
-        } else {
-            let legacy = UIView()
-            legacy.backgroundColor = .systemBackground
-            legacy.layer.cornerRadius = 12
-            containerView = legacy
-            containerContent = legacy
-        }
+        let containerView = UIView()
+        containerView.backgroundColor = .systemBackground
+        containerView.layer.cornerRadius = 12
+        let containerContent = containerView
         containerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(containerView)
 
@@ -444,6 +434,28 @@ func showOpenChatAlert<Content: View>(
     onConfirm: (() -> Void)? = nil,
     onSecond: (() -> Void)? = nil
 ) {
+    if #available(iOS 26.0, *), let topVC = getTopViewController() {
+        let dismissal = ProfileConfirmationDismissal()
+        let sheet = SystemProfileConfirmation(
+            profileName: profileName, profileFullName: profileFullName,
+            profileImage: profileImage, profileBadge: profileBadge,
+            subtitle: subtitle, information: information,
+            cancelTitle: cancelTitle, confirmTitle: confirmTitle, secondTitle: secondTitle,
+            cancel: { dismissal.close(onCancel) },
+            confirm: { dismissal.close(onConfirm) },
+            second: { dismissal.close(onSecond) }
+        )
+        .environmentObject(theme)
+        .sunderPrivateSheet()
+        let controller = UIHostingController(rootView: sheet)
+        controller.modalPresentationStyle = .pageSheet
+        controller.isModalInPresentation = true
+        controller.sheetPresentationController?.detents = [.medium(), .large()]
+        controller.sheetPresentationController?.prefersGrabberVisible = true
+        dismissal.controller = controller
+        topVC.present(controller, animated: true)
+        return
+    }
     let themedView = profileImage.environmentObject(theme)
     let hostingController = UIHostingController(rootView: themedView)
     let hostedView = hostingController.view!
@@ -465,5 +477,59 @@ func showOpenChatAlert<Content: View>(
             onSecond: onSecond
         )
         topVC.present(alertVC, animated: true)
+    }
+}
+
+
+private final class ProfileConfirmationDismissal {
+    weak var controller: UIViewController?
+    private var closing = false
+    func close(_ completion: (() -> Void)?) {
+        guard !closing, let controller else { return }
+        closing = true
+        controller.dismiss(animated: true, completion: completion)
+    }
+}
+
+private struct SystemProfileConfirmation<ProfileImage: View>: View {
+    let profileName: String
+    let profileFullName: String
+    let profileImage: ProfileImage
+    let profileBadge: LocalBadge?
+    let subtitle: String?
+    let information: String?
+    let cancelTitle: String
+    let confirmTitle: String?
+    let secondTitle: String?
+    var cancel: () -> Void
+    var confirm: () -> Void
+    var second: () -> Void
+
+    var body: some View {
+        NavigationView {
+            List {
+                Section {
+                    VStack(spacing: 8) {
+                        profileImage.frame(width: alertProfileImageSize, height: alertProfileImageSize)
+                        NameWithBadge(Text(profileName).font(.headline), profileBadge, .headline)
+                        if !profileFullName.isEmpty && profileFullName != profileName { Text(profileFullName) }
+                        if let subtitle { Text(subtitle).foregroundStyle(.secondary) }
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                if let information { Section { Text(information) } }
+                Section {
+                    if let confirmTitle { Button(confirmTitle, action: confirm) }
+                    if let secondTitle { Button(secondTitle, action: second) }
+                }
+            }
+            .navigationTitle("Profile")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) { Button(cancelTitle, action: cancel) }
+            }
+            .modifier(ThemedBackground(grouped: true))
+        }
+        .navigationViewStyle(.stack)
     }
 }

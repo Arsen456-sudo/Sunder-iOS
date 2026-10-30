@@ -492,29 +492,19 @@ struct ActiveCallOverlay: View {
             .scaleEffect(2)
             .padding(10)
             .frame(width: 60, height: 60)
-            .sunderGlass(cornerRadius: 30)
             .clipShape(.circle)
     }
 
-    private func callButton(_ imageName: String, _ background: Color, padding: CGFloat, glass: Bool = false, _ perform: @escaping () -> Void) -> some View {
-        Button {
-            perform()
-        } label: {
+    @ViewBuilder private func callButton(_ imageName: String, _ background: Color, padding: CGFloat, glass: Bool = false, _ perform: @escaping () -> Void) -> some View {
+        let button = Button(action: perform) {
             Image(systemName: imageName)
-                .resizable()
-                .scaledToFit()
-                .padding(padding)
-                .frame(width: 60, height: 60)
-                .background {
-                    if #available(iOS 26.0, *), glass {
-                        SunderGlassSurface(radius: 30).allowsHitTesting(false)
-                    } else {
-                        background
-                    }
-                }
+                .font(.system(size: 24))
+                .frame(width: 36, height: 36)
         }
-        .foregroundColor(whiteColorWithAlpha)
-        .clipShape(.circle)
+        .controlSize(.large)
+        .buttonBorderShape(.capsule)
+        if glass { button.buttonStyle(.bordered).tint(.white) }
+        else { button.buttonStyle(.borderedProminent).tint(background) }
     }
 
     private var whiteColorWithAlpha: Color {

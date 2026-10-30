@@ -535,6 +535,7 @@ struct ComposeView: View {
                 }
             }
         }
+        .background(.bar)
         .onChange(of: composeState.message) { msg in
             if updatingCompose {
                 updatingCompose = false
@@ -1087,13 +1088,11 @@ struct ComposeView: View {
         let showCommands = chat.chatInfo.useCommands && (!showAttachment || msg.isEmpty || msg.starts(with: "/"))
         if showCommands {
             commandsButton()
-                .frame(width: 44, height: 44)
-                .sunderGlass()
+                .buttonStyle(.bordered)
         }
         if showAttachment {
             attachmentButton()
-                .frame(width: 44, height: 44)
-                .sunderGlass()
+                .buttonStyle(.bordered)
                 .padding(.trailing, 3)
                 .if(showCommands) { v in v.padding(.leading, 3) }
         }
@@ -1109,7 +1108,6 @@ struct ComposeView: View {
                 .contentShape(Rectangle())
         }
         .disabled(!chat.chatInfo.sendMsgEnabled || chat.chatInfo.menuCommands.isEmpty)
-        .frame(width: 25, height: 25)
         .tint(theme.colors.primary)
         .padding(.bottom, 2)
     }
@@ -1118,11 +1116,9 @@ struct ComposeView: View {
         let b = Button {
             showChooseSource = true
         } label: {
-            Image(systemName: "paperclip")
-                .resizable()
+            Image(systemName: "paperclip").font(.title3)
         }
             .disabled(composeState.attachmentDisabled || !chat.chatInfo.sendMsgEnabled)
-            .frame(width: 25, height: 25)
             .tint(theme.colors.primary)
         if im.secondaryIMFilter == nil,
            !chat.chatInfo.featureEnabled(.files) {

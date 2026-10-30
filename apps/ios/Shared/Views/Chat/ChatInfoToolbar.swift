@@ -47,28 +47,16 @@ struct ChatInfoToolbar: View {
             }
             .padding(.trailing, 4)
             let t = Text(cInfo.displayName).font(.headline)
-            NameWithBadge((cInfo.contact?.verified == true ? contactVerifiedShield + t : t), cInfo.nameBadge, .headline)
-                .lineLimit(1)
-                .if (cInfo.fullName != "" && cInfo.displayName != cInfo.fullName) { v in
-                    VStack(spacing: 0) {
-                        v
-                        Text(cInfo.fullName).font(.subheadline)
-                            .lineLimit(1)
-                            .padding(.top, -2)
-                    }
+            VStack(alignment: .leading, spacing: 0) {
+                NameWithBadge((cInfo.contact?.verified == true ? contactVerifiedShield + t : t), cInfo.nameBadge, .headline)
+                    .lineLimit(1)
+                if let subtitle {
+                    Text(subtitle)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
                 }
-                .if (channelSubscriberCount != nil) { v in
-                    VStack(spacing: 0) {
-                        v
-                        if let count = channelSubscriberCount {
-                            Text(subscriberCountStr(count))
-                                .font(.caption)
-                                .foregroundColor(theme.colors.secondary)
-                                .lineLimit(1)
-                                .padding(.top, -2)
-                        }
-                    }
-                }
+            }
             if let contact = chat.chatInfo.contact,
                contact.ready && contact.active,
                let chatSubStatus = m.chatSubStatus,
@@ -78,7 +66,15 @@ struct ChatInfoToolbar: View {
             }
         }
         .foregroundColor(theme.colors.onBackground)
-        .frame(width: 220)
+        .fixedSize(horizontal: false, vertical: true)
+    }
+
+    private var subtitle: String? {
+        let info = chat.chatInfo
+        var parts: [String] = []
+        if !info.fullName.isEmpty && info.fullName != info.displayName { parts.append(info.fullName) }
+        if let count = channelSubscriberCount { parts.append(subscriberCountStr(count)) }
+        return parts.isEmpty ? nil : parts.joined(separator: " \u{00B7} ")
     }
 
     private var channelSubscriberCount: Int64? {

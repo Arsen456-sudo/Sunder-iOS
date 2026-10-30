@@ -251,13 +251,7 @@ The new-group presentation uses its existing system-symbol alternative instead o
 
 See [presentation specification](../../spec/client/navigation.md#sunder-presentation-preparation--2026-10-28).
 
-### Native group/channel profile presentation (2026-10-30)
-Group and channel profiles reuse the compact native close header and 144-point
-circular photo, grouped information and glass action buttons. Action widths depend
-on the actual visible action count and include gaps. All role gates, member/link
-flows, moderation, relay details and child navigation remain unchanged.
-
-### Member-detail system navigation (2026-10-30)
-Member profiles use system navigation on iOS 26, retaining the existing pushed back
-action and providing a close button in modal use. Member roles, restriction alerts
-and direct-message/call actions remain unchanged.
+### Standard profile navigation (2026-10-30)
+Group/channel profiles use system navigation with a large title and Done button,
+grouped information and bordered action Buttons. Role gates, member/link routes,
+moderation, relay details and member-detail system back navigation remain intact.

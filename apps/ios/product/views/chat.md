@@ -185,17 +185,9 @@ Sent and delivered status meanings/colors remain, rendered with checkmark and ch
 
 See [preparation scope](../../spec/client/navigation.md#sunder-publication-preparation--2026-10-28).
 
-### Native conversation chrome (2026-10-30)
-On iOS 26 the conversation uses the system navigation material and soft scroll
-edges. The obsolete full-width composer material is removed; the existing editor
-has its own glass surface, with separate glass attachment/command buttons. Search
-uses a compact glass surface. All message rendering, previews, recording gestures,
-selection, menu actions, pagination and send/feature checks remain unchanged.
-Older OS versions use native materials. This is a presentation update, not a full
-rewrite of message rows or business state into UIKit.
-
-### Shared native command states (2026-10-30)
-Connecting, pending-member/contact and report/action strips share compact native
-surfaces on iOS 26, with original material fallback. Actions, state and permission
-checks are unchanged. Full-screen media keeps zoom/swipe/player behavior with dark
-system presentation. Root system defaults do not turn message content into forms.
+### Standard conversation controls (2026-10-30)
+Chat keeps the system navigation toolbar and uses the system bar material for
+search and compose areas. Attachment, command, profile and folder actions use
+standard buttons. The fixed 220-point chat-title width and bespoke glass backings
+are removed. Native text editing, messages, voice/send gestures, previews, call
+menus and pagination remain intact; they are not rewritten into settings forms.

@@ -1,159 +1,163 @@
-# Shared system interface policy
+# Standard Apple interface components
 
-**Product:** [Settings](../../product/views/settings.md), [Chat list](../../product/views/chat-list.md), [Chat](../../product/views/chat.md), [Onboarding](../../product/views/onboarding.md), [Calls](../../product/views/call.md).
+**Reference:** [AppearanceSettings](../../Shared/Views/UserSettings/AppearanceSettings.swift).
+**Products:** [Settings](../../product/views/settings.md), [chat list](../../product/views/chat-list.md), [conversation](../../product/views/chat.md), [profiles](../../product/views/contact-info.md).
 
-## Reference and boundaries
-AppearanceSettings uses standard Apple controls. SunderSystemInterface installs
-native contextual controls, inset-grouped list/grouped-form defaults and automatic
-system toolbar/scroll-edge styles on iOS 26+. Explicit specialized descendant
-styles remain intact. It is installed at SimpleXApp's content root, ThemedBackground,
-both appSheet overloads and the share-extension root. Older OS defaults remain.
-The shared implementation is compiled in both the app and share-extension targets.
+## Construction
+Use the same NavigationView/List/Section/Picker/Toggle/Button/toolbar construction
+as the reference. Shared SystemInterface.swift installs system defaults; it does
+not draw navigation panels or glass. Explicit specialized content stays in charge.
+The custom glass controller, modal chrome, scroll probe and selector implementation
+are removed. UIKit bridges for media rendering and the message editor remain.
 
-## Presentation and control exceptions
-Sheet uses native presentationDetents/drag indicator on iOS 26, with scrollable
-content and large-only accessibility detent. It applies the same PrivacySensitive
-modifier as appSheet. Older OS versions retain SheetRepresentable. ChatListView
-queues the selected UserPickerSheet until native sheet dismissal completes, then
-opens the original destination; hidden-profile and account-switching logic remains.
+Avatar-menu scrolling belongs to List. Its standard Done action and profile/settings
+rows replace nested stacks and glass surfaces. iOS 26 Sheet presents the content
+directly at the large detent, with the original privacy modifier and queued route
+selection after dismissal. Profile switching uses the unchanged API/error flow.
 
-OnboardingButtonStyle delegates original configuration trigger/role into native
-glassProminent buttons on iOS 26; isDisabled stays an appearance flag and existing
-outer disabled checks remain authoritative. Legacy appearance is retained below
-26. BackButton keeps action/disabled state and uses the native compact icon label.
-SunderSystemDetailNavigation restores member/connection navigation and provides a
-modal close action only where required. Profile data and child routes are preserved.
+Main, contact/group profile and server roots use native toolbar items, including
+all original status/compose/share/close actions. Server selectors are native Picker
+rows. Settings routes keep the shared policy and unchanged reference screen. Search
+uses native fields/buttons; tag editing is reached through the native context menu.
+Profile and call controls use native bordered/prominent styles. Command/composer
+backgrounds use the standard bar material. The specialized text/voice input keeps
+its original editor/state/gestures. No new renderer, network or storage API is used.
 
-SunderCommandSurface replaces old material backings for command/action strips on
-iOS 26, retaining materials on older versions. Main message content is unaffected.
-ContactsListSearchBar reuses native search/filter adapters without changing name/
-link resolution or filtering callbacks. Call surfaces retain all actions and red
-end-call styling. FullScreenMediaView keeps gestures and player behavior. The
-OpenChatAlertViewController uses native glass contentView containment; profile data,
-buttons, dividers and callbacks remain unchanged. Passcode buttons get native style
-without changing submit guards. ShareView keeps search, password and send logic.
+Profile confirmations use a standard NavigationView/List presented as a system sheet
+on iOS 26. Image, badge, names, information and all choices are retained. A weak
+presentation holder dismisses first, then invokes the original selected callback,
+once. Interactive dismissal is disabled for this confirmation to preserve explicit
+choice semantics. The old UIKit popup remains only as an older-OS fallback.
 
-## Coverage and validation
-See [system UI adoption report](../../../../docs/fork/ios/SYSTEM_UI_ADOPTION.md)
-and [source inventory](../../../../docs/fork/ios/SYSTEM_UI_INVENTORY.json).
-The inventory is lexical coverage, not proof that every screen is a settings form
-or that every route was visually tested. CI checks it before compiling the IPA.
+## Validation boundary
+Source inventory is lexical coverage, not every-route visual proof. The exact build
+must compile before device validation. See [adoption report](../../../../docs/fork/ios/SYSTEM_UI_ADOPTION.md).
 
-## Changed source entry points
+## Source entry points
 
-### Shared/SimpleXApp.swift
+### Shared/Views/ChatList/UserPicker.swift
 
-- [`var body: some Scene`](../../Shared/SimpleXApp.swift#L39)
-
-### Shared/Theme/Theme.swift
-
-- [`func body(content: Content) -> some View`](../../Shared/Theme/Theme.swift#L62)
-
-### Shared/Views/Call/ActiveCallView.swift
-
-- [`private func controlButton(_ call: Call, _ imageName: String, padding: CGFloat, _ perform: @escaping () -> Void) -> some View`](../../Shared/Views/Call/ActiveCallView.swift#L485)
-- [`private func audioDevicePickerButton() -> some View`](../../Shared/Views/Call/ActiveCallView.swift#L489)
-- [`private func callButton(_ imageName: String, _ background: Color, padding: CGFloat, glass: Bool = false, _ perform: @escaping () -> Void) -> some View`](../../Shared/Views/Call/ActiveCallView.swift#L499)
-
-### Shared/Views/Call/IncomingCallView.swift
-
-- [`private func callButton(_ text: LocalizedStringKey, _ image: String, _ color: Color, action: @escaping () -> Void) -> some View`](../../Shared/Views/Call/IncomingCallView.swift#L72)
-
-### Shared/Views/Chat/ChatItem/FullScreenMediaView.swift
-
-- [`var body: some View`](../../Shared/Views/Chat/ChatItem/FullScreenMediaView.swift#L32)
-
-### Shared/Views/Chat/ChatView.swift
-
-- [`private func connectInProgressView(_ s: String) -> some View`](../../Shared/Views/Chat/ChatView.swift#L489)
-- [`private func userMemberKnockingTitleBar() -> some View`](../../Shared/Views/Chat/ChatView.swift#L729)
-- [`private func searchToolbar() -> some View`](../../Shared/Views/Chat/ChatView.swift#L864)
-
-### Shared/Views/Chat/ComposeMessage/ComposeView.swift
-
-- [`private func contextSendMessageToConnect(_ s: LocalizedStringKey) -> some View`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1395)
-
-### Shared/Views/Chat/ComposeMessage/ContextContactRequestActionsView.swift
-
-- [`var body: some View`](../../Shared/Views/Chat/ComposeMessage/ContextContactRequestActionsView.swift#L19)
-
-### Shared/Views/Chat/ComposeMessage/ContextMemberContactActionsView.swift
-
-- [`var body: some View`](../../Shared/Views/Chat/ComposeMessage/ContextMemberContactActionsView.swift#L20)
-
-### Shared/Views/Chat/ComposeMessage/ContextPendingMemberActionsView.swift
-
-- [`var body: some View`](../../Shared/Views/Chat/ComposeMessage/ContextPendingMemberActionsView.swift#L19)
-
-### Shared/Views/Chat/Group/GroupMemberInfoView.swift
-
-- [`private func groupMemberInfoView() -> some View`](../../Shared/Views/Chat/Group/GroupMemberInfoView.swift#L104)
-- [`func infoActionButtons(_ member: GroupMember) -> some View`](../../Shared/Views/Chat/Group/GroupMemberInfoView.swift#L368)
+- [`var body: some View`](../../Shared/Views/ChatList/UserPicker.swift#L31)
+- [`private var systemMenu: some View`](../../Shared/Views/ChatList/UserPicker.swift#L131)
+- [`private func systemMenuRow(_ icon: String, title: LocalizedStringKey, sheet: UserPickerSheet, disabled: Bool = false) -> some View`](../../Shared/Views/ChatList/UserPicker.swift#L196)
+- [`private func userView(_ u: UserInfo, size: CGFloat) -> some View`](../../Shared/Views/ChatList/UserPicker.swift#L203)
+- [`private func switchProfile(_ u: UserInfo)`](../../Shared/Views/ChatList/UserPicker.swift#L222)
+- [`private func openSheetOnTap(_ icon: String, title: LocalizedStringKey, sheet: UserPickerSheet, showDivider: Bool = true, disabled: Bool = false) -> some View`](../../Shared/Views/ChatList/UserPicker.swift#L243)
+- [`func userUnreadBadge(_ userInfo: UserInfo, theme: AppTheme) -> some View`](../../Shared/Views/ChatList/UserPicker.swift#L261)
+- [`var body: some View`](../../Shared/Views/ChatList/UserPicker.swift#L273)
+- [`func body(content: Content) -> some View`](../../Shared/Views/ChatList/UserPicker.swift#L296)
+- [`func makeUIView(context: Context) -> TouchView`](../../Shared/Views/ChatList/UserPicker.swift#L316)
+- [`func updateUIView(_ touchView: TouchView, context: Context)`](../../Shared/Views/ChatList/UserPicker.swift#L328)
+- [`func longPress(gesture: UILongPressGestureRecognizer)`](../../Shared/Views/ChatList/UserPicker.swift#L338)
+- [`func gestureRecognizer(`](../../Shared/Views/ChatList/UserPicker.swift#L368)
 
 ### Shared/Views/ChatList/ChatListNativeControls.swift
 
-- [`@objc func clearText()`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L285)
-- [`func updateUIView(_ button: UIButton, context: Context)`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L302)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L14)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L45)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L66)
+
+### Shared/Views/ChatList/SystemInterface.swift
+
+- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SystemInterface.swift#L6)
+- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SystemInterface.swift#L27)
+- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SystemInterface.swift#L52)
+- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SystemInterface.swift#L63)
 
 ### Shared/Views/ChatList/ChatListView.swift
 
 - [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L88)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L183)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L181)
+- [`@ViewBuilder private func withToolbar(content: () -> some View) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L279)
+- [`@ViewBuilder private func noChatsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L433)
+- [`@ViewBuilder private func chatView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L455)
+- [`func stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L469)
+- [`private func filteredChats() -> [Chat]`](../../Shared/Views/ChatList/ChatListView.swift#L475)
+- [`func filtered(_ chat: Chat) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L503)
+- [`func viewNameContains(_ cInfo: ChatInfo, _ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L512)
+- [`func searchString() -> String`](../../Shared/Views/ChatList/ChatListView.swift#L518)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L541)
+- [`private func toggleFilterButton() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L638)
+- [`private func connect(_ link: String)`](../../Shared/Views/ChatList/ChatListView.swift#L645)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L671)
+- [`private func isNameLabel(_ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L702)
+- [`func knownChatId(_ result: ConnectionPlanResult?) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L710)
+- [`func nameSearchCandidate(_ str: String) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L740)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L763)
+- [`@ViewBuilder private func tagsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L769)
+- [`@ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L831)
+- [`private func expandedPresetTagsFiltersView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L849)
+- [`@ViewBuilder private func collapsedTagsFilterView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L857)
+- [`private func presentTagLists()`](../../Shared/Views/ChatList/ChatListView.swift#L901)
+- [`private func presetTagLabel(tag: PresetTag, active: Bool) -> (item: String, menu: String?, label: LocalizedStringKey)`](../../Shared/Views/ChatList/ChatListView.swift#L916)
+- [`private func setActiveFilter(filter: ActiveFilter)`](../../Shared/Views/ChatList/ChatListView.swift#L929)
+- [`func chatStoppedIcon() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L938)
+- [`func presetTagMatchesChat(_ tag: PresetTag, _ chatInfo: ChatInfo, _ chatStats: ChatStats) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L950)
 
-### Shared/Views/ChatList/ContactConnectionInfo.swift
+### Shared/Views/ChatList/ServersSummaryView.swift
 
-- [`var body: some View`](../../Shared/Views/ChatList/ContactConnectionInfo.swift#L35)
-
-### Shared/Views/ChatList/OneHandUICard.swift
-
-- [`var body: some View`](../../Shared/Views/ChatList/OneHandUICard.swift#L19)
-
-### Shared/Views/ChatList/SunderGlassDesign.swift
-
-- [`@objc private func choose(_ button: UIButton)`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L175)
-- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L186)
-- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L207)
-- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L232)
-- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SunderGlassDesign.swift#L245)
-
-### Shared/Views/Helpers/AppSheet.swift
-
-- [`func appSheet<Content>(`](../../Shared/Views/Helpers/AppSheet.swift#L33)
-- [`func appSheet<T, Content>(`](../../Shared/Views/Helpers/AppSheet.swift#L43)
-- [`func sunderPrivateSheet() -> some View`](../../Shared/Views/Helpers/AppSheet.swift#L56)
-
-### Shared/Views/Helpers/ShareSheet.swift
-
-- [`override func viewDidLoad()`](../../Shared/Views/Helpers/ShareSheet.swift#L186)
+- [`var body: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L37)
+- [`private func startTimer()`](../../Shared/Views/ChatList/ServersSummaryView.swift#L69)
+- [`private func getServersSummary()`](../../Shared/Views/ChatList/ServersSummaryView.swift#L77)
+- [`private func stopTimer()`](../../Shared/Views/ChatList/ServersSummaryView.swift#L85)
+- [`private func shareSummary()`](../../Shared/Views/ChatList/ServersSummaryView.swift#L90)
+- [`public func encodePrettyPrinted<T: Encodable>(_ value: T) -> String`](../../Shared/Views/ChatList/ServersSummaryView.swift#L109)
+- [`@ViewBuilder private func viewBody() -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L116)
+- [`private func smpSubsSection(_ totals: SMPTotals) -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L204)
+- [`private func reconnectAllButton() -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L220)
+- [`private func smpServersListView(`](../../Shared/Views/ChatList/ServersSummaryView.swift#L250)
+- [`private func smpServerView(_ srvSumm: SMPServerSummary, _ statsStartedAt: Date) -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L276)
+- [`private func serverAddress(_ server: String) -> String`](../../Shared/Views/ChatList/ServersSummaryView.swift#L306)
+- [`private func sessIconColor(_ sess: ServerSessions) -> Color`](../../Shared/Views/ChatList/ServersSummaryView.swift#L310)
+- [`private func xftpServersListView(`](../../Shared/Views/ChatList/ServersSummaryView.swift#L324)
+- [`private func xftpServerView(_ srvSumm: XFTPServerSummary, _ statsStartedAt: Date) -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L346)
+- [`private func inProgressIcon(_ srvSumm: XFTPServerSummary) -> String?`](../../Shared/Views/ChatList/ServersSummaryView.swift#L370)
+- [`private func resetStatsButton() -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L380)
+- [`var body: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L418)
+- [`var body: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L441)
+- [`func subscriptionStatusInfo(online: Bool, usesProxy: Bool, subs: SMPServerSubs, hasSess: Bool, primaryColor: Color) -> (Color, Double, Double)`](../../Shared/Views/ChatList/ServersSummaryView.swift#L450)
+- [`func roundedToQuarter(_ n: Double) -> Double`](../../Shared/Views/ChatList/ServersSummaryView.swift#L451)
+- [`func subscriptionStatusPercent(online: Bool, subs: SMPServerSubs, hasSess: Bool) -> Double`](../../Shared/Views/ChatList/ServersSummaryView.swift#L476)
+- [`var body: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L489)
+- [`private func smpSubsSection(_ subs: SMPServerSubs) -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L511)
+- [`private func reconnectButton() -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L528)
+- [`var body: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L562)
+- [`var body: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L575)
+- [`private func numOrDash(_ n: Int) -> String`](../../Shared/Views/ChatList/ServersSummaryView.swift#L595)
+- [`var body: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L603)
+- [`private func infoRowTwoValues(_ title: LocalizedStringKey, _ title2: LocalizedStringKey, _ value: Int, _ value2: Int) -> some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L649)
+- [`var body: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L668)
+- [`var body: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L691)
+- [`private func prettySize(_ sizeInKB: Int64) -> String`](../../Shared/Views/ChatList/ServersSummaryView.swift#L711)
+- [`var body: some View`](../../Shared/Views/ChatList/ServersSummaryView.swift#L720)
 
 ### Shared/Views/Helpers/SheetRepresentable.swift
 
-- [`init(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil, @ViewBuilder sheetContent: @escaping () -> SheetContent)`](../../Shared/Views/Helpers/SheetRepresentable.swift#L25)
-- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/Helpers/SheetRepresentable.swift#L31)
+- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/Helpers/SheetRepresentable.swift#L30)
+- [`func makeUIViewController(context: Context) -> Controller<Content>`](../../Shared/Views/Helpers/SheetRepresentable.swift#L53)
+- [`func updateUIViewController(_ sheetController: Controller<Content>, context: Context)`](../../Shared/Views/Helpers/SheetRepresentable.swift#L57)
+- [`func animate(isPresented: Bool)`](../../Shared/Views/Helpers/SheetRepresentable.swift#L86)
+- [`func handleVisibility()`](../../Shared/Views/Helpers/SheetRepresentable.swift#L108)
+- [`override func viewDidLoad()`](../../Shared/Views/Helpers/SheetRepresentable.swift#L124)
+- [`override func viewDidAppear(_ animated: Bool)`](../../Shared/Views/Helpers/SheetRepresentable.swift#L148)
+- [`func pan(gesture: UIPanGestureRecognizer)`](../../Shared/Views/Helpers/SheetRepresentable.swift#L170)
+- [`func tap(gesture: UITapGestureRecognizer)`](../../Shared/Views/Helpers/SheetRepresentable.swift#L194)
 
-### Shared/Views/LocalAuth/PasscodeView.swift
+### Shared/Views/Helpers/ShareSheet.swift
 
-- [`@ViewBuilder private func buttonsView() -> some View`](../../Shared/Views/LocalAuth/PasscodeView.swift#L73)
-
-### Shared/Views/NewChat/NewChatMenuButton.swift
-
-- [`var body: some View`](../../Shared/Views/NewChat/NewChatMenuButton.swift#L346)
-- [`private func toggleFilterButton() -> some View`](../../Shared/Views/NewChat/NewChatMenuButton.swift#L399)
-
-### Shared/Views/NewChat/NewChatView.swift
-
-- [`var body: some View`](../../Shared/Views/NewChat/NewChatView.swift#L804)
-
-### Shared/Views/Onboarding/ChooseServerOperators.swift
-
-- [`@ViewBuilder func makeBody(configuration: Configuration) -> some View`](../../Shared/Views/Onboarding/ChooseServerOperators.swift#L20)
-
-### Shared/Views/UserSettings/NetworkAndServers/ProtocolServerView.swift
-
-- [`func body(content: Content) -> some View`](../../Shared/Views/UserSettings/NetworkAndServers/ProtocolServerView.swift#L184)
-
-### SimpleX SE/ShareView.swift
-
-- [`var body: some View`](../../SimpleX SE/ShareView.swift#L18)
-- [`private func compose(isLoading: Bool) -> some View`](../../SimpleX SE/ShareView.swift#L88)
+- [`func getTopViewController() -> UIViewController?`](../../Shared/Views/Helpers/ShareSheet.swift#L12)
+- [`func showShareSheet(items: [Any], completed: (() -> Void)? = nil)`](../../Shared/Views/Helpers/ShareSheet.swift#L26)
+- [`func showAlert(`](../../Shared/Views/Helpers/ShareSheet.swift#L38)
+- [`func showAlert(_ a: (title: String, message: String?))`](../../Shared/Views/Helpers/ShareSheet.swift#L57)
+- [`func showAlert(`](../../Shared/Views/Helpers/ShareSheet.swift#L61)
+- [`func showSheet(`](../../Shared/Views/Helpers/ShareSheet.swift#L73)
+- [`func openExternalLink(_ url: URL)`](../../Shared/Views/Helpers/ShareSheet.swift#L94)
+- [`var body: some View`](../../Shared/Views/Helpers/ShareSheet.swift#L123)
+- [`override func viewDidLoad()`](../../Shared/Views/Helpers/ShareSheet.swift#L186)
+- [`@objc private func cancelTapped()`](../../Shared/Views/Helpers/ShareSheet.swift#L402)
+- [`@objc private func confirmTapped()`](../../Shared/Views/Helpers/ShareSheet.swift#L408)
+- [`@objc private func secondTapped()`](../../Shared/Views/Helpers/ShareSheet.swift#L414)
+- [`func showOpenChatAlert<Content: View>(`](../../Shared/Views/Helpers/ShareSheet.swift#L422)
+- [`func close(_ completion: (() -> Void)?)`](../../Shared/Views/Helpers/ShareSheet.swift#L487)
+- [`var body: some View`](../../Shared/Views/Helpers/ShareSheet.swift#L508)
 

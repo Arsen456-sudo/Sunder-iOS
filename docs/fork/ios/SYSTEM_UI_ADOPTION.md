@@ -1,66 +1,29 @@
-# System presentation adoption
+# Standard Apple component adoption
 
-The visual reference is `Shared/Views/UserSettings/AppearanceSettings.swift`:
-standard Apple List, Section, Picker, Toggle, fields and navigation. It remains
-unchanged. The project still uses SwiftUI and UIKit together; this work does not
-claim that every SwiftUI screen was rewritten into a UIViewController.
+AppearanceSettings is the unchanged reference. Current implementation uses the
+same NavigationView, List, Section, Picker, Toggle, Button and toolbar APIs for
+menus/forms/navigation. This is not a claim that message/media content is a settings
+form or that SwiftUI has been rewritten into UIKit.
 
-## Common coverage
+## Concrete replacements after device feedback
+- Avatar menu: a system NavigationView and one List with standard sections/rows,
+  profile switching, native title/Done and appearance Menu. No List inside another
+  ScrollView; no custom glass cards or hand-sized horizontal profile strip.
+- Chat-list top/bottom controls: standard ToolbarItem/ToolbarItemGroup, with original
+  avatar, compose, connection-status and stopped-chat actions.
+- Contact/group/server profiles: native large title and toolbar, standard grouped
+  information and native actions. Server selection uses Picker rows.
+- Chat/folders/calls: standard native button styles and bar materials; original
+  message/editor/voice/call content and actions remain.
+- Profile confirmation: system sheet with List, preserving the profile image,
+  badges, text and every original callback after dismissal.
 
-`SunderSystemInterface` installs grouped list/form defaults, contextual automatic
-controls and system toolbar/scroll-edge presentation on iOS 26+. It is applied at
-the main app root, ThemedBackground, both appSheet overloads, native avatar-sheet
-content, and the share-extension root. Explicit specialized descendant styles
-remain in charge. No global UIKit appearance mutation is added.
+The custom glass navigation controller, manual scroll probe and custom segmented
+selector are removed. Shared SystemInterface.swift supplies defaults, not a custom
+visual replacement. UIKit media/editor bridges and old-OS fallback code remain.
 
-`SYSTEM_UI_INVENTORY.json` records all 187 source files in this scope, including
-content components and non-UI helpers. It is a lexical inventory, not 187 distinct
-screens or proof of runtime coverage. Regenerate with:
-
-```sh
-python3 scripts/ios/audit-system-ui.py
-python3 scripts/ios/audit-system-ui.py --check
-```
-
-CI checks the inventory before compiling the IPA. Hashes normalize line endings.
-
-## Screen families
-
-| Family | System presentation / explicit treatment |
-|---|---|
-| Settings and every settings destination | Common native list/form/picker/toggle defaults via root and themed screen scope |
-| Main chat list and folders | Previously adapted native chrome/search/glass controls; explicit plain chat list retained |
-| Avatar menu and profile switching | Native iOS 26 sheet, accessible large detent, scrollable content; nested destinations open after dismissal |
-| New chat, contacts and deleted chats | Shared native search/filter controls, original link and name-resolution bindings |
-| Chat, selection and pending-contact/member states | Native bars plus shared command surfaces; original editor/renderer/gestures and permission actions retained |
-| Contact/group/channel profiles | Previously adapted compact native chrome and grouped information |
-| Group member profiles | System navigation restored, close action for modal use, original pushed back action retained |
-| Connection/invitation information | System title/close on iOS 26; original QR, sharing, alias-save and deletion paths retained |
-| Onboarding, conditions, database recovery | Shared native prominent action styling; original consent/validation and recovery logic |
-| Database, migration, remote access | Common system form/navigation defaults; original state transitions and confirmations |
-| Authentication and passcode | Native action styling only; password entry, submission guards and redaction unchanged |
-| Calls | Native glass control surfaces, original red end-call button and camera/mic/audio-routing actions |
-| Full-screen media | Dark system presentation; original zoom, swipe, player and close gestures |
-| Profile-confirmation popup | UIKit glass container on iOS 26, original labels, profile data and callbacks |
-| OS alerts, sharing, pickers, web/video bridges | System-owned controllers retain native behavior; no private API or content interception |
-| Share extension | Same system policy and glass comment field; original passphrase, destination and send logic |
-
-## Intentionally hidden navigation
-
-- Chat-list, contact/group profile and server-summary roots have their own existing
-  native headers. Adding another navigation bar would duplicate controls.
-- Welcome, server-consent and network onboarding stages retain their full-page
-  flow and controlled progression. Their actions now use system styling.
-- The hidden bar in ContactConnectionInfo and SunderSystemDetailNavigation is an
-  older-OS fallback. iOS 26 uses native navigation there.
-- Search may hide a title bar while the native search field is active.
-- Media/call/security canvases retain their specialized layouts; they are not
-  converted into settings forms and their content is not covered with glass.
-
-## Validation limits
-
-Source checks cover registration, availability guards, scope propagation, privacy
-redaction, sheet routing, action/state preservation and inventory freshness.
-Compilation and on-device UI validation must be recorded separately. A successful
-build cannot establish visual correctness of every destination, Dynamic Type size,
-iPad layout, accessibility setting or rapid presentation/dismissal sequence.
+## Inventory and verification
+SYSTEM_UI_INVENTORY.json records the current view sources and helpers, not a count
+of screens or proof of visual verification. Run scripts/ios/audit-system-ui.py and
+--check to update/verify; CI checks it. A successful compile cannot validate all
+routes, accessibility sizes, light/dark variants or presentation sequences.

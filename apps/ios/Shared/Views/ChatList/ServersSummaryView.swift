@@ -21,8 +21,6 @@ struct ServersSummaryView: View {
     @State private var timer: Timer? = nil
     @State private var alert: SomeAlert?
     @Environment(\.presentationMode) private var presentationMode
-    @StateObject private var chromeScope = ChatListChromeScope()
-    @ScaledMetric(relativeTo: .headline) private var chromeHeight = 44
 
     @AppStorage(DEFAULT_SHOW_SUBSCRIPTION_PERCENTAGE) private var showSubscriptionPercentage = false
 
@@ -40,20 +38,17 @@ struct ServersSummaryView: View {
         NavigationView {
             viewBody()
                 .navigationTitle("Servers info")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarHidden(true)
+                .navigationBarTitleDisplayMode(.large)
+                .navigationBarHidden(false)
                 .background(Color.black.ignoresSafeArea())
-                .safeAreaInset(edge: .top, spacing: 0) {
-                    VStack(spacing: 0) {
-                        SunderModalChrome(
-                            canShare: serversSummary != nil,
-                            tint: UIColor(theme.colors.primary),
-                            scope: chromeScope,
-                            close: { presentationMode.wrappedValue.dismiss() },
-                            share: shareSummary
-                        )
-                        .frame(height: min(chromeHeight, 88) + 16)
-                        if serversSummary != nil { summaryFilters }
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Done") { presentationMode.wrappedValue.dismiss() }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: shareSummary) { Image(systemName: "square.and.arrow.up") }
+                            .disabled(serversSummary == nil)
+                            .accessibilityLabel(Text("Share"))
                     }
                 }
         }
@@ -98,27 +93,17 @@ struct ServersSummaryView: View {
         }
     }
 
-    private var summaryFilters: some View {
-        VStack(spacing: 8) {
-            if m.users.filter({ $0.user.activeUser || !$0.user.hidden }).count > 1 {
-                ServersSummarySegment(
-                    titles: [NSLocalizedString("All profiles", comment: "Server filter"), NSLocalizedString("Current profile", comment: "Server filter")],
-                    selection: Binding(get: { selectedUserCategory == .allUsers ? 0 : 1 }, set: { selectedUserCategory = $0 == 0 ? .allUsers : .currentUser }),
-                    label: NSLocalizedString("User selection", comment: "Server filter"),
-                    tint: UIColor(theme.colors.primary)
-                )
-                .frame(height: 44)
+    @ViewBuilder private var summaryFilters: some View {
+        if m.users.filter({ $0.user.activeUser || !$0.user.hidden }).count > 1 {
+            Picker("User selection", selection: $selectedUserCategory) {
+                Text("All profiles").tag(PresentedUserCategory.allUsers)
+                Text("Current profile").tag(PresentedUserCategory.currentUser)
             }
-            ServersSummarySegment(
-                titles: [NSLocalizedString("Messages", comment: "Server filter"), NSLocalizedString("Files", comment: "Server filter")],
-                selection: Binding(get: { selectedServerType == .smp ? 0 : 1 }, set: { selectedServerType = $0 == 0 ? .smp : .xftp }),
-                label: NSLocalizedString("Server type", comment: "Server filter"),
-                tint: UIColor(theme.colors.primary)
-            )
-            .frame(height: 44)
         }
-        .padding(.horizontal, 10)
-        .padding(.bottom, 8)
+        Picker("Server type", selection: $selectedServerType) {
+            Text("Messages").tag(PresentedServerType.smp)
+            Text("Files").tag(PresentedServerType.xftp)
+        }
     }
 
     public func encodePrettyPrinted<T: Encodable>(_ value: T) -> String {
@@ -131,6 +116,7 @@ struct ServersSummaryView: View {
     @ViewBuilder private func viewBody() -> some View {
         if let summ = serversSummary {
             List {
+                Section { summaryFilters }
                 switch (selectedUserCategory, selectedServerType) {
                 case (.allUsers, .smp):
                     let smpSumm = summ.allUsersSMP
@@ -208,7 +194,6 @@ struct ServersSummaryView: View {
             .listStyle(.insetGrouped)
             .ifAvailableHideScrollBackground()
             .background(Color.black)
-            .background(ChatListScrollProbe(scope: chromeScope))
         } else {
             Text("No info, try to reload")
                 .foregroundColor(theme.colors.secondary)

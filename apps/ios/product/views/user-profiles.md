@@ -140,3 +140,5 @@ Two-stage confirmation:
 The avatar menu presents as a native iOS 26 sheet and opens each selected settings/
 profile destination after dismissal. Its content scrolls at large text sizes.
 Account loading/switching, hidden profile rules and theme gestures are unchanged.
+
+The current avatar menu has one native List, a system navigation title/Done and standard profile/settings sections. Appearance choices are in a native Menu.

@@ -22,7 +22,7 @@ struct OnboardingButtonStyle: PrimitiveButtonStyle {
             Button(role: configuration.role, action: configuration.trigger) {
                 configuration.label.frame(maxWidth: .infinity)
             }
-            .buttonStyle(.glassProminent)
+            .buttonStyle(.borderedProminent)
             .controlSize(.large)
             .tint(theme.colors.primary)
             .opacity(isDisabled ? 0.4 : 1)

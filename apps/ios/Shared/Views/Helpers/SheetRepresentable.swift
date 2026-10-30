@@ -20,7 +20,6 @@ struct Sheet<SheetContent: View>: ViewModifier {
     @Binding var isPresented: Bool
     let onDismiss: (() -> Void)?
     @ViewBuilder let sheetContent: () -> SheetContent
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     init(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil, @ViewBuilder sheetContent: @escaping () -> SheetContent) {
         _isPresented = isPresented
@@ -31,8 +30,8 @@ struct Sheet<SheetContent: View>: ViewModifier {
     @ViewBuilder func body(content: Content) -> some View {
         if #available(iOS 26.0, *) {
             content.sheet(isPresented: $isPresented, onDismiss: onDismiss) {
-                ScrollView { sheetContent() }
-                    .presentationDetents(dynamicTypeSize.isAccessibilitySize ? [.large] : [.medium, .large])
+                sheetContent()
+                    .presentationDetents([.large])
                     .presentationDragIndicator(.visible)
                     .sunderPrivateSheet()
             }

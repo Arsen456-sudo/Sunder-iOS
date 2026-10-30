@@ -225,10 +225,7 @@ struct ChatView: View {
             if #available(iOS 26.0, *) {
                 if showSearch {
                     searchToolbar()
-                        .padding(10)
-                        .sunderGlass(cornerRadius: 24)
-                        .padding(.horizontal, 10)
-                        .padding(.bottom, 8)
+                        .background(.bar)
                 }
             } else {
                 VStack(spacing: .zero) {
@@ -245,6 +242,7 @@ struct ChatView: View {
         )
         .background(theme.colors.background)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(false)
         .environmentObject(theme)
         .confirmationDialog(selectedChatItems?.count == 1 ? "Delete message?" : "Delete \((selectedChatItems?.count ?? 0)) messages?", isPresented: $showDeleteSelectedMessages, titleVisibility: .visible) {
             Button("Delete for me", role: .destructive) {

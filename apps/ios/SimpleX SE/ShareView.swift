@@ -118,7 +118,7 @@ struct ShareView: View {
                 .padding(6)
 
             }
-            .sunderGlass(cornerRadius: 24)
+            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 20))
             .padding(8)
         }
         .background(.thinMaterial)

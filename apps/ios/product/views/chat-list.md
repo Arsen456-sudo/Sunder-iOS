@@ -24,12 +24,12 @@ Main screen of the SimpleX Chat app. Displays all conversations sorted by last a
 | New chat button (pencil icon) | Trailing | Opens `NewChatSheet` modal |
 
 The toolbar supports two layout modes:
-- **Standard (top)**: Three floating UIKit glass islands in the root list top safe area: circular avatar, plain tappable Chats/status text and circular compose action. Existing avatar, localized Chats/status control and new-chat actions are retained. Search hides this bar; pushed screens own their navigation bars.
-- **One-hand UI (bottom)**: Floating avatar and compose buttons share a native glass container, with plain tappable Chats/status text between them, inset 10 points from the screen edges. Only the list is vertically flipped; controls remain upright. iOS 26 uses interactive system Liquid Glass. Older versions use system materials; Reduce Transparency uses opaque accessible surfaces.
+- **Standard (top)**: Native navigation-bar toolbar items for the avatar, tappable Chats/status and compose action. Existing avatar, localized Chats/status control and new-chat actions are retained. Search hides this bar; pushed screens own their navigation bars.
+- **One-hand UI (bottom)**: Native bottom-toolbar items for avatar, status and compose. The existing one-hand list inversion is retained; the toolbar stays upright. The OS owns material, spacing and accessibility behavior.
 
 ### Search Bar
 
-- Native UIKit search bar with magnifying glass, clear and cancel controls; a separate native unread-filter button
+- Standard TextField with clear/cancel Buttons and a standard unread-filter Button
 - When active, `searchMode = true` hides the navigation bar and shows inline search
 - Filters chat list in real-time by contact/group name and message content
 - Detects pasted SimpleX links (`searchShowingSimplexLink`) and offers to connect
@@ -137,42 +137,17 @@ The investment banner/sheet and country-gated promotion are removed. Search, onb
 
 See [preparation scope](../../spec/client/navigation.md#sunder-publication-preparation--2026-10-28).
 
-### Scoped UIKit redesign (2026-10-29)
+### Standard Apple components (2026-10-30)
+The avatar menu uses NavigationView, List, Section, Label and Button just like
+AppearanceSettings. It has one scrolling List, a system large title and Done
+button. Profile rows, account switching, badge/unread display, disabled states
+and original settings destinations are preserved. Appearance mode is chosen via
+a standard Menu with System/Light/Dark options. Native presentation is large and
+has no extra ScrollView wrapping the List; destinations open after dismissal.
 
-Only the chat-list controls are redesigned. Chat rows, tags, onboarding, profile
-switcher and modal content retain their existing SwiftUI implementation and actions.
-The root list uses the system soft scroll-edge effect behind its controls on iOS 26;
-the effect detaches when leaving this screen. No conversation or settings UI changes.
-
-The app-level `UIDesignRequiresCompatibility` flag is false, enabling the OS's
-current UI design. This prerequisite is global: system-owned bars, sheets and
-controls elsewhere may also adopt the current appearance, although only the
-chat-list layout is redesigned. Explicit glass stays availability-guarded.
-
-### Compact controls and server information (2026-10-29)
-The avatar/compose circles are 44 points at the default text size, with a 28-point
-avatar. Chats has no material or outline and remains tappable over the system
-scroll-edge effect. Header height remains Dynamic Type-aware.
-
-Tapping Chats opens Servers info with the same compact glass close/share buttons
-and plain centered title. Native profile and Messages/Files segmented selectors
-remain above the grouped scrolling statistics. Sharing stays disabled until data
-is available. Reconnect/reset confirmations, percentage setting, server details
-and all statistics are preserved. Detail pages keep system back navigation.
-
-### Shared native glass controls (2026-10-30)
-Folder filters (preset, custom, collapsed menu and Add list) now use individual
-system-glass surfaces while retaining all tap/long-press routes. Main header action
-symbols use adaptive label color: white in dark appearance, dark in light appearance.
-The avatar menu has rounded glass profile cards and one grouped glass action panel;
-its account switching, hidden-profile rules and theme gestures remain unchanged.
-Servers info uses a black background and dark appearance. Its profile and Messages /
-Files selectors use actual UIKit glass with equally sized buttons and a separate
-active capsule. Statistics, sharing, confirmations and detail routes are unchanged.
-
-### Native presentation boundaries (2026-10-30)
-The avatar menu uses the iOS 26 system sheet with a grabber and scrollable content;
-accessibility sizes start at the large detent. Selecting a menu destination closes
-this sheet first, then opens the original destination. Account switching and hidden
-profile behavior are retained. New-chat/contacts/deleted-chat search uses the same
-native field/filter controls as the main list, with existing resolution logic.
+Main-list controls use standard toolbar items in the top or reachable bottom
+placement. Chats remains a tappable status button opening server information;
+status polling is cancellable. Folder filters use standard bordered Buttons and
+Menu, and native Edit context menus retain the tag-management destination.
+Servers info uses a native large title, Done/share toolbar items and standard
+Picker rows in a Section. Its black appearance and statistics are retained.

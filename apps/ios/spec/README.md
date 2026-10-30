@@ -73,10 +73,9 @@ SimpleXApp (root entry point)
 | `SimpleXChat/ChatTypes.swift` | User, ChatInfo, Contact, GroupInfo, ChatItem data types |
 | `SimpleXChat/SimpleX.h` | C header for Haskell FFI functions |
 
-Chat-list native controls: `Shared/Views/ChatList/ChatListChromeController.swift` and `ChatListNativeControls.swift` are covered by [client/chat-list.md](client/chat-list.md) and [../product/views/chat-list.md](../product/views/chat-list.md). SwiftUI still owns rows and modal contents.
 
-Server-information chrome and its preserved statistics view (`Shared/Views/ChatList/ServersSummaryView.swift`) are documented in [client/chat-list.md](client/chat-list.md#11-compact-native-chrome-and-server-information).
+Server-information chrome and its preserved statistics view (`Shared/Views/ChatList/ServersSummaryView.swift`) are documented in [client/chat-list.md](client/chat-list.md#11-standard-apple-component-implementation).
 
-Shared native glass (`Shared/Views/ChatList/SunderGlassDesign.swift`): [chat-list](client/chat-list.md#12-shared-native-glass-presentation), [conversation/profile](client/chat-view.md), [compose](client/compose.md). Message rendering and data-driven content remain SwiftUI.
+Shared standard components (`Shared/Views/ChatList/SystemInterface.swift`): [chat-list](client/chat-list.md#11-standard-apple-component-implementation), [conversation/profile](client/chat-view.md), [compose](client/compose.md). Message rendering and data-driven content remain SwiftUI.
 
-[System interface](client/system-interface.md): app/theme/sheet defaults matching AppearanceSettings; source index includes SunderGlassDesign, SimpleXApp, ThemedBackground, AppSheet, SheetRepresentable, member/invitation navigation, call/media/secure-action controls and ShareView.
+[System interface](client/system-interface.md): app/theme/sheet defaults matching AppearanceSettings; source index includes SystemInterface, SimpleXApp, ThemedBackground, AppSheet, SheetRepresentable, member/invitation navigation, call/media/secure-action controls and ShareView.

@@ -171,9 +171,7 @@ struct ChatListView: View {
     @StateObject private var chatTagsModel = ChatTagsModel.shared
     @State private var scrollToItemId: ChatItem.ID? = nil
 
-    @StateObject private var chromeScope = ChatListChromeScope()
     @State private var showServersSummary = false
-    @ScaledMetric(relativeTo: .headline) private var chromeHeight = 44
 
     @AppStorage(GROUP_DEFAULT_ONE_HAND_UI, store: groupDefaults) private var oneHandUI = true
     @AppStorage(DEFAULT_ONE_HAND_UI_CARD_SHOWN) private var oneHandUICardShown = false
@@ -248,7 +246,6 @@ struct ChatListView: View {
             chatList
                 .background(theme.colors.background)
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarHidden(true)
                 .scaleEffect(x: 1, y: oneHandUI ? -1 : 1, anchor: .center)
         }
         .onDisappear {
@@ -281,36 +278,46 @@ struct ChatListView: View {
     
     @ViewBuilder private func withToolbar(content: () -> some View) -> some View {
         content()
-            .safeAreaInset(edge: oneHandUI ? .bottom : .top, spacing: 0) {
-                if oneHandUI || !searchMode {
-                    ChatListNativeChrome(
-                        floating: oneHandUI,
-                        avatar: chatModel.currentUser?.image,
-                        unreadProfiles: chatModel.users.contains { !$0.user.activeUser && !$0.user.hidden && $0.unreadCount > 0 },
-                        running: chatModel.chatRunning,
-                        showsStatus: !shouldShowOnboarding,
-                        primary: theme.colors.primary,
-                        online: chatModel.networkInfo.online,
-                        scope: chromeScope,
-                        profileAction: { userPickerShown = true },
-                        composeAction: {
-                            if chatModel.chatRunning == true {
-                                connectProgressManager.cancelConnectProgress()
-                                showNewChatSheet = true
-                            } else if chatModel.chatRunning == false {
-                                AlertManager.shared.showAlertMsg(
-                                    title: "Chat is stopped",
-                                    message: "You can start chat via app Settings / Database or by restarting the app"
-                                )
-                            }
-                        },
-                        statusAction: { showServersSummary = true },
-                        searchAction: { scrollToSearchBar = true }
-                    )
-                    .frame(height: min(chromeHeight, 88) + 16)
-                    .id(oneHandUI)
+            .navigationBarHidden(oneHandUI || searchMode)
+            .toolbar {
+                if oneHandUI {
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        profileButton
+                        Spacer()
+                        if !shouldShowOnboarding {
+                            ChatListStatusButton { showServersSummary = true }
+                            Spacer()
+                        }
+                        composeButton
+                    }
+                } else if !searchMode {
+                    ToolbarItem(placement: .navigationBarLeading) { profileButton }
+                    ToolbarItem(placement: .principal) {
+                        if !shouldShowOnboarding { ChatListStatusButton { showServersSummary = true } }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) { composeButton }
                 }
             }
+    }
+
+    private var profileButton: some View {
+        Button { userPickerShown = true } label: {
+            ZStack(alignment: .topTrailing) {
+                ProfileImage(imageStr: chatModel.currentUser?.image, size: 28)
+                if chatModel.users.contains(where: { !$0.user.activeUser && !$0.user.hidden && $0.unreadCount > 0 }) {
+                    Circle().fill(theme.colors.primary).frame(width: 8, height: 8)
+                }
+            }
+        }
+        .accessibilityLabel(Text("Your profile"))
+    }
+
+    @ViewBuilder private var composeButton: some View {
+        switch chatModel.chatRunning {
+        case .some(true): NewChatMenuButton(showNewChatSheet: $showNewChatSheet)
+        case .some(false): chatStoppedIcon()
+        case .none: EmptyView()
+        }
     }
 
     private var shouldShowOnboarding: Bool {
@@ -398,7 +405,6 @@ struct ChatListView: View {
                     }
                 }
                 .listStyle(.plain)
-                .background(ChatListScrollProbe(scope: chromeScope))
                 .onChange(of: chatModel.chatId) { currentChatId in
                     if let chatId = chatModel.chatToTop, currentChatId != chatId {
                         chatModel.chatToTop = nil
@@ -780,49 +786,23 @@ struct TagsView: View {
         }
         ForEach(chatTagsModel.userTags, id: \.id) { tag in
             let current = tag == selectedTag
-            let color: Color = current ? .accentColor : .secondary
-            ZStack {
+            Button { setActiveFilter(filter: .userTag(tag)) } label: {
                 HStack(spacing: 4) {
-                    if let emoji = tag.chatTagEmoji {
-                        Text(emoji)
-                    } else {
-                        Image(systemName: current ? "tag.fill" : "tag")
-                            .foregroundColor(color)
+                    if let emoji = tag.chatTagEmoji { Text(emoji) }
+                    else { Image(systemName: "tag") }
+                    Text(tag.chatTagText).fontWeight(current ? .semibold : .regular)
+                    if (chatTagsModel.unreadTags[tag.chatTagId] ?? 0) > 0 {
+                        Circle().fill(theme.colors.primary).frame(width: 6, height: 6)
                     }
-                    ZStack {
-                        let badge = Text(verbatim: (chatTagsModel.unreadTags[tag.chatTagId] ?? 0) > 0 ? " ●" : "").font(.footnote)
-                        (Text(tag.chatTagText).fontWeight(.semibold) + badge).foregroundColor(.clear)
-                        Text(tag.chatTagText).fontWeight(current ? .semibold : .regular).foregroundColor(color) + badge.foregroundColor(theme.colors.primary)
-                    }
-                }
-                .onTapGesture {
-                    setActiveFilter(filter: .userTag(tag))
-                }
-                .onLongPressGesture {
-                    let screenHeight = UIScreen.main.bounds.height
-                    let reservedSpace: Double = 4 * 44 // 2 for padding, 1 for "Create list" and another for extra tag
-                    let tagsSpace = Double(max(chatTagsModel.userTags.count, 3)) * 44
-                    let fraction = min((reservedSpace + tagsSpace) / screenHeight, 0.62)
-
-                    parentSheet = SomeSheet(
-                        content: {
-                            AnyView(
-                                NavigationView {
-                                    TagListView(chat: nil)
-                                        .modifier(ThemedBackground(grouped: true))
-                                }
-                            )
-                        },
-                        id: "tag list",
-                        fraction: fraction
-                    )
                 }
             }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 8)
-            .sunderGlass()
+            .buttonStyle(.bordered)
+            .tint(current ? .accentColor : .secondary)
+            .contextMenu {
+                Button("Edit") { presentTagLists() }
+            }
         }
-        
+
         Button {
             parentSheet = SomeSheet(
                 content: {
@@ -844,9 +824,8 @@ struct TagsView: View {
                 Image(systemName: "plus")
             }
         }
-        .foregroundColor(.secondary)
-        .padding(10)
-        .sunderGlass()
+        .buttonStyle(.bordered)
+        .tint(.secondary)
     }
 
     @ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View {
@@ -859,21 +838,12 @@ struct TagsView: View {
         let (icon, menuIcon, text) = presetTagLabel(tag: tag, active: active)
         let color: Color = active ? .accentColor : .secondary
 
-        HStack(spacing: 4) {
-            Image(systemName: menuIcon ?? icon)
-                .foregroundColor(color)
-            ZStack {
-                Text(text).fontWeight(.semibold).foregroundColor(.clear)
-                Text(text).fontWeight(active ? .semibold : .regular).foregroundColor(color)
-            }
+        Button { setActiveFilter(filter: .presetTag(tag)) } label: {
+            Label(text, systemImage: menuIcon ?? icon)
+                .fontWeight(active ? .semibold : .regular)
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 8)
-        .sunderGlass()
-        .contentShape(Capsule())
-        .onTapGesture {
-            setActiveFilter(filter: .presetTag(tag))
-        }
+        .buttonStyle(.bordered)
+        .tint(color)
     }
 
     private func expandedPresetTagsFiltersView() -> some View {
@@ -925,11 +895,24 @@ struct TagsView: View {
                     .foregroundColor(.secondary)
             }
         }
-        .frame(minWidth: 28)
-        .padding(10)
-        .sunderGlass()
+        .buttonStyle(.bordered)
     }
     
+    private func presentTagLists() {
+        let reservedSpace: Double = 4 * 44
+        let tagsSpace = Double(max(chatTagsModel.userTags.count, 3)) * 44
+        let fraction = min((reservedSpace + tagsSpace) / UIScreen.main.bounds.height, 0.62)
+        parentSheet = SomeSheet(
+            content: {
+                AnyView(NavigationView {
+                    TagListView(chat: nil).modifier(ThemedBackground(grouped: true))
+                })
+            },
+            id: "tag list",
+            fraction: fraction
+        )
+    }
+
     private func presetTagLabel(tag: PresetTag, active: Bool) -> (item: String, menu: String?, label: LocalizedStringKey) {
         switch tag {
         case .groupReports: (item: active ? "flag.fill" : "flag", menu: nil, label: "Reports")

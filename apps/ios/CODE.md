@@ -166,9 +166,8 @@ After completing all changes (code + documentation), you MUST run an adversarial
 | Shared/SimpleXApp.swift | spec/architecture.md | product/flows/onboarding.md |
 | Shared/AppDelegate.swift | spec/services/notifications.md | product/flows/onboarding.md |
 | Shared/Views/ChatList/ChatListView.swift | spec/client/chat-list.md | product/views/chat-list.md |
-| Shared/Views/ChatList/ChatListChromeController.swift | spec/client/chat-list.md | product/views/chat-list.md |
 | Shared/Views/ChatList/ChatListNativeControls.swift | spec/client/chat-list.md | product/views/chat-list.md |
-| Shared/Views/ChatList/SunderGlassDesign.swift | spec/client/chat-list.md, spec/client/chat-view.md, spec/client/compose.md | product/views/chat-list.md, product/views/chat.md, product/views/contact-info.md, product/views/group-info.md |
+| Shared/Views/ChatList/SystemInterface.swift | spec/client/chat-list.md, spec/client/chat-view.md, spec/client/compose.md | product/views/chat-list.md, product/views/chat.md, product/views/contact-info.md, product/views/group-info.md |
 | Shared/Views/ChatList/ServersSummaryView.swift | spec/client/chat-list.md | product/views/chat-list.md |
 | Shared/Views/ChatList/GetStakeBanner.swift | spec/client/chat-list.md | product/views/chat-list.md |
 | Shared/Views/Chat/ChatView.swift | spec/client/chat-view.md | product/views/chat.md |
@@ -231,7 +230,7 @@ After completing all changes (code + documentation), you MUST run an adversarial
 
 | Source Location | Spec Document | Product Document |
 |---|---|---|
-| Shared/Views/ChatList/SunderGlassDesign.swift; Shared/Theme/Theme.swift; Shared/SimpleXApp.swift | spec/client/system-interface.md, spec/services/theme.md | product/views/settings.md |
+| Shared/Views/ChatList/SystemInterface.swift; Shared/Theme/Theme.swift; Shared/SimpleXApp.swift | spec/client/system-interface.md, spec/services/theme.md | product/views/settings.md |
 | Shared/Views/Helpers/{AppSheet,SheetRepresentable,ShareSheet}.swift | spec/client/system-interface.md | product/views/chat-list.md, product/views/user-profiles.md |
 | Shared/Views/Onboarding/ChooseServerOperators.swift; Shared/Views/LocalAuth/PasscodeView.swift | spec/client/system-interface.md | product/views/onboarding.md, product/views/settings.md |
 | Shared/Views/NewChat/{NewChatView,NewChatMenuButton}.swift; Shared/Views/ChatList/ContactConnectionInfo.swift | spec/client/system-interface.md | product/views/chat-list.md |

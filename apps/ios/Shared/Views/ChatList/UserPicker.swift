@@ -29,6 +29,35 @@ struct UserPicker: View {
     private let sectionShape = RoundedRectangle(cornerRadius: 24, style: .continuous)
 
     var body: some View {
+        Group {
+            if #available(iOS 26.0, *) { systemMenu }
+            else { legacyMenu }
+        }
+        .onAppear {
+            // This check prevents the call of listUsers after the app is suspended, and the database is closed.
+            if case .active = scenePhase, hasChatCtrl() {
+                currentUser = m.currentUser?.userId
+                Task {
+                    do {
+                        let users = try await listUsersAsync()
+                        await MainActor.run {
+                            m.users = users
+                            currentUser = m.currentUser?.userId
+                        }
+                    } catch {
+                        logger.error("Error loading users \(responseError(error))")
+                    }
+                }
+            }
+        }
+        .onChange(of: userPickerShown) {
+            if !$0 { resetScroll() }
+        }
+        .modifier(ThemedBackground(grouped: true))
+        .disabled(switchingProfile)
+    }
+
+    @ViewBuilder private var legacyMenu: some View {
         let otherUsers: [UserInfo] = m.users
             .filter { u in !u.user.hidden && u.user.userId != m.currentUser?.userId }
             .sorted(using: KeyPathComparator<UserInfo>(\.user.activeOrder, order: .reverse))
@@ -46,8 +75,7 @@ struct UserPicker: View {
                         }
                         .padding(rowPadding)
                         .frame(width: otherUsers.isEmpty ? sectionWidth : currentUserWidth, alignment: .leading)
-                        .modifier(ListRow(transparent: true) { activeSheet = .currentProfile })
-                        .sunderGlass(cornerRadius: 24)
+                        .modifier(ListRow { activeSheet = .currentProfile })
                         .clipShape(sectionShape)
                         .disabled(stopped)
                         .opacity(stopped ? 0.4 : 1)
@@ -93,33 +121,83 @@ struct UserPicker: View {
                         }
                 }
             }
-            .sunderGlass(cornerRadius: 24)
+            .background(Color(uiColor: .secondarySystemGroupedBackground))
             .clipShape(sectionShape)
             .padding(.horizontal, sectionHorizontalPadding)
             .padding(.bottom, sectionSpacing)
         }
-        .onAppear {
-            // This check prevents the call of listUsers after the app is suspended, and the database is closed.
-            if case .active = scenePhase, hasChatCtrl() {
-                currentUser = m.currentUser?.userId
-                Task {
-                    do {
-                        let users = try await listUsersAsync()
-                        await MainActor.run {
-                            m.users = users
-                            currentUser = m.currentUser?.userId
+    }
+
+    private var systemMenu: some View {
+        let stopped = m.chatRunning != true
+        let users = m.users
+            .filter { !$0.user.hidden && $0.user.userId != m.currentUser?.userId }
+            .sorted(using: KeyPathComparator<UserInfo>(\.user.activeOrder, order: .reverse))
+        return NavigationView {
+            List {
+                if let user = m.currentUser {
+                    Section {
+                        Button { activeSheet = .currentProfile } label: {
+                            HStack(spacing: 12) {
+                                ProfileImage(imageStr: user.image, size: 44)
+                                profileName(user).foregroundStyle(.primary)
+                                Spacer()
+                                Image(systemName: "chevron.right").foregroundStyle(.secondary)
+                            }
                         }
-                    } catch {
-                        logger.error("Error loading users \(responseError(error))")
+                        .disabled(stopped)
+                    }
+                }
+                if m.currentUser != nil && !users.isEmpty {
+                    Section("Your chat profiles") {
+                        ForEach(users) { info in
+                            Button { switchProfile(info) } label: {
+                                HStack(spacing: 12) {
+                                    ProfileImage(imageStr: info.user.image, size: 36)
+                                    NameWithBadge(Text(info.user.displayName), info.user.profile.localBadge, .body)
+                                        .foregroundStyle(.primary)
+                                    Spacer()
+                                    if info.unreadCount > 0 { userUnreadBadge(info, theme: theme) }
+                                }
+                            }
+                            .disabled(stopped)
+                        }
+                    }
+                }
+                Section {
+                    systemMenuRow("qrcode", title: m.userAddress == nil ? "Create SimpleX address" : "Your SimpleX address", sheet: .address, disabled: stopped)
+                    systemMenuRow("switch.2", title: "Chat preferences", sheet: .chatPreferences, disabled: stopped)
+                    systemMenuRow("person.crop.rectangle.stack", title: "Your chat profiles", sheet: .chatProfiles, disabled: stopped)
+                    systemMenuRow("desktopcomputer", title: "Use from desktop", sheet: .useFromDesktop, disabled: stopped)
+                    systemMenuRow("gearshape", title: "Settings", sheet: .settings)
+                }
+                Section {
+                    Menu {
+                        Button("System") { ThemeManager.applyTheme(DefaultTheme.SYSTEM_THEME_NAME) }
+                        Button("Light") { ThemeManager.applyTheme(DefaultTheme.LIGHT.themeName) }
+                        Button("Dark") { ThemeManager.applyTheme(systemDarkThemeDefault.get()) }
+                    } label: {
+                        Label("Appearance", systemImage: colorScheme == .light ? "sun.max" : "moon.fill")
                     }
                 }
             }
+            .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") { userPickerShown = false }
+                }
+            }
+            .modifier(ThemedBackground(grouped: true))
         }
-        .onChange(of: userPickerShown) {
-            if !$0 { resetScroll() }
+        .navigationViewStyle(.stack)
+    }
+
+    private func systemMenuRow(_ icon: String, title: LocalizedStringKey, sheet: UserPickerSheet, disabled: Bool = false) -> some View {
+        Button { activeSheet = sheet } label: {
+            Label(title, systemImage: icon)
         }
-        .modifier(ThemedBackground(grouped: true))
-        .disabled(switchingProfile)
+        .disabled(disabled)
     }
 
     private func userView(_ u: UserInfo, size: CGFloat) -> some View {
@@ -135,28 +213,31 @@ struct UserPicker: View {
                 .lineLimit(1)
         }
         .padding(rowPadding)
-        .modifier(ListRow(transparent: true) {
-            switchingProfile = true
-            Task {
-                do {
-                    try await changeActiveUserAsync_(u.user.userId, viewPwd: nil)
-                    await MainActor.run {
-                        switchingProfile = false
-                        userPickerShown = false
-                    }
-                } catch {
-                    await MainActor.run {
-                        switchingProfile = false
-                        showAlert(
-                            NSLocalizedString("Error switching profile!", comment: "alertTitle"),
-                            message: String.localizedStringWithFormat(NSLocalizedString("Error: %@", comment: "alert message"), responseError(error))
-                        )
-                    }
+        .modifier(ListRow {
+            switchProfile(u)
+        })
+        .clipShape(sectionShape)
+    }
+
+    private func switchProfile(_ u: UserInfo) {
+        switchingProfile = true
+        Task {
+            do {
+                try await changeActiveUserAsync_(u.user.userId, viewPwd: nil)
+                await MainActor.run {
+                    switchingProfile = false
+                    userPickerShown = false
+                }
+            } catch {
+                await MainActor.run {
+                    switchingProfile = false
+                    showAlert(
+                        NSLocalizedString("Error switching profile!", comment: "alertTitle"),
+                        message: String.localizedStringWithFormat(NSLocalizedString("Error: %@", comment: "alert message"), responseError(error))
+                    )
                 }
             }
-        })
-        .sunderGlass(cornerRadius: 24)
-        .clipShape(sectionShape)
+        }
     }
 
     private func openSheetOnTap(_ icon: String, title: LocalizedStringKey, sheet: UserPickerSheet, showDivider: Bool = true, disabled: Bool = false) -> some View {
@@ -167,7 +248,7 @@ struct UserPicker: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, rowPadding)
             .padding(.vertical, rowVerticalPadding)
-            .modifier(ListRow(transparent: true) { activeSheet = sheet })
+            .modifier(ListRow { activeSheet = sheet })
             .disabled(disabled)
             if showDivider {
                 Divider().padding(.horizontal, 16)

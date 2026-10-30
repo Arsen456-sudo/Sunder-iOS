@@ -153,9 +153,7 @@ Shown when `developerTools` is enabled:
 - `Shared/Views/Chat/ContactPreferencesView.swift` -- Per-contact feature preferences (timed messages, reactions, voice, calls, file transfer, full delete)
 - `Shared/Views/Chat/VerifyCodeView.swift` -- Security code verification via QR scan or visual comparison
 
-### Native profile presentation (2026-10-30)
-The profile uses a compact native glass close control and plain centered title, a
-144-point circular photo, inset grouped information and rounded glass action buttons.
-Actions retain localized labels, outer disabled states and permission checks. An
-unavailable call is visually dimmed but still explains why it cannot be made.
-Action widths account for spacing so the row fits the available width.
+### Standard profile controls (2026-10-30)
+The contact profile uses a system large title and Done toolbar item, grouped List
+information and standard bordered action Buttons. The circular photo, localized
+action labels, permission checks and unavailable-call explanations remain intact.

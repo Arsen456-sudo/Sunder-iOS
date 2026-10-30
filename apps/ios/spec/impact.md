@@ -52,9 +52,8 @@
 | Shared/SimpleXApp.swift | PC1 through PC31 | High | App entry point — initialization affects everything |
 | Shared/AppDelegate.swift | PC18 | Medium | Push notification registration |
 | Shared/Views/ChatList/ChatListView.swift | PC1, PC28 | High | Main screen rendering and filtering |
-| Shared/Views/ChatList/ChatListChromeController.swift | PC1, PC28 | High | Main screen rendering and filtering |
 | Shared/Views/ChatList/ChatListNativeControls.swift | PC1, PC28 | High | Main screen rendering and filtering |
-| Shared/Views/ChatList/SunderGlassDesign.swift | PC1, PC2, PC3, PC4, PC25, PC28 | Medium | Shared native glass surfaces and server selector |
+| Shared/Views/ChatList/SystemInterface.swift | PC1, PC2, PC3, PC4, PC25, PC28 | Medium | Shared standard Apple presentation defaults |
 | Shared/Views/ChatList/UserPicker.swift | PC1, PC19, PC21 | Medium | Avatar-menu surfaces; account actions unchanged |
 | Shared/Views/ChatList/ServersSummaryView.swift | PC1, PC25 | Medium | Server-information modal, filters and native chrome |
 | Shared/Views/ChatList/GetStakeBanner.swift | PC1 | Low | Crowdfunding banner and shared banner card chrome |
@@ -189,7 +188,7 @@ FileUtils.swift also affects PC24 wallpaper initialization; missing group paths 
 
 | Source | Concepts | Effect |
 |---|---|---|
-| Shared/SimpleXApp.swift; Shared/Theme/Theme.swift; SunderGlassDesign.swift | PC1 through PC31 | Shared presentation defaults; domain state unchanged |
+| Shared/SimpleXApp.swift; Shared/Theme/Theme.swift; SystemInterface.swift | PC1 through PC31 | Shared presentation defaults; domain state unchanged |
 | Helpers/{AppSheet,SheetRepresentable,ShareSheet}.swift; ChatListView.swift | PC1, PC19, PC21, PC22 | Native sheet routing and preserved privacy redaction |
 | GroupMemberInfoView.swift; ContactConnectionInfo.swift; ProtocolServerView.swift | PC3, PC12, PC14, PC25 | Native navigation only |
 | Onboarding/ChooseServerOperators.swift; LocalAuth/PasscodeView.swift | PC19, PC22, PC23, PC25 | Native action style; roles and guards retained |

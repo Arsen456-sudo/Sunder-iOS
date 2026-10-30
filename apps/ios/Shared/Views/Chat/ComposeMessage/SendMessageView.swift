@@ -95,7 +95,7 @@ struct SendMessageView: View {
             }
         }
         .padding(.vertical, 1)
-        .sunderGlass(cornerRadius: 24)
+        .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 20))
         .onChange(of: composeState.message, perform: { text in updateFont(text) })
         .padding(.vertical, 8)
     }

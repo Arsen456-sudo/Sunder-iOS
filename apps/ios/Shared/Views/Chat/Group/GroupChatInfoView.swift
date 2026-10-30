@@ -30,8 +30,6 @@ struct GroupChatInfoView: View {
     @State private var groupLinkMemberRole: GroupMemberRole = .member
     @State private var groupLinkNavLinkActive: Bool = false
     @State private var addMembersNavLinkActive: Bool = false
-    @StateObject private var chromeScope = ChatListChromeScope()
-    @ScaledMetric(relativeTo: .headline) private var chromeHeight = 44
     @State private var connectionStats: ConnectionStats?
     @State private var connectionCode: String?
     @State private var sendReceipts = SendReceipts.userDefault(true)
@@ -271,19 +269,11 @@ struct GroupChatInfoView: View {
                 }
                 .modifier(ThemedBackground(grouped: true))
                 .listStyle(.insetGrouped)
-                .navigationBarHidden(true)
-                .background(ChatListScrollProbe(scope: chromeScope))
-                .safeAreaInset(edge: .top, spacing: 0) {
-                    SunderModalChrome(
-                        title: chat.chatInfo.chatViewName,
-                        showsAction: false,
-                        canShare: false,
-                        tint: UIColor(theme.colors.primary),
-                        scope: chromeScope,
-                        close: { dismiss() },
-                        share: {}
-                    )
-                    .frame(height: min(chromeHeight, 88) + 16)
+                .navigationBarHidden(false)
+                .navigationTitle(chat.chatInfo.chatViewName)
+                .navigationBarTitleDisplayMode(.large)
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
                 }
                 .disabled(progressIndicator)
                 .opacity(progressIndicator ? 0.6 : 1)
