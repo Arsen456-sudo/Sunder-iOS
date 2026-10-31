@@ -139,6 +139,24 @@ class ItemsModel: ObservableObject {
         }
     }
 
+    // Spec: spec/state.md#openChatFromList
+    @MainActor func openChatFromList(_ chatId: ChatId) {
+        navigationTimeoutTask?.cancel()
+        loadChatTask?.cancel()
+        reversedChatItems = []
+        chatState.clear()
+        preloadState.clear()
+        showLoadingProgress = nil
+        isLoading = true
+        ChatModel.shared.chatId = chatId
+        loadChatTask = Task {
+            await loadChat(chatId: chatId, im: self, clearItems: false)
+            guard !Task.isCancelled else { return }
+            isLoading = false
+            showLoadingProgress = nil
+        }
+    }
+
     // Spec: spec/state.md#loadOpenChatNoWait
     func loadOpenChatNoWait(_ chatId: ChatId, _ openAroundItemId: ChatItem.ID? = nil) {
         navigationTimeoutTask?.cancel()

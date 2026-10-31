@@ -90,3 +90,15 @@ avatar trailing, independent native glass styles and no shared toolbar backing.
 SunderToolbarIdentity has been removed, rather than repeatedly moving UIKit items
 after layout. Root tab hiding uses native will callbacks and animated:false,
 including selection/interactive-cancel restoration. Device acceptance remains pending.
+
+## Native matched-header follow-up (2026-10-31)
+Title is now a source-owned UIKit center UIBarButtonItem matching sunder.context,
+not a principal titleView or a relocated trailing SwiftUI item. It uses native glass
+backing, a 44pt hosted action, and native editor navigation style. Avatar image is
+32pt in its separate native bar item. Search delegates cancel layout to the system.
+FolderControl has actual UIGlassEffect; the native tab bar is explicitly associated
+with the list's bottom soft scroll-edge effect. Ordinary list taps no longer wait
+250ms before selecting the route; async loading and cancelled publication are guarded.
+Windows source checks are not device visual/performance verification. CI must compile
+and iPhone checks must cover both navigation directions, narrow widths, long titles,
+search cancel, light/dark themes, folder overflow and rapid open/back navigation.

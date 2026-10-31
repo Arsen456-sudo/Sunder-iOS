@@ -188,3 +188,15 @@ native push/pop matching with back, centered chat title and avatar respectively.
 The tab bar uses immediate native visibility updates at root navigation boundaries
 and tab selection; it does not wait for a hide animation after the transition.
 The existing Change/filter/compose controls and search behavior are unchanged.
+
+## Native list corrections (2026-10-31)
+Folders use a real system glass capsule behind the existing segmented control.
+The list's bottom soft scroll-edge effect is explicitly bound to the native tab
+bar. Search reserves its cancel control through UISearchController itself, rather
+than competing with an unrelated trailing button; cancelling clears text, link and
+connection progress through existing state handlers. UIKit controls its layout.
+Ordinary list taps select the chat route immediately after clearing prior message
+state, without the old 250ms navigation timeout. Messages load asynchronously;
+other callback-based navigation entry points retain their existing semantics.
+No navigation animation is disabled. Performance and visual acceptance on iPhone
+are still required; removing a deliberate wait is not a measured 1-2 second gain.

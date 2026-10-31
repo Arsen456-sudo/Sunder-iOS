@@ -60,9 +60,9 @@ must compile before device validation. See [adoption report](../../../../docs/fo
 - [`final class SunderMainNavigation: ObservableObject`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L233)
 - [`struct SunderMainTabs: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L241)
 - [`struct SunderFolderSegments: UIViewRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L343)
-- [`@MainActor private func sunderNavigationOwner(_ controller: UIViewController?) -> UIViewController?`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L422)
-- [`@MainActor private final class SunderScrollEdgeBinding`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L432)
-- [`struct SunderNavigationSearch: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L456)
+- [`@MainActor private func sunderNavigationOwner(_ controller: UIViewController?) -> UIViewController?`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L435)
+- [`@MainActor private final class SunderScrollEdgeBinding`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L445)
+- [`struct SunderNavigationSearch: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L551)
 
 ### Shared/Views/ChatList/SystemInterface.swift
 
@@ -296,3 +296,26 @@ Navigation push/pop animations must remain enabled. Immediate tab-bar hiding is
 scoped to the tab bar and must not disable upper-toolbar or navigation transitions.
 Exact cross-placement item morphing is a device acceptance check, not established
 by principal placement or matching SwiftUI item IDs alone.
+
+## Source-owned native center item (2026-10-31)
+This supersedes principal placement: SunderConversationCenter owns a UIKit fixed
+centerItemGroups entry directly. There is no SwiftUI principal/trailing title to
+reinsert or relocate. The group uses sunder.context and the native editor role;
+the existing title/profile action is hosted with forwarded environment and a 44pt
+height, bounded to available navigation width. Sizing is invalidated by content
+or width changes, not repeated on every layout pass. Reentrancy is guarded.
+The trailing avatar retains sunder.avatar and separate native glass backing; its
+image is 32pt. Shared glass button overlays are removed from this toolbar only.
+SunderTitleButtonStyle is removed; compose controls elsewhere are unchanged.
+The helper detaches only its own center group. No custom transition is added.
+
+FolderControl adds UIGlassEffect(.regular) in a clipped capsule surface on iOS26.
+SunderScrollEdgeBinding supports top or bottom UIRectEdge; bottom binding is attached
+to the actual UITabBar and the owned main-list scrollView, using .soft. It is removed
+when the main list disappears or its adapter is dismantled.
+SunderNavigationSearch uses automaticallyShowsCancelButton and no competing trailing
+Close item. searchBarCancelButtonClicked cancels connection progress, clears text,
+focus/active state, and restores saved toolbar items. Its native cancel control owns
+width reservation, including narrow screens and accessibility sizes.
+
+Source entry points: [SunderConversationCenter](../../Shared/Views/ChatList/ChatListNativeControls.swift#L476) | [SunderScrollEdgeBinding](../../Shared/Views/ChatList/ChatListNativeControls.swift#L445) | [SunderNavigationSearch](../../Shared/Views/ChatList/ChatListNativeControls.swift#L551)

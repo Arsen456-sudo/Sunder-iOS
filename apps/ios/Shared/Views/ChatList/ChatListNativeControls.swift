@@ -383,7 +383,20 @@ struct SunderFolderSegments: UIViewRepresentable {
             scroll.translatesAutoresizingMaskIntoConstraints = false
             control.translatesAutoresizingMaskIntoConstraints = false
             control.apportionsSegmentWidthsByContent = false
-            addSubview(scroll)
+            if #available(iOS 26.0, *) {
+                let glass = UIGlassEffect(style: .regular)
+                let surface = UIVisualEffectView(effect: glass)
+                surface.translatesAutoresizingMaskIntoConstraints = false
+                surface.layer.cornerRadius = 20
+                surface.layer.cornerCurve = .continuous
+                surface.clipsToBounds = true
+                addSubview(surface)
+                surface.contentView.addSubview(scroll)
+                NSLayoutConstraint.activate([
+                    surface.leadingAnchor.constraint(equalTo: leadingAnchor), surface.trailingAnchor.constraint(equalTo: trailingAnchor),
+                    surface.topAnchor.constraint(equalTo: topAnchor), surface.bottomAnchor.constraint(equalTo: bottomAnchor)
+                ])
+            } else { addSubview(scroll) }
             scroll.addSubview(control)
             width = control.widthAnchor.constraint(greaterThanOrEqualToConstant: 0)
             NSLayoutConstraint.activate([
@@ -431,8 +444,10 @@ extension EnvironmentValues {
 @available(iOS 26.0, *)
 @MainActor private final class SunderScrollEdgeBinding {
     let interaction = UIScrollEdgeElementContainerInteraction()
-    init(container: UIView) {
-        interaction.edge = .top
+    let edge: UIRectEdge
+    init(container: UIView, edge: UIRectEdge = .top) {
+        self.edge = edge
+        interaction.edge = edge
         container.addInteraction(interaction)
     }
     func bind(from view: UIView) {
@@ -449,7 +464,87 @@ extension EnvironmentValues {
         }
         guard let list = verticalList(owner.view) else { return }
         if interaction.scrollView !== list { interaction.scrollView = list }
-        if list.topEdgeEffect.style != .soft { list.topEdgeEffect.style = .soft }
+        if edge == .bottom {
+            if list.bottomEdgeEffect.style != .soft { list.bottomEdgeEffect.style = .soft }
+        } else if list.topEdgeEffect.style != .soft { list.topEdgeEffect.style = .soft }
+    }
+}
+
+// Own the center bar item at source; a SwiftUI principal title is a titleView,
+// which cannot match the unread UIBarButtonItem during native push/pop.
+@available(iOS 26.0, *)
+struct SunderConversationCenter<Content: View>: UIViewControllerRepresentable {
+    @Environment(\.self) private var environment
+    @ViewBuilder var content: () -> Content
+    func makeUIViewController(context: Context) -> Controller {
+        Controller(AnyView(content().frame(height: 44).environment(\.self, environment)))
+    }
+    func updateUIViewController(_ controller: Controller, context: Context) {
+        controller.updateContent(AnyView(content().frame(height: 44).environment(\.self, environment)))
+    }
+    static func dismantleUIViewController(_ controller: Controller, coordinator: ()) { controller.detach() }
+    class Controller: UIViewController {
+        let host: UIHostingController<AnyView>
+        private weak var owner: UIViewController?
+        private var group: UIBarButtonItemGroup?
+        private var width: NSLayoutConstraint?
+        private var needsTitleSize = true
+        private var lastAvailableWidth: CGFloat = 0
+        private var applying = false
+        func updateContent(_ content: AnyView) {
+            host.rootView = content
+            needsTitleSize = true
+            apply()
+        }
+        init(_ content: AnyView) { host = UIHostingController(rootView: content); super.init(nibName: nil, bundle: nil) }
+        required init?(coder: NSCoder) { fatalError("init(coder:) is not supported") }
+        override func loadView() { view = UIView(); view.isUserInteractionEnabled = false }
+        override func didMove(toParent parent: UIViewController?) { super.didMove(toParent: parent); apply() }
+        override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); apply() }
+        override func viewWillLayoutSubviews() { super.viewWillLayoutSubviews(); apply() }
+        func apply() {
+            guard !applying, let current = sunderNavigationOwner(parent) else { return }
+            applying = true
+            defer { applying = false }
+            if host.parent == nil {
+                addChild(host)
+                host.view.backgroundColor = .clear
+                host.view.translatesAutoresizingMaskIntoConstraints = false
+                host.didMove(toParent: self)
+                let item = UIBarButtonItem(customView: host.view)
+                item.identifier = "sunder.context"
+                item.hidesSharedBackground = false
+                item.sharesBackground = false
+                group = .fixedGroup(items: [item])
+                width = host.view.widthAnchor.constraint(equalToConstant: 120)
+                width?.isActive = true
+                host.view.heightAnchor.constraint(equalToConstant: 44).isActive = true
+            }
+            owner = current
+            let available = max(44, (current.navigationController?.navigationBar.bounds.width ?? 320) - 140)
+            if needsTitleSize || lastAvailableWidth != available {
+                needsTitleSize = false
+                lastAvailableWidth = available
+                let fitting = host.sizeThatFits(in: CGSize(width: available, height: 44))
+                let titleWidth = min(available, max(44, ceil(fitting.width)))
+                if width?.constant != titleWidth { width?.constant = titleWidth }
+            }
+            let item = current.navigationItem
+            if item.style != .editor { item.style = .editor }
+            if let group, item.centerItemGroups.count != 1 || item.centerItemGroups.first !== group {
+                item.centerItemGroups = [group]
+            }
+            if let avatar = item.rightBarButtonItems?.first {
+                avatar.identifier = "sunder.avatar"
+                avatar.hidesSharedBackground = false
+                avatar.sharesBackground = false
+            }
+        }
+        func detach() {
+            if let item = owner?.navigationItem, let group, item.centerItemGroups.first === group {
+                item.centerItemGroups = []
+            }
+        }
     }
 }
 
@@ -461,7 +556,10 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
     var busy: Bool
     func makeUIViewController(context: Context) -> Controller { Controller(self) }
     func updateUIViewController(_ controller: Controller, context: Context) { controller.state = self; controller.apply() }
-    static func dismantleUIViewController(_ controller: Controller, coordinator: ()) { controller.detach() }
+    static func dismantleUIViewController(_ controller: Controller, coordinator: ()) {
+        controller.detach()
+        controller.removeBottomEdge()
+    }
 
     class Controller: UIViewController, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
         var state: SunderNavigationSearch
@@ -473,13 +571,10 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
         private var applying = false
         private let spinner = UIActivityIndicatorView(style: .medium)
         private var originalSearchIcon: UIView?
-        private lazy var close = UIBarButtonItem(systemItem: .close, primaryAction: UIAction { [weak self] _ in
-            guard let self else { return }
-            ConnectProgressManager.shared.cancelConnectProgress()
-            self.state.text = ""
-            self.state.focused = false
-            self.state.active = false
-        })
+        private var bottomEdgeBinding: AnyObject?
+        private weak var boundTabBar: UITabBar?
+        private var visible = false
+
 
         init(_ state: SunderNavigationSearch) { self.state = state; super.init(nibName: nil, bundle: nil) }
         required init?(coder: NSCoder) { fatalError("init(coder:) is not supported") }
@@ -488,7 +583,7 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
             view.isUserInteractionEnabled = false
             search.obscuresBackgroundDuringPresentation = false
             search.hidesNavigationBarDuringPresentation = false
-            search.automaticallyShowsCancelButton = false
+            search.automaticallyShowsCancelButton = true
             search.searchResultsUpdater = self
             search.delegate = self
             search.searchBar.delegate = self
@@ -497,16 +592,38 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
             search.searchBar.placeholder = NSLocalizedString("Search or paste SimpleX link", comment: "Search")
             originalSearchIcon = search.searchBar.searchTextField.leftView
         }
-        override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); apply() }
+        override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); visible = true; apply() }
         override func viewDidAppear(_ animated: Bool) { super.viewDidAppear(animated); apply() }
+        override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            visible = false
+            removeBottomEdge()
+        }
         override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews(); apply() }
+        func removeBottomEdge() {
+            if #available(iOS 26.0, *), let binding = bottomEdgeBinding as? SunderScrollEdgeBinding {
+                boundTabBar?.removeInteraction(binding.interaction)
+            }
+            bottomEdgeBinding = nil
+            boundTabBar = nil
+        }
         func apply() {
-            guard #available(iOS 26.0, *), !applying, isViewLoaded, view.window != nil,
+            guard #available(iOS 26.0, *), visible, !applying, isViewLoaded, view.window != nil,
                   let current = sunderNavigationOwner(parent), current.navigationController?.topViewController === current else { return }
             applying = true
             defer { applying = false }
             owner = current
             let item = current.navigationItem
+            if let tabBar = current.tabBarController?.tabBar {
+                if boundTabBar !== tabBar {
+                    if let binding = bottomEdgeBinding as? SunderScrollEdgeBinding {
+                        boundTabBar?.removeInteraction(binding.interaction)
+                    }
+                    bottomEdgeBinding = SunderScrollEdgeBinding(container: tabBar, edge: .bottom)
+                    boundTabBar = tabBar
+                }
+                (bottomEdgeBinding as? SunderScrollEdgeBinding)?.bind(from: view)
+            }
             if state.active {
                 if !installed {
                     savedLeft = item.leftBarButtonItems
@@ -518,9 +635,8 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
                     item.searchBarPlacementAllowsExternalIntegration = false
                     item.hidesSearchBarWhenScrolling = false
                     item.searchBarPlacementBarButtonItem.identifier = "sunder.leading"
-                    close.identifier = "sunder.context"
                     item.setLeftBarButtonItems([], animated: true)
-                    item.setRightBarButtonItems([close], animated: true)
+                    item.setRightBarButtonItems([], animated: true)
                     installed = true
                     search.isActive = true
                 }
@@ -565,6 +681,13 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
         func didPresentSearchController(_ searchController: UISearchController) { searchController.searchBar.becomeFirstResponder() }
         func didDismissSearchController(_ searchController: UISearchController) {
             if state.active { state.active = false }
+        }
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            ConnectProgressManager.shared.cancelConnectProgress()
+            state.text = ""
+            state.focused = false
+            state.active = false
+            detach()
         }
         func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) { if !state.focused { state.focused = true } }
         func searchBarTextDidEndEditing(_ searchBar: UISearchBar) { if state.focused { state.focused = false } }

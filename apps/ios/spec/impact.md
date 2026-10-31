@@ -218,3 +218,8 @@ Localization changes affect only Change text; data/security APIs are unchanged.
 Independent header: ChatView/SystemInterface affect PC2/PC3 visual placement only.
 Root lifecycle and SunderMainTabs affect PC1/PC19 root/deeper navigation visibility.
 The failed post-layout bar-group mutation layer is removed; actions/data unchanged.
+
+Native matched-header follow-up: ChatView/SystemInterface/native controls affect
+PC1/PC2/PC3/PC28 glass geometry, search cancellation and list bottom-edge ownership.
+NavLinkPlain/ChatModel/ChatItemsLoader affect PC1/PC2/PC3 immediate list navigation
+and cancelled-load publication; no persistence/transport/cryptographic changes.

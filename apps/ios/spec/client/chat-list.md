@@ -175,7 +175,7 @@ Filter matching is handled by [`presetTagMatchesChat()`](../../Shared/Views/Chat
 
 ### ChatTagsModel State
 
-Filtering state is managed by [`ChatTagsModel`](../../Shared/Model/ChatModel.swift#L189) (`ChatModel.swift` L183):
+Filtering state is managed by [`ChatTagsModel`](../../Shared/Model/ChatModel.swift#L207) (`ChatModel.swift` L183):
 
 ```swift
 class ChatTagsModel: ObservableObject {
@@ -186,7 +186,7 @@ class ChatTagsModel: ObservableObject {
 }
 ```
 
-- `presetTags` counts are updated whenever `chats` changes via [`updateChatTags()`](../../Shared/Model/ChatModel.swift#L197) (L197)
+- `presetTags` counts are updated whenever `chats` changes via [`updateChatTags()`](../../Shared/Model/ChatModel.swift#L215) (L197)
 - Tags with zero matching chats are auto-hidden
 - Active filter is auto-cleared when its tag has no matching chats
 
@@ -411,3 +411,15 @@ the existing resource in all 17 locales; the Ukrainian verb is corrected. UIKit 
 all transition rendering: no snapshots, gesture/animation engine or timers are added.
 Note/selection/secondary routes and existing profile/context handlers are retained.
 Compilation and actual device centering/transition acceptance are separate checks.
+
+## Immediate row entry and native controls (2026-10-31)
+NavLinkPlain invokes openChatFromList on MainActor for normal row taps; the disabled
+group/readiness guard is unchanged. Prior ItemsModel state is cleared before route
+selection, with async loading started afterward. No fixed navigation wait or removal
+of push animation. Existing special contact/invitation actions are untouched.
+Folder segmented controls have a genuine UIGlassEffect backing. Bottom soft edge
+ownership is explicitly bound to the native tab bar and list by the existing search
+adapter. Search layout now uses the controller's native cancel control, which calls
+the original clear/cancel state behavior without a separate trailing close item.
+
+Source entry points: [NavLinkPlain](../../Shared/Views/Helpers/NavLinkPlain.swift#L12)

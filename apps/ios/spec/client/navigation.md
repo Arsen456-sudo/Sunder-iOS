@@ -558,3 +558,14 @@ still reports the early will callback to the existing scoped state closure.
 No navigation delegate, animation engine, delay/timer or network/storage changes.
 The environment-only callback keeps the helper usable in shared/extension sources.
 Actual phone centering and transition cancellation still require device validation.
+
+## Matched header and list entry (2026-10-31)
+SunderConversationCenter creates the title as an actual center UIBarButtonItem with
+identifier sunder.context before navigation layout. This replaces the incompatible
+principal titleView route. Source list unread and destination center title remain
+native items; UIKit owns push/pop rendering. No timers or custom transition engine.
+Search cancellation uses UISearchController's reserved cancel control. Native tab
+visibility remains synchronous; top navigation animations remain enabled.
+NavLinkPlain invokes ItemsModel.openChatFromList on MainActor. This clears prior
+message state and selects the route before async message loading. Other navigation
+callbacks keep loadOpenChat behavior. Device transition verification is separate.

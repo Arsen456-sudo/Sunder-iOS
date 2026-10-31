@@ -459,6 +459,16 @@ struct ChatView: View {
         .sunderConversationToolbar(modern: usesModernAvatarToolbar,
                                     modernToolbar: { modernConversationToolbar },
                                     legacyToolbar: { legacyConversationToolbar(userMemberKnockingChat: userMemberKnockingChat) })
+        .background {
+            if #available(iOS 26.0, *), usesModernAvatarToolbar {
+                SunderConversationCenter {
+                    primaryPrincipalToolbarContent()
+                        .buttonStyle(.plain)
+                        .environmentObject(theme)
+                        .environmentObject(chatModel)
+                }.frame(width: 0, height: 0)
+            }
+        }
         .if(im.secondaryIMFilter == nil) { v in
             v.onChange(of: scrollToItemId) { itemId in
                 if let itemId = itemId {
@@ -497,12 +507,9 @@ struct ChatView: View {
     }
 
     @ToolbarContentBuilder private var modernConversationToolbar: some ToolbarContent {
-        ToolbarItem(id: "sunder.context", placement: .principal) {
-            primaryPrincipalToolbarContent().modifier(SunderTitleButtonStyle())
-        }
         ToolbarItem(id: "sunder.avatar", placement: .navigationBarTrailing) {
             Button { openAvatarProfile() } label: {
-                ChatInfoImage(chat: chat, size: 28, color: Color(uiColor: .tertiaryLabel))
+                ChatInfoImage(chat: chat, size: 32, color: Color(uiColor: .tertiaryLabel))
                     .clipShape(Circle())
             }
             .modifier(SunderAvatarToolbarButtonStyle())

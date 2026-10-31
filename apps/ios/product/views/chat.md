@@ -226,3 +226,12 @@ Navigation push/pop animations must remain enabled. Immediate tab-bar hiding is
 scoped to the tab bar and must not disable upper-toolbar or navigation transitions.
 Exact cross-placement item morphing is a device acceptance check, not established
 by principal placement or matching SwiftUI item IDs alone.
+
+## Native matched header (2026-10-31)
+The ordinary iOS26 title is now owned directly by UIKit as a center bar item, not
+a SwiftUI principal titleView. Its identifier matches the list unread control.
+Native bar backing owns glass and push/pop animation; the hosted existing profile
+action has a 44pt height. Avatar artwork is 32pt, with its existing profile/context
+actions retained. This supersedes the principal-slot implementation above. Notes,
+selection and secondary routes retain their original toolbar. Device checks must
+verify centering, matched transitions in both directions and long/localized names.

@@ -17,7 +17,9 @@ struct NavLinkPlain<Label: View>: View {
 
     var body: some View {
         ZStack {
-            Button("") { ItemsModel.shared.loadOpenChat(chatId) }
+            Button("") {
+                Task { @MainActor in ItemsModel.shared.openChatFromList(chatId) }
+            }
                 .disabled(disabled)
             label()
         }
