@@ -227,3 +227,6 @@ and cancelled-load publication; no persistence/transport/cryptographic changes.
 Compact-title/shared-edge correction: ChatView/SystemInterface affect PC2/PC3 title
 visibility; ChatListNativeControls affects PC1/PC18/PC19 root-tab scroll-edge
 ownership. No message state, account, transport, persistence or crypto changes.
+
+Toolbar availability correction: ChatView affects PC2/PC3 iOS15 compatibility and
+avatar-only visible chrome. No state, transport, persistence or security code changes.

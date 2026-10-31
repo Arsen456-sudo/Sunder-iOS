@@ -339,3 +339,10 @@ Native bar-item morphing from unread to the restored principal title remains a
 separate unverified limitation; a restored visible title is not proof of that morph.
 
 Source entry points: [SunderTabsController](../../Shared/Views/ChatList/ChatListNativeControls.swift#L241) | [SunderTitleSurface](../../Shared/Views/ChatList/SystemInterface.swift#L188)
+
+## Toolbar builder compile correction (2026-10-31)
+Modern toolbar availability is selected at ChatView's outer ViewBuilder, not via
+an iOS15-incompatible ToolbarContentBuilder.buildIf. The iOS26-only property contains
+unconditional title/avatar items. Legacy toolbar routing remains unchanged. Avatar
+menu indicator is hidden without dropping context actions or reintroducing editor
+center-group overflow. Shared bottom-edge registration is unchanged.

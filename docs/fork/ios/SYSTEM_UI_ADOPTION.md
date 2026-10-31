@@ -111,3 +111,10 @@ Bottom .soft behavior now belongs to SunderTabsController via content-scroll
 registration for all three roots, without the search-owned bottom interaction.
 Device visibility/blur and the outstanding unread-to-title morph must be checked
 separately from compilation. No custom blur or animation engine is introduced.
+
+## Toolbar availability correction (2026-10-31)
+Run 41209965480 failed on ToolbarContentBuilder.buildIf availability for iOS15.
+Availability now lives in the outer ViewBuilder; modern toolbar is iOS26-only.
+Avatar menu indicator is hidden while long-press actions remain. Automatic role and
+principal title replace the installed prior build's failed editor-center experiment.
+CI and actual avatar-only appearance remain separate verification steps.

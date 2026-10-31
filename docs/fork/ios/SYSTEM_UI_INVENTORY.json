@@ -654,7 +654,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatView.swift",
-      "sha256": "2ba5e73d8cb38d70f84a0cba770cdf6bd2337b8b4265d19ddb7438e8826740f7",
+      "sha256": "fbf20c8e9b707c307597b72bfa93eb568d057973ff40b5ad99819687a9c4f694",
       "swiftui_view_declarations": [
         "ChatView",
         "ChatBannerView",
@@ -671,8 +671,8 @@
       "hidden_navigation": [],
       "legacy_material_references": [
         235,
-        564,
-        792
+        574,
+        802
       ],
       "native_bridges": [],
       "validation": "Source-pattern inventory; full-screen device validation pending"

@@ -456,9 +456,19 @@ struct ChatView: View {
         .onChange(of: colorScheme) { _ in
             theme = buildTheme()
         }
-        .sunderConversationToolbar(modern: usesModernAvatarToolbar,
-                                    modernToolbar: { modernConversationToolbar },
-                                    legacyToolbar: { legacyConversationToolbar(userMemberKnockingChat: userMemberKnockingChat) })
+        .if(usesModernAvatarToolbar) { v in
+            Group {
+                if #available(iOS 26.0, *) {
+                    v.toolbarRole(.automatic).toolbar { modernConversationToolbar }
+                } else { v }
+            }
+        }
+        .if(!usesModernAvatarToolbar) { v in
+            v.sunderConversationToolbar(
+                modern: false,
+                modernToolbar: { legacyConversationToolbar(userMemberKnockingChat: userMemberKnockingChat) },
+                legacyToolbar: { legacyConversationToolbar(userMemberKnockingChat: userMemberKnockingChat) })
+        }
         .if(im.secondaryIMFilter == nil) { v in
             v.onChange(of: scrollToItemId) { itemId in
                 if let itemId = itemId {
@@ -496,13 +506,12 @@ struct ChatView: View {
         }
     }
 
+    @available(iOS 26.0, *)
     @ToolbarContentBuilder private var modernConversationToolbar: some ToolbarContent {
-        if #available(iOS 26.0, *) {
-            ToolbarItem(id: "sunder.context", placement: .principal) {
-                primaryPrincipalToolbarContent()
-                    .modifier(SunderTitleSurface())
-            }.sharedBackgroundVisibility(.hidden)
-        }
+        ToolbarItem(id: "sunder.context", placement: .principal) {
+            primaryPrincipalToolbarContent()
+                .modifier(SunderTitleSurface())
+        }.sharedBackgroundVisibility(.hidden)
         ToolbarItem(id: "sunder.avatar", placement: .navigationBarTrailing) {
             Button { openAvatarProfile() } label: {
                 ChatInfoImage(chat: chat, size: 32, color: Color(uiColor: .tertiaryLabel))
@@ -510,6 +519,7 @@ struct ChatView: View {
             }
             .modifier(SunderAvatarToolbarButtonStyle())
             .accessibilityLabel(Text("Profile"))
+            .menuIndicator(.hidden)
             .contextMenu { avatarChatActions() }
         }
     }

@@ -242,3 +242,9 @@ It is removed. The title returns to the native principal slot with one separate
 44pt system glassEffect capsule; no shared backing or duplicate title is added.
 Avatar/back remain separate. Existing title/profile actions and navigation animations
 are retained. This supersedes the source-owned native center-item implementation.
+
+## Avatar-only toolbar and compatibility fix (2026-10-31)
+The modern avatar control explicitly hides its menu indicator; the photo is its
+only visible label. Long-press profile actions remain available. The removed editor
+center-group implementation is not restored. Availability selection is now outside
+the toolbar builder so iOS15 fallback continues to compile.
