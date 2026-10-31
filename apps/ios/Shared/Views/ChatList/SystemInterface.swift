@@ -125,7 +125,9 @@ extension View {
         @ToolbarContentBuilder legacyToolbar: () -> L
     ) -> some View {
         if #available(iOS 26.0, *), modern {
-            navigationTitle("").toolbar(content: modernToolbar)
+            toolbarRole(.editor).toolbar(content: modernToolbar)
+        } else if #available(iOS 16.0, *) {
+            toolbarRole(.automatic).toolbar(content: legacyToolbar)
         } else {
             toolbar(content: legacyToolbar)
         }

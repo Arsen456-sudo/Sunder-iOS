@@ -654,7 +654,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatView.swift",
-      "sha256": "546560d97e7c42d9a898a55638751ca70ff1df1aef84e59e431ee1f9d52e84c6",
+      "sha256": "4e85a208d24444a020198b3ebcd30f2eb99ea6cd01b97b2631097f30a55aa2dc",
       "swiftui_view_declarations": [
         "ChatView",
         "ChatBannerView",
@@ -671,8 +671,8 @@
       "hidden_navigation": [],
       "legacy_material_references": [
         235,
-        570,
-        798
+        564,
+        792
       ],
       "native_bridges": [],
       "validation": "Source-pattern inventory; full-screen device validation pending"
@@ -1297,7 +1297,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/ChatListNativeControls.swift",
-      "sha256": "4e3218c09f082af561bb5ce12000828b8c65d2239e713497b1effdbed8df7507",
+      "sha256": "10b31dee4eea7989f830cb6115590932918b03242528961432ebc731de9075b7",
       "swiftui_view_declarations": [
         "ChatListUnreadButton",
         "ChatListStatusButton"
@@ -1315,7 +1315,7 @@
         299,
         336,
         449,
-        467
+        515
       ],
       "validation": "Source-pattern inventory; full-screen device validation pending"
     },
@@ -1337,7 +1337,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/ChatListView.swift",
-      "sha256": "7919ade1b0d54e53139e31d073746bc288547bf1cf376b9bd3ab8ccc6d50a8cc",
+      "sha256": "24e44e1bb553aed90b6b007c66525d83e1e46b384972e844b07e6ee0040bee5d",
       "swiftui_view_declarations": [
         "UserPickerSheetView",
         "ChatListView",
@@ -1346,13 +1346,13 @@
         "TagsView"
       ],
       "native_lists_forms": [
-        489
+        490
       ],
       "navigation_containers": [
         91,
         201,
-        906,
-        1005
+        907,
+        1006
       ],
       "system_controls": [],
       "hidden_navigation": [
@@ -1494,7 +1494,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/SystemInterface.swift",
-      "sha256": "d2830486875db059a643e71e957444164a79454489bc396d5c92bbe437e6ebb4",
+      "sha256": "bffb0a27577523a420782524d14555da67709f11fc5f1479fa07d90fdbf8425b",
       "swiftui_view_declarations": [],
       "native_lists_forms": [],
       "navigation_containers": [],

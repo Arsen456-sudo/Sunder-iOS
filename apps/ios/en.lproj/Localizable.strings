@@ -30,3 +30,6 @@
 
 /* Sunder: current-profile root tab. */
 "Profile" = "Profile";
+
+/* Sunder: main toolbar action. */
+"Change" = "Change";

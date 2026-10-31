@@ -203,3 +203,12 @@ long-pressing the avatar exposes retained call, search, notification, membership
 and media-filter actions. Verified/incognito/status text and report indicators
 remain; note chats and message-selection toolbars keep their original behavior.
 UIKit bar item identifiers match main leading/context/avatar roles during push/pop.
+
+## Three-island navigation correction (2026-10-31)
+
+Normal iOS 26 chat navigation has native back, one centered title island, and one
+trailing avatar island. The ordinary navigation title is suppressed at its source;
+there is no duplicate unboxed title. A single UIKit fixed center item group owns
+the title, with the avatar alone in its trailing group. Notes, selection and
+secondary chats retain their prior toolbars. Avatar chrome contains only the photo;
+existing profile and context actions remain attached.

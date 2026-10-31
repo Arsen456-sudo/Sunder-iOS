@@ -236,7 +236,7 @@ struct ChatView: View {
             }
         }
         .navigationTitle(
-            memberSupportChat == nil
+            usesModernAvatarToolbar ? "" : memberSupportChat == nil
             ? cInfo.chatViewName
             : memberSupportChat?.member?.chatViewName ?? NSLocalizedString("Chat with admins", comment: "chat toolbar")
         )
@@ -507,12 +507,6 @@ struct ChatView: View {
             Button { openAvatarProfile() } label: {
                 ChatInfoImage(chat: chat, size: 28, color: Color(uiColor: .tertiaryLabel))
                     .clipShape(Circle())
-                    .overlay(alignment: .bottomTrailing) {
-                        if chat.chatStats.reportsCount > 0 || chat.supportUnreadCount > 0 {
-                            Image(systemName: "flag.circle.fill").font(.caption2)
-                                .foregroundColor(chat.chatStats.reportsCount > 0 ? .red : .accentColor)
-                        }
-                    }
             }
             .modifier(SunderAvatarToolbarButtonStyle())
             .accessibilityLabel(Text("Profile"))

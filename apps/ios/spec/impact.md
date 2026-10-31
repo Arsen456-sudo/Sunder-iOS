@@ -210,3 +210,7 @@ ChatView/ChatInfoToolbar affect PC2/PC3/PC9/PC17, preserving call checks and not
 behavior. Theme/SystemInterface affect PC18/PC19/PC24 grouped presentation;
 ContentView root visibility affects navigation/privacy PC1/PC19/PC22. No core API
 or database-schema change accompanies folder deletion or native rendering.
+
+Three-island correction: ChatView and ChatListNativeControls affect PC2/PC3 header
+layout; ChatListView affects PC1. SystemInterface removes a competing title preference.
+Localization changes affect only Change text; data/security APIs are unchanged.

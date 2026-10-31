@@ -74,3 +74,12 @@ settings/profile roots and exclude modal wrappers. Grouped settings use native
 background/default controls; existing SwiftUI content remains hosted by UIKit.
 Delete is visible in folder editing and confirms before removing only its tag.
 All device appearance and transition acceptance checks remain pending installation.
+
+## Three-island correction (2026-10-31)
+Default chat title is cleared at its source. Native UIKit fixed center/trailing
+item groups place the sole title in the center and avatar at the trailing edge.
+A fixed ToolbarSpacer actually separates unread and compose groups on the list.
+Leading/context/avatar identifiers remain stable for native UIKit transitions.
+Back action and native navigation delegate are unchanged. Group caches and scoped
+cleanup preserve message selection; notes/secondary routes stay unchanged.
+Source verification is not a substitute for installed-device visual acceptance.

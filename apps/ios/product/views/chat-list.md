@@ -175,3 +175,10 @@ owning vertical list, so the native soft edge includes the folder container.
 Search is integrated in UINavigationItem via UISearchController on iOS 26, with
 native Close and stable toolbar identifiers; older OS versions retain a field.
 Native SF Symbol toolbar items replace manually resized compose/filter images.
+
+## Three-island navigation correction (2026-10-31)
+
+The leading action now uses the existing localized Change text (Ukrainian:
+Zminyty). Unread and compose are separated by a native fixed ToolbarSpacer, so they
+are separate glass groups. Stable UIKit leading/context/avatar identifiers retain
+native push/pop matching with back, centered chat title and avatar respectively.

@@ -361,7 +361,7 @@ struct ChatListView: View {
     @available(iOS 26.0, *)
     @ToolbarContentBuilder private var glassTopToolbar: some ToolbarContent {
         ToolbarItem(id: "sunder.leading", placement: .navigationBarLeading) {
-            NavigationLink { TagListView().navigationTitle("Chat folders") } label: { Text("Edit") }
+            NavigationLink { TagListView().navigationTitle("Chat folders") } label: { Text("Change") }
                 .foregroundColor(Color(uiColor: .label))
         }
         ToolbarItem(placement: .principal) { statusButton }
@@ -373,6 +373,7 @@ struct ChatListView: View {
                 .tint(chatTagsModel.activeFilter == .unread ? .accentColor : .primary)
                 .accessibilityLabel(Text("Unread"))
         }
+        ToolbarSpacer(.fixed, placement: .navigationBarTrailing)
         ToolbarItem(id: "sunder.avatar", placement: .navigationBarTrailing) { composeButton }
 
     }

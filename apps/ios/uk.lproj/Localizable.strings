@@ -1076,7 +1076,7 @@ new chat action */
 "Cellular" = "Стільниковий";
 
 /* No comment provided by engineer. */
-"Change" = "Зміна";
+"Change" = "Змінити";
 
 /* alert title */
 "Change automatic message deletion?" = "Змінити автоматичне видалення повідомлень?";

@@ -5,7 +5,7 @@
 	<key>SunderRepositoryURL</key>
 	<string>https://github.com/Arsen456-sudo/Sunder-iOS</string>
 	<key>SunderSourceRef</key>
-	<string>preview-20261030-native-navigation-2</string>
+	<string>preview-20261031-three-islands-1</string>
 	<key>CFBundleDisplayName</key>
 	<string>Sunder</string>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>

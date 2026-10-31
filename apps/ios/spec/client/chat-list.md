@@ -63,7 +63,7 @@ The root list view. Key responsibilities:
 ### Data Source
 - Reads `ChatModel.shared.chats` (all conversations)
 - Applies active filter from `ChatTagsModel.shared.activeFilter`
-- Applies search query filtering via [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L581)
+- Applies search query filtering via [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L582)
 - Sorts by last activity (most recent first), with pinned chats at top
 
 ### Layout
@@ -81,9 +81,9 @@ The root list view. Key responsibilities:
 | Function | Line | Description |
 |----------|------|-------------|
 | [`body`](../../Shared/Views/ChatList/ChatListView.swift#L89) | See link | Main view body |
-| [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L581) | See link | Applies active filter and search to chat list |
-| [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L624) | See link | Normalizes search text for comparison |
-| [`stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L575) | See link | Stops any playing voice message |
+| [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L582) | See link | Applies active filter and search to chat list |
+| [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L625) | See link | Normalizes search text for comparison |
+| [`stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L576) | See link | Stops any playing voice message |
 
 ---
 
@@ -171,7 +171,7 @@ Horizontal scrolling tab bar below the navigation bar. Tabs:
 | Group Reports | `.presetTag(.groupReports)` | Groups with pending reports |
 | User tags | `.userTag(ChatTag)` | User-defined custom tags |
 
-Filter matching is handled by [`presetTagMatchesChat()`](../../Shared/Views/ChatList/ChatListView.swift#L1034) and the in-view [`TagsView`](../../Shared/Views/ChatList/ChatListView.swift#L849) struct.
+Filter matching is handled by [`presetTagMatchesChat()`](../../Shared/Views/ChatList/ChatListView.swift#L1035) and the in-view [`TagsView`](../../Shared/Views/ChatList/ChatListView.swift#L850) struct.
 
 ### ChatTagsModel State
 
@@ -196,7 +196,7 @@ class ChatTagsModel: ObservableObject {
 |------|------|------|-------------|
 | [`PresetTag`](../../Shared/Views/ChatList/ChatListView.swift#L38) | ChatListView.swift | 36 | Enum of built-in filter categories |
 | [`ActiveFilter`](../../Shared/Views/ChatList/ChatListView.swift#L55) | ChatListView.swift | 53 | Enum wrapping preset, user-tag, or unread filter |
-| [`setActiveFilter()`](../../Shared/Views/ChatList/ChatListView.swift#L1015) | ChatListView.swift | 1113 | Applies a filter and persists selection |
+| [`setActiveFilter()`](../../Shared/Views/ChatList/ChatListView.swift#L1016) | ChatListView.swift | 1113 | Applies a filter and persists selection |
 
 ### Tag Management Commands
 - `apiCreateChatTag(tag: ChatTagData)` -- create tag
@@ -211,7 +211,7 @@ class ChatTagsModel: ObservableObject {
 
 Search is available via pull-down gesture or search button in the navigation bar.
 
-**Search bar UI:** [`ChatListSearchBar`](../../Shared/Views/ChatList/ChatListView.swift#L630)
+**Search bar UI:** [`ChatListSearchBar`](../../Shared/Views/ChatList/ChatListView.swift#L631)
 
 ### Filtering Logic
 - Filters `ChatModel.chats` by matching search text against:
@@ -219,7 +219,7 @@ Search is available via pull-down gesture or search button in the navigation bar
   - `chatInfo.localAlias` (local alias)
   - `chatInfo.fullName` (full name)
 - For deeper message content search, uses `apiGetChat(chatId:, search:)` parameter
-- Core logic in [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L581) and [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L624)
+- Core logic in [`filteredChats()`](../../Shared/Views/ChatList/ChatListView.swift#L582) and [`searchString()`](../../Shared/Views/ChatList/ChatListView.swift#L625)
 
 ### Search Results
 - Matching chats are displayed in the same list format
@@ -395,3 +395,19 @@ commands. Notes, secondary chats and message selection keep the legacy toolbar.
 SunderFolderEditor confirms deletion, uses the existing delete-tag API and clears
 only folder metadata/selection/counts. List swipe deletion now reports API errors.
 Compile and on-device animation/layout checks are separate; iOS 27 is not verified.
+
+## Three-island navigation correction (2026-10-31)
+ChatView suppresses the default navigationTitle directly for usesModernAvatarToolbar;
+the helper no longer adds a competing outer title preference. SunderToolbarIdentity
+moves the existing title bar item into centerItemGroups with the native editor
+item style, and avatar into its own trailing fixed group. Context/avatar identifiers
+remain unchanged. Groups are cached by item identity to avoid layout churn; removing
+the attachment for selection restores its original center/style only on its owner.
+The native back item and navigation controller delegate are not replaced.
+
+ChatListView.glassTopToolbar inserts ToolbarSpacer(.fixed) between unread and compose.
+sharesBackground alone was ignored inside the prior multi-item group. Change reuses
+the existing resource in all 17 locales; the Ukrainian verb is corrected. UIKit owns
+all transition rendering: no snapshots, gesture/animation engine or timers are added.
+Note/selection/secondary routes and existing profile/context handlers are retained.
+Compilation and actual device centering/transition acceptance are separate checks.
