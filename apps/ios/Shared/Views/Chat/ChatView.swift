@@ -458,10 +458,20 @@ struct ChatView: View {
             theme = buildTheme()
         }
         .sunderProfileDestination(isPresented: $showChatInfoSheet) {
-            chatProfileDestination
-                .environmentObject(chatModel)
-                .environmentObject(theme)
-                .sunderPrivateSheet()
+            [chat, chatModel, theme, scrollToItemId = $scrollToItemId,
+             composeState = $composeState, showSearch = $showSearch,
+             searchFocussed = $searchFocussed, searchText = $searchText] in
+            ChatProfileDestination(
+                chat: chat, scrollToItemId: scrollToItemId, composeState: composeState,
+                onSearch: {
+                    showSearch.wrappedValue = true
+                    searchFocussed.wrappedValue = true
+                    searchText.wrappedValue = ""
+                }
+            )
+            .environmentObject(chatModel)
+            .environmentObject(theme)
+            .sunderPrivateSheet()
         }
         .onChange(of: showChatInfoSheet) { visible in
             if visible {
@@ -540,6 +550,7 @@ struct ChatView: View {
             }
             .modifier(SunderAvatarToolbarButtonStyle())
             .accessibilityLabel(Text("Profile"))
+            .accessibilityIdentifier("sunder.avatar")
             .menuIndicator(.hidden)
             .contextMenu { avatarChatActions() }
         }
@@ -612,36 +623,6 @@ struct ChatView: View {
             }
         } else if case .local = cInfo {
             ChatInfoToolbar(chat: chat, showsAvatar: !usesModernAvatarToolbar)
-        }
-    }
-
-    @ViewBuilder private var chatProfileDestination: some View {
-        if case let .direct(contact) = chat.chatInfo {
-            ChatInfoView(
-                chat: chat,
-                contact: contact,
-                localAlias: chat.chatInfo.localAlias,
-                featuresAllowed: contactUserPrefsToFeaturesAllowed(contact.mergedPreferences),
-                currentFeaturesAllowed: contactUserPrefsToFeaturesAllowed(contact.mergedPreferences),
-                onSearch: { focusSearch() },
-                pushed: true
-            )
-        } else if case let .group(groupInfo, _) = chat.chatInfo {
-            GroupChatInfoView(
-                chat: chat,
-                groupInfo: Binding(
-                    get: { groupInfo },
-                    set: { gInfo in
-                        chat.chatInfo = .group(groupInfo: gInfo, groupChatScope: nil)
-                        chat.created = Date.now
-                    }
-                ),
-                scrollToItemId: $scrollToItemId,
-                composeState: $composeState,
-                onSearch: { focusSearch() },
-                localAlias: groupInfo.localAlias,
-                pushed: true
-            )
         }
     }
 
@@ -3160,6 +3141,44 @@ func archiveReports(_ chat: Chat, _ itemIds: [Int64], _ forAll: Bool, _ onSucces
             }
         }
     }
+}
+
+private struct ChatProfileDestination: View {
+    @ObservedObject var chat: Chat
+    @Binding var scrollToItemId: ChatItem.ID?
+    @Binding var composeState: ComposeState
+    var onSearch: () -> Void
+
+    @ViewBuilder var body: some View {
+        if case let .direct(contact) = chat.chatInfo {
+            ChatInfoView(
+                chat: chat,
+                contact: contact,
+                localAlias: chat.chatInfo.localAlias,
+                featuresAllowed: contactUserPrefsToFeaturesAllowed(contact.mergedPreferences),
+                currentFeaturesAllowed: contactUserPrefsToFeaturesAllowed(contact.mergedPreferences),
+                onSearch: onSearch,
+                pushed: true
+            )
+        } else if case let .group(groupInfo, _) = chat.chatInfo {
+            GroupChatInfoView(
+                chat: chat,
+                groupInfo: Binding(
+                    get: { groupInfo },
+                    set: { gInfo in
+                        chat.chatInfo = .group(groupInfo: gInfo, groupChatScope: nil)
+                        chat.created = Date.now
+                    }
+                ),
+                scrollToItemId: $scrollToItemId,
+                composeState: $composeState,
+                onSearch: onSearch,
+                localAlias: groupInfo.localAlias,
+                pushed: true
+            )
+        }
+    }
+
 }
 
 private func buildTheme() -> AppTheme {

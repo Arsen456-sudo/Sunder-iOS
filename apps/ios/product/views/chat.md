@@ -267,3 +267,14 @@ The avatar's actual UIKit bar-item identifier is assigned again without moving o
 regrouping items. Existing header appearance/materials remain unchanged. A native
 center identifier is assigned only if UIKit exposes one actual center bar item;
 principal titleView matching remains unproven. Device validation is required.
+
+## USB-reproduced profile update storm (2026-10-31)
+A user-reproduced profile hang was captured over USB. The log contains one SwiftUI
+state-during-update fault and sustained repeated action-label evaluation after the
+profile tap. The route now constructs an independent ChatProfileDestination with
+explicit model/binding captures, not the entire ChatView/DismissAction environment.
+Profile contents, native back, search return, permissions and privacy stay unchanged.
+This targets the observed update storm; disappearance of the hang is not yet device
+verified. Native header item lookup now includes actual trailingItemGroups rather
+than relying on the empty legacy array seen on the phone. Exact title morph remains
+unproven because the runtime title is a titleView with zero native center items.

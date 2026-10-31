@@ -372,6 +372,7 @@ struct ChatListView: View {
             } label: { Image(systemName: "line.3.horizontal.decrease") }
                 .tint(chatTagsModel.activeFilter == .unread ? .accentColor : .primary)
                 .accessibilityLabel(Text("Unread"))
+                .accessibilityIdentifier("sunder.context")
         }
         ToolbarSpacer(.fixed, placement: .navigationBarTrailing)
         ToolbarItem(id: "sunder.avatar", placement: .navigationBarTrailing) { composeButton }
@@ -446,6 +447,7 @@ struct ChatListView: View {
                 } label: { Image(systemName: "square.and.pencil") }
                     .tint(.primary)
                     .accessibilityLabel(Text("New chat"))
+                    .accessibilityIdentifier("sunder.avatar")
             } else {
                 NewChatMenuButton(showNewChatSheet: $showNewChatSheet)
             }

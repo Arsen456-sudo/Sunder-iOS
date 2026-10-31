@@ -62,7 +62,7 @@ must compile before device validation. See [adoption report](../../../../docs/fo
 - [`struct SunderFolderSegments: UIViewRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L403)
 - [`@MainActor private func sunderNavigationOwner(_ controller: UIViewController?) -> UIViewController?`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L495)
 - [`@MainActor private final class SunderScrollEdgeBinding`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L505)
-- [`struct SunderNavigationSearch: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L565)
+- [`struct SunderNavigationSearch: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L583)
 
 ### Shared/Views/ChatList/SystemInterface.swift
 
@@ -76,30 +76,30 @@ must compile before device validation. See [adoption report](../../../../docs/fo
 - [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L89)
 - [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L188)
 - [`@ViewBuilder private func withToolbar(content: () -> some View) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L344)
-- [`@ViewBuilder private func noChatsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L540)
-- [`@ViewBuilder private func chatView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L562)
-- [`func stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L576)
-- [`private func filteredChats() -> [Chat]`](../../Shared/Views/ChatList/ChatListView.swift#L582)
-- [`func filtered(_ chat: Chat) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L610)
-- [`func viewNameContains(_ cInfo: ChatInfo, _ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L619)
-- [`func searchString() -> String`](../../Shared/Views/ChatList/ChatListView.swift#L625)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L650)
-- [`private func toggleFilterButton() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L732)
-- [`private func connect(_ link: String)`](../../Shared/Views/ChatList/ChatListView.swift#L739)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L765)
-- [`private func isNameLabel(_ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L796)
-- [`func knownChatId(_ result: ConnectionPlanResult?) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L804)
-- [`func nameSearchCandidate(_ str: String) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L834)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L857)
-- [`@ViewBuilder private func tagsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L863)
-- [`@ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L925)
-- [`private func expandedPresetTagsFiltersView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L945)
-- [`@ViewBuilder private func collapsedTagsFilterView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L953)
-- [`private func presentTagLists()`](../../Shared/Views/ChatList/ChatListView.swift#L997)
-- [`private func presetTagLabel(tag: PresetTag, active: Bool) -> (item: String, menu: String?, label: LocalizedStringKey)`](../../Shared/Views/ChatList/ChatListView.swift#L1012)
-- [`private func setActiveFilter(filter: ActiveFilter)`](../../Shared/Views/ChatList/ChatListView.swift#L1025)
-- [`func chatStoppedIcon() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L1034)
-- [`func presetTagMatchesChat(_ tag: PresetTag, _ chatInfo: ChatInfo, _ chatStats: ChatStats) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L1046)
+- [`@ViewBuilder private func noChatsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L542)
+- [`@ViewBuilder private func chatView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L564)
+- [`func stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L578)
+- [`private func filteredChats() -> [Chat]`](../../Shared/Views/ChatList/ChatListView.swift#L584)
+- [`func filtered(_ chat: Chat) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L612)
+- [`func viewNameContains(_ cInfo: ChatInfo, _ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L621)
+- [`func searchString() -> String`](../../Shared/Views/ChatList/ChatListView.swift#L627)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L652)
+- [`private func toggleFilterButton() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L734)
+- [`private func connect(_ link: String)`](../../Shared/Views/ChatList/ChatListView.swift#L741)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L767)
+- [`private func isNameLabel(_ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L798)
+- [`func knownChatId(_ result: ConnectionPlanResult?) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L806)
+- [`func nameSearchCandidate(_ str: String) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L836)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L859)
+- [`@ViewBuilder private func tagsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L865)
+- [`@ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L927)
+- [`private func expandedPresetTagsFiltersView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L947)
+- [`@ViewBuilder private func collapsedTagsFilterView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L955)
+- [`private func presentTagLists()`](../../Shared/Views/ChatList/ChatListView.swift#L999)
+- [`private func presetTagLabel(tag: PresetTag, active: Bool) -> (item: String, menu: String?, label: LocalizedStringKey)`](../../Shared/Views/ChatList/ChatListView.swift#L1014)
+- [`private func setActiveFilter(filter: ActiveFilter)`](../../Shared/Views/ChatList/ChatListView.swift#L1027)
+- [`func chatStoppedIcon() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L1036)
+- [`func presetTagMatchesChat(_ tag: PresetTag, _ chatInfo: ChatInfo, _ chatStats: ChatStats) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L1048)
 
 ### Shared/Views/ChatList/ServersSummaryView.swift
 
@@ -177,9 +177,9 @@ View-level iOS 16 modifier. SystemInterface provides the guarded scroll-backgrou
 helper used by ServersSummaryView. The deployment target remains iOS 15 and the
 system presentation/actions remain the same.
 
-- [`@ToolbarContentBuilder private var systemTopToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L390)
-- [`@ToolbarContentBuilder private var systemBottomToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L396)
-- [`@ViewBuilder private var statusButton: some View`](../../Shared/Views/ChatList/ChatListView.swift#L406)
+- [`@ToolbarContentBuilder private var systemTopToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L391)
+- [`@ToolbarContentBuilder private var systemBottomToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L397)
+- [`@ViewBuilder private var statusButton: some View`](../../Shared/Views/ChatList/ChatListView.swift#L407)
 - [`ifAvailableHideScrollBackground()`](../../Shared/Views/ChatList/SystemInterface.swift#L75)
 
 The toolbar definitions are unconditional for iOS 15 compatibility. withToolbar's
@@ -318,7 +318,7 @@ Close item. searchBarCancelButtonClicked cancels connection progress, clears tex
 focus/active state, and restores saved toolbar items. Its native cancel control owns
 width reservation, including narrow screens and accessibility sizes.
 
-Source entry points: [SunderScrollEdgeBinding](../../Shared/Views/ChatList/ChatListNativeControls.swift#L505) | [SunderNavigationSearch](../../Shared/Views/ChatList/ChatListNativeControls.swift#L565)
+Source entry points: [SunderScrollEdgeBinding](../../Shared/Views/ChatList/ChatListNativeControls.swift#L505) | [SunderNavigationSearch](../../Shared/Views/ChatList/ChatListNativeControls.swift#L583)
 
 ## Compact-title and tab-edge correction (2026-10-31)
 SunderConversationCenter is removed after device feedback showed no title. ChatView
@@ -338,7 +338,7 @@ or additional backdrop renderer remains. Main-list search cancellation is unchan
 Native bar-item morphing from unread to the restored principal title remains a
 separate unverified limitation; a restored visible title is not proof of that morph.
 
-Source entry points: [SunderTabsController](../../Shared/Views/ChatList/ChatListNativeControls.swift#L241) | [SunderTitleSurface](../../Shared/Views/ChatList/SystemInterface.swift#L188)
+Source entry points: [SunderTabsController](../../Shared/Views/ChatList/ChatListNativeControls.swift#L241) | [SunderTitleSurface](../../Shared/Views/ChatList/SystemInterface.swift#L197)
 
 ## Toolbar builder compile correction (2026-10-31)
 Modern toolbar availability is selected at ChatView's outer ViewBuilder, not via
@@ -356,7 +356,7 @@ ChatView applies existing sunderPrivateSheet privacy/style modifiers to the push
 content without introducing a new modal sheet or a nested navigation stack.
 No toolbar/background/scroll-edge ownership changes accompany profile routing.
 
-Source entry points: [SunderProfileNavigation](../../Shared/Views/ChatList/SystemInterface.swift#L199) | [sunderProfileDestination](../../Shared/Views/ChatList/SystemInterface.swift#L209)
+Source entry points: [SunderProfileNavigation](../../Shared/Views/ChatList/SystemInterface.swift#L208) | [sunderProfileDestination](../../Shared/Views/ChatList/SystemInterface.swift#L218)
 
 ## Existing native item identity (2026-10-31)
 SunderConversationIdentity attaches only to ordinary modern chat headers. It assigns
@@ -368,4 +368,27 @@ One post-appearance debug event reports only titleView presence and bar-item cou
 not names, messages, images or account data. This is evidence collection for native
 matching; principal-title morphing is not claimed established.
 
-Source entry points: [SunderConversationIdentity](../../Shared/Views/ChatList/ChatListNativeControls.swift#L534)
+Source entry points: [SunderConversationIdentity](../../Shared/Views/ChatList/ChatListNativeControls.swift#L553)
+
+## Deferred model publication and real grouped items (2026-10-31)
+USB syslog: Modifying state during view update; header titleView=true, centerItems=0,
+legacy rightBarButtonItems=0. SunderRootLifecycle still hides native tabs immediately,
+but defers its model visibility callback to the next main-queue turn with a revision
+guard. ContentView skips equal hiddenRoots assignments to avoid redundant publisher
+invalidations. Fallback owner lookup uses the same safe publication path.
+
+sunderTrailingBarItems deduplicates native trailingItemGroups and legacy arrays.
+sunderMatchingBarItem resolves known semantic identifiers/accessibility labels,
+including public customView descendants; no group-order heuristics or private API.
+The main filter/compose and destination avatar expose stable accessibility IDs.
+Destination identity assignment is scoped to the current top owner and existing
+items only. Source/destination diagnostics report bounded counts/match booleans and
+owner identity, not labels/chat/account data. SunderNavigationSearch saves/restores
+leading/trailing groups when present, with legacy fallback. It does not discard the
+actual groups just because the legacy arrays are nil. Principal morph remains a gap.
+
+Source entry points: [sunderTrailingBarItems](../../Shared/Views/ChatList/ChatListNativeControls.swift#L534) | [sunderMatchingBarItem](../../Shared/Views/ChatList/ChatListNativeControls.swift#L541) | [publishVisibility](../../Shared/Views/ChatList/SystemInterface.swift#L131)
+
+The group-aware identity pass changes only identifiers/accessibility metadata. It no
+longer writes sharesBackground during native layout: SwiftUI ToolbarSpacer and
+existing item declarations own visual separation, avoiding new layout invalidations.

@@ -531,6 +531,25 @@ extension EnvironmentValues {
 }
 
 @available(iOS 26.0, *)
+@MainActor private func sunderTrailingBarItems(_ item: UINavigationItem) -> [UIBarButtonItem] {
+    var seen = Set<ObjectIdentifier>()
+    return (item.trailingItemGroups.flatMap(\.barButtonItems) + (item.rightBarButtonItems ?? []))
+        .filter { seen.insert(ObjectIdentifier($0)).inserted }
+}
+
+@available(iOS 26.0, *)
+@MainActor private func sunderMatchingBarItem(_ items: [UIBarButtonItem], id: String, label: String) -> UIBarButtonItem? {
+    func matches(_ view: UIView) -> Bool {
+        if view.accessibilityIdentifier == id || view.accessibilityLabel == label { return true }
+        return view.subviews.contains(where: matches)
+    }
+    return items.first {
+        $0.identifier == id || $0.accessibilityIdentifier == id || $0.accessibilityLabel == label
+            || $0.customView.map(matches) == true
+    }
+}
+
+@available(iOS 26.0, *)
 struct SunderConversationIdentity: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> Controller { Controller() }
     func updateUIViewController(_ controller: Controller, context: Context) { controller.apply() }
@@ -541,23 +560,22 @@ struct SunderConversationIdentity: UIViewControllerRepresentable {
         override func viewWillLayoutSubviews() { super.viewWillLayoutSubviews(); apply() }
         override func viewDidAppear(_ animated: Bool) { super.viewDidAppear(animated); apply(); report() }
         func apply() {
-            guard let owner = sunderNavigationOwner(parent) else { return }
+            guard let owner = sunderNavigationOwner(parent), owner.navigationController?.topViewController === owner else { return }
             let item = owner.navigationItem
-            if let avatar = item.rightBarButtonItems?.first {
+            let trailing = sunderTrailingBarItems(item)
+            if let avatar = trailing.count == 1 ? trailing.first : sunderMatchingBarItem(trailing, id: "sunder.avatar", label: NSLocalizedString("Profile", comment: "Profile")) {
                 if avatar.identifier != "sunder.avatar" { avatar.identifier = "sunder.avatar" }
-                if avatar.sharesBackground { avatar.sharesBackground = false }
             }
             let center = item.centerItemGroups.flatMap(\.barButtonItems)
             if center.count == 1, let title = center.first {
                 if title.identifier != "sunder.context" { title.identifier = "sunder.context" }
-                if title.sharesBackground { title.sharesBackground = false }
             }
         }
         private func report() {
             guard !reported, let owner = sunderNavigationOwner(parent) else { return }
             reported = true
             let item = owner.navigationItem
-            logger.debug("Sunder header structure: titleView=\(item.titleView != nil), centerItems=\(item.centerItemGroups.flatMap(\.barButtonItems).count), trailingItems=\(item.rightBarButtonItems?.count ?? 0)")
+            logger.debug("Sunder header structure v2: topOwner=\(owner.navigationController?.topViewController === owner), titleView=\(item.titleView != nil), centerItems=\(item.centerItemGroups.flatMap(\.barButtonItems).count), trailingGroups=\(item.trailingItemGroups.count), trailingItems=\(sunderTrailingBarItems(item).count)")
         }
     }
 }
@@ -580,11 +598,14 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
         private weak var owner: UIViewController?
         private var savedLeft: [UIBarButtonItem]?
         private var savedRight: [UIBarButtonItem]?
+        private var savedLeadingGroups: [UIBarButtonItemGroup] = []
+        private var savedTrailingGroups: [UIBarButtonItemGroup] = []
         private var installed = false
         private var applying = false
         private let spinner = UIActivityIndicatorView(style: .medium)
         private var originalSearchIcon: UIView?
         private var visible = false
+        private var sourceIdentityReport: String?
 
 
         init(_ state: SunderNavigationSearch) { self.state = state; super.init(nibName: nil, bundle: nil) }
@@ -621,6 +642,8 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
                 if !installed {
                     savedLeft = item.leftBarButtonItems
                     savedRight = item.rightBarButtonItems
+                    savedLeadingGroups = item.leadingItemGroups
+                    savedTrailingGroups = item.trailingItemGroups
                     current.definesPresentationContext = true
                     item.searchController = search
                     item.preferredSearchBarPlacement = .integrated
@@ -650,9 +673,16 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
                     item.backBarButtonItem?.identifier = "sunder.leading"
                 }
                 if item.backButtonDisplayMode != .minimal { item.backButtonDisplayMode = .minimal }
-                item.rightBarButtonItems?.first?.identifier = "sunder.avatar"
-                if (item.rightBarButtonItems?.count ?? 0) > 1 { item.rightBarButtonItems?.last?.identifier = "sunder.context" }
-                for barItem in item.rightBarButtonItems ?? [] where barItem.sharesBackground { barItem.sharesBackground = false }
+                let trailing = sunderTrailingBarItems(item)
+                let compose = sunderMatchingBarItem(trailing, id: "sunder.avatar", label: NSLocalizedString("New chat", comment: "New chat"))
+                let unread = sunderMatchingBarItem(trailing, id: "sunder.context", label: NSLocalizedString("Unread", comment: "Unread"))
+                if let compose, compose.identifier != "sunder.avatar" { compose.identifier = "sunder.avatar" }
+                if let unread, unread.identifier != "sunder.context" { unread.identifier = "sunder.context" }
+                let status = "groups=\(item.trailingItemGroups.count), items=\(trailing.count), compose=\(compose != nil), unread=\(unread != nil)"
+                if sourceIdentityReport != status {
+                    sourceIdentityReport = status
+                    logger.debug("Sunder source header identity: \(status)")
+                }
             }
         }
         func detach() {
@@ -661,11 +691,17 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
             search.isActive = false
             if owner?.navigationItem.searchController === search {
                 owner?.navigationItem.searchController = nil
-                owner?.navigationItem.setLeftBarButtonItems(savedLeft, animated: true)
-                owner?.navigationItem.setRightBarButtonItems(savedRight, animated: true)
+                if #available(iOS 26.0, *), !savedLeadingGroups.isEmpty {
+                    owner?.navigationItem.leadingItemGroups = savedLeadingGroups
+                } else { owner?.navigationItem.setLeftBarButtonItems(savedLeft, animated: true) }
+                if #available(iOS 26.0, *), !savedTrailingGroups.isEmpty {
+                    owner?.navigationItem.trailingItemGroups = savedTrailingGroups
+                } else { owner?.navigationItem.setRightBarButtonItems(savedRight, animated: true) }
             }
             savedLeft = nil
             savedRight = nil
+            savedLeadingGroups = []
+            savedTrailingGroups = []
         }
         func updateSearchResults(for searchController: UISearchController) {
             let value = searchController.searchBar.text ?? ""

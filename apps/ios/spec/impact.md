@@ -240,3 +240,8 @@ Profile stability: NavStackCompat affects PC1/PC2/PC3 native route persistence.
 ChatView/native controls affect PC2/PC3 native identity only. GroupChatInfoView and
 SimpleXAPI affect PC3/PC14 initial group-link read scheduling, preserving command,
 permissions and error mapping. Crypto, transport implementation and storage stay.
+
+USB-driven update-cycle fix: ChatView/ChatListNativeControls/SystemInterface/ContentView
+affect PC1/PC2/PC3/PC19 navigation dependency isolation, root-visibility publications
+and actual grouped bar identity. ChatListView adds semantic accessibility metadata
+only. Profile content, chat data, account/transport/encryption/storage stay unchanged.

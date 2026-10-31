@@ -127,6 +127,15 @@ private struct SunderRootLifecycle: UIViewControllerRepresentable {
     func updateUIViewController(_ controller: Controller, context: Context) { controller.visibility = visibility }
     class Controller: UIViewController {
         var visibility: ((Bool) -> Void)?
+        private var visibilityRevision = 0
+        private func publishVisibility(_ visible: Bool) {
+            visibilityRevision += 1
+            let revision = visibilityRevision
+            DispatchQueue.main.async { [weak self] in
+                guard let self, self.visibilityRevision == revision else { return }
+                self.visibility?(visible)
+            }
+        }
         init(_ visibility: ((Bool) -> Void)?) { self.visibility = visibility; super.init(nibName: nil, bundle: nil) }
         required init?(coder: NSCoder) { fatalError("init(coder:) is not supported") }
         override func loadView() { view = UIView(); view.isUserInteractionEnabled = false }
@@ -140,7 +149,7 @@ private struct SunderRootLifecycle: UIViewControllerRepresentable {
         }
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-            guard let owner = navigationOwner else { visibility?(true); return }
+            guard let owner = navigationOwner else { publishVisibility(true); return }
             let nav = owner.navigationController
             let returningToRoot = nav?.topViewController === owner || nav?.transitionCoordinator?.viewController(forKey: .to) === owner
             guard returningToRoot else { return }
@@ -148,7 +157,7 @@ private struct SunderRootLifecycle: UIViewControllerRepresentable {
         }
         override func viewWillDisappear(_ animated: Bool) {
             super.viewWillDisappear(animated)
-            guard let owner = navigationOwner, let nav = owner.navigationController else { visibility?(false); return }
+            guard let owner = navigationOwner, let nav = owner.navigationController else { publishVisibility(false); return }
             let destination = nav.transitionCoordinator?.viewController(forKey: .to)
             let pushesWithinStack = destination != nil && destination !== owner && destination?.navigationController === nav
             guard nav.viewControllers.count > 1 || pushesWithinStack else { return }
@@ -159,7 +168,7 @@ private struct SunderRootLifecycle: UIViewControllerRepresentable {
                 if #available(iOS 18.0, *) { tabs.setTabBarHidden(true, animated: false) }
                 else { tabs.tabBar.isHidden = true }
             }
-            visibility?(visible)
+            publishVisibility(visible)
         }
     }
 }

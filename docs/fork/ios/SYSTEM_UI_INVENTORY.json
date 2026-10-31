@@ -7,7 +7,7 @@
   "records": [
     {
       "path": "apps/ios/Shared/ContentView.swift",
-      "sha256": "a5f0660edc530247d5ba987cd7f253ef16e559c8eebd8f17d90090be9367c20b",
+      "sha256": "8cf81f565adc66bf45ec325b11ed68ce0c5dc7f7e21b57a4950df9b199bdca8d",
       "swiftui_view_declarations": [
         "ContentView",
         "CallDuration"
@@ -653,7 +653,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatView.swift",
-      "sha256": "4f518906fca84b58786fa69430ef9f1b6af2c4403abef48336a02197719ca0d6",
+      "sha256": "de71285c0c73ba8e9ea07107e55eb3ef74205613aa9954732a8228b98c39d076",
       "swiftui_view_declarations": [
         "ChatView",
         "ChatBannerView",
@@ -661,6 +661,7 @@
         "DateSeparator",
         "ChatItemWithMenu",
         "SelectedChatItem",
+        "ChatProfileDestination",
         "ReactionContextMenu",
         "ToggleNtfsButton"
       ],
@@ -670,8 +671,8 @@
       "hidden_navigation": [],
       "legacy_material_references": [
         236,
-        595,
-        818
+        606,
+        799
       ],
       "native_bridges": [],
       "validation": "Source-pattern inventory; full-screen device validation pending"
@@ -1294,7 +1295,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/ChatListNativeControls.swift",
-      "sha256": "a739401a24025383f6771c4cfa2a6b094ee308d504d8ef5c9be404406e266d99",
+      "sha256": "8fc0a6b974a0f3989add676a85eebf447c9845299931d3f41e23591278e8427f",
       "swiftui_view_declarations": [
         "ChatListUnreadButton",
         "ChatListStatusButton"
@@ -1312,8 +1313,8 @@
         356,
         403,
         448,
-        534,
-        565
+        553,
+        583
       ],
       "validation": "Source-pattern inventory; full-screen device validation pending"
     },
@@ -1335,7 +1336,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/ChatListView.swift",
-      "sha256": "24e44e1bb553aed90b6b007c66525d83e1e46b384972e844b07e6ee0040bee5d",
+      "sha256": "a61e423b926d83d5d73c6e723b39c69bf3c79304fcb64e3fcc03276e61447fb9",
       "swiftui_view_declarations": [
         "UserPickerSheetView",
         "ChatListView",
@@ -1344,13 +1345,13 @@
         "TagsView"
       ],
       "native_lists_forms": [
-        490
+        492
       ],
       "navigation_containers": [
         91,
         201,
-        907,
-        1006
+        909,
+        1008
       ],
       "system_controls": [],
       "hidden_navigation": [
@@ -1492,13 +1493,13 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/SystemInterface.swift",
-      "sha256": "76d9249006dd0ab294b20504ab35e435ed10b7059760d6af57960ca731105c20",
+      "sha256": "19b5ece2620b006dc508dc0d85305e58997d3b5f73d35f12d613c28beb2dc31a",
       "swiftui_view_declarations": [
         "SunderProfileNavigation"
       ],
       "native_lists_forms": [],
       "navigation_containers": [
-        204
+        213
       ],
       "system_controls": [],
       "hidden_navigation": [

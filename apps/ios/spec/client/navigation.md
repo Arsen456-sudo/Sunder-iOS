@@ -184,9 +184,9 @@ When the user taps a notification:
 3. Sets `ChatModel.chatId = chatId` to navigate to the conversation
 4. If the app was in background: the notification response is stored in `ChatModel.notificationResponse` and processed when the app becomes active
 
-### [URL Deep Link](../../Shared/ContentView.swift#L305)
+### [URL Deep Link](../../Shared/ContentView.swift#L308)
 
-SimpleX links (`simplex:/chat#...`) are handled via [`connectViaUrl()`](../../Shared/ContentView.swift#L463):
+SimpleX links (`simplex:/chat#...`) are handled via [`connectViaUrl()`](../../Shared/ContentView.swift#L466):
 
 ```swift
 .onOpenURL { url in
@@ -251,7 +251,7 @@ ZStack {
 
 ## 7. Authentication Gate
 
-### [Local Authentication](../../Shared/ContentView.swift#L383)
+### [Local Authentication](../../Shared/ContentView.swift#L386)
 
 When [`DEFAULT_PERFORM_LA`](../../Shared/ContentView.swift#L44) is enabled:
 
@@ -265,8 +265,8 @@ When [`DEFAULT_PERFORM_LA`](../../Shared/ContentView.swift#L44) is enabled:
 - Custom numeric passcode
 - Custom alphanumeric passcode
 
-### [Extended Authentication](../../Shared/ContentView.swift#L375)
-- After successful auth, a grace period prevents re-auth for brief background/foreground cycles ([`unlockedRecently()`](../../Shared/ContentView.swift#L375))
+### [Extended Authentication](../../Shared/ContentView.swift#L378)
+- After successful auth, a grace period prevents re-auth for brief background/foreground cycles ([`unlockedRecently()`](../../Shared/ContentView.swift#L378))
 - [`contentAccessAuthenticationExtended`](../../Shared/ContentView.swift#L35) is computed at `ContentView.init` to avoid render-time race conditions
 - The `enteredBackgroundAuthenticated` timestamp tracks when the app was last authenticated in background
 
@@ -322,7 +322,7 @@ Migration state (`ChatModel.migrationState != nil`) takes precedence over onboar
 
 ## 10. Relay URL Interception
 
-**Source:** [`Shared/ContentView.swift`](../../Shared/ContentView.swift#L478)
+**Source:** [`Shared/ContentView.swift`](../../Shared/ContentView.swift#L481)
 
 In `connectViaUrl_()`, relay address links (URL path `/r`) are intercepted before processing:
 
@@ -599,3 +599,12 @@ Review interactive/cancelled back, nested profile routes, explicit close, rapid
 open/back and deep-link startup on device; CI compilation is a separate check.
 
 Source entry points: [NavStackCompat](../../Shared/Views/Helpers/NavStackCompat.swift#L11)
+
+## USB-driven route dependency correction (2026-10-31)
+Profile destination construction is isolated from ChatView's environment dismiss
+value through an extracted component and explicit binding captures. Existing persistent
+path and pushed profiles remain. Root lifecycle callback publication is coalesced
+and deferred outside UIKit reconciliation; native tab hiding is still synchronous.
+Semantic native toolbar identity uses grouped items, not only legacy arrays, whose
+runtime count is zero. No role/group relocation, custom navigation animator or timer
+duration is introduced. Runtime verification is required after installing this build.

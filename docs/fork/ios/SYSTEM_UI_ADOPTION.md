@@ -136,3 +136,14 @@ avatar native identity is restored without regrouping or geometry changes; exist
 center items are identified only if UIKit exposes them. Structural header diagnostics
 contain counts/presence only. No custom animator is introduced; full unread-to-title
 morphing and stability require actual iPhone evidence rather than compile success.
+
+## USB reproduction and targeted correction (2026-10-31)
+Captured build23 logs during user-reproduced profile hang. Findings: one SwiftUICore
+state-during-update fault; sustained repeated action-label work; header titleView=true,
+centerItems=0 and legacy right-bar count=0. Raw logs/tooling are ignored under build/.
+No explicit cycle-detected message or symbolicated main-thread sample was obtained.
+Isolate profile destination and its captures; defer/coalesce model visibility callbacks
+while hiding native tabs synchronously; resolve semantic IDs from actual grouped
+native items and preserve groups through search. No geometry/role/animation redesign.
+These are runtime-informed changes, not a claim that the new build has been tested
+on device or that filter-to-title matching is complete. Re-test both after install.

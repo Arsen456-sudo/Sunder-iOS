@@ -263,7 +263,10 @@ struct ContentView: View {
                 .environmentObject(ChatTagsModel.shared)
                 .environment(\.sunderFolderSaveBusy, $mainNavigation.savingFolder)
                 .environment(\.sunderRootVisibility, { visible in
-                    if visible || mainNavigation.selected == index { mainNavigation.hiddenRoots[index] = !visible }
+                    let hidden = !visible
+                    if (visible || mainNavigation.selected == index), mainNavigation.hiddenRoots[index] != hidden {
+                        mainNavigation.hiddenRoots[index] = hidden
+                    }
                 })
                 .redacted(reason: redaction))
         }

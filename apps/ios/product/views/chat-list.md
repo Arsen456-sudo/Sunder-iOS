@@ -212,3 +212,9 @@ must cover short/long lists, all three roots, switching tabs and returning from 
 ## Row-entry scheduling (2026-10-31)
 Ordinary chat-row taps select the route directly on MainActor without an extra Task
 hop. Existing async message loading and native push animation remain unchanged.
+
+## Native toolbar identity lookup (2026-10-31)
+Unread and compose expose stable accessibility identifiers. Native bar identity is
+resolved semantically from actual trailing groups plus legacy items, without using
+array position. Search preserves and restores grouped navigation items as well as
+legacy arrays. No visual arrangement or button actions are changed by this fix.
