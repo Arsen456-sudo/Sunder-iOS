@@ -76,30 +76,30 @@ must compile before device validation. See [adoption report](../../../../docs/fo
 - [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L89)
 - [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L188)
 - [`@ViewBuilder private func withToolbar(content: () -> some View) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L344)
-- [`@ViewBuilder private func noChatsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L542)
-- [`@ViewBuilder private func chatView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L564)
-- [`func stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L578)
-- [`private func filteredChats() -> [Chat]`](../../Shared/Views/ChatList/ChatListView.swift#L584)
-- [`func filtered(_ chat: Chat) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L612)
-- [`func viewNameContains(_ cInfo: ChatInfo, _ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L621)
-- [`func searchString() -> String`](../../Shared/Views/ChatList/ChatListView.swift#L627)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L652)
-- [`private func toggleFilterButton() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L734)
-- [`private func connect(_ link: String)`](../../Shared/Views/ChatList/ChatListView.swift#L741)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L767)
-- [`private func isNameLabel(_ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L798)
-- [`func knownChatId(_ result: ConnectionPlanResult?) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L806)
-- [`func nameSearchCandidate(_ str: String) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L836)
-- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L859)
-- [`@ViewBuilder private func tagsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L865)
-- [`@ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L927)
-- [`private func expandedPresetTagsFiltersView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L947)
-- [`@ViewBuilder private func collapsedTagsFilterView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L955)
-- [`private func presentTagLists()`](../../Shared/Views/ChatList/ChatListView.swift#L999)
-- [`private func presetTagLabel(tag: PresetTag, active: Bool) -> (item: String, menu: String?, label: LocalizedStringKey)`](../../Shared/Views/ChatList/ChatListView.swift#L1014)
-- [`private func setActiveFilter(filter: ActiveFilter)`](../../Shared/Views/ChatList/ChatListView.swift#L1027)
-- [`func chatStoppedIcon() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L1036)
-- [`func presetTagMatchesChat(_ tag: PresetTag, _ chatInfo: ChatInfo, _ chatStats: ChatStats) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L1048)
+- [`@ViewBuilder private func noChatsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L545)
+- [`@ViewBuilder private func chatView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L567)
+- [`func stopAudioPlayer()`](../../Shared/Views/ChatList/ChatListView.swift#L581)
+- [`private func filteredChats() -> [Chat]`](../../Shared/Views/ChatList/ChatListView.swift#L587)
+- [`func filtered(_ chat: Chat) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L615)
+- [`func viewNameContains(_ cInfo: ChatInfo, _ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L624)
+- [`func searchString() -> String`](../../Shared/Views/ChatList/ChatListView.swift#L630)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L655)
+- [`private func toggleFilterButton() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L737)
+- [`private func connect(_ link: String)`](../../Shared/Views/ChatList/ChatListView.swift#L744)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L770)
+- [`private func isNameLabel(_ s: String) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L801)
+- [`func knownChatId(_ result: ConnectionPlanResult?) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L809)
+- [`func nameSearchCandidate(_ str: String) -> String?`](../../Shared/Views/ChatList/ChatListView.swift#L839)
+- [`var body: some View`](../../Shared/Views/ChatList/ChatListView.swift#L862)
+- [`@ViewBuilder private func tagsView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L868)
+- [`@ViewBuilder private func expandedTagFilterView(_ tag: PresetTag) -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L930)
+- [`private func expandedPresetTagsFiltersView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L950)
+- [`@ViewBuilder private func collapsedTagsFilterView() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L958)
+- [`private func presentTagLists()`](../../Shared/Views/ChatList/ChatListView.swift#L1002)
+- [`private func presetTagLabel(tag: PresetTag, active: Bool) -> (item: String, menu: String?, label: LocalizedStringKey)`](../../Shared/Views/ChatList/ChatListView.swift#L1017)
+- [`private func setActiveFilter(filter: ActiveFilter)`](../../Shared/Views/ChatList/ChatListView.swift#L1030)
+- [`func chatStoppedIcon() -> some View`](../../Shared/Views/ChatList/ChatListView.swift#L1039)
+- [`func presetTagMatchesChat(_ tag: PresetTag, _ chatInfo: ChatInfo, _ chatStats: ChatStats) -> Bool`](../../Shared/Views/ChatList/ChatListView.swift#L1051)
 
 ### Shared/Views/ChatList/ServersSummaryView.swift
 
@@ -177,9 +177,9 @@ View-level iOS 16 modifier. SystemInterface provides the guarded scroll-backgrou
 helper used by ServersSummaryView. The deployment target remains iOS 15 and the
 system presentation/actions remain the same.
 
-- [`@ToolbarContentBuilder private var systemTopToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L391)
-- [`@ToolbarContentBuilder private var systemBottomToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L397)
-- [`@ViewBuilder private var statusButton: some View`](../../Shared/Views/ChatList/ChatListView.swift#L407)
+- [`@ToolbarContentBuilder private var systemTopToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L394)
+- [`@ToolbarContentBuilder private var systemBottomToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L400)
+- [`@ViewBuilder private var statusButton: some View`](../../Shared/Views/ChatList/ChatListView.swift#L410)
 - [`ifAvailableHideScrollBackground()`](../../Shared/Views/ChatList/SystemInterface.swift#L75)
 
 The toolbar definitions are unconditional for iOS 15 compatibility. withToolbar's
@@ -409,4 +409,27 @@ no nested-profile navigationDestination or hidden NavigationLink registration in
 the chat stack. The back-looking leading button dismisses the cover; child links
 use the independent NavigationView's normal navigation. No custom animator/renderer.
 
-Source entry point: [sunderFullScreenProfile](../../Shared/Views/ChatList/SystemInterface.swift#L209)
+Source entry point: [sunderFullScreenProfile](../../Shared/Views/ChatList/SystemInterface.swift#L220)
+
+## Owned UIKit side-profile navigation (2026-10-31)
+This supersedes the thin fullScreenCover wrapper above. sunderFullScreenProfile now
+attaches SunderSideProfile's zero-size presentation controller. scheduleUpdate
+coalesces reconciliation outside SwiftUI updates. reconcile presents an owned
+UINavigationController overFullScreen without animation, with a transparent inert
+root, then natively pushes the explicitly supplied private profile content. The
+profile's original independent NavigationView is retained. No delegate of the chat
+stack is replaced and no custom animator, timing constants or snapshots are used.
+SunderProfileCloseKey exposes a weakly captured root-close action; only fullScreen
+profiles use it. Other modal callers use their local DismissAction. Native willShow/
+didShow gates programmatic closing during transitions; completed pop to the inert
+root dismisses the owned container then finish clears the binding and calls cleanup
+once. Cancelled pop leaves the profile open. tearDown dismisses owned state only.
+The owned edge gesture defers to nested NavigationView routes and presented modals.
+Reduce Motion disables the owned navigation push/pop animation. All existing
+chat/theme/privacy content modifiers are retained; no parent environment copy.
+
+The source unread ToolbarItem now hides its shared backing and uses a 44pt circular
+interactive native glassEffect. IDs alone do not match a titleView; this isolates
+the erroneous source platter but does not establish exact filter-to-title morphing.
+
+Source entry points: [SunderProfileCloseKey](../../Shared/Views/ChatList/SystemInterface.swift#L208) | [SunderSideProfile](../../Shared/Views/ChatList/SystemInterface.swift#L224) | [scheduleUpdate](../../Shared/Views/ChatList/SystemInterface.swift#L259) | [reconcile](../../Shared/Views/ChatList/SystemInterface.swift#L269) | [close](../../Shared/Views/ChatList/SystemInterface.swift#L301) | [navigationController](../../Shared/Views/ChatList/SystemInterface.swift#L308) | [gestureRecognizerShouldBegin](../../Shared/Views/ChatList/SystemInterface.swift#L323) | [finish](../../Shared/Views/ChatList/SystemInterface.swift#L333) | [tearDown](../../Shared/Views/ChatList/SystemInterface.swift#L346)

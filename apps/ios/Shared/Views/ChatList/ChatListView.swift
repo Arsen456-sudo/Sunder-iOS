@@ -373,7 +373,10 @@ struct ChatListView: View {
                 .tint(chatTagsModel.activeFilter == .unread ? .accentColor : .primary)
                 .accessibilityLabel(Text("Unread"))
                 .accessibilityIdentifier("sunder.context")
+                .frame(width: 44, height: 44)
+                .glassEffect(.regular.interactive(), in: Circle())
         }
+        .sharedBackgroundVisibility(.hidden)
         ToolbarSpacer(.fixed, placement: .navigationBarTrailing)
         ToolbarItem(id: "sunder.avatar", placement: .navigationBarTrailing) { composeButton }
 

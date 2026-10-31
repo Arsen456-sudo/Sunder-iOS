@@ -627,3 +627,11 @@ DismissAction is restored in this independent context. Parent cleanup uses actua
 onDismiss. This is a full-screen presentation, not a claimed UIKit push transition.
 Chat route, privacy, model and header behavior are otherwise unchanged. Exact unread-
 to-title native matching is still a separate open issue. Device acceptance required.
+
+## Independent UIKit side-profile container (2026-10-31)
+Working independent profile content is hosted in an owned UINavigationController
+with a transparent inert root over chat. Container presentation is unanimated; its
+push/pop is native, with no custom transitioning delegate. Existing chat stack and
+its delegate/path are untouched. The inner profile NavigationView still owns child
+links. Root close is injected weakly; dismissal completion owns group/theme cleanup.
+Root interactive back cancellation does not dismiss or clear profile state.

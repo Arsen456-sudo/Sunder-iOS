@@ -168,3 +168,13 @@ DismissAction in an independent fullScreenCover, with leading back and modal Don
 fallback. All content and privacy remain; cleanup runs after dismissal. This is a
 full-screen system presentation, not a push. Native filter-to-title morph is not
 changed or claimed solved. Device validation must precede a stability claim.
+
+## Native side-profile transition (2026-10-31)
+Build26 independent full-screen profile is reported working by the user. Preserve
+its NavigationView while an owned UINavigationController provides side push/pop
+over a transparent root. No custom navigation animator/snapshot or chat-stack
+delegate replacement. Full-screen root handlers use a weak close callback; modal
+and child routes keep their original contexts. Reduce Motion is honored.
+Unread now uses separate system circular glass with shared toolbar backing hidden.
+This prevents shared-platter rendering, not a demonstrated filter-to-title morph.
+That exact morph remains pending; do not claim it solved from compilation alone.

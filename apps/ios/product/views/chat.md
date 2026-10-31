@@ -296,3 +296,9 @@ on the whole screen with a leading back action. Chat toolbar and messages are no
 redesigned. Native fullScreenCover supplies presentation/dismissal; this is a separate
 full-screen menu rather than a navigation push. Profile cleanup/theme refresh is
 performed after cover dismissal. Native filter-to-title matching remains unresolved.
+
+## Profile side navigation (2026-10-31)
+Profile content keeps an independent navigation context; a separate owned UIKit
+container supplies native side push/pop over chat. No snapshots/custom animator are
+used. Native edge back is enabled at profile root, not over deeper profile routes.
+Cleanup occurs after completed closing, not during an interactive/cancelled pop.

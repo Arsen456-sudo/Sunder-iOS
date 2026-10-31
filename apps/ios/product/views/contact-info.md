@@ -173,3 +173,9 @@ Full-screen mode shows a leading chevron back action that closes the profile. Al
 existing sections, subpages, confirmations, security actions and search return remain.
 Other modal callers retain Done. This supersedes the pushed/presentationMode recovery
 notes above and must be tested on device before being called fixed.
+
+## Native side presentation (2026-10-31)
+The independently navigated profile now enters from the right using a native UIKit
+push and returns using its native pop, including an edge-back gesture at the root.
+Existing child pages keep their own navigation. Ordinary modal profile callers
+retain their previous Done/dismiss behavior. Device acceptance is pending.

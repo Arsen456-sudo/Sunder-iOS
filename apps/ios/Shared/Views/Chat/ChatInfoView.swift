@@ -93,7 +93,8 @@ enum SendReceipts: Identifiable, Hashable {
 struct ChatInfoView: View {
     @EnvironmentObject var chatModel: ChatModel
     @EnvironmentObject var theme: AppTheme
-    @Environment(\.dismiss) var dismiss: DismissAction
+    @Environment(\.dismiss) private var presentationDismiss: DismissAction
+    @Environment(\.sunderProfileClose) private var closeProfile
     @ObservedObject var chat: Chat
     @State var contact: Contact
     @State var localAlias: String
@@ -113,6 +114,11 @@ struct ChatInfoView: View {
     @State private var sendReceiptsUserDefault = true
     @State private var progressIndicator = false
     @AppStorage(DEFAULT_DEVELOPER_TOOLS) private var developerTools = false
+
+    private func dismiss() {
+        if fullScreen, let closeProfile { closeProfile() }
+        else { presentationDismiss() }
+    }
 
     enum ChatInfoViewAlert: Identifiable {
         case clearChatAlert

@@ -205,11 +205,149 @@ struct SunderTitleSurface: ViewModifier {
     }
 }
 
+private struct SunderProfileCloseKey: EnvironmentKey {
+    static let defaultValue: (() -> Void)? = nil
+}
+
+extension EnvironmentValues {
+    var sunderProfileClose: (() -> Void)? {
+        get { self[SunderProfileCloseKey.self] }
+        set { self[SunderProfileCloseKey.self] = newValue }
+    }
+}
+
 extension View {
     func sunderFullScreenProfile<D: View>(
         isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil,
         @ViewBuilder content: @escaping () -> D
     ) -> some View {
-        fullScreenCover(isPresented: isPresented, onDismiss: onDismiss, content: content)
+        background(SunderSideProfile(isPresented: isPresented, onDismiss: onDismiss, content: content)
+            .frame(width: 0, height: 0))
+    }
+}
+
+private struct SunderSideProfile<D: View>: UIViewControllerRepresentable {
+    @Binding var isPresented: Bool
+    var onDismiss: (() -> Void)?
+    var content: () -> D
+
+    func makeUIViewController(context: Context) -> Controller { Controller(self) }
+    func updateUIViewController(_ controller: Controller, context: Context) {
+        controller.state = self
+        controller.scheduleUpdate()
+    }
+    static func dismantleUIViewController(_ controller: Controller, coordinator: ()) {
+        controller.tearDown()
+    }
+
+    final class Controller: UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
+        var state: SunderSideProfile
+        private var ownedNavigation: UINavigationController?
+        private var profileController: UIViewController?
+        private var pushStarted = false
+        private var transitioning = false
+        private var closeRequested = false
+        private var updateScheduled = false
+        private var closing = false
+        private var dismantled = false
+
+        init(_ state: SunderSideProfile) { self.state = state; super.init(nibName: nil, bundle: nil) }
+        required init?(coder: NSCoder) { fatalError("init(coder:) is not supported") }
+        override func loadView() { view = UIView(); view.isUserInteractionEnabled = false }
+        override func viewDidAppear(_ animated: Bool) { super.viewDidAppear(animated); scheduleUpdate() }
+
+        func scheduleUpdate() {
+            guard !updateScheduled, !dismantled else { return }
+            updateScheduled = true
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                self.updateScheduled = false
+                self.reconcile()
+            }
+        }
+
+        private func reconcile() {
+            guard !dismantled else { return }
+            if let navigation = ownedNavigation {
+                if !state.isPresented || closeRequested { close(navigation) }
+                return
+            }
+            guard state.isPresented, viewIfLoaded?.window != nil, presentedViewController == nil else { return }
+            let root = UIViewController()
+            root.view.backgroundColor = .clear
+            let navigation = UINavigationController(rootViewController: root)
+            navigation.setNavigationBarHidden(true, animated: false)
+            navigation.view.backgroundColor = .clear
+            navigation.modalPresentationStyle = .overFullScreen
+            navigation.delegate = self
+            let profile = UIHostingController(rootView: state.content()
+                .environment(\.sunderProfileClose, { [weak self] in
+                    self?.closeRequested = true
+                    self?.scheduleUpdate()
+                }))
+            ownedNavigation = navigation
+            profileController = profile
+            transitioning = true
+            // Only the native navigation push animates; the transparent container does not.
+            present(navigation, animated: false) { [weak self, weak navigation, weak profile] in
+                guard let self, let navigation, let profile, !self.dismantled else { return }
+                self.pushStarted = true
+                navigation.interactivePopGestureRecognizer?.delegate = self
+                navigation.interactivePopGestureRecognizer?.isEnabled = true
+                navigation.pushViewController(profile, animated: !UIAccessibility.isReduceMotionEnabled)
+            }
+        }
+
+        private func close(_ navigation: UINavigationController) {
+            guard pushStarted, !transitioning, !closing else { return }
+            closeRequested = true
+            transitioning = true
+            navigation.popToRootViewController(animated: !UIAccessibility.isReduceMotionEnabled)
+        }
+
+        func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+            if navigationController === ownedNavigation, pushStarted { transitioning = true }
+        }
+
+        func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+            guard navigationController === ownedNavigation, pushStarted, !closing else { return }
+            transitioning = false
+            if viewController === profileController {
+                scheduleUpdate()
+            } else if viewController === navigationController.viewControllers.first {
+                closing = true
+                navigationController.dismiss(animated: false) { [weak self] in self?.finish() }
+            }
+        }
+
+        func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+            guard !transitioning, !closing, let navigation = ownedNavigation,
+                  navigation.topViewController === profileController else { return false }
+            func hasNestedRoute(_ controller: UIViewController) -> Bool {
+                if let nested = controller as? UINavigationController, nested.viewControllers.count > 1 { return true }
+                return controller.children.contains(where: hasNestedRoute)
+            }
+            return profileController.map { !hasNestedRoute($0) && $0.presentedViewController == nil } ?? false
+        }
+
+        private func finish() {
+            guard ownedNavigation != nil else { return }
+            ownedNavigation?.delegate = nil
+            ownedNavigation = nil
+            profileController = nil
+            pushStarted = false
+            transitioning = false
+            closing = false
+            closeRequested = false
+            state.isPresented = false
+            state.onDismiss?()
+        }
+
+        func tearDown() {
+            dismantled = true
+            guard let navigation = ownedNavigation else { return }
+            navigation.delegate = nil
+            navigation.dismiss(animated: false) { [self] in finish() }
+        }
     }
 }

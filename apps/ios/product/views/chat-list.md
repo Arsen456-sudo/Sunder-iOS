@@ -218,3 +218,9 @@ Unread and compose expose stable accessibility identifiers. Native bar identity 
 resolved semantically from actual trailing groups plus legacy items, without using
 array position. Search preserves and restores grouped navigation items as well as
 legacy arrays. No visual arrangement or button actions are changed by this fix.
+
+## Unread glass isolation (2026-10-31)
+Unread's toolbar shared backing is hidden and its button receives its own native
+interactive circular glass. Compose and the visible centered destination title are
+unchanged. This separates unread from compose's platter; exact unread-to-title
+morph remains a known gap and is not claimed by this change.

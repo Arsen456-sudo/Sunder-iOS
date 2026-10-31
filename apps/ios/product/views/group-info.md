@@ -276,3 +276,9 @@ This replaces the failed push into the chat stack; it is not described as a push
 Original DismissAction context is restored within that independent presentation.
 Other modal callers keep Done. Member/role guards, async link loading and privacy
 remain. Group cleanup runs when the cover actually finishes dismissal.
+
+## Native side presentation (2026-10-31)
+Group/channel profiles retain the working independent NavigationView but now enter
+with UIKit push/pop instead of a bottom cover animation. Root back/search uses the
+owned container close route. Nested member/link pages and ordinary modal callers
+keep their own navigation/dismissal; role gates and async loading are unchanged.

@@ -16,7 +16,8 @@ let SMALL_GROUPS_RCPS_MEM_LIMIT: Int = 20
 struct GroupChatInfoView: View {
     @EnvironmentObject var chatModel: ChatModel
     @EnvironmentObject var theme: AppTheme
-    @Environment(\.dismiss) var dismiss: DismissAction
+    @Environment(\.dismiss) private var presentationDismiss: DismissAction
+    @Environment(\.sunderProfileClose) private var closeProfile
     @ObservedObject var chat: Chat
     @Binding var groupInfo: GroupInfo
     @Binding var scrollToItemId: ChatItem.ID?
@@ -67,6 +68,11 @@ struct GroupChatInfoView: View {
             case let .error(title, _): return "error \(title)"
             }
         }
+    }
+
+    private func dismiss() {
+        if fullScreen, let closeProfile { closeProfile() }
+        else { presentationDismiss() }
     }
 
     var body: some View {

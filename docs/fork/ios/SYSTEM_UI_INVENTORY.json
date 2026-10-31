@@ -191,7 +191,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatInfoView.swift",
-      "sha256": "e9db83aacc1062aa6741966d02ea74b9727b8b186428233f1411527db41a7cd7",
+      "sha256": "d75bbc379c35b10ebc2223996ac67d969f418b912eb311f0d3522ed3913847c5",
       "swiftui_view_declarations": [
         "ChatInfoView",
         "SubStatusRow",
@@ -205,16 +205,16 @@
         "SimplexNameView"
       ],
       "native_lists_forms": [
-        144,
-        1288
+        150,
+        1294
       ],
       "navigation_containers": [
-        142,
-        1287
+        148,
+        1293
       ],
       "system_controls": [
-        419,
-        1290
+        425,
+        1296
       ],
       "hidden_navigation": [],
       "legacy_material_references": [],
@@ -1026,7 +1026,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/Group/GroupChatInfoView.swift",
-      "sha256": "bf7822739d3bec9b6866764976d48b3247c9d75de2b72677a016b6cd946eb592",
+      "sha256": "32c16d677d0f9bc574c0e065ab5a1ecd67a9a5080558a5901a19bd55e4a4769f",
       "swiftui_view_declarations": [
         "GroupChatInfoView",
         "MemberRowView",
@@ -1035,13 +1035,13 @@
         "GroupPreferencesButton"
       ],
       "native_lists_forms": [
-        79
+        85
       ],
       "navigation_containers": [
-        73
+        79
       ],
       "system_controls": [
-        387
+        393
       ],
       "hidden_navigation": [],
       "legacy_material_references": [],
@@ -1339,7 +1339,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/ChatListView.swift",
-      "sha256": "a61e423b926d83d5d73c6e723b39c69bf3c79304fcb64e3fcc03276e61447fb9",
+      "sha256": "b856cc75b4e9190457d465adf98e87ebed42da7947a9884405e3a12144e029e9",
       "swiftui_view_declarations": [
         "UserPickerSheetView",
         "ChatListView",
@@ -1348,13 +1348,13 @@
         "TagsView"
       ],
       "native_lists_forms": [
-        492
+        495
       ],
       "navigation_containers": [
         91,
         201,
-        909,
-        1008
+        912,
+        1011
       ],
       "system_controls": [],
       "hidden_navigation": [
@@ -1496,8 +1496,10 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/SystemInterface.swift",
-      "sha256": "83c1a38e700f510918aacdd83c6527026d49e3699780774dbdaf111b7d4220db",
-      "swiftui_view_declarations": [],
+      "sha256": "e40187a4a8cb0c6e73c7a8a0fec84c4ad1e3ff434615eec37ff812825093e533",
+      "swiftui_view_declarations": [
+        "SunderSideProfile"
+      ],
       "native_lists_forms": [],
       "navigation_containers": [],
       "system_controls": [],
@@ -1506,7 +1508,9 @@
       ],
       "legacy_material_references": [],
       "native_bridges": [
-        124
+        124,
+        229,
+        283
       ],
       "validation": "Source-pattern inventory; full-screen device validation pending"
     },

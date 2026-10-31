@@ -255,3 +255,8 @@ Independent profile recovery: ChatView/ChatInfoView/GroupChatInfoView/SystemInte
 affect PC2/PC3/PC13/PC14 presentation context and dismissal only. All content/actions,
 role/security gates, privacy and data protocols stay intact. Failed push helpers are
 removed, while other chat/navigation/header code is not redesigned.
+
+Native side-profile follow-up: SystemInterface/ChatInfoView/GroupChatInfoView affect
+PC2/PC3/PC13/PC14 presentation/dismissal ownership only. ChatListView affects PC1
+unread glass isolation. Other header items, data, permissions, privacy and crypto
+are unchanged. Exact unread-to-title morph is still a documented gap.
