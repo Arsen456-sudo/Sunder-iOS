@@ -223,3 +223,7 @@ Native matched-header follow-up: ChatView/SystemInterface/native controls affect
 PC1/PC2/PC3/PC28 glass geometry, search cancellation and list bottom-edge ownership.
 NavLinkPlain/ChatModel/ChatItemsLoader affect PC1/PC2/PC3 immediate list navigation
 and cancelled-load publication; no persistence/transport/cryptographic changes.
+
+Compact-title/shared-edge correction: ChatView/SystemInterface affect PC2/PC3 title
+visibility; ChatListNativeControls affects PC1/PC18/PC19 root-tab scroll-edge
+ownership. No message state, account, transport, persistence or crypto changes.

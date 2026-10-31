@@ -170,7 +170,7 @@ extension View {
         @ToolbarContentBuilder legacyToolbar: () -> L
     ) -> some View {
         if #available(iOS 26.0, *), modern {
-            toolbarRole(.editor).toolbar(content: modernToolbar)
+            toolbarRole(.automatic).toolbar(content: modernToolbar)
         } else if #available(iOS 16.0, *) {
             toolbarRole(.automatic).toolbar(content: legacyToolbar)
         } else {
@@ -182,5 +182,16 @@ struct SunderAvatarToolbarButtonStyle: ViewModifier {
     @ViewBuilder func body(content: Content) -> some View {
         if #available(iOS 26.0, *) { content.buttonStyle(.plain).buttonBorderShape(.circle) }
         else { content.buttonStyle(.plain) }
+    }
+}
+
+struct SunderTitleSurface: ViewModifier {
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.buttonStyle(.plain)
+                .padding(.horizontal, 12)
+                .frame(height: 44)
+                .glassEffect(.regular.interactive(), in: Capsule())
+        } else { content }
     }
 }

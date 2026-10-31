@@ -235,3 +235,10 @@ action has a 44pt height. Avatar artwork is 32pt, with its existing profile/cont
 actions retained. This supersedes the principal-slot implementation above. Notes,
 selection and secondary routes retain their original toolbar. Device checks must
 verify centering, matched transitions in both directions and long/localized names.
+
+## Restore compact-phone title (2026-10-31)
+Device feedback reports the centerItemGroups implementation absent on compact iPhone.
+It is removed. The title returns to the native principal slot with one separate
+44pt system glassEffect capsule; no shared backing or duplicate title is added.
+Avatar/back remain separate. Existing title/profile actions and navigation animations
+are retained. This supersedes the source-owned native center-item implementation.

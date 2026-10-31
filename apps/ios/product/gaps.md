@@ -62,3 +62,8 @@ The Haskell Store modules (`Store/Direct.hs`, `Store/Groups.hs`, `Store/Messages
 
 ---
 
+
+[GAP] Compact chat-header item matching: the native centerItemGroups adapter did
+not render on the user's iPhone and was removed. Principal restores title visibility
+but unread-to-title native bar-item morphing is not established. Validate or redesign
+that matching separately; do not claim a successful compile proves the transition.

@@ -238,6 +238,61 @@ final class SunderMainNavigation: ObservableObject {
     @Published var hiddenRoots: [Int: Bool] = [:]
 }
 
+private final class SunderTabsController: UITabBarController {
+    var bottomEdgeEnabled = true
+    private weak var registeredRoot: UIViewController?
+    private weak var registeredScroll: UIScrollView?
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        refreshBottomEdge()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        refreshBottomEdge()
+    }
+    func refreshBottomEdge() {
+        guard #available(iOS 26.0, *) else { return }
+        guard bottomEdgeEnabled, !tabBar.isHidden, let root = selectedViewController,
+              root.isViewLoaded, root.view.window != nil else {
+            clearBottomEdge()
+            return
+        }
+        if registeredRoot !== root { clearBottomEdge() }
+        if let scroll = registeredScroll, scroll.window != nil, !scroll.isHidden,
+           scroll.isDescendant(of: root.view) { return }
+        var candidates: [UIScrollView] = []
+        func collect(_ view: UIView) {
+            guard !view.isHidden, view.alpha > 0.01 else { return }
+            if let scroll = view as? UIScrollView,
+               scroll.bounds.width >= root.view.bounds.width * 0.5,
+               scroll.bounds.height > 100,
+               scroll.contentSize.width <= scroll.bounds.width + 1 {
+                candidates.append(scroll)
+            }
+            for child in view.subviews { collect(child) }
+        }
+        collect(root.view)
+        guard let scroll = candidates.max(by: {
+            $0.bounds.width * $0.bounds.height < $1.bounds.width * $1.bounds.height
+        }) else { return }
+        registeredRoot = root
+        registeredScroll = scroll
+        scroll.bottomEdgeEffect.style = .soft
+        scroll.bottomEdgeEffect.isHidden = false
+        root.setContentScrollView(scroll, for: .bottom)
+        setContentScrollView(scroll, for: .bottom)
+    }
+    private func clearBottomEdge() {
+        guard #available(iOS 26.0, *) else { return }
+        if registeredRoot != nil {
+            registeredRoot?.setContentScrollView(nil, for: .bottom)
+            setContentScrollView(nil, for: .bottom)
+        }
+        registeredRoot = nil
+        registeredScroll = nil
+    }
+}
+
 struct SunderMainTabs: UIViewControllerRepresentable {
     @ObservedObject var navigation: SunderMainNavigation
     var roots: [AnyView]
@@ -247,7 +302,7 @@ struct SunderMainTabs: UIViewControllerRepresentable {
     func makeCoordinator() -> Coordinator { Coordinator(navigation) }
 
     func makeUIViewController(context: Context) -> UITabBarController {
-        let controller = UITabBarController()
+        let controller = SunderTabsController()
         let hosts = roots.map { UIHostingController(rootView: $0) }
         context.coordinator.hosts = hosts
         let titles = [NSLocalizedString("Chats", comment: "Tab"), NSLocalizedString("Settings", comment: "Tab"), NSLocalizedString("Profile", comment: "Tab")]
@@ -287,11 +342,13 @@ struct SunderMainTabs: UIViewControllerRepresentable {
             if #available(iOS 26.0, *), controller.tabs.count > 2 { controller.tabs[2].image = image }
         }
         let hideBar = conversationOpen || navigation.hiddenRoots[navigation.selected] == true
+        (controller as? SunderTabsController)?.bottomEdgeEnabled = !hideBar
         if context.coordinator.barHidden != hideBar {
             context.coordinator.barHidden = hideBar
             if #available(iOS 18.0, *) { controller.setTabBarHidden(hideBar, animated: false) }
             else { controller.tabBar.isHidden = hideBar }
         }
+        (controller as? SunderTabsController)?.refreshBottomEdge()
     }
 
     class Coordinator: NSObject, UITabBarControllerDelegate {
@@ -312,6 +369,7 @@ struct SunderMainTabs: UIViewControllerRepresentable {
             navigation.selected = index
             let hidden = navigation.hiddenRoots[index] == true
             barHidden = hidden
+            (controller as? SunderTabsController)?.bottomEdgeEnabled = !hidden
             if #available(iOS 18.0, *) { controller.setTabBarHidden(hidden, animated: false) }
             else { controller.tabBar.isHidden = hidden }
         }
@@ -332,10 +390,12 @@ struct SunderMainTabs: UIViewControllerRepresentable {
         func tabBarController(_ controller: UITabBarController, didSelectTab selectedTab: UITab, previousTab: UITab?) {
             if let index = controller.tabs.firstIndex(where: { $0.identifier == selectedTab.identifier }), index < hosts.count {
                 navigation.selected = index
+                (controller as? SunderTabsController)?.refreshBottomEdge()
             }
         }
         func tabBarController(_ controller: UITabBarController, didSelect viewController: UIViewController) {
             if let index = hosts.firstIndex(where: { $0 === viewController }) { navigation.selected = index }
+            (controller as? SunderTabsController)?.refreshBottomEdge()
         }
     }
 }
@@ -470,84 +530,6 @@ extension EnvironmentValues {
     }
 }
 
-// Own the center bar item at source; a SwiftUI principal title is a titleView,
-// which cannot match the unread UIBarButtonItem during native push/pop.
-@available(iOS 26.0, *)
-struct SunderConversationCenter<Content: View>: UIViewControllerRepresentable {
-    @Environment(\.self) private var environment
-    @ViewBuilder var content: () -> Content
-    func makeUIViewController(context: Context) -> Controller {
-        Controller(AnyView(content().frame(height: 44).environment(\.self, environment)))
-    }
-    func updateUIViewController(_ controller: Controller, context: Context) {
-        controller.updateContent(AnyView(content().frame(height: 44).environment(\.self, environment)))
-    }
-    static func dismantleUIViewController(_ controller: Controller, coordinator: ()) { controller.detach() }
-    class Controller: UIViewController {
-        let host: UIHostingController<AnyView>
-        private weak var owner: UIViewController?
-        private var group: UIBarButtonItemGroup?
-        private var width: NSLayoutConstraint?
-        private var needsTitleSize = true
-        private var lastAvailableWidth: CGFloat = 0
-        private var applying = false
-        func updateContent(_ content: AnyView) {
-            host.rootView = content
-            needsTitleSize = true
-            apply()
-        }
-        init(_ content: AnyView) { host = UIHostingController(rootView: content); super.init(nibName: nil, bundle: nil) }
-        required init?(coder: NSCoder) { fatalError("init(coder:) is not supported") }
-        override func loadView() { view = UIView(); view.isUserInteractionEnabled = false }
-        override func didMove(toParent parent: UIViewController?) { super.didMove(toParent: parent); apply() }
-        override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); apply() }
-        override func viewWillLayoutSubviews() { super.viewWillLayoutSubviews(); apply() }
-        func apply() {
-            guard !applying, let current = sunderNavigationOwner(parent) else { return }
-            applying = true
-            defer { applying = false }
-            if host.parent == nil {
-                addChild(host)
-                host.view.backgroundColor = .clear
-                host.view.translatesAutoresizingMaskIntoConstraints = false
-                host.didMove(toParent: self)
-                let item = UIBarButtonItem(customView: host.view)
-                item.identifier = "sunder.context"
-                item.hidesSharedBackground = false
-                item.sharesBackground = false
-                group = .fixedGroup(items: [item])
-                width = host.view.widthAnchor.constraint(equalToConstant: 120)
-                width?.isActive = true
-                host.view.heightAnchor.constraint(equalToConstant: 44).isActive = true
-            }
-            owner = current
-            let available = max(44, (current.navigationController?.navigationBar.bounds.width ?? 320) - 140)
-            if needsTitleSize || lastAvailableWidth != available {
-                needsTitleSize = false
-                lastAvailableWidth = available
-                let fitting = host.sizeThatFits(in: CGSize(width: available, height: 44))
-                let titleWidth = min(available, max(44, ceil(fitting.width)))
-                if width?.constant != titleWidth { width?.constant = titleWidth }
-            }
-            let item = current.navigationItem
-            if item.style != .editor { item.style = .editor }
-            if let group, item.centerItemGroups.count != 1 || item.centerItemGroups.first !== group {
-                item.centerItemGroups = [group]
-            }
-            if let avatar = item.rightBarButtonItems?.first {
-                avatar.identifier = "sunder.avatar"
-                avatar.hidesSharedBackground = false
-                avatar.sharesBackground = false
-            }
-        }
-        func detach() {
-            if let item = owner?.navigationItem, let group, item.centerItemGroups.first === group {
-                item.centerItemGroups = []
-            }
-        }
-    }
-}
-
 struct SunderNavigationSearch: UIViewControllerRepresentable {
     @Binding var active: Bool
     @Binding var text: String
@@ -558,7 +540,6 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
     func updateUIViewController(_ controller: Controller, context: Context) { controller.state = self; controller.apply() }
     static func dismantleUIViewController(_ controller: Controller, coordinator: ()) {
         controller.detach()
-        controller.removeBottomEdge()
     }
 
     class Controller: UIViewController, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
@@ -571,8 +552,6 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
         private var applying = false
         private let spinner = UIActivityIndicatorView(style: .medium)
         private var originalSearchIcon: UIView?
-        private var bottomEdgeBinding: AnyObject?
-        private weak var boundTabBar: UITabBar?
         private var visible = false
 
 
@@ -597,16 +576,8 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
         override func viewWillDisappear(_ animated: Bool) {
             super.viewWillDisappear(animated)
             visible = false
-            removeBottomEdge()
         }
         override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews(); apply() }
-        func removeBottomEdge() {
-            if #available(iOS 26.0, *), let binding = bottomEdgeBinding as? SunderScrollEdgeBinding {
-                boundTabBar?.removeInteraction(binding.interaction)
-            }
-            bottomEdgeBinding = nil
-            boundTabBar = nil
-        }
         func apply() {
             guard #available(iOS 26.0, *), visible, !applying, isViewLoaded, view.window != nil,
                   let current = sunderNavigationOwner(parent), current.navigationController?.topViewController === current else { return }
@@ -614,16 +585,6 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
             defer { applying = false }
             owner = current
             let item = current.navigationItem
-            if let tabBar = current.tabBarController?.tabBar {
-                if boundTabBar !== tabBar {
-                    if let binding = bottomEdgeBinding as? SunderScrollEdgeBinding {
-                        boundTabBar?.removeInteraction(binding.interaction)
-                    }
-                    bottomEdgeBinding = SunderScrollEdgeBinding(container: tabBar, edge: .bottom)
-                    boundTabBar = tabBar
-                }
-                (bottomEdgeBinding as? SunderScrollEdgeBinding)?.bind(from: view)
-            }
             if state.active {
                 if !installed {
                     savedLeft = item.leftBarButtonItems

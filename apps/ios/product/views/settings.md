@@ -271,3 +271,8 @@ not SwiftUI's late onDisappear. The main tab bar is hidden without animation whe
 pushing below a root and restored when returning, including cancelled back gestures.
 Switching tabs updates the destination's visibility before selection. Modals and
 other tab roots remain scoped to their own navigation stacks.
+
+## Shared tab scroll edge (2026-10-31)
+Settings and Profile root tabs participate in the same native bottom .soft scroll
+edge registration as Chats, owned by the UITabBarController. Deeper routes retain
+immediate tab hiding and do not receive a separate custom blur overlay.

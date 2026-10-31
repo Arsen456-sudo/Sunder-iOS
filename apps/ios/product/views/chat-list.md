@@ -200,3 +200,11 @@ state, without the old 250ms navigation timeout. Messages load asynchronously;
 other callback-based navigation entry points retain their existing semantics.
 No navigation animation is disabled. Performance and visual acceptance on iPhone
 are still required; removing a deliberate wait is not a measured 1-2 second gain.
+
+## Shared tab bottom-edge registration (2026-10-31)
+The native tab controller now registers the selected root's visible main vertical
+scroll view for the bottom edge. Chats, Settings and Profile share this behavior
+whenever the tab bar is visible, independently of search/folders. Hidden/deeper
+routes clear registration; tab changes register the new selected content.
+This replaces the ineffective search-owned bottom interaction. Device verification
+must cover short/long lists, all three roots, switching tabs and returning from chat.

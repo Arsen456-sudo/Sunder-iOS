@@ -58,11 +58,11 @@ must compile before device validation. See [adoption report](../../../../docs/fo
 - [`struct ChatListUnreadButton: View`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L186)
 - [`struct ChatListStatusButton: View`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L199)
 - [`final class SunderMainNavigation: ObservableObject`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L233)
-- [`struct SunderMainTabs: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L241)
-- [`struct SunderFolderSegments: UIViewRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L343)
-- [`@MainActor private func sunderNavigationOwner(_ controller: UIViewController?) -> UIViewController?`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L435)
-- [`@MainActor private final class SunderScrollEdgeBinding`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L445)
-- [`struct SunderNavigationSearch: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L551)
+- [`struct SunderMainTabs: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L296)
+- [`struct SunderFolderSegments: UIViewRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L403)
+- [`@MainActor private func sunderNavigationOwner(_ controller: UIViewController?) -> UIViewController?`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L495)
+- [`@MainActor private final class SunderScrollEdgeBinding`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L505)
+- [`struct SunderNavigationSearch: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L533)
 
 ### Shared/Views/ChatList/SystemInterface.swift
 
@@ -318,4 +318,24 @@ Close item. searchBarCancelButtonClicked cancels connection progress, clears tex
 focus/active state, and restores saved toolbar items. Its native cancel control owns
 width reservation, including narrow screens and accessibility sizes.
 
-Source entry points: [SunderConversationCenter](../../Shared/Views/ChatList/ChatListNativeControls.swift#L476) | [SunderScrollEdgeBinding](../../Shared/Views/ChatList/ChatListNativeControls.swift#L445) | [SunderNavigationSearch](../../Shared/Views/ChatList/ChatListNativeControls.swift#L551)
+Source entry points: [SunderScrollEdgeBinding](../../Shared/Views/ChatList/ChatListNativeControls.swift#L505) | [SunderNavigationSearch](../../Shared/Views/ChatList/ChatListNativeControls.swift#L533)
+
+## Compact-title and tab-edge correction (2026-10-31)
+SunderConversationCenter is removed after device feedback showed no title. ChatView
+again declares the existing title/profile action as principal. SunderTitleSurface
+uses a 44pt native interactive glassEffect capsule, plain action and 12pt horizontal
+padding. Only this principal item's shared background is hidden to avoid double
+glass. Avatar retains native backing and automatic toolbar role. Default plain
+navigationTitle stays empty; selection/notes/secondary fallback remains intact.
+
+SunderTabsController owns bottom registration for all selected roots. On layout,
+appearance, selection and state update it finds the selected root's largest visible
+vertical UIScrollView, including non-list SwiftUI scroll containers, caches the
+result and calls setContentScrollView(_:for:.bottom) on root and tab controller.
+The scroll's bottomEdgeEffect is visible with .soft style. Registration is cleared
+when the tab bar is hidden or selected root changes; no search-specific interaction
+or additional backdrop renderer remains. Main-list search cancellation is unchanged.
+Native bar-item morphing from unread to the restored principal title remains a
+separate unverified limitation; a restored visible title is not proof of that morph.
+
+Source entry points: [SunderTabsController](../../Shared/Views/ChatList/ChatListNativeControls.swift#L241) | [SunderTitleSurface](../../Shared/Views/ChatList/SystemInterface.swift#L188)

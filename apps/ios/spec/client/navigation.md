@@ -569,3 +569,11 @@ visibility remains synchronous; top navigation animations remain enabled.
 NavLinkPlain invokes ItemsModel.openChatFromList on MainActor. This clears prior
 message state and selects the route before async message loading. Other navigation
 callbacks keep loadOpenChat behavior. Device transition verification is separate.
+
+## Compact title visibility and shared tab edge (2026-10-31)
+The failed centerItemGroups adapter is removed in favor of the known visible
+principal title plus native glassEffect; automatic toolbar role is restored.
+Back/avatar navigation animations remain native, with no delegate replacement.
+SunderTabsController registers selected root scroll content for the native bottom
+bar in all three tabs and clears that registration while hidden. Native tab
+selection callbacks refresh binding; no search lifecycle owns the bottom blur.

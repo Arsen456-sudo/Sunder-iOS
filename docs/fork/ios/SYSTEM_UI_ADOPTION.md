@@ -102,3 +102,12 @@ with the list's bottom soft scroll-edge effect. Ordinary list taps no longer wai
 Windows source checks are not device visual/performance verification. CI must compile
 and iPhone checks must cover both navigation directions, narrow widths, long titles,
 search cancel, light/dark themes, folder overflow and rapid open/back navigation.
+
+## Compact-title/shared-edge correction (2026-10-31)
+Device feedback supersedes the centerItemGroups experiment: title was absent. The
+header returns to principal placement with a single 44pt native glassEffect capsule.
+The failed adapter is deleted; avatar/back stay separate and retain native transitions.
+Bottom .soft behavior now belongs to SunderTabsController via content-scroll
+registration for all three roots, without the search-owned bottom interaction.
+Device visibility/blur and the outstanding unread-to-title morph must be checked
+separately from compilation. No custom blur or animation engine is introduced.
