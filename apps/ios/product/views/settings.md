@@ -263,3 +263,11 @@ page. Grouped settings/profile surfaces use Apple's system grouped background
 and shared native list/control defaults on iOS 26. Existing specialized content,
 validation, settings bindings and account guards are preserved. This changes
 presentation; it does not claim a SwiftUI-to-UIKit rewrite of every setting.
+
+## Independent header and immediate tabs (2026-10-31)
+
+Root visibility is now observed through UIKit viewWillAppear/viewWillDisappear,
+not SwiftUI's late onDisappear. The main tab bar is hidden without animation when
+pushing below a root and restored when returning, including cancelled back gestures.
+Switching tabs updates the destination's visibility before selection. Modals and
+other tab roots remain scoped to their own navigation stacks.

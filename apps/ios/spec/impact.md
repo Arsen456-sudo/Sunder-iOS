@@ -214,3 +214,7 @@ or database-schema change accompanies folder deletion or native rendering.
 Three-island correction: ChatView and ChatListNativeControls affect PC2/PC3 header
 layout; ChatListView affects PC1. SystemInterface removes a competing title preference.
 Localization changes affect only Change text; data/security APIs are unchanged.
+
+Independent header: ChatView/SystemInterface affect PC2/PC3 visual placement only.
+Root lifecycle and SunderMainTabs affect PC1/PC19 root/deeper navigation visibility.
+The failed post-layout bar-group mutation layer is removed; actions/data unchanged.

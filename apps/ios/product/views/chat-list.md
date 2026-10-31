@@ -182,3 +182,9 @@ The leading action now uses the existing localized Change text (Ukrainian:
 Zminyty). Unread and compose are separated by a native fixed ToolbarSpacer, so they
 are separate glass groups. Stable UIKit leading/context/avatar identifiers retain
 native push/pop matching with back, centered chat title and avatar respectively.
+
+## Independent header and immediate tabs (2026-10-31)
+
+The tab bar uses immediate native visibility updates at root navigation boundaries
+and tab selection; it does not wait for a hide animation after the transition.
+The existing Change/filter/compose controls and search behavior are unchanged.

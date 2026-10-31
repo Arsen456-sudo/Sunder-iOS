@@ -212,3 +212,17 @@ there is no duplicate unboxed title. A single UIKit fixed center item group owns
 the title, with the avatar alone in its trailing group. Notes, selection and
 secondary chats retain their prior toolbars. Avatar chrome contains only the photo;
 existing profile and context actions remain attached.
+
+## Independent header and immediate tabs (2026-10-31)
+
+This supersedes the attempted post-layout centerItemGroups migration on compact
+phones. The title is declared in the native principal slot and avatar in trailing.
+Each uses its own official glass button style; shared toolbar backings are hidden,
+so they cannot share the trailing capsule. The group-migration controller is removed.
+Normal navigation title remains empty; notes, selection, profile and context actions
+are unchanged. All rendering and transitions remain standard Apple behavior.
+
+Navigation push/pop animations must remain enabled. Immediate tab-bar hiding is
+scoped to the tab bar and must not disable upper-toolbar or navigation transitions.
+Exact cross-placement item morphing is a device acceptance check, not established
+by principal placement or matching SwiftUI item IDs alone.

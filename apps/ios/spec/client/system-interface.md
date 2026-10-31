@@ -59,18 +59,17 @@ must compile before device validation. See [adoption report](../../../../docs/fo
 - [`struct ChatListStatusButton: View`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L199)
 - [`final class SunderMainNavigation: ObservableObject`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L233)
 - [`struct SunderMainTabs: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L241)
-- [`struct SunderFolderSegments: UIViewRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L336)
-- [`@MainActor private func sunderNavigationOwner(_ controller: UIViewController?) -> UIViewController?`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L415)
-- [`@MainActor private final class SunderScrollEdgeBinding`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L425)
-- [`struct SunderToolbarIdentity: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L449)
-- [`struct SunderNavigationSearch: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L515)
+- [`struct SunderFolderSegments: UIViewRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L343)
+- [`@MainActor private func sunderNavigationOwner(_ controller: UIViewController?) -> UIViewController?`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L422)
+- [`@MainActor private final class SunderScrollEdgeBinding`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L432)
+- [`struct SunderNavigationSearch: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L456)
 
 ### Shared/Views/ChatList/SystemInterface.swift
 
-- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SystemInterface.swift#L6)
-- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SystemInterface.swift#L27)
-- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SystemInterface.swift#L52)
-- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SystemInterface.swift#L63)
+- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SystemInterface.swift#L7)
+- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SystemInterface.swift#L28)
+- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SystemInterface.swift#L53)
+- [`@ViewBuilder func body(content: Content) -> some View`](../../Shared/Views/ChatList/SystemInterface.swift#L64)
 
 ### Shared/Views/ChatList/ChatListView.swift
 
@@ -181,7 +180,7 @@ system presentation/actions remain the same.
 - [`@ToolbarContentBuilder private var systemTopToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L390)
 - [`@ToolbarContentBuilder private var systemBottomToolbar: some ToolbarContent`](../../Shared/Views/ChatList/ChatListView.swift#L396)
 - [`@ViewBuilder private var statusButton: some View`](../../Shared/Views/ChatList/ChatListView.swift#L406)
-- [`ifAvailableHideScrollBackground()`](../../Shared/Views/ChatList/SystemInterface.swift#L74)
+- [`ifAvailableHideScrollBackground()`](../../Shared/Views/ChatList/SystemInterface.swift#L75)
 
 The toolbar definitions are unconditional for iOS 15 compatibility. withToolbar's
 ViewBuilder selects bottom, search-hidden or top presentation; it does not use
@@ -274,3 +273,26 @@ Compilation and actual device centering/transition acceptance are separate check
 
 The modern toolbar role is editor to agree with native center-group ownership;
 legacy/selection routes use automatic role on iOS 16+ and the old fallback on 15.
+
+## Independent header and immediate tabs (2026-10-31)
+The attempted SunderToolbarIdentity post-layout group migration is removed. On iOS
+26 the modern title ToolbarItem uses principal placement, avatar uses trailing, and
+the role is automatic. Their official glass button styles provide separate capsule
+and circular materials; sharedBackgroundVisibility(.hidden) removes the default
+shared backing for these modern items. The title remains cleared at its source.
+Notes/selection/secondary and all original profile/context handlers are preserved.
+
+SunderTabRootVisibility now embeds SunderRootLifecycle. Native will callbacks update
+the owned root's visibility before transition configuration. Within-stack pushes
+hide the native tab bar synchronously with animated:false; root returns show it,
+and cancelled interactive returns hide it again. Tab selection also applies the
+destination's saved root visibility immediately. A missing navigation-owner lookup
+still reports the early will callback to the existing scoped state closure.
+No navigation delegate, animation engine, delay/timer or network/storage changes.
+The environment-only callback keeps the helper usable in shared/extension sources.
+Actual phone centering and transition cancellation still require device validation.
+
+Navigation push/pop animations must remain enabled. Immediate tab-bar hiding is
+scoped to the tab bar and must not disable upper-toolbar or navigation transitions.
+Exact cross-placement item morphing is a device acceptance check, not established
+by principal placement or matching SwiftUI item IDs alone.

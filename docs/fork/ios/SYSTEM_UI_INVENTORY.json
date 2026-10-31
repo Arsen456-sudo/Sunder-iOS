@@ -654,7 +654,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatView.swift",
-      "sha256": "4e85a208d24444a020198b3ebcd30f2eb99ea6cd01b97b2631097f30a55aa2dc",
+      "sha256": "99abd18b9ed7ebf76544a915133d35972682940e2fec5d246eca78cb64fb4d15",
       "swiftui_view_declarations": [
         "ChatView",
         "ChatBannerView",
@@ -671,8 +671,8 @@
       "hidden_navigation": [],
       "legacy_material_references": [
         235,
-        564,
-        792
+        561,
+        789
       ],
       "native_bridges": [],
       "validation": "Source-pattern inventory; full-screen device validation pending"
@@ -1297,7 +1297,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/ChatListNativeControls.swift",
-      "sha256": "10b31dee4eea7989f830cb6115590932918b03242528961432ebc731de9075b7",
+      "sha256": "3760f242bd522bf6ce2b72e5c2db851887979d9231359448945c00150fab6941",
       "swiftui_view_declarations": [
         "ChatListUnreadButton",
         "ChatListStatusButton"
@@ -1313,9 +1313,8 @@
         241,
         251,
         299,
-        336,
-        449,
-        515
+        343,
+        456
       ],
       "validation": "Source-pattern inventory; full-screen device validation pending"
     },
@@ -1494,16 +1493,18 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/SystemInterface.swift",
-      "sha256": "bffb0a27577523a420782524d14555da67709f11fc5f1479fa07d90fdbf8425b",
+      "sha256": "17d068a697c6414e30710ff564953a0a925fe1482eb58e2712fbe6e383dbc533",
       "swiftui_view_declarations": [],
       "native_lists_forms": [],
       "navigation_containers": [],
       "system_controls": [],
       "hidden_navigation": [
-        42
+        43
       ],
       "legacy_material_references": [],
-      "native_bridges": [],
+      "native_bridges": [
+        124
+      ],
       "validation": "Source-pattern inventory; full-screen device validation pending"
     },
     {

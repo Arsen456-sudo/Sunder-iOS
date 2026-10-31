@@ -83,3 +83,10 @@ Leading/context/avatar identifiers remain stable for native UIKit transitions.
 Back action and native navigation delegate are unchanged. Group caches and scoped
 cleanup preserve message selection; notes/secondary routes stay unchanged.
 Source verification is not a substitute for installed-device visual acceptance.
+
+## Compact-phone correction (2026-10-31)
+The earlier centerItemGroups attempt is superseded: chat title uses principal,
+avatar trailing, independent native glass styles and no shared toolbar backing.
+SunderToolbarIdentity has been removed, rather than repeatedly moving UIKit items
+after layout. Root tab hiding uses native will callbacks and animated:false,
+including selection/interactive-cancel restoration. Device acceptance remains pending.

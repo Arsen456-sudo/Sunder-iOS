@@ -289,7 +289,7 @@ struct SunderMainTabs: UIViewControllerRepresentable {
         let hideBar = conversationOpen || navigation.hiddenRoots[navigation.selected] == true
         if context.coordinator.barHidden != hideBar {
             context.coordinator.barHidden = hideBar
-            if #available(iOS 18.0, *) { controller.setTabBarHidden(hideBar, animated: !UIAccessibility.isReduceMotionEnabled) }
+            if #available(iOS 18.0, *) { controller.setTabBarHidden(hideBar, animated: false) }
             else { controller.tabBar.isHidden = hideBar }
         }
     }
@@ -305,11 +305,18 @@ struct SunderMainTabs: UIViewControllerRepresentable {
         func tabBarController(_ controller: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
             guard !navigation.savingFolder else { return false }
             if viewController === search { requestSearch(controller); return false }
-            if let index = hosts.firstIndex(where: { $0 === viewController }) { navigation.selected = index }
+            if let index = hosts.firstIndex(where: { $0 === viewController }) { select(index, controller: controller) }
             return true
         }
+        private func select(_ index: Int, controller: UITabBarController) {
+            navigation.selected = index
+            let hidden = navigation.hiddenRoots[index] == true
+            barHidden = hidden
+            if #available(iOS 18.0, *) { controller.setTabBarHidden(hidden, animated: false) }
+            else { controller.tabBar.isHidden = hidden }
+        }
         private func requestSearch(_ controller: UITabBarController) {
-            navigation.selected = 0
+            select(0, controller: controller)
             navigation.searchVisible = true
             navigation.searchGeneration += 1
             controller.selectedIndex = 0
@@ -318,7 +325,7 @@ struct SunderMainTabs: UIViewControllerRepresentable {
         func tabBarController(_ controller: UITabBarController, shouldSelectTab tab: UITab) -> Bool {
             guard !navigation.savingFolder else { return false }
             if tab.identifier == searchIdentifier { requestSearch(controller); return false }
-            if let index = controller.tabs.firstIndex(where: { $0.identifier == tab.identifier }), index < hosts.count { navigation.selected = index }
+            if let index = controller.tabs.firstIndex(where: { $0.identifier == tab.identifier }), index < hosts.count { select(index, controller: controller) }
             return true
         }
         @available(iOS 18.0, *)
@@ -444,72 +451,6 @@ extension EnvironmentValues {
         if interaction.scrollView !== list { interaction.scrollView = list }
         if list.topEdgeEffect.style != .soft { list.topEdgeEffect.style = .soft }
     }
-}
-
-struct SunderToolbarIdentity: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> Controller { Controller() }
-    func updateUIViewController(_ controller: Controller, context: Context) { controller.apply() }
-    static func dismantleUIViewController(_ controller: Controller, coordinator: ()) { controller.detach() }
-    class Controller: UIViewController {
-        private weak var appliedOwner: UIViewController?
-        private var titleGroup: UIBarButtonItemGroup?
-        private var avatarGroup: UIBarButtonItemGroup?
-        private var originalStyle: Int?
-        private var originalCenterGroups: [UIBarButtonItemGroup] = []
-        override func loadView() { view = UIView(); view.isUserInteractionEnabled = false }
-        override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); apply() }
-        override func viewWillLayoutSubviews() { super.viewWillLayoutSubviews(); apply() }
-        override func viewDidAppear(_ animated: Bool) { super.viewDidAppear(animated); apply() }
-        override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews(); apply() }
-        func apply() {
-            guard #available(iOS 26.0, *), let owner = sunderNavigationOwner(parent) else { return }
-            if appliedOwner !== owner {
-                appliedOwner = owner
-                originalStyle = owner.navigationItem.style.rawValue
-                originalCenterGroups = owner.navigationItem.centerItemGroups
-                titleGroup = nil
-                avatarGroup = nil
-            }
-            let item = owner.navigationItem
-            let items = item.rightBarButtonItems ?? []
-            let context = items.first(where: { $0.identifier == "sunder.context" })
-                ?? (items.count > 1 ? items.last : nil)
-                ?? titleGroup?.barButtonItems.first
-            let avatar = items.first(where: { $0.identifier == "sunder.avatar" })
-                ?? items.first
-                ?? avatarGroup?.barButtonItems.first
-            guard let context, let avatar, context !== avatar else { return }
-            context.identifier = "sunder.context"
-            avatar.identifier = "sunder.avatar"
-            if context.sharesBackground { context.sharesBackground = false }
-            if avatar.sharesBackground { avatar.sharesBackground = false }
-            // A native center group keeps the title centered and still a bar item
-            // that UIKit can match with the unread filter during push/pop.
-            if titleGroup?.barButtonItems.first !== context { titleGroup = .fixedGroup(items: [context]) }
-            if avatarGroup?.barButtonItems.first !== avatar { avatarGroup = .fixedGroup(items: [avatar]) }
-            if item.style != .editor { item.style = .editor }
-            if item.title?.isEmpty == false { item.title = nil }
-            if item.titleView != nil { item.titleView = nil }
-            if let titleGroup, item.centerItemGroups.count != 1 || item.centerItemGroups.first !== titleGroup {
-                item.centerItemGroups = [titleGroup]
-            }
-            if let avatarGroup, item.trailingItemGroups.count != 1 || item.trailingItemGroups.first !== avatarGroup {
-                item.trailingItemGroups = [avatarGroup]
-            }
-        }
-        func detach() {
-            guard #available(iOS 26.0, *), let owner = appliedOwner,
-                  owner.navigationController?.topViewController === owner else { return }
-            let item = owner.navigationItem
-            if let titleGroup, item.centerItemGroups.count == 1, item.centerItemGroups.first === titleGroup {
-                item.centerItemGroups = originalCenterGroups
-            }
-            if item.style == .editor, let originalStyle, let style = UINavigationItem.ItemStyle(rawValue: originalStyle) {
-                item.style = style
-            }
-        }
-    }
-
 }
 
 struct SunderNavigationSearch: UIViewControllerRepresentable {

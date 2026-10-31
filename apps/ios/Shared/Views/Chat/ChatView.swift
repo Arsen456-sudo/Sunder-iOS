@@ -459,9 +459,6 @@ struct ChatView: View {
         .sunderConversationToolbar(modern: usesModernAvatarToolbar,
                                     modernToolbar: { modernConversationToolbar },
                                     legacyToolbar: { legacyConversationToolbar(userMemberKnockingChat: userMemberKnockingChat) })
-        .background {
-            if usesModernAvatarToolbar { SunderToolbarIdentity().frame(width: 0, height: 0) }
-        }
         .if(im.secondaryIMFilter == nil) { v in
             v.onChange(of: scrollToItemId) { itemId in
                 if let itemId = itemId {
@@ -500,7 +497,7 @@ struct ChatView: View {
     }
 
     @ToolbarContentBuilder private var modernConversationToolbar: some ToolbarContent {
-        ToolbarItem(id: "sunder.context", placement: .navigationBarTrailing) {
+        ToolbarItem(id: "sunder.context", placement: .principal) {
             primaryPrincipalToolbarContent().modifier(SunderTitleButtonStyle())
         }
         ToolbarItem(id: "sunder.avatar", placement: .navigationBarTrailing) {

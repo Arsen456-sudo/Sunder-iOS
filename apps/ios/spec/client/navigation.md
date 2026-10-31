@@ -540,3 +540,21 @@ commands. Notes, secondary chats and message selection keep the legacy toolbar.
 SunderFolderEditor confirms deletion, uses the existing delete-tag API and clears
 only folder metadata/selection/counts. List swipe deletion now reports API errors.
 Compile and on-device animation/layout checks are separate; iOS 27 is not verified.
+
+## Independent header and immediate tabs (2026-10-31)
+The attempted SunderToolbarIdentity post-layout group migration is removed. On iOS
+26 the modern title ToolbarItem uses principal placement, avatar uses trailing, and
+the role is automatic. Their official glass button styles provide separate capsule
+and circular materials; sharedBackgroundVisibility(.hidden) removes the default
+shared backing for these modern items. The title remains cleared at its source.
+Notes/selection/secondary and all original profile/context handlers are preserved.
+
+SunderTabRootVisibility now embeds SunderRootLifecycle. Native will callbacks update
+the owned root's visibility before transition configuration. Within-stack pushes
+hide the native tab bar synchronously with animated:false; root returns show it,
+and cancelled interactive returns hide it again. Tab selection also applies the
+destination's saved root visibility immediately. A missing navigation-owner lookup
+still reports the early will callback to the existing scoped state closure.
+No navigation delegate, animation engine, delay/timer or network/storage changes.
+The environment-only callback keeps the helper usable in shared/extension sources.
+Actual phone centering and transition cancellation still require device validation.

@@ -2,10 +2,10 @@
   "scope": "Development notice collection, not a final IPA SBOM or publication clearance",
   "generator": "scripts/ios/generate-sunder-notices.py",
   "repository_url": "https://github.com/Arsen456-sudo/Sunder-iOS",
-  "source_ref": "preview-20261031-three-islands-1",
+  "source_ref": "preview-20261031-independent-header-1",
   "normalization": "Input and output content hashes use LF line endings",
   "output": "apps/ios/Shared/SunderNotices.txt",
-  "output_sha256_lf": "01e7b7aa2fd74f535f98d3fc73121a2210d22d053f16682cf50093fdf3bcba8b",
+  "output_sha256_lf": "097eb9be8cb16c1e6867b1261eeebb4bc2b6d7f68cdb20452f220df097a105fe",
   "inputs": [
     {
       "path": "NOTICE.md",

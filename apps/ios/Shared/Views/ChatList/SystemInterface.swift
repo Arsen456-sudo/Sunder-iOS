@@ -1,5 +1,6 @@
 // Sunder: shared standard Apple presentation defaults.
 import SwiftUI
+import UIKit
 
 // Shared defaults match AppearanceSettings. Descendants retain explicit styles.
 struct SunderSystemInterface: ViewModifier {
@@ -116,16 +117,60 @@ extension EnvironmentValues {
 struct SunderTabRootVisibility: ViewModifier {
     @Environment(\.sunderRootVisibility) private var visibility
     func body(content: Content) -> some View {
-        content.onAppear { visibility?(true) }.onDisappear { visibility?(false) }
+        content.background(SunderRootLifecycle(visibility: visibility).frame(width: 0, height: 0))
     }
 }
+
+private struct SunderRootLifecycle: UIViewControllerRepresentable {
+    var visibility: ((Bool) -> Void)?
+    func makeUIViewController(context: Context) -> Controller { Controller(visibility) }
+    func updateUIViewController(_ controller: Controller, context: Context) { controller.visibility = visibility }
+    class Controller: UIViewController {
+        var visibility: ((Bool) -> Void)?
+        init(_ visibility: ((Bool) -> Void)?) { self.visibility = visibility; super.init(nibName: nil, bundle: nil) }
+        required init?(coder: NSCoder) { fatalError("init(coder:) is not supported") }
+        override func loadView() { view = UIView(); view.isUserInteractionEnabled = false }
+        private var navigationOwner: UIViewController? {
+            var candidate = parent
+            while let current = candidate {
+                if let nav = current.navigationController, nav.viewControllers.first === current { return current }
+                candidate = current.parent
+            }
+            return nil
+        }
+        override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            guard let owner = navigationOwner else { visibility?(true); return }
+            let nav = owner.navigationController
+            let returningToRoot = nav?.topViewController === owner || nav?.transitionCoordinator?.viewController(forKey: .to) === owner
+            guard returningToRoot else { return }
+            update(visible: true, owner: owner)
+        }
+        override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            guard let owner = navigationOwner, let nav = owner.navigationController else { visibility?(false); return }
+            let destination = nav.transitionCoordinator?.viewController(forKey: .to)
+            let pushesWithinStack = destination != nil && destination !== owner && destination?.navigationController === nav
+            guard nav.viewControllers.count > 1 || pushesWithinStack else { return }
+            update(visible: false, owner: owner)
+        }
+        private func update(visible: Bool, owner: UIViewController) {
+            if !visible, let tabs = owner.tabBarController {
+                if #available(iOS 18.0, *) { tabs.setTabBarHidden(true, animated: false) }
+                else { tabs.tabBar.isHidden = true }
+            }
+            visibility?(visible)
+        }
+    }
+}
+
 extension View {
     @ViewBuilder func sunderConversationToolbar<M: ToolbarContent, L: ToolbarContent>(
         modern: Bool, @ToolbarContentBuilder modernToolbar: () -> M,
         @ToolbarContentBuilder legacyToolbar: () -> L
     ) -> some View {
         if #available(iOS 26.0, *), modern {
-            toolbarRole(.editor).toolbar(content: modernToolbar)
+            toolbarRole(.automatic).toolbar { modernToolbar().sharedBackgroundVisibility(.hidden) }
         } else if #available(iOS 16.0, *) {
             toolbarRole(.automatic).toolbar(content: legacyToolbar)
         } else {
@@ -134,8 +179,14 @@ extension View {
     }
 }
 struct SunderTitleButtonStyle: ViewModifier {
-    func body(content: Content) -> some View { content.buttonStyle(.plain) }
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) { content.buttonStyle(.glass).buttonBorderShape(.capsule).controlSize(.small) }
+        else { content.buttonStyle(.plain) }
+    }
 }
 struct SunderAvatarToolbarButtonStyle: ViewModifier {
-    func body(content: Content) -> some View { content.buttonStyle(.plain) }
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) { content.buttonStyle(.glass).buttonBorderShape(.circle) }
+        else { content.buttonStyle(.plain) }
+    }
 }
