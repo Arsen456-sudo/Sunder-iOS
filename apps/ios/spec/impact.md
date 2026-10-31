@@ -245,3 +245,8 @@ USB-driven update-cycle fix: ChatView/ChatListNativeControls/SystemInterface/Con
 affect PC1/PC2/PC3/PC19 navigation dependency isolation, root-visibility publications
 and actual grouped bar identity. ChatListView adds semantic accessibility metadata
 only. Profile content, chat data, account/transport/encryption/storage stay unchanged.
+
+Build24 stackshot follow-up: ChatInfoView/GroupChatInfoView affect PC2/PC3/PC13/PC14
+profile dismissal environment only, keeping actions/permissions. Native controls
+change PC1 unread background sharing/structural logging only. No messages, models,
+network, database or cryptographic implementation changes.

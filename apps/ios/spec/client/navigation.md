@@ -608,3 +608,12 @@ and deferred outside UIKit reconciliation; native tab hiding is still synchronou
 Semantic native toolbar identity uses grouped items, not only legacy arrays, whose
 runtime count is zero. No role/group relocation, custom navigation animator or timer
 duration is introduced. Runtime verification is required after installing this build.
+
+## Build24 evidence and narrow profile workaround (2026-10-31)
+The persistent path/capture-list fixes did not remove the user-reproduced hang.
+Symbolicated samples place repeated work in SwiftUI/AttributeGraph and the legacy
+alert bridge's environment update. Replace only the main profile views' DismissAction
+property with presentationMode-backed dismissal; preserve routes, back gestures,
+modal fallback and existing alert handlers. No further stack or center-group rewrite.
+Unread native sharing is configured on its resolved item, with source diagnostics
+expanded to expose actual group size. Device acceptance is still required.

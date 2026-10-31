@@ -147,3 +147,15 @@ while hiding native tabs synchronously; resolve semantic IDs from actual grouped
 native items and preserve groups through search. No geometry/role/animation redesign.
 These are runtime-informed changes, not a claim that the new build has been tested
 on device or that filter-to-title matching is complete. Re-test both after install.
+
+## Symbolicated build24 hang samples (2026-10-31)
+Installed source tag verified over USB. Two runnable main-thread snapshots were
+symbolicated using the phone's matching cache; sampled work includes SwiftUI graph
+updates and DeprecatedAlertBridge.update(environment:), not a core/network wait.
+The narrow workaround replaces DismissAction properties only in the main contact/
+group profile views with presentationMode-backed dismiss(). All actions remain.
+Unread sharing is disabled once per actual resolved item; metadata logs use primitive
+values so match flags/group size are visible. A multi-item native group may ignore
+that property. Full filter-to-title morph is still a known gap. New build phone
+validation remains mandatory; no full stability claim or latency percentage is made.
+Raw samples, device cache and tools are ignored build artifacts, not published assets.

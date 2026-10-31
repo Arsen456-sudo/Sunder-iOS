@@ -392,3 +392,12 @@ Source entry points: [sunderTrailingBarItems](../../Shared/Views/ChatList/ChatLi
 The group-aware identity pass changes only identifiers/accessibility metadata. It no
 longer writes sharesBackground during native layout: SwiftUI ToolbarSpacer and
 existing item declarations own visual separation, avoiding new layout invalidations.
+
+## Unread background sharing and usable diagnostics (2026-10-31)
+SunderNavigationSearch keeps a weak reference to the configured unread item. On a
+new semantically resolved instance only, sharesBackground=false isolates its native
+background. Compose/avatar/title geometry and navigation role stay unchanged. UIKit
+ignores this flag for items in multi-item UIBarButtonItemGroup; do not claim an exact
+morph based on the flag alone. Source diagnostics now interpolate primitive counts/
+booleans, including unreadGroupSize, instead of a String redacted as private in the
+actual USB log. The cached report suppresses unchanged messages.

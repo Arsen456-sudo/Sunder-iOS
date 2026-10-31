@@ -278,3 +278,12 @@ This targets the observed update storm; disappearance of the hang is not yet dev
 verified. Native header item lookup now includes actual trailingItemGroups rather
 than relying on the empty legacy array seen on the phone. Exact title morph remains
 unproven because the runtime title is a titleView with zero native center items.
+
+## Build24 symbolicated reproduction (2026-10-31)
+The installed build24 tag was verified and the user reproduced the hang. Main-thread
+samples show SwiftUI/AttributeGraph update work and DeprecatedAlertBridge environment
+updates, rather than a sampled core/network wait. Main contact/group profile views
+now avoid a DismissAction property captured by legacy alert closures; native back and
+all existing profile content/actions remain. Unread native background sharing is
+disabled once per resolved item to target merging without changing other islands.
+Exact filter-to-title morph is still not implemented/verified and must not be implied.

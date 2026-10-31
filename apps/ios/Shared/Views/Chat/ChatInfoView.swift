@@ -93,7 +93,7 @@ enum SendReceipts: Identifiable, Hashable {
 struct ChatInfoView: View {
     @EnvironmentObject var chatModel: ChatModel
     @EnvironmentObject var theme: AppTheme
-    @Environment(\.dismiss) var dismiss: DismissAction
+    @Environment(\.presentationMode) private var profilePresentationMode
     @ObservedObject var chat: Chat
     @State var contact: Contact
     @State var localAlias: String
@@ -136,6 +136,10 @@ struct ChatInfoView: View {
             case let .error(title, _): return "error \(title)"
             }
         }
+    }
+
+    private func dismiss() {
+        profilePresentationMode.wrappedValue.dismiss()
     }
 
     var body: some View {

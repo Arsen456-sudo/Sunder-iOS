@@ -157,3 +157,11 @@ Shown when `developerTools` is enabled:
 The contact profile uses a system large title and Done toolbar item, grouped List
 information and standard bordered action Buttons. The circular photo, localized
 action labels, permission checks and unavailable-call explanations remain intact.
+
+## Profile alert-context workaround (2026-10-31)
+On a pushed chat profile, dismissal now uses the existing presentationMode binding
+instead of retaining DismissAction in the same view that builds legacy alerts.
+Done/search/destructive handlers keep their existing calls and behavior; modal
+callers still dismiss and pushed callers still pop. No content/permission changes.
+The workaround follows a symbolicated user-device hang sample; a new device test
+is required before calling the hang resolved.

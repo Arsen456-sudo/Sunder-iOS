@@ -606,6 +606,7 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
         private var originalSearchIcon: UIView?
         private var visible = false
         private var sourceIdentityReport: String?
+        private weak var independentUnreadItem: UIBarButtonItem?
 
 
         init(_ state: SunderNavigationSearch) { self.state = state; super.init(nibName: nil, bundle: nil) }
@@ -677,11 +678,20 @@ struct SunderNavigationSearch: UIViewControllerRepresentable {
                 let compose = sunderMatchingBarItem(trailing, id: "sunder.avatar", label: NSLocalizedString("New chat", comment: "New chat"))
                 let unread = sunderMatchingBarItem(trailing, id: "sunder.context", label: NSLocalizedString("Unread", comment: "Unread"))
                 if let compose, compose.identifier != "sunder.avatar" { compose.identifier = "sunder.avatar" }
-                if let unread, unread.identifier != "sunder.context" { unread.identifier = "sunder.context" }
-                let status = "groups=\(item.trailingItemGroups.count), items=\(trailing.count), compose=\(compose != nil), unread=\(unread != nil)"
+                if let unread {
+                    if unread.identifier != "sunder.context" { unread.identifier = "sunder.context" }
+                    if independentUnreadItem !== unread {
+                        unread.sharesBackground = false
+                        independentUnreadItem = unread
+                    }
+                }
+                let unreadGroupSize = item.trailingItemGroups.first(where: { group in
+                    group.barButtonItems.contains(where: { $0 === unread })
+                })?.barButtonItems.count ?? 0
+                let status = "groups=\(item.trailingItemGroups.count), items=\(trailing.count), compose=\(compose != nil), unread=\(unread != nil), unreadGroupSize=\(unreadGroupSize)"
                 if sourceIdentityReport != status {
                     sourceIdentityReport = status
-                    logger.debug("Sunder source header identity: \(status)")
+                    logger.debug("Sunder source header identity v3: groups=\(item.trailingItemGroups.count), items=\(trailing.count), compose=\(compose != nil), unread=\(unread != nil), unreadGroupSize=\(unreadGroupSize)")
                 }
             }
         }

@@ -191,7 +191,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatInfoView.swift",
-      "sha256": "28b7a707a5b4d7663f3a11adbc89fe2e47356595138dd95fd17557bcfb0dfbe1",
+      "sha256": "c4d8c859df33e796041ff073a323480ad5a0ae91e50bd4154d2f8f27981e5d31",
       "swiftui_view_declarations": [
         "ChatInfoView",
         "SubStatusRow",
@@ -205,15 +205,15 @@
         "SimplexNameView"
       ],
       "native_lists_forms": [
-        144,
-        1282
+        148,
+        1286
       ],
       "navigation_containers": [
-        1281
+        1285
       ],
       "system_controls": [
-        413,
-        1284
+        417,
+        1288
       ],
       "hidden_navigation": [],
       "legacy_material_references": [],
@@ -1025,7 +1025,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/Group/GroupChatInfoView.swift",
-      "sha256": "4ee917e7d58f84ba7c1a4608b9076f05ca251d27429e7d75a2e721b496eddc41",
+      "sha256": "1e626148e035cab14c83bbbd6a5a865b6168eb77e17189b18b6b4a1c6015c411",
       "swiftui_view_declarations": [
         "GroupChatInfoView",
         "MemberRowView",
@@ -1034,11 +1034,11 @@
         "GroupPreferencesButton"
       ],
       "native_lists_forms": [
-        79
+        83
       ],
       "navigation_containers": [],
       "system_controls": [
-        381
+        385
       ],
       "hidden_navigation": [],
       "legacy_material_references": [],
@@ -1295,7 +1295,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/ChatListNativeControls.swift",
-      "sha256": "8fc0a6b974a0f3989add676a85eebf447c9845299931d3f41e23591278e8427f",
+      "sha256": "aed81ba6a36d5e9933ca7b233b3a586b03f77fa1f8408c359ce26e30437f3820",
       "swiftui_view_declarations": [
         "ChatListUnreadButton",
         "ChatListStatusButton"

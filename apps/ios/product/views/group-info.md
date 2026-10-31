@@ -261,3 +261,10 @@ The initial group-link lookup uses the existing asynchronous command path in a t
 keyed to the group ID. The screen no longer synchronously waits for the chat core
 inside onAppear. Permissions, link-not-found handling and member-link behavior stay
 the same; cancelled or outdated results do not update the profile.
+
+## Profile alert-context workaround (2026-10-31)
+The main group/channel profile replaces its DismissAction environment property with
+a presentationMode-backed dismiss method while preserving all existing handlers,
+alerts, role gates and pushed/modal presentation. No member-removal helper accepting
+DismissAction is changed. This targets the observed alert-environment update loop;
+runtime verification after installation remains required.
