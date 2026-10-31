@@ -159,3 +159,12 @@ values so match flags/group size are visible. A multi-item native group may igno
 that property. Full filter-to-title morph is still a known gap. New build phone
 validation remains mandatory; no full stability claim or latency percentage is made.
 Raw samples, device cache and tools are ignored build artifacts, not published assets.
+
+## Independent full-screen profile recovery (2026-10-31)
+Verified disk build25 IPA marker/hash and installed phone marker match the intended
+source; unchanged bugs are code failures, not stale file replacement. Remove the
+failing chat-stack profile push. Reuse the original profile NavigationView and
+DismissAction in an independent fullScreenCover, with leading back and modal Done
+fallback. All content and privacy remain; cleanup runs after dismissal. This is a
+full-screen system presentation, not a push. Native filter-to-title morph is not
+changed or claimed solved. Device validation must precede a stability claim.

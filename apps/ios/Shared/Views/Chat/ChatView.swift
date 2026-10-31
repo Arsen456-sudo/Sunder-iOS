@@ -457,7 +457,10 @@ struct ChatView: View {
         .onChange(of: colorScheme) { _ in
             theme = buildTheme()
         }
-        .sunderProfileDestination(isPresented: $showChatInfoSheet) {
+        .sunderFullScreenProfile(isPresented: $showChatInfoSheet, onDismiss: {
+            if chatProfileWasGroup { chatModel.secondaryIM = nil }
+            theme = buildTheme()
+        }) {
             [chat, chatModel, theme, scrollToItemId = $scrollToItemId,
              composeState = $composeState, showSearch = $showSearch,
              searchFocussed = $searchFocussed, searchText = $searchText] in
@@ -477,9 +480,6 @@ struct ChatView: View {
             if visible {
                 if case .group = chat.chatInfo { chatProfileWasGroup = true }
                 else { chatProfileWasGroup = false }
-            } else {
-                if chatProfileWasGroup { chatModel.secondaryIM = nil }
-                theme = buildTheme()
             }
         }
         .if(usesModernAvatarToolbar) { v in
@@ -3158,7 +3158,7 @@ private struct ChatProfileDestination: View {
                 featuresAllowed: contactUserPrefsToFeaturesAllowed(contact.mergedPreferences),
                 currentFeaturesAllowed: contactUserPrefsToFeaturesAllowed(contact.mergedPreferences),
                 onSearch: onSearch,
-                pushed: true
+                fullScreen: true
             )
         } else if case let .group(groupInfo, _) = chat.chatInfo {
             GroupChatInfoView(
@@ -3174,7 +3174,7 @@ private struct ChatProfileDestination: View {
                 composeState: $composeState,
                 onSearch: onSearch,
                 localAlias: groupInfo.localAlias,
-                pushed: true
+                fullScreen: true
             )
         }
     }

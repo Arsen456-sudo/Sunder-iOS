@@ -617,3 +617,13 @@ property with presentationMode-backed dismissal; preserve routes, back gestures,
 modal fallback and existing alert handlers. No further stack or center-group rewrite.
 Unread native sharing is configured on its resolved item, with source diagnostics
 expanded to expose actual group size. Device acceptance is still required.
+
+## Independent full-screen profile recovery (2026-10-31)
+The verified installed build25 still reproduced the hang. Stop layering workarounds
+on the push route: replace it with a fullScreenCover and restore the original profile
+NavigationView ownership that worked before the push change. The full-screen flag
+adds a leading close/back button and hides modal Done. Other callers remain modal.
+DismissAction is restored in this independent context. Parent cleanup uses actual
+onDismiss. This is a full-screen presentation, not a claimed UIKit push transition.
+Chat route, privacy, model and header behavior are otherwise unchanged. Exact unread-
+to-title native matching is still a separate open issue. Device acceptance required.

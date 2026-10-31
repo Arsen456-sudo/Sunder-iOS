@@ -9,7 +9,7 @@ View contact details, manage per-contact preferences, verify security codes for 
 ## Route / Navigation
 
 - **Entry point**: Tap the info button in `ChatView` navigation bar (when viewing a direct contact chat)
-- **Presented by**: Pushed native destination from `ChatView` via `showChatInfoSheet`, with the existing content and a native back button. Other modal callers retain their `NavigationView` sheet.
+- **Presented by**: System fullScreenCover from `ChatView` via `showChatInfoSheet`, containing its independent NavigationView and a leading back action. Other modal callers retain their NavigationView sheet.
 - **Sub-navigation**:
   - Contact preferences -> `ContactPreferencesView`
   - Security code verification -> `VerifyCodeView`
@@ -165,3 +165,11 @@ Done/search/destructive handlers keep their existing calls and behavior; modal
 callers still dismiss and pushed callers still pop. No content/permission changes.
 The workaround follows a symbolicated user-device hang sample; a new device test
 is required before calling the hang resolved.
+
+## Independent full-screen recovery (2026-10-31)
+The attempted push route continued to hang on the verified latest phone build. Chat
+profile now opens in a system fullScreenCover with its own original NavigationView.
+Full-screen mode shows a leading chevron back action that closes the profile. All
+existing sections, subpages, confirmations, security actions and search return remain.
+Other modal callers retain Done. This supersedes the pushed/presentationMode recovery
+notes above and must be tested on device before being called fixed.

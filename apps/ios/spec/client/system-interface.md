@@ -356,7 +356,6 @@ ChatView applies existing sunderPrivateSheet privacy/style modifiers to the push
 content without introducing a new modal sheet or a nested navigation stack.
 No toolbar/background/scroll-edge ownership changes accompany profile routing.
 
-Source entry points: [SunderProfileNavigation](../../Shared/Views/ChatList/SystemInterface.swift#L208) | [sunderProfileDestination](../../Shared/Views/ChatList/SystemInterface.swift#L218)
 
 ## Existing native item identity (2026-10-31)
 SunderConversationIdentity attaches only to ordinary modern chat headers. It assigns
@@ -401,3 +400,13 @@ ignores this flag for items in multi-item UIBarButtonItemGroup; do not claim an 
 morph based on the flag alone. Source diagnostics now interpolate primitive counts/
 booleans, including unreadGroupSize, instead of a String redacted as private in the
 actual USB log. The cached report suppresses unchanged messages.
+
+## Remove failed profile-push adapters (2026-10-31)
+SunderProfileNavigation and sunderProfileDestination are removed. Both profile views
+again contain their original NavigationView directly. sunderFullScreenProfile is a
+thin native fullScreenCover wrapper with onDismiss and escaping content. There is
+no nested-profile navigationDestination or hidden NavigationLink registration in
+the chat stack. The back-looking leading button dismisses the cover; child links
+use the independent NavigationView's normal navigation. No custom animator/renderer.
+
+Source entry point: [sunderFullScreenProfile](../../Shared/Views/ChatList/SystemInterface.swift#L209)

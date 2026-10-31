@@ -191,7 +191,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatInfoView.swift",
-      "sha256": "c4d8c859df33e796041ff073a323480ad5a0ae91e50bd4154d2f8f27981e5d31",
+      "sha256": "e9db83aacc1062aa6741966d02ea74b9727b8b186428233f1411527db41a7cd7",
       "swiftui_view_declarations": [
         "ChatInfoView",
         "SubStatusRow",
@@ -205,15 +205,16 @@
         "SimplexNameView"
       ],
       "native_lists_forms": [
-        148,
-        1286
+        144,
+        1288
       ],
       "navigation_containers": [
-        1285
+        142,
+        1287
       ],
       "system_controls": [
-        417,
-        1288
+        419,
+        1290
       ],
       "hidden_navigation": [],
       "legacy_material_references": [],
@@ -653,7 +654,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatView.swift",
-      "sha256": "de71285c0c73ba8e9ea07107e55eb3ef74205613aa9954732a8228b98c39d076",
+      "sha256": "13e8d9a985ac291b1557ccd73d8aac7fc758cdee5673d744d7eb15eb730bcc59",
       "swiftui_view_declarations": [
         "ChatView",
         "ChatBannerView",
@@ -1025,7 +1026,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/Group/GroupChatInfoView.swift",
-      "sha256": "1e626148e035cab14c83bbbd6a5a865b6168eb77e17189b18b6b4a1c6015c411",
+      "sha256": "bf7822739d3bec9b6866764976d48b3247c9d75de2b72677a016b6cd946eb592",
       "swiftui_view_declarations": [
         "GroupChatInfoView",
         "MemberRowView",
@@ -1034,11 +1035,13 @@
         "GroupPreferencesButton"
       ],
       "native_lists_forms": [
-        83
+        79
       ],
-      "navigation_containers": [],
+      "navigation_containers": [
+        73
+      ],
       "system_controls": [
-        385
+        387
       ],
       "hidden_navigation": [],
       "legacy_material_references": [],
@@ -1493,14 +1496,10 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/SystemInterface.swift",
-      "sha256": "19b5ece2620b006dc508dc0d85305e58997d3b5f73d35f12d613c28beb2dc31a",
-      "swiftui_view_declarations": [
-        "SunderProfileNavigation"
-      ],
+      "sha256": "83c1a38e700f510918aacdd83c6527026d49e3699780774dbdaf111b7d4220db",
+      "swiftui_view_declarations": [],
       "native_lists_forms": [],
-      "navigation_containers": [
-        213
-      ],
+      "navigation_containers": [],
       "system_controls": [],
       "hidden_navigation": [
         43

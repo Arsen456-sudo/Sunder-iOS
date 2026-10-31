@@ -93,14 +93,14 @@ enum SendReceipts: Identifiable, Hashable {
 struct ChatInfoView: View {
     @EnvironmentObject var chatModel: ChatModel
     @EnvironmentObject var theme: AppTheme
-    @Environment(\.presentationMode) private var profilePresentationMode
+    @Environment(\.dismiss) var dismiss: DismissAction
     @ObservedObject var chat: Chat
     @State var contact: Contact
     @State var localAlias: String
     @State var featuresAllowed: ContactFeaturesAllowed
     @State var currentFeaturesAllowed: ContactFeaturesAllowed
     var onSearch: () -> Void
-    var pushed = false
+    var fullScreen = false
     @State private var connectionStats: ConnectionStats? = nil
     @State private var customUserProfile: Profile? = nil
     @State private var connectionCode: String? = nil
@@ -138,12 +138,8 @@ struct ChatInfoView: View {
         }
     }
 
-    private func dismiss() {
-        profilePresentationMode.wrappedValue.dismiss()
-    }
-
     var body: some View {
-        SunderProfileNavigation(pushed: pushed) {
+        NavigationView {
             ZStack {
                 List {
                     contactInfoHeader()
@@ -303,8 +299,14 @@ struct ChatInfoView: View {
                 .navigationTitle(chat.chatInfo.chatViewName)
                 .navigationBarTitleDisplayMode(.large)
                 .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        if fullScreen {
+                            Button { dismiss() } label: { Image(systemName: "chevron.backward") }
+                                .accessibilityLabel(Text("Back"))
+                        }
+                    }
                     ToolbarItem(placement: .confirmationAction) {
-                        if !pushed { Button("Done") { dismiss() } }
+                        if !fullScreen { Button("Done") { dismiss() } }
                     }
                 }
                 .disabled(progressIndicator)

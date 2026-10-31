@@ -9,7 +9,7 @@ View and manage group settings, member list, group preferences, group links, mem
 ## Route / Navigation
 
 - **Entry point**: Tap the info button in `ChatView` navigation bar (when viewing a group chat)
-- **Presented by**: Pushed native destination from `ChatView` via `showChatInfoSheet`, with the existing content and a native back button. Other modal callers retain their `NavigationView` sheet.
+- **Presented by**: System fullScreenCover from `ChatView` via `showChatInfoSheet`, containing its independent NavigationView and a leading back action. Other modal callers retain their NavigationView sheet.
 - **Sub-navigation**:
   - Edit group profile -> `GroupProfileView`
   - Add members -> `AddGroupMembersView`
@@ -268,3 +268,11 @@ a presentationMode-backed dismiss method while preserving all existing handlers,
 alerts, role gates and pushed/modal presentation. No member-removal helper accepting
 DismissAction is changed. This targets the observed alert-environment update loop;
 runtime verification after installation remains required.
+
+## Independent full-screen recovery (2026-10-31)
+Group/channel profiles opened from chat now use fullScreenCover with their original
+independent NavigationView, a leading back action, and the same content/subpages.
+This replaces the failed push into the chat stack; it is not described as a push.
+Original DismissAction context is restored within that independent presentation.
+Other modal callers keep Done. Member/role guards, async link loading and privacy
+remain. Group cleanup runs when the cover actually finishes dismissal.

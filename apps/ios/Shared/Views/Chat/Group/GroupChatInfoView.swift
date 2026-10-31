@@ -16,14 +16,14 @@ let SMALL_GROUPS_RCPS_MEM_LIMIT: Int = 20
 struct GroupChatInfoView: View {
     @EnvironmentObject var chatModel: ChatModel
     @EnvironmentObject var theme: AppTheme
-    @Environment(\.presentationMode) private var profilePresentationMode
+    @Environment(\.dismiss) var dismiss: DismissAction
     @ObservedObject var chat: Chat
     @Binding var groupInfo: GroupInfo
     @Binding var scrollToItemId: ChatItem.ID?
     @Binding var composeState: ComposeState
     var onSearch: () -> Void
     @State var localAlias: String
-    var pushed = false
+    var fullScreen = false
     @State private var showSharePicker = false
     @FocusState private var aliasTextFieldFocused: Bool
     @State private var alert: GroupChatInfoViewAlert? = nil
@@ -69,12 +69,8 @@ struct GroupChatInfoView: View {
         }
     }
 
-    private func dismiss() {
-        profilePresentationMode.wrappedValue.dismiss()
-    }
-
     var body: some View {
-        SunderProfileNavigation(pushed: pushed) {
+        NavigationView {
             let members = chatModel.groupMembers
                 .filter { m in let status = m.wrapped.memberStatus; return status != .memLeft && status != .memRemoved }
                 .sorted { $0.wrapped.memberRole > $1.wrapped.memberRole }
@@ -278,8 +274,14 @@ struct GroupChatInfoView: View {
                 .navigationTitle(chat.chatInfo.chatViewName)
                 .navigationBarTitleDisplayMode(.large)
                 .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        if fullScreen {
+                            Button { dismiss() } label: { Image(systemName: "chevron.backward") }
+                                .accessibilityLabel(Text("Back"))
+                        }
+                    }
                     ToolbarItem(placement: .confirmationAction) {
-                        if !pushed { Button("Done") { dismiss() } }
+                        if !fullScreen { Button("Done") { dismiss() } }
                     }
                 }
                 .disabled(progressIndicator)

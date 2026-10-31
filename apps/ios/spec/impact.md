@@ -250,3 +250,8 @@ Build24 stackshot follow-up: ChatInfoView/GroupChatInfoView affect PC2/PC3/PC13/
 profile dismissal environment only, keeping actions/permissions. Native controls
 change PC1 unread background sharing/structural logging only. No messages, models,
 network, database or cryptographic implementation changes.
+
+Independent profile recovery: ChatView/ChatInfoView/GroupChatInfoView/SystemInterface
+affect PC2/PC3/PC13/PC14 presentation context and dismissal only. All content/actions,
+role/security gates, privacy and data protocols stay intact. Failed push helpers are
+removed, while other chat/navigation/header code is not redesigned.

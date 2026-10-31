@@ -287,3 +287,12 @@ now avoid a DismissAction property captured by legacy alert closures; native bac
 all existing profile content/actions remain. Unread native background sharing is
 disabled once per resolved item to target merging without changing other islands.
 Exact filter-to-title morph is still not implemented/verified and must not be implied.
+
+## Full-screen profile recovery (2026-10-31)
+Disk IPA and phone source tags were verified equal to build25; replacement was not
+the cause of the unchanged failure. The faulty profile push is removed. The existing
+profile content again owns its original independent NavigationView and is presented
+on the whole screen with a leading back action. Chat toolbar and messages are not
+redesigned. Native fullScreenCover supplies presentation/dismissal; this is a separate
+full-screen menu rather than a navigation push. Profile cleanup/theme refresh is
+performed after cover dismissal. Native filter-to-title matching remains unresolved.
