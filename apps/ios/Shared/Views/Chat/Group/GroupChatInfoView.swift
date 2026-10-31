@@ -23,6 +23,7 @@ struct GroupChatInfoView: View {
     @Binding var composeState: ComposeState
     var onSearch: () -> Void
     @State var localAlias: String
+    var pushed = false
     @State private var showSharePicker = false
     @FocusState private var aliasTextFieldFocused: Bool
     @State private var alert: GroupChatInfoViewAlert? = nil
@@ -69,7 +70,7 @@ struct GroupChatInfoView: View {
     }
 
     var body: some View {
-        NavigationView {
+        SunderProfileNavigation(pushed: pushed) {
             let members = chatModel.groupMembers
                 .filter { m in let status = m.wrapped.memberStatus; return status != .memLeft && status != .memRemoved }
                 .sorted { $0.wrapped.memberRole > $1.wrapped.memberRole }
@@ -273,7 +274,9 @@ struct GroupChatInfoView: View {
                 .navigationTitle(chat.chatInfo.chatViewName)
                 .navigationBarTitleDisplayMode(.large)
                 .toolbar {
-                    ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
+                    ToolbarItem(placement: .confirmationAction) {
+                        if !pushed { Button("Done") { dismiss() } }
+                    }
                 }
                 .disabled(progressIndicator)
                 .opacity(progressIndicator ? 0.6 : 1)

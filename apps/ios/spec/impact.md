@@ -230,3 +230,8 @@ ownership. No message state, account, transport, persistence or crypto changes.
 
 Toolbar availability correction: ChatView affects PC2/PC3 iOS15 compatibility and
 avatar-only visible chrome. No state, transport, persistence or security code changes.
+
+Pushed-profile follow-up: ChatView/ChatInfoView/GroupChatInfoView/SystemInterface
+affect PC2/PC3/PC13/PC14 profile presentation and native back, retaining existing
+privacy/security/actions. NavLinkPlain affects PC1 entry scheduling only. No
+message-loader, database, network or cryptographic implementation is changed.

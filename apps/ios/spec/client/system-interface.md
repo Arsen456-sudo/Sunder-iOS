@@ -346,3 +346,14 @@ an iOS15-incompatible ToolbarContentBuilder.buildIf. The iOS26-only property con
 unconditional title/avatar items. Legacy toolbar routing remains unchanged. Avatar
 menu indicator is hidden without dropping context actions or reintroducing editor
 center-group overflow. Shared bottom-edge registration is unchanged.
+
+## Existing profile content in native navigation (2026-10-31)
+SunderProfileNavigation wraps content in NavigationView only when pushed:false.
+sunderProfileDestination uses navigationDestination(isPresented:) on iOS16+ and
+an invisible NavigationLink on iOS15. The destination closure is escaping, and
+availability branching is in ViewBuilder rather than ToolbarContentBuilder.
+ChatView applies existing sunderPrivateSheet privacy/style modifiers to the pushed
+content without introducing a new modal sheet or a nested navigation stack.
+No toolbar/background/scroll-edge ownership changes accompany profile routing.
+
+Source entry points: [SunderProfileNavigation](../../Shared/Views/ChatList/SystemInterface.swift#L199) | [sunderProfileDestination](../../Shared/Views/ChatList/SystemInterface.swift#L209)

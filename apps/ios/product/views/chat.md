@@ -248,3 +248,13 @@ The modern avatar control explicitly hides its menu indicator; the photo is its
 only visible label. Long-press profile actions remain available. The removed editor
 center-group implementation is not restored. Availability selection is now outside
 the toolbar builder so iOS15 fallback continues to compile.
+
+## Full-page profiles and small avatar increase (2026-10-31)
+The chat avatar artwork grows from 32 to 34pt without changing its island, action,
+context menu or the other toolbar placements/materials. Title and avatar taps open
+the existing contact/group/channel profile content as a full pushed destination,
+with native back navigation. Profile subpages and all existing actions remain.
+Normal list taps no longer enqueue an extra MainActor Task before route selection.
+No measured timing gain is claimed and navigation animations remain enabled.
+The requested unread-filter-to-title morph remains unresolved; the stable principal
+title is retained rather than repeating the failed center-group implementation.

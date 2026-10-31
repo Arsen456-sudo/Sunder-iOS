@@ -9,7 +9,7 @@ View contact details, manage per-contact preferences, verify security codes for 
 ## Route / Navigation
 
 - **Entry point**: Tap the info button in `ChatView` navigation bar (when viewing a direct contact chat)
-- **Presented by**: `NavigationView` sheet from `ChatView` via `showChatInfoSheet`
+- **Presented by**: Pushed native destination from `ChatView` via `showChatInfoSheet`, with the existing content and a native back button. Other modal callers retain their `NavigationView` sheet.
 - **Sub-navigation**:
   - Contact preferences -> `ContactPreferencesView`
   - Security code verification -> `VerifyCodeView`

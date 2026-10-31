@@ -53,6 +53,7 @@ struct ChatView: View {
     @State var floatingButtonModel: FloatingButtonModel
     @Binding var scrollToItemId: ChatItem.ID?
     @State private var showChatInfoSheet: Bool = false
+    @State private var chatProfileWasGroup = false
     @State private var showAddMembersSheet: Bool = false
     @State private var composeState = ComposeState()
     @State private var selectedRange = NSRange()
@@ -456,6 +457,21 @@ struct ChatView: View {
         .onChange(of: colorScheme) { _ in
             theme = buildTheme()
         }
+        .sunderProfileDestination(isPresented: $showChatInfoSheet) {
+            chatProfileDestination
+                .environmentObject(chatModel)
+                .environmentObject(theme)
+                .sunderPrivateSheet()
+        }
+        .onChange(of: showChatInfoSheet) { visible in
+            if visible {
+                if case .group = chat.chatInfo { chatProfileWasGroup = true }
+                else { chatProfileWasGroup = false }
+            } else {
+                if chatProfileWasGroup { chatModel.secondaryIM = nil }
+                theme = buildTheme()
+            }
+        }
         .if(usesModernAvatarToolbar) { v in
             Group {
                 if #available(iOS 26.0, *) {
@@ -514,7 +530,7 @@ struct ChatView: View {
         }.sharedBackgroundVisibility(.hidden)
         ToolbarItem(id: "sunder.avatar", placement: .navigationBarTrailing) {
             Button { openAvatarProfile() } label: {
-                ChatInfoImage(chat: chat, size: 32, color: Color(uiColor: .tertiaryLabel))
+                ChatInfoImage(chat: chat, size: 34, color: Color(uiColor: .tertiaryLabel))
                     .clipShape(Circle())
             }
             .modifier(SunderAvatarToolbarButtonStyle())
@@ -580,52 +596,47 @@ struct ChatView: View {
         let cInfo = chat.chatInfo
         if selectedChatItems != nil {
             SelectedItemsTopToolbar(selectedChatItems: $selectedChatItems)
-        } else if case let .direct(contact) = cInfo {
-            Button {
-                Task {
-                    showChatInfoSheet = true
-                }
-            } label: {
+        } else if case .direct = cInfo {
+            Button { openAvatarProfile() } label: {
                 ChatInfoToolbar(chat: chat, showsAvatar: !usesModernAvatarToolbar)
             }
-            .appSheet(isPresented: $showChatInfoSheet, onDismiss: { theme = buildTheme() }) {
-                ChatInfoView(
-                    chat: chat,
-                    contact: contact,
-                    localAlias: chat.chatInfo.localAlias,
-                    featuresAllowed: contactUserPrefsToFeaturesAllowed(contact.mergedPreferences),
-                    currentFeaturesAllowed: contactUserPrefsToFeaturesAllowed(contact.mergedPreferences),
-                    onSearch: { focusSearch() }
-                )
-            }
-        } else if case let .group(groupInfo, _) = cInfo {
-            Button {
-                Task { await chatModel.loadGroupMembers(groupInfo) { showChatInfoSheet = true } }
-            } label: {
+        } else if case .group = cInfo {
+            Button { openAvatarProfile() } label: {
                 ChatInfoToolbar(chat: chat, showsAvatar: !usesModernAvatarToolbar)
                     .tint(theme.colors.primary)
             }
-            .appSheet(isPresented: $showChatInfoSheet, onDismiss: {
-                chatModel.secondaryIM = nil
-                theme = buildTheme()
-            }) {
-                GroupChatInfoView(
-                    chat: chat,
-                    groupInfo: Binding(
-                        get: { groupInfo },
-                        set: { gInfo in
-                            chat.chatInfo = .group(groupInfo: gInfo, groupChatScope: nil)
-                            chat.created = Date.now
-                        }
-                    ),
-                    scrollToItemId: $scrollToItemId,
-                    composeState: $composeState,
-                    onSearch: { focusSearch() },
-                    localAlias: groupInfo.localAlias
-                )
-            }
         } else if case .local = cInfo {
             ChatInfoToolbar(chat: chat, showsAvatar: !usesModernAvatarToolbar)
+        }
+    }
+
+    @ViewBuilder private var chatProfileDestination: some View {
+        if case let .direct(contact) = chat.chatInfo {
+            ChatInfoView(
+                chat: chat,
+                contact: contact,
+                localAlias: chat.chatInfo.localAlias,
+                featuresAllowed: contactUserPrefsToFeaturesAllowed(contact.mergedPreferences),
+                currentFeaturesAllowed: contactUserPrefsToFeaturesAllowed(contact.mergedPreferences),
+                onSearch: { focusSearch() },
+                pushed: true
+            )
+        } else if case let .group(groupInfo, _) = chat.chatInfo {
+            GroupChatInfoView(
+                chat: chat,
+                groupInfo: Binding(
+                    get: { groupInfo },
+                    set: { gInfo in
+                        chat.chatInfo = .group(groupInfo: gInfo, groupChatScope: nil)
+                        chat.created = Date.now
+                    }
+                ),
+                scrollToItemId: $scrollToItemId,
+                composeState: $composeState,
+                onSearch: { focusSearch() },
+                localAlias: groupInfo.localAlias,
+                pushed: true
+            )
         }
     }
 

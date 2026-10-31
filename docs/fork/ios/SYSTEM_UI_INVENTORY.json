@@ -191,7 +191,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatInfoView.swift",
-      "sha256": "27fdc183dca2d3ea471c7feb1bac1dc4f42b2d7fe602aa2026c39935d0ba5bbf",
+      "sha256": "28b7a707a5b4d7663f3a11adbc89fe2e47356595138dd95fd17557bcfb0dfbe1",
       "swiftui_view_declarations": [
         "ChatInfoView",
         "SubStatusRow",
@@ -205,16 +205,15 @@
         "SimplexNameView"
       ],
       "native_lists_forms": [
-        143,
-        1279
+        144,
+        1282
       ],
       "navigation_containers": [
-        141,
-        1278
+        1281
       ],
       "system_controls": [
-        410,
-        1281
+        413,
+        1284
       ],
       "hidden_navigation": [],
       "legacy_material_references": [],
@@ -654,7 +653,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatView.swift",
-      "sha256": "fbf20c8e9b707c307597b72bfa93eb568d057973ff40b5ad99819687a9c4f694",
+      "sha256": "122a4c40977b730abe241e815726ecce286a7203fd6ed96fcebe169a68463134",
       "swiftui_view_declarations": [
         "ChatView",
         "ChatBannerView",
@@ -670,9 +669,9 @@
       "system_controls": [],
       "hidden_navigation": [],
       "legacy_material_references": [
-        235,
-        574,
-        802
+        236,
+        590,
+        813
       ],
       "native_bridges": [],
       "validation": "Source-pattern inventory; full-screen device validation pending"
@@ -1025,7 +1024,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/Group/GroupChatInfoView.swift",
-      "sha256": "5297df874eb68689bc72aa09de6be8237e176edd284976eff683a1b906e007ef",
+      "sha256": "dc028761441e85ca0360ca06231d317fff950e7f596293e4bce990b38becdf71",
       "swiftui_view_declarations": [
         "GroupChatInfoView",
         "MemberRowView",
@@ -1034,13 +1033,11 @@
         "GroupPreferencesButton"
       ],
       "native_lists_forms": [
-        78
+        79
       ],
-      "navigation_containers": [
-        72
-      ],
+      "navigation_containers": [],
       "system_controls": [
-        374
+        377
       ],
       "hidden_navigation": [],
       "legacy_material_references": [],
@@ -1494,10 +1491,14 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/SystemInterface.swift",
-      "sha256": "f837d6f53bce60847bf0fd9715ea56518bd711951cab68deea1f2c7b76dff1fb",
-      "swiftui_view_declarations": [],
+      "sha256": "76d9249006dd0ab294b20504ab35e435ed10b7059760d6af57960ca731105c20",
+      "swiftui_view_declarations": [
+        "SunderProfileNavigation"
+      ],
       "native_lists_forms": [],
-      "navigation_containers": [],
+      "navigation_containers": [
+        204
+      ],
       "system_controls": [],
       "hidden_navigation": [
         43
@@ -1830,7 +1831,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Helpers/NavLinkPlain.swift",
-      "sha256": "988a0134f9f151b5809a1930537fe543f78b7a87a9a21be17432f4d2dfdaba16",
+      "sha256": "4e732ddfc82fb84799064d7d57eaa68411b9e6397016ce59b26e22cd96b47cba",
       "swiftui_view_declarations": [
         "NavLinkPlain"
       ],

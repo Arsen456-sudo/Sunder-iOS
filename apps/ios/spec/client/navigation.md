@@ -577,3 +577,14 @@ Back/avatar navigation animations remain native, with no delegate replacement.
 SunderTabsController registers selected root scroll content for the native bottom
 bar in all three tabs and clears that registration while hidden. Native tab
 selection callbacks refresh binding; no search lifecycle owns the bottom blur.
+
+## Pushed chat profiles (2026-10-31)
+ChatView now drives one root programmatic profile destination using the existing
+showChatInfoSheet state. Contact/group/channel content is reused with pushed:true,
+no inner NavigationView, and native back. Existing non-chat modal callers use the
+default pushed:false mode and retain Done. Privacy redaction/styles are explicitly
+preserved. Root dismissal triggers the previous theme/group cleanup; child-page
+pushes do not. NavLinkPlain is MainActor-isolated and invokes openChatFromList
+synchronously, removing a redundant Task hop without modifying message loading.
+Unread-to-principal-title morphing remains the documented unresolved gap; other
+working header transitions and native animations are left intact.

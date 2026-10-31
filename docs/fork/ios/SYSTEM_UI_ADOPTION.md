@@ -118,3 +118,12 @@ Availability now lives in the outer ViewBuilder; modern toolbar is iOS26-only.
 Avatar menu indicator is hidden while long-press actions remain. Automatic role and
 principal title replace the installed prior build's failed editor-center experiment.
 CI and actual avatar-only appearance remain separate verification steps.
+
+## Full-page chat profiles (2026-10-31)
+Contact/group/channel profiles opened from chat now use the same content in a
+native pushed destination with back, without their modal NavigationView/Done.
+Other modal callers retain defaults. Privacy/style and group cleanup are retained.
+Avatar artwork increases to 34pt; no other island geometry or native animations
+change. A redundant MainActor Task hop is removed from row entry. No measured
+latency gain is claimed. Unread-filter-to-principal-title matching remains unresolved
+and is not claimed fixed; prior center-group implementations failed on device.

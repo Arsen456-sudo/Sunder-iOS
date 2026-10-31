@@ -423,3 +423,9 @@ adapter. Search layout now uses the controller's native cancel control, which ca
 the original clear/cancel state behavior without a separate trailing close item.
 
 Source entry points: [NavLinkPlain](../../Shared/Views/Helpers/NavLinkPlain.swift#L12)
+
+## Direct MainActor row entry (2026-10-31)
+NavLinkPlain is MainActor-isolated and directly invokes openChatFromList from its
+button action instead of scheduling a second Task. Readiness/disabled checks,
+message reset, async loading and cancellation are unchanged. This removes one
+scheduling hop, not a demonstrated seconds-long delay or measured FPS improvement.

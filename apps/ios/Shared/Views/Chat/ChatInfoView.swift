@@ -100,6 +100,7 @@ struct ChatInfoView: View {
     @State var featuresAllowed: ContactFeaturesAllowed
     @State var currentFeaturesAllowed: ContactFeaturesAllowed
     var onSearch: () -> Void
+    var pushed = false
     @State private var connectionStats: ConnectionStats? = nil
     @State private var customUserProfile: Profile? = nil
     @State private var connectionCode: String? = nil
@@ -138,7 +139,7 @@ struct ChatInfoView: View {
     }
 
     var body: some View {
-        NavigationView {
+        SunderProfileNavigation(pushed: pushed) {
             ZStack {
                 List {
                     contactInfoHeader()
@@ -298,7 +299,9 @@ struct ChatInfoView: View {
                 .navigationTitle(chat.chatInfo.chatViewName)
                 .navigationBarTitleDisplayMode(.large)
                 .toolbar {
-                    ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
+                    ToolbarItem(placement: .confirmationAction) {
+                        if !pushed { Button("Done") { dismiss() } }
+                    }
                 }
                 .disabled(progressIndicator)
                 .opacity(progressIndicator ? 0.6 : 1)

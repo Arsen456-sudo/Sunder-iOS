@@ -195,3 +195,24 @@ struct SunderTitleSurface: ViewModifier {
         } else { content }
     }
 }
+
+struct SunderProfileNavigation<Content: View>: View {
+    var pushed: Bool
+    @ViewBuilder var content: () -> Content
+    @ViewBuilder var body: some View {
+        if pushed { content() }
+        else { NavigationView { content() } }
+    }
+}
+
+extension View {
+    @ViewBuilder func sunderProfileDestination<D: View>(
+        isPresented: Binding<Bool>, @ViewBuilder destination: @escaping () -> D
+    ) -> some View {
+        if #available(iOS 16.0, *) {
+            navigationDestination(isPresented: isPresented, destination: destination)
+        } else {
+            background(NavigationLink(destination: destination(), isActive: isPresented) { EmptyView() }.hidden())
+        }
+    }
+}

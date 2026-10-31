@@ -9,7 +9,7 @@ View and manage group settings, member list, group preferences, group links, mem
 ## Route / Navigation
 
 - **Entry point**: Tap the info button in `ChatView` navigation bar (when viewing a group chat)
-- **Presented by**: `NavigationView` sheet from `ChatView` via `showChatInfoSheet`
+- **Presented by**: Pushed native destination from `ChatView` via `showChatInfoSheet`, with the existing content and a native back button. Other modal callers retain their `NavigationView` sheet.
 - **Sub-navigation**:
   - Edit group profile -> `GroupProfileView`
   - Add members -> `AddGroupMembersView`

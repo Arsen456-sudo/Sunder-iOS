@@ -208,3 +208,7 @@ whenever the tab bar is visible, independently of search/folders. Hidden/deeper
 routes clear registration; tab changes register the new selected content.
 This replaces the ineffective search-owned bottom interaction. Device verification
 must cover short/long lists, all three roots, switching tabs and returning from chat.
+
+## Row-entry scheduling (2026-10-31)
+Ordinary chat-row taps select the route directly on MainActor without an extra Task
+hop. Existing async message loading and native push animation remain unchanged.

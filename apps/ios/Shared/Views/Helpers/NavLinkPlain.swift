@@ -9,7 +9,7 @@
 import SwiftUI
 import SimpleXChat
 
-struct NavLinkPlain<Label: View>: View {
+@MainActor struct NavLinkPlain<Label: View>: View {
     let chatId: ChatId
     @Binding var selection: ChatId?
     @ViewBuilder var label: () -> Label
@@ -18,7 +18,7 @@ struct NavLinkPlain<Label: View>: View {
     var body: some View {
         ZStack {
             Button("") {
-                Task { @MainActor in ItemsModel.shared.openChatFromList(chatId) }
+                ItemsModel.shared.openChatFromList(chatId)
             }
                 .disabled(disabled)
             label()
