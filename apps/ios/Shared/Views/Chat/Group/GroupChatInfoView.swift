@@ -309,15 +309,19 @@ struct GroupChatInfoView: View {
                 sendReceiptsUserDefault = currentUser.sendRcptsSmallGroups
             }
             sendReceipts = SendReceipts.fromBool(groupInfo.chatSettings.sendRcpts, userDefault: sendReceiptsUserDefault)
-            if !groupInfo.useRelays || groupInfo.isOwner {
-                do {
-                    if let gLink = try apiGetGroupLink(groupInfo.groupId) {
-                        groupLink = gLink
-                        groupLinkMemberRole = gLink.acceptMemberRole
-                    }
-                } catch let error {
-                    logger.error("GroupChatInfoView apiGetGroupLink: \(responseError(error))")
+        }
+        .task(id: groupInfo.groupId) {
+            guard !groupInfo.useRelays || groupInfo.isOwner else { return }
+            let groupId = groupInfo.groupId
+            do {
+                let link = try await apiGetGroupLinkAsync(groupId)
+                await MainActor.run {
+                    guard !Task.isCancelled, groupInfo.groupId == groupId else { return }
+                    groupLink = link
+                    if let link { groupLinkMemberRole = link.acceptMemberRole }
                 }
+            } catch {
+                if !Task.isCancelled { logger.error("GroupChatInfoView apiGetGroupLink: \(responseError(error))") }
             }
         }
     }

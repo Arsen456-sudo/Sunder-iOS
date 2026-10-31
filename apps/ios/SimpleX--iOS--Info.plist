@@ -5,7 +5,7 @@
 	<key>SunderRepositoryURL</key>
 	<string>https://github.com/Arsen456-sudo/Sunder-iOS</string>
 	<key>SunderSourceRef</key>
-	<string>preview-20261031-profile-push-1</string>
+	<string>preview-20261031-navigation-state-1</string>
 	<key>CFBundleDisplayName</key>
 	<string>Sunder</string>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>

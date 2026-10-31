@@ -127,3 +127,12 @@ Avatar artwork increases to 34pt; no other island geometry or native animations
 change. A redundant MainActor Task hop is removed from row entry. No measured
 latency gain is claimed. Unread-filter-to-principal-title matching remains unresolved
 and is not claimed fixed; prior center-group implementations failed on device.
+
+## Profile and native identity stabilization (2026-10-31)
+User feedback reports a profile push hang. NavStackCompat's synthesized path is
+replaced by persistent @State, preserving nested destinations. The group-profile
+initial synchronous core read is moved to the existing async API path. Destination
+avatar native identity is restored without regrouping or geometry changes; existing
+center items are identified only if UIKit exposes them. Structural header diagnostics
+contain counts/presence only. No custom animator is introduced; full unread-to-title
+morphing and stability require actual iPhone evidence rather than compile success.

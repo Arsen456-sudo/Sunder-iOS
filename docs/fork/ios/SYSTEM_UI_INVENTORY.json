@@ -653,7 +653,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatView.swift",
-      "sha256": "122a4c40977b730abe241e815726ecce286a7203fd6ed96fcebe169a68463134",
+      "sha256": "4f518906fca84b58786fa69430ef9f1b6af2c4403abef48336a02197719ca0d6",
       "swiftui_view_declarations": [
         "ChatView",
         "ChatBannerView",
@@ -670,8 +670,8 @@
       "hidden_navigation": [],
       "legacy_material_references": [
         236,
-        590,
-        813
+        595,
+        818
       ],
       "native_bridges": [],
       "validation": "Source-pattern inventory; full-screen device validation pending"
@@ -1024,7 +1024,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/Group/GroupChatInfoView.swift",
-      "sha256": "dc028761441e85ca0360ca06231d317fff950e7f596293e4bce990b38becdf71",
+      "sha256": "4ee917e7d58f84ba7c1a4608b9076f05ca251d27429e7d75a2e721b496eddc41",
       "swiftui_view_declarations": [
         "GroupChatInfoView",
         "MemberRowView",
@@ -1037,7 +1037,7 @@
       ],
       "navigation_containers": [],
       "system_controls": [
-        377
+        381
       ],
       "hidden_navigation": [],
       "legacy_material_references": [],
@@ -1294,7 +1294,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/ChatListNativeControls.swift",
-      "sha256": "cd202752eac8109b1a5798e99f5966276f5e7b5cfbad110982b6a11ff61f1e7b",
+      "sha256": "a739401a24025383f6771c4cfa2a6b094ee308d504d8ef5c9be404406e266d99",
       "swiftui_view_declarations": [
         "ChatListUnreadButton",
         "ChatListStatusButton"
@@ -1312,7 +1312,8 @@
         356,
         403,
         448,
-        533
+        534,
+        565
       ],
       "validation": "Source-pattern inventory; full-screen device validation pending"
     },
@@ -1845,14 +1846,14 @@
     },
     {
       "path": "apps/ios/Shared/Views/Helpers/NavStackCompat.swift",
-      "sha256": "69e91e680cc2d0de5dcd8555fef1a8fb15517e19b80fea04c0fd6f78bbcd731e",
+      "sha256": "80387e96c5c88175d8dfbc24598f58c6880fa93255e5fb4d5b659615b150f029",
       "swiftui_view_declarations": [
         "NavStackCompat"
       ],
       "native_lists_forms": [],
       "navigation_containers": [
-        18,
-        33
+        26,
+        44
       ],
       "system_controls": [],
       "hidden_navigation": [],

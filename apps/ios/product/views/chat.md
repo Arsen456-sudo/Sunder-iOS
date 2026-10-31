@@ -258,3 +258,12 @@ Normal list taps no longer enqueue an extra MainActor Task before route selectio
 No measured timing gain is claimed and navigation animations remain enabled.
 The requested unread-filter-to-title morph remains unresolved; the stable principal
 title is retained rather than repeating the failed center-group implementation.
+
+## Profile-navigation stabilization (2026-10-31)
+The chat stack now retains its own path rather than rebuilding it from the chat-open
+Boolean on every update. Pushing/popping the existing profile and its child routes
+must not reset the chat route. Native interactive back and explicit chat close remain.
+The avatar's actual UIKit bar-item identifier is assigned again without moving or
+regrouping items. Existing header appearance/materials remain unchanged. A native
+center identifier is assigned only if UIKit exposes one actual center bar item;
+principal titleView matching remains unproven. Device validation is required.

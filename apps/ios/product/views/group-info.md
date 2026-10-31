@@ -255,3 +255,9 @@ See [presentation specification](../../spec/client/navigation.md#sunder-presenta
 Group/channel profiles use system navigation with a large title and Done button,
 grouped information and bordered action Buttons. Role gates, member/link routes,
 moderation, relay details and member-detail system back navigation remain intact.
+
+## Nonblocking initial group-link read (2026-10-31)
+The initial group-link lookup uses the existing asynchronous command path in a task
+keyed to the group ID. The screen no longer synchronously waits for the chat core
+inside onAppear. Permissions, link-not-found handling and member-link behavior stay
+the same; cancelled or outdated results do not update the profile.

@@ -530,6 +530,38 @@ extension EnvironmentValues {
     }
 }
 
+@available(iOS 26.0, *)
+struct SunderConversationIdentity: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> Controller { Controller() }
+    func updateUIViewController(_ controller: Controller, context: Context) { controller.apply() }
+    class Controller: UIViewController {
+        private var reported = false
+        override func loadView() { view = UIView(); view.isUserInteractionEnabled = false }
+        override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); apply() }
+        override func viewWillLayoutSubviews() { super.viewWillLayoutSubviews(); apply() }
+        override func viewDidAppear(_ animated: Bool) { super.viewDidAppear(animated); apply(); report() }
+        func apply() {
+            guard let owner = sunderNavigationOwner(parent) else { return }
+            let item = owner.navigationItem
+            if let avatar = item.rightBarButtonItems?.first {
+                if avatar.identifier != "sunder.avatar" { avatar.identifier = "sunder.avatar" }
+                if avatar.sharesBackground { avatar.sharesBackground = false }
+            }
+            let center = item.centerItemGroups.flatMap(\.barButtonItems)
+            if center.count == 1, let title = center.first {
+                if title.identifier != "sunder.context" { title.identifier = "sunder.context" }
+                if title.sharesBackground { title.sharesBackground = false }
+            }
+        }
+        private func report() {
+            guard !reported, let owner = sunderNavigationOwner(parent) else { return }
+            reported = true
+            let item = owner.navigationItem
+            logger.debug("Sunder header structure: titleView=\(item.titleView != nil), centerItems=\(item.centerItemGroups.flatMap(\.barButtonItems).count), trailingItems=\(item.rightBarButtonItems?.count ?? 0)")
+        }
+    }
+}
+
 struct SunderNavigationSearch: UIViewControllerRepresentable {
     @Binding var active: Bool
     @Binding var text: String

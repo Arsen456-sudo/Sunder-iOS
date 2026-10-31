@@ -369,7 +369,7 @@ Group, file, call, notification, and misc responses ([`AppAPITypes.swift` L919](
 
 The `ChatEvent` enum ([`AppAPITypes.swift` L1069](../Shared/Model/AppAPITypes.swift#L1069)) represents async events from the Haskell core. These arrive via `chat_recv_msg_wait` polling, not as responses to commands.
 
-Event processing entry point: [`processReceivedMsg`](../Shared/Model/SimpleXAPI.swift#L2282) in `SimpleXAPI.swift`.
+Event processing entry point: [`processReceivedMsg`](../Shared/Model/SimpleXAPI.swift#L2293) in `SimpleXAPI.swift`.
 
 ### Connection Events
 
@@ -608,3 +608,11 @@ The `decodeAPIResult<R>` function ([`APITypes.swift` L86](../SimpleXChat/APIType
 | Data types | `SimpleXChat/ChatTypes.swift` |
 | C header | `SimpleXChat/SimpleX.h` |
 | Haskell controller | `../../src/Simplex/Chat/Controller.hs` |
+
+## Nonblocking group-profile read (2026-10-31)
+apiGetGroupLinkAsync(groupId) uses await chatApiSendCmd(.apiGetGroupLink) with the same
+APIResult<ChatResponse2> mapping as apiGetGroupLink: groupLink returns its data,
+groupLinkNotFound returns nil, other results throw unexpected. The existing sync
+function remains for other callers. No command/protocol/schema change is introduced.
+
+Source entry points: [apiGetGroupLinkAsync](../Shared/Model/SimpleXAPI.swift#L2111)

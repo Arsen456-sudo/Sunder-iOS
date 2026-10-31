@@ -588,3 +588,14 @@ pushes do not. NavLinkPlain is MainActor-isolated and invokes openChatFromList
 synchronously, removing a redundant Task hop without modifying message loading.
 Unread-to-principal-title morphing remains the documented unresolved gap; other
 working header transitions and native animations are left intact.
+
+## Persistent chat-stack state (2026-10-31)
+NavStackCompat stores @State [Bool] path, initialized from isActive. NavigationStack
+binds to that state rather than a synthesized constant [true]/[] getter. External
+isActive=true inserts the chat root only if absent; false clears it. Native path
+becoming empty mirrors false to isActive. Child profile destinations therefore do
+not reconstruct the chat path on each update. iOS15 NavigationView is unchanged.
+Review interactive/cancelled back, nested profile routes, explicit close, rapid
+open/back and deep-link startup on device; CI compilation is a separate check.
+
+Source entry points: [NavStackCompat](../../Shared/Views/Helpers/NavStackCompat.swift#L11)

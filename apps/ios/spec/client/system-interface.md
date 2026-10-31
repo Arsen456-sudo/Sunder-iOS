@@ -62,7 +62,7 @@ must compile before device validation. See [adoption report](../../../../docs/fo
 - [`struct SunderFolderSegments: UIViewRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L403)
 - [`@MainActor private func sunderNavigationOwner(_ controller: UIViewController?) -> UIViewController?`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L495)
 - [`@MainActor private final class SunderScrollEdgeBinding`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L505)
-- [`struct SunderNavigationSearch: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L533)
+- [`struct SunderNavigationSearch: UIViewControllerRepresentable`](../../Shared/Views/ChatList/ChatListNativeControls.swift#L565)
 
 ### Shared/Views/ChatList/SystemInterface.swift
 
@@ -318,7 +318,7 @@ Close item. searchBarCancelButtonClicked cancels connection progress, clears tex
 focus/active state, and restores saved toolbar items. Its native cancel control owns
 width reservation, including narrow screens and accessibility sizes.
 
-Source entry points: [SunderScrollEdgeBinding](../../Shared/Views/ChatList/ChatListNativeControls.swift#L505) | [SunderNavigationSearch](../../Shared/Views/ChatList/ChatListNativeControls.swift#L533)
+Source entry points: [SunderScrollEdgeBinding](../../Shared/Views/ChatList/ChatListNativeControls.swift#L505) | [SunderNavigationSearch](../../Shared/Views/ChatList/ChatListNativeControls.swift#L565)
 
 ## Compact-title and tab-edge correction (2026-10-31)
 SunderConversationCenter is removed after device feedback showed no title. ChatView
@@ -357,3 +357,15 @@ content without introducing a new modal sheet or a nested navigation stack.
 No toolbar/background/scroll-edge ownership changes accompany profile routing.
 
 Source entry points: [SunderProfileNavigation](../../Shared/Views/ChatList/SystemInterface.swift#L199) | [sunderProfileDestination](../../Shared/Views/ChatList/SystemInterface.swift#L209)
+
+## Existing native item identity (2026-10-31)
+SunderConversationIdentity attaches only to ordinary modern chat headers. It assigns
+sunder.avatar to the existing trailing bar item and disables its background sharing;
+it assigns sunder.context only when one existing native center item is exposed.
+It never creates/moves groups, replaces titleView, changes toolbar role or uses a
+custom animator/delegate. Assignment is guarded against redundant mutations.
+One post-appearance debug event reports only titleView presence and bar-item counts,
+not names, messages, images or account data. This is evidence collection for native
+matching; principal-title morphing is not claimed established.
+
+Source entry points: [SunderConversationIdentity](../../Shared/Views/ChatList/ChatListNativeControls.swift#L534)

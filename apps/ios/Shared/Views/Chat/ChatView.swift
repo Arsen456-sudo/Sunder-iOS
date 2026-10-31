@@ -485,6 +485,11 @@ struct ChatView: View {
                 modernToolbar: { legacyConversationToolbar(userMemberKnockingChat: userMemberKnockingChat) },
                 legacyToolbar: { legacyConversationToolbar(userMemberKnockingChat: userMemberKnockingChat) })
         }
+        .background {
+            if #available(iOS 26.0, *), usesModernAvatarToolbar {
+                SunderConversationIdentity().frame(width: 0, height: 0)
+            }
+        }
         .if(im.secondaryIMFilter == nil) { v in
             v.onChange(of: scrollToItemId) { itemId in
                 if let itemId = itemId {

@@ -235,3 +235,8 @@ Pushed-profile follow-up: ChatView/ChatInfoView/GroupChatInfoView/SystemInterfac
 affect PC2/PC3/PC13/PC14 profile presentation and native back, retaining existing
 privacy/security/actions. NavLinkPlain affects PC1 entry scheduling only. No
 message-loader, database, network or cryptographic implementation is changed.
+
+Profile stability: NavStackCompat affects PC1/PC2/PC3 native route persistence.
+ChatView/native controls affect PC2/PC3 native identity only. GroupChatInfoView and
+SimpleXAPI affect PC3/PC14 initial group-link read scheduling, preserving command,
+permissions and error mapping. Crypto, transport implementation and storage stay.

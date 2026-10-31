@@ -2108,6 +2108,17 @@ func apiGetGroupLink(_ groupId: Int64) throws -> GroupLink? {
     }
 }
 
+func apiGetGroupLinkAsync(_ groupId: Int64) async throws -> GroupLink? {
+    let r: APIResult<ChatResponse2> = await chatApiSendCmd(.apiGetGroupLink(groupId: groupId))
+    switch r {
+    case let .result(.groupLink(_, _, groupLink)):
+        return groupLink
+    case .error(.errorStore(storeError: .groupLinkNotFound)):
+        return nil
+    default: throw r.unexpected
+    }
+}
+
 func apiAddGroupShortLink(_ groupId: Int64) async throws -> GroupLink? {
     let r: APIResult<ChatResponse2>? = await chatApiSendCmdWithRetry(.apiAddGroupShortLink(groupId: groupId))
     if case let .result(.groupLink(_, _, groupLink)) = r { return groupLink }
