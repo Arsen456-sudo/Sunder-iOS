@@ -369,7 +369,7 @@ struct ChatListView: View {
         ToolbarItem(id: "sunder.context", placement: .navigationBarTrailing) {
             Button {
                 chatTagsModel.activeFilter = chatTagsModel.activeFilter == .unread ? nil : .unread
-            } label: { Image(systemName: "line.3.horizontal.decrease") }
+            } label: { Image(systemName: "line.3.horizontal.decrease").font(.body.weight(.medium)).symbolRenderingMode(.monochrome) }
                 .tint(chatTagsModel.activeFilter == .unread ? .accentColor : .primary)
                 .accessibilityLabel(Text("Unread"))
                 .accessibilityIdentifier("sunder.context")
@@ -447,7 +447,7 @@ struct ChatListView: View {
                 Button {
                     ConnectProgressManager.shared.cancelConnectProgress()
                     showNewChatSheet = true
-                } label: { Image(systemName: "square.and.pencil") }
+                } label: { Image(systemName: "square.and.pencil").font(.body.weight(.medium)).symbolRenderingMode(.monochrome) }
                     .tint(.primary)
                     .accessibilityLabel(Text("New chat"))
                     .accessibilityIdentifier("sunder.avatar")

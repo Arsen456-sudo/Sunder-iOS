@@ -442,3 +442,9 @@ glassTopToolbar gives unread a 44pt circular interactive glassEffect and hides t
 ToolbarItem's shared backing. This avoids sharing compose's native platter. Actions,
 source IDs, compose rendering, centered destination title and search remain. Exact
 native filter-to-title matching remains [GAP]: destination is still a titleView.
+
+## Main SF Symbol rendering (2026-10-31)
+glassTopToolbar filter and compose label use system body/medium monochrome symbol
+rendering. No icon path, image pack or toolbar item identity change. Native tabs
+use filled chat/settings fallback symbols. Actual avatar remains the photo.
+Exact unread-to-title morph is deferred by user choice; native animations retained.

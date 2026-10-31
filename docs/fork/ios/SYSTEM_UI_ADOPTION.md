@@ -178,3 +178,16 @@ and child routes keep their original contexts. Reduce Motion is honored.
 Unread now uses separate system circular glass with shared toolbar backing hidden.
 This prevents shared-platter rendering, not a demonstrated filter-to-title morph.
 That exact morph remains pending; do not claim it solved from compilation alone.
+
+## Floating composer and system SF Symbols (2026-10-31)
+Chat-only opt-in splits the existing editor/action overlay into native glass islands
+on iOS26+, with existing UIKit text editor and unchanged voice/send state machine.
+GlassEffectContainer coordinates field/action materials. Preview and selection
+surfaces use rounded native glass; bottom soft scroll-edge ownership binds directly
+to the actual chat UIScrollView. No custom gradient blur, snapshot or animation
+engine is added. Shared input callers default to their previous layout.
+Settings/main tabs use semantic SF Symbols rendered by current OS. They are not
+claimed to be newly introduced symbol names. Main profile tab retains photo.
+User chose native animations/centered title and deferred precise unread-to-title
+morph, so header transition machinery is unchanged. Local source checks/CI compile
+are distinct from pending keyboard, voice, scrolling, Dynamic Type and device QA.

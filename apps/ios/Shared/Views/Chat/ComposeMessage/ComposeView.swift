@@ -384,7 +384,7 @@ struct ComposeView: View {
     // Spec: spec/client/compose.md#body
     var body: some View {
         VStack(spacing: 0) {
-            Divider()
+            if #unavailable(iOS 26.0) { Divider() }
 
             if chat.chatInfo.nextConnectPrepared,
                !composeState.inProgress,
@@ -462,12 +462,15 @@ struct ComposeView: View {
                     msgNotAllowedView("Voice messages not allowed", icon: "mic")
                     Divider()
                 }
-                contextItemView()
-                switch (composeState.editing, composeState.preview) {
-                case (true, .filePreview): EmptyView()
-                case (true, .voicePreview): EmptyView() // ? we may allow playback when editing is allowed
-                default: previewView()
+                VStack(spacing: 0) {
+                    contextItemView()
+                    switch (composeState.editing, composeState.preview) {
+                    case (true, .filePreview): EmptyView()
+                    case (true, .voicePreview): EmptyView() // ? we may allow playback when editing is allowed
+                    default: previewView()
+                    }
                 }
+                .modifier(SunderComposePreviewSurface(visible: composeState.contextItem != .noContextItem || !composeState.noPreview))
 
                 let contact = chat.chatInfo.contact
 
@@ -535,7 +538,7 @@ struct ComposeView: View {
                 }
             }
         }
-        .background(.bar)
+        .modifier(SunderComposeBarBackground())
         .onChange(of: composeState.message) { msg in
             if updatingCompose {
                 updatingCompose = false
@@ -1034,6 +1037,7 @@ struct ComposeView: View {
         ZStack(alignment: .leading) {
             SendMessageView(
                 placeholder: disabledText != nil ? nil : placeholder,
+                floating: true,
                 composeState: $composeState,
                 selectedRange: $selectedRange,
                 sendMessage: { ttl in
@@ -1102,9 +1106,8 @@ struct ComposeView: View {
         Button {
             showCommandsMenu.toggle()
         } label: {
-            Text(verbatim: "//")
-                .font(.title3)
-                .italic()
+            Image(systemName: "terminal")
+                .font(.body.weight(.medium))
                 .contentShape(Rectangle())
         }
         .disabled(!chat.chatInfo.sendMsgEnabled || chat.chatInfo.menuCommands.isEmpty)
@@ -1116,7 +1119,7 @@ struct ComposeView: View {
         let b = Button {
             showChooseSource = true
         } label: {
-            Image(systemName: "paperclip").font(.title3)
+            Image(systemName: "plus").font(.body.weight(.medium))
         }
             .disabled(composeState.attachmentDisabled || !chat.chatInfo.sendMsgEnabled)
             .tint(.primary)

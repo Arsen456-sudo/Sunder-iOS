@@ -324,7 +324,7 @@ struct SettingsView: View {
                 NavigationLink {
                     TagListView().navigationTitle("Chat folders")
                 } label: {
-                    settingsRow("folder", color: theme.colors.secondary) { Text("Chat folders") }
+                    settingsRow("folder.fill", color: theme.colors.secondary) { Text("Chat folders") }
                 }
                 NavigationLink {
                     UserProfilesView().navigationTitle("Your chat profiles").modifier(ThemedBackground(grouped: true))
@@ -338,7 +338,7 @@ struct SettingsView: View {
                     NavigationLink {
                         PreferencesView(profile: user.profile, preferences: user.fullPreferences, currentPreferences: user.fullPreferences)
                             .navigationTitle("Your preferences").modifier(ThemedBackground(grouped: true))
-                    } label: { settingsRow("switch.2", color: theme.colors.secondary) { Text("Chat preferences") } }
+                    } label: { settingsRow("slider.horizontal.3", color: theme.colors.secondary) { Text("Chat preferences") } }
                 }
                 NavigationLink {
                     ConnectDesktopView().navigationTitle("Connect to desktop").modifier(ThemedBackground(grouped: true))
@@ -351,7 +351,7 @@ struct SettingsView: View {
                             .navigationTitle("Appearance")
                             .modifier(ThemedBackground(grouped: true))
                     } label: {
-                        settingsRow("sun.max", color: theme.colors.secondary) { Text("Appearance") }
+                        settingsRow("circle.lefthalf.filled", color: theme.colors.secondary) { Text("Appearance") }
                     }
                     .disabled(chatModel.chatRunning != true)
                 }
@@ -361,14 +361,14 @@ struct SettingsView: View {
                         .navigationTitle("Your privacy")
                         .modifier(ThemedBackground(grouped: true))
                 } label: {
-                    settingsRow("lock", color: theme.colors.secondary) { Text("Your privacy") }
+                    settingsRow("hand.raised", color: theme.colors.secondary) { Text("Your privacy") }
                 }
                 .disabled(chatModel.chatRunning != true)
 
                 NavigationLink {
                     helpAndSupportView
                 } label: {
-                    settingsRow("questionmark", color: theme.colors.secondary) { Text("Help & support") }
+                    settingsRow("questionmark.circle", color: theme.colors.secondary) { Text("Help & support") }
                 }
 
                 chatDatabaseRow()
@@ -394,7 +394,7 @@ struct SettingsView: View {
                         .navigationTitle("Network & servers")
                         .modifier(ThemedBackground(grouped: true))
                 } label: {
-                    settingsRow("externaldrive.connected.to.line.below", color: theme.colors.secondary) { Text("Network & servers") }
+                    settingsRow("network", color: theme.colors.secondary) { Text("Network & servers") }
                 }
                 .disabled(chatModel.chatRunning != true)
 
@@ -415,7 +415,7 @@ struct SettingsView: View {
                         .navigationTitle("Your calls")
                         .modifier(ThemedBackground(grouped: true))
                 } label: {
-                    settingsRow("video", color: theme.colors.secondary) { Text("Audio & video calls") }
+                    settingsRow("phone", color: theme.colors.secondary) { Text("Audio & video calls") }
                 }
                 .disabled(chatModel.chatRunning != true)
 
@@ -449,7 +449,7 @@ struct SettingsView: View {
                             .modifier(ThemedBackground())
                             .frame(maxHeight: .infinity, alignment: .top)
                     } label: {
-                        settingsRow("questionmark", color: theme.colors.secondary) { Text("How to use it") }
+                        settingsRow("questionmark.circle", color: theme.colors.secondary) { Text("How to use it") }
                     }
                 }
                 NavigationLink {
@@ -466,7 +466,7 @@ struct SettingsView: View {
                         .modifier(ThemedBackground())
                         .frame(maxHeight: .infinity, alignment: .top)
                 } label: {
-                    settingsRow("info", color: theme.colors.secondary) { Text("About Sunder") }
+                    settingsRow("info.circle", color: theme.colors.secondary) { Text("About Sunder") }
                 }
             }
 

@@ -302,3 +302,14 @@ Profile content keeps an independent navigation context; a separate owned UIKit
 container supplies native side push/pop over chat. No snapshots/custom animator are
 used. Native edge back is enabled at profile root, not over deeper profile routes.
 Cleanup occurs after completed closing, not during an interactive/cancelled pop.
+
+## Floating composer on iOS26+ (2026-10-31)
+The editor and voice/send action area are separate rounded native-glass islands,
+with separate glass attachment/command buttons. Reply/edit/forward/attachment context
+keeps its content in a rounded glass surface. Selection actions have a floating
+capsule. Bottom controls use safe-area placement and the conversation's native
+soft bottom scroll-edge effect. Existing input/send/voice/live/draft/permissions
+remain; other SendMessageView callers keep their old layout unless explicitly opted
+in. iOS15–25 keep previous presentation. Actual keyboard/scroll/RTL verification
+requires the new build on device. Native centered header transitions are retained;
+user explicitly deferred exact unread-to-title morph.

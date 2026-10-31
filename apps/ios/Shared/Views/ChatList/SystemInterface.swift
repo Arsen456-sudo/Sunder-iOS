@@ -81,9 +81,85 @@ extension View {
 struct SunderComposeButton: ViewModifier {
     @ViewBuilder func body(content: Content) -> some View {
         if #available(iOS 26.0, *) {
-            content.buttonStyle(.glass).buttonBorderShape(.circle)
+            content.buttonStyle(.glass).buttonBorderShape(.circle).controlSize(.large)
         } else {
             content.buttonStyle(.bordered)
+        }
+    }
+}
+
+struct SunderComposeActionInset: ViewModifier {
+    var floating: Bool
+    var horizontal = false
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *), floating {
+            content.frame(minWidth: 44, minHeight: 44).contentShape(Circle())
+        } else {
+            content.padding(horizontal ? [.bottom, .horizontal] : [.bottom, .trailing], 4)
+        }
+    }
+}
+
+struct SunderComposePreviewSurface: ViewModifier {
+    var visible: Bool
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *), visible {
+            content.glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24))
+                .padding(.horizontal, 12)
+                .padding(.top, 6)
+        } else { content }
+    }
+}
+
+struct SunderSelectionSurface: ViewModifier {
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.glassEffect(.regular, in: Capsule())
+                .padding(.horizontal, 12)
+                .padding(.vertical, 6)
+        } else { content.background(.thinMaterial) }
+    }
+}
+
+struct SunderComposeBarBackground: ViewModifier {
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) { content }
+        else { content.background(.bar) }
+    }
+}
+
+struct SunderConversationBottomInset<Bottom: View>: ViewModifier {
+    var bottom: Bottom
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.safeAreaInset(edge: .bottom, spacing: 0) { bottom }
+        } else {
+            VStack(spacing: 0) { content; bottom }
+        }
+    }
+}
+
+@available(iOS 26.0, *)
+struct SunderComposeEdge: UIViewRepresentable {
+    var scrollView: UIScrollView
+    func makeUIView(context: Context) -> EdgeView { EdgeView(scrollView: scrollView) }
+    func updateUIView(_ view: EdgeView, context: Context) { view.bind(scrollView) }
+    static func dismantleUIView(_ view: EdgeView, coordinator: ()) { view.interaction.scrollView = nil }
+
+    final class EdgeView: UIView {
+        let interaction = UIScrollEdgeElementContainerInteraction()
+        init(scrollView: UIScrollView) {
+            super.init(frame: .zero)
+            isUserInteractionEnabled = false
+            interaction.edge = .bottom
+            addInteraction(interaction)
+            bind(scrollView)
+        }
+        required init?(coder: NSCoder) { fatalError("init(coder:) is not supported") }
+        func bind(_ scrollView: UIScrollView) {
+            if interaction.scrollView !== scrollView { interaction.scrollView = scrollView }
+            if scrollView.bottomEdgeEffect.style != .soft { scrollView.bottomEdgeEffect.style = .soft }
+            if scrollView.bottomEdgeEffect.isHidden { scrollView.bottomEdgeEffect.isHidden = false }
         }
     }
 }

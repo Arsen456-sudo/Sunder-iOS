@@ -20,10 +20,10 @@ Configure all aspects of app behavior including notifications, network/servers, 
 | Row | Icon | Destination | Description |
 |---|---|---|---|
 | Notifications | `bolt` (color varies by token status) | `NotificationsView` | Push notification mode and preview settings |
-| Network & servers | `externaldrive.connected.to.line.below` | `NetworkAndServers` | SMP/XFTP servers, proxy, .onion hosts, advanced network |
-| Audio & video calls | `video` | `CallSettings` | WebRTC relay policy, ICE servers, CallKit options |
-| Your privacy | `lock` | `PrivacySettings` | SimpleX Lock, screen protection, delivery receipts, auto-accept |
-| Appearance | `sun.max` | `AppearanceSettings` | Theme, language, wallpapers, chat bubbles, toolbar opacity |
+| Network & servers | `network` | `NetworkAndServers` | SMP/XFTP servers, proxy, .onion hosts, advanced network |
+| Audio & video calls | `phone` | `CallSettings` | WebRTC relay policy, ICE servers, CallKit options |
+| Your privacy | `hand.raised` | `PrivacySettings` | SimpleX Lock, screen protection, delivery receipts, auto-accept |
+| Appearance | `circle.lefthalf.filled` | `AppearanceSettings` | Theme, language, wallpapers, chat bubbles, toolbar opacity |
 
 All rows disabled when `chatModel.chatRunning != true`. Appearance row only shown when `UIApplication.shared.supportsAlternateIcons`.
 
@@ -276,3 +276,11 @@ other tab roots remain scoped to their own navigation stacks.
 Settings and Profile root tabs participate in the same native bottom .soft scroll
 edge registration as Chats, owned by the UITabBarController. Deeper routes retain
 immediate tab hiding and do not receive a separate custom blur overlay.
+
+## System row symbols (2026-10-31)
+Settings row icons remain SF Symbols rendered by the installed OS. Folder uses
+folder.fill, preferences slider.horizontal.3, appearance circle.lefthalf.filled,
+privacy hand.raised, help questionmark.circle, network network, calls phone and
+about info.circle. All destinations/labels, notification status and account photo
+remain. These are semantic system symbols with current OS artwork, not a claim
+that each symbol name was first introduced in iOS26/27.

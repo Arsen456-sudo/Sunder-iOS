@@ -635,3 +635,11 @@ push/pop is native, with no custom transitioning delegate. Existing chat stack a
 its delegate/path are untouched. The inner profile NavigationView still owns child
 links. Root close is injected weakly; dismissal completion owns group/theme cleanup.
 Root interactive back cancellation does not dismiss or clear profile state.
+
+## Native symbol and composer layout update (2026-10-31)
+SunderMainTabs uses current OS SF Symbol filled chat/settings/profile fallback
+images; profile update still replaces fallback with user's avatar. SettingsView row
+symbols are refreshed semantically; notification-state colors/icons are unchanged.
+ChatView bottom presentation uses the system safe-area inset; main-tab visibility
+and profile-side navigation remain unchanged. User deferred exact filter-to-title
+matching and requested preservation of native header animations/centered title.

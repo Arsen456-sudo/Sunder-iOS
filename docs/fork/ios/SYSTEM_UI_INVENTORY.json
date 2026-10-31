@@ -654,7 +654,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ChatView.swift",
-      "sha256": "13e8d9a985ac291b1557ccd73d8aac7fc758cdee5673d744d7eb15eb730bcc59",
+      "sha256": "6c46207fdf111b04783b930950be091703876d6513930c3441df1507c2805bd6",
       "swiftui_view_declarations": [
         "ChatView",
         "ChatBannerView",
@@ -671,9 +671,9 @@
       "system_controls": [],
       "hidden_navigation": [],
       "legacy_material_references": [
-        236,
-        606,
-        799
+        198,
+        615,
+        808
       ],
       "native_bridges": [],
       "validation": "Source-pattern inventory; full-screen device validation pending"
@@ -751,7 +751,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ComposeMessage/ComposeView.swift",
-      "sha256": "e3b94c4949fa520f1b258950bb67fb90d9fd24b1121ad9eac91f5d58f64622b9",
+      "sha256": "e469bb5a4f576787694956085336afb3a0c186f4d16134134b20164e61496d34",
       "swiftui_view_declarations": [
         "ComposeView"
       ],
@@ -760,7 +760,7 @@
       "system_controls": [],
       "hidden_navigation": [],
       "legacy_material_references": [
-        1400
+        1403
       ],
       "native_bridges": [],
       "validation": "Source-pattern inventory; full-screen device validation pending"
@@ -875,7 +875,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/ComposeMessage/SendMessageView.swift",
-      "sha256": "0a49a7ef4eb72ccfc1e4609e800295591e5f07b55af0847e9f42b59b63de1c4e",
+      "sha256": "1c4cac603da476eb3c8fa66cb6d2e5f3eb07528be990e3ba6a90aa61a4a72fd6",
       "swiftui_view_declarations": [
         "SendMessageView",
         "RecordVoiceMessageButton"
@@ -1253,7 +1253,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/Chat/SelectableChatItemToolbars.swift",
-      "sha256": "551f4c79eaa5dc104c795739520d8ad6fb333730414715efb0de12f3922df5f1",
+      "sha256": "72a9313caff36f584b587b53690a73d0cd53df3ddf25dc8f6b305039b6122b03",
       "swiftui_view_declarations": [
         "SelectedItemsTopToolbar",
         "SelectedItemsBottomToolbar"
@@ -1298,7 +1298,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/ChatListNativeControls.swift",
-      "sha256": "aed81ba6a36d5e9933ca7b233b3a586b03f77fa1f8408c359ce26e30437f3820",
+      "sha256": "d4de3b9bb11fbb54389bbab310af47370e50aff58428c269091c333d17b18e9f",
       "swiftui_view_declarations": [
         "ChatListUnreadButton",
         "ChatListStatusButton"
@@ -1339,7 +1339,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/ChatListView.swift",
-      "sha256": "b856cc75b4e9190457d465adf98e87ebed42da7947a9884405e3a12144e029e9",
+      "sha256": "18c4955219c4e62d1003edc4615a36eea665da96aefc895ae8e4f6519c29c608",
       "swiftui_view_declarations": [
         "UserPickerSheetView",
         "ChatListView",
@@ -1496,8 +1496,9 @@
     },
     {
       "path": "apps/ios/Shared/Views/ChatList/SystemInterface.swift",
-      "sha256": "e40187a4a8cb0c6e73c7a8a0fec84c4ad1e3ff434615eec37ff812825093e533",
+      "sha256": "5f6da7935e770206dac0f9e1b1ba6d545df6cbdd6f66de71bacb7f583d7d530f",
       "swiftui_view_declarations": [
+        "SunderConversationBottomInset",
         "SunderSideProfile"
       ],
       "native_lists_forms": [],
@@ -1508,9 +1509,10 @@
       ],
       "legacy_material_references": [],
       "native_bridges": [
-        124,
-        229,
-        283
+        143,
+        200,
+        305,
+        359
       ],
       "validation": "Source-pattern inventory; full-screen device validation pending"
     },
@@ -2939,7 +2941,7 @@
     },
     {
       "path": "apps/ios/Shared/Views/UserSettings/SettingsView.swift",
-      "sha256": "0f73760567d22320939bcc79599db59df70a6ef687c0a0b28e576620d7170a6b",
+      "sha256": "6756cd8c5a38436cae2a7726ec9c7d11bcc8d26901d99796579f988eac0674ca",
       "swiftui_view_declarations": [
         "SettingsView",
         "ProfilePreview"

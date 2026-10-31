@@ -260,3 +260,10 @@ Native side-profile follow-up: SystemInterface/ChatInfoView/GroupChatInfoView af
 PC2/PC3/PC13/PC14 presentation/dismissal ownership only. ChatListView affects PC1
 unread glass isolation. Other header items, data, permissions, privacy and crypto
 are unchanged. Exact unread-to-title morph is still a documented gap.
+
+Floating compose follow-up: ChatView/SystemInterface/ComposeView/SendMessageView/
+SelectableChatItemToolbars affect PC2/PC3/PC4/PC6/PC9/PC10 presentation and native edge
+ownership. Send/voice handlers and virtualized-list engine are unchanged.
+ChatListView/ChatListNativeControls/SettingsView affect PC1/PC19 semantic SF Symbols
+only. No storage, transport, permissions or cryptography changes. Header morph is
+explicitly deferred by the user; existing centered/native behavior is preserved.

@@ -306,7 +306,7 @@ struct SunderMainTabs: UIViewControllerRepresentable {
         let hosts = roots.map { UIHostingController(rootView: $0) }
         context.coordinator.hosts = hosts
         let titles = [NSLocalizedString("Chats", comment: "Tab"), NSLocalizedString("Settings", comment: "Tab"), NSLocalizedString("Profile", comment: "Tab")]
-        let symbols = ["bubble.left.and.bubble.right", "gearshape", "person.crop.circle"]
+        let symbols = ["bubble.left.and.bubble.right.fill", "gearshape.fill", "person.crop.circle.fill"]
         let search = UIViewController()
         context.coordinator.search = search
         if #available(iOS 26.0, *) {

@@ -224,3 +224,9 @@ Unread's toolbar shared backing is hidden and its button receives its own native
 interactive circular glass. Compose and the visible centered destination title are
 unchanged. This separates unread from compose's platter; exact unread-to-title
 morph remains a known gap and is not claimed by this change.
+
+## System symbol refresh (2026-10-31)
+Main-tab chat/settings icons use filled system SF Symbols, profile retains the
+user's photo with a system fallback. Compose/filter use consistent system symbol
+weight/rendering. The user's selected scope retains native header animations and
+centered name, deferring exact unread-to-title morph. No header routes are replaced.

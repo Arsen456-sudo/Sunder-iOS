@@ -14,6 +14,7 @@ private let liveMsgInterval: UInt64 = 3000_000000
 // Spec: spec/client/compose.md#SendMessageView
 struct SendMessageView: View {
     var placeholder: String?
+    var floating = false
     @Binding var composeState: ComposeState
     @Binding var selectedRange: NSRange
     @EnvironmentObject var theme: AppTheme
@@ -50,7 +51,35 @@ struct SendMessageView: View {
     @UserDefault(DEFAULT_LIVE_MESSAGE_ALERT_SHOWN) private var liveMessageAlertShown = false
     @UserDefault(DEFAULT_SIGN_MESSAGE_ALERT_SHOWN) private var signMessageAlertShown = false
 
-    var body: some View {
+    @ViewBuilder var body: some View {
+        if #available(iOS 26.0, *), floating {
+            GlassEffectContainer(spacing: 8) {
+                HStack(alignment: .bottom, spacing: 8) {
+                    editor
+                        .padding(.vertical, 4)
+                        .frame(minHeight: 44)
+                        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 24))
+                    if !hideSendButton || composeState.progressByTimeout {
+                        actionArea
+                            .frame(minWidth: 44, minHeight: 44)
+                            .glassEffect(.regular.interactive(), in: Capsule())
+                    }
+                }
+            }
+            .buttonStyle(.plain)
+            .padding(.vertical, 6)
+            .onChange(of: composeState.message, perform: { text in updateFont(text) })
+        } else {
+            editor
+                .overlay(alignment: .bottomTrailing) { actionArea }
+                .padding(.vertical, 1)
+                .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 20))
+                .onChange(of: composeState.message, perform: { text in updateFont(text) })
+                .padding(.vertical, 8)
+        }
+    }
+
+    private var editor: some View {
         ZStack(alignment: .leading) {
             if case .voicePreview = composeState.preview {
                 Text("Voice message…")
@@ -59,7 +88,7 @@ struct SendMessageView: View {
                     .foregroundColor(theme.colors.secondary)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 8)
-                    .padding(.trailing, 32)
+                    .padding(.trailing, editorTrailingInset)
                     .frame(maxWidth: .infinity)
             } else {
                 NativeTextEditor(
@@ -72,7 +101,7 @@ struct SendMessageView: View {
                     selectedRange: $selectedRange,
                     onImagesAdded: onMediaAdded
                 )
-                .padding(.trailing, 32)
+                .padding(.trailing, editorTrailingInset)
                 .allowsTightening(false)
                 .fixedSize(horizontal: false, vertical: true)
             }
@@ -82,23 +111,36 @@ struct SendMessageView: View {
                 deleteTextButton()
             }
         })
-        .overlay(alignment: .bottomTrailing) {
-            if composeState.progressByTimeout {
-                ProgressView()
-                    .scaleEffect(1.4)
-                    .frame(width: 31, height: 31, alignment: .center)
-                    .padding([.bottom, .trailing], 4)
-            } else {
-                composeActionButtons()
-                // required for intercepting clicks
-                    .background(.white.opacity(0.000001))
-            }
-        }
-        .padding(.vertical, 1)
-        .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 20))
-        .onChange(of: composeState.message, perform: { text in updateFont(text) })
-        .padding(.vertical, 8)
     }
+
+    private var editorTrailingInset: CGFloat {
+        if #available(iOS 26.0, *), floating { return teHeight > 100 ? 32 : 0 }
+        return 32
+    }
+
+    private var usesFloatingLayout: Bool {
+        if #available(iOS 26.0, *) { return floating }
+        return false
+    }
+
+    private var sendGlyphSize: CGFloat {
+        if #available(iOS 26.0, *), floating { return sendButtonSize * 20 / 29 }
+        return sendButtonSize
+    }
+
+    @ViewBuilder private var actionArea: some View {
+        if composeState.progressByTimeout {
+            ProgressView()
+                .scaleEffect(1.4)
+                .frame(width: 31, height: 31, alignment: .center)
+                .modifier(SunderComposeActionInset(floating: floating))
+        } else {
+            composeActionButtons()
+            // required for intercepting clicks
+                .background(.white.opacity(0.000001))
+        }
+    }
+
 
     @ViewBuilder private func composeActionButtons() -> some View {
         let vmrs = composeState.voiceMessageRecordingState
@@ -121,7 +163,8 @@ struct SendMessageView: View {
                         startVoiceMessageRecording: startVoiceMessageRecording,
                         finishVoiceMessageRecording: finishVoiceMessageRecording,
                         holdingVMR: $holdingVMR,
-                        disabled: composeState.inProgress
+                        disabled: composeState.inProgress,
+                        floating: floating
                     )
                 } else {
                     voiceMessageNotAllowedButton()
@@ -156,15 +199,15 @@ struct SendMessageView: View {
     private func sendToConnectButton(_ connect: @escaping () -> Void) -> some View {
         let disabled = !composeState.sendEnabled || composeState.inProgress || disableSendButton
         return Button(action: connect) {
-            Image(systemName: "arrow.up.circle.fill")
+            Image(systemName: usesFloatingLayout ? "arrow.up" : "arrow.up.circle.fill")
                 .resizable()
                 .foregroundColor(disabled ? theme.colors.secondary.opacity(0.67) : sendButtonColor)
-                .frame(width: sendButtonSize, height: sendButtonSize)
+                .frame(width: sendGlyphSize, height: sendGlyphSize)
                 .opacity(sendButtonOpacity)
         }
         .disabled(disabled)
         .frame(width: 31, height: 31)
-        .padding([.bottom, .trailing], 4)
+        .modifier(SunderComposeActionInset(floating: floating))
     }
 
     private func sendMessageButton() -> some View {
@@ -172,11 +215,11 @@ struct SendMessageView: View {
             sendMessage(nil)
         } label: {
             Image(systemName: composeState.editing || composeState.liveMessage != nil
-                  ? "checkmark.circle.fill"
-                  : "arrow.up.circle.fill")
+                  ? (usesFloatingLayout ? "checkmark" : "checkmark.circle.fill")
+                  : (usesFloatingLayout ? "arrow.up" : "arrow.up.circle.fill"))
             .resizable()
             .foregroundColor(sendButtonColor)
-            .frame(width: sendButtonSize, height: sendButtonSize)
+            .frame(width: sendGlyphSize, height: sendGlyphSize)
             .opacity(sendButtonOpacity)
         }
         .disabled(
@@ -190,7 +233,7 @@ struct SendMessageView: View {
         .contextMenu{
             sendButtonContextMenuItems()
         }
-        .padding([.bottom, .trailing], 4)
+        .modifier(SunderComposeActionInset(floating: floating))
         .confirmationDialog("Send disappearing message", isPresented: $showCustomDisappearingMessageDialogue, titleVisibility: .visible) {
             Button("30 seconds") { sendMessage(30) }
             Button("1 minute") { sendMessage(60) }
@@ -261,6 +304,7 @@ struct SendMessageView: View {
         var finishVoiceMessageRecording: (() -> Void)?
         @Binding var holdingVMR: Bool
         var disabled: Bool
+        var floating = false
         @State private var pressed: TimeInterval? = nil
 
         var body: some View {
@@ -272,7 +316,7 @@ struct SendMessageView: View {
             .opacity(holdingVMR ? 0.7 : 1)
             .disabled(disabled)
             .frame(width: 31, height: 31)
-            .padding([.bottom, .trailing], 4)
+            .modifier(SunderComposeActionInset(floating: floating))
             ._onButtonGesture { down in
                 if down {
                     holdingVMR = true
@@ -326,7 +370,7 @@ struct SendMessageView: View {
         }
         .disabled(composeState.inProgress)
         .frame(width: 31, height: 31)
-        .padding([.bottom, .trailing], 4)
+        .modifier(SunderComposeActionInset(floating: floating))
     }
 
     private func cancelLiveMessageButton(cancel: @escaping () -> Void) -> some View {
@@ -340,7 +384,7 @@ struct SendMessageView: View {
                 .frame(width: 15, height: 15)
         }
         .frame(width: 29, height: 29)
-        .padding([.bottom, .horizontal], 4)
+        .modifier(SunderComposeActionInset(floating: floating, horizontal: true))
     }
 
     private func startLiveMessageButton(send:  @escaping () async -> Void, update: @escaping () async -> Void) -> some View {
@@ -357,7 +401,7 @@ struct SendMessageView: View {
                 .frame(width: 20, height: 20)
         }
         .frame(width: 29, height: 29)
-        .padding([.bottom, .horizontal], 4)
+        .modifier(SunderComposeActionInset(floating: floating, horizontal: true))
     }
 
     private func startSignedMessage() {
@@ -427,7 +471,7 @@ struct SendMessageView: View {
         }
         .disabled(composeState.inProgress)
         .frame(width: 31, height: 31)
-        .padding([.bottom, .trailing], 4)
+        .modifier(SunderComposeActionInset(floating: floating))
     }
 
     private func updateFont(_ text: String) {

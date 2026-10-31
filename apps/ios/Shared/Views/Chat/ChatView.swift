@@ -156,46 +156,8 @@ struct ChatView: View {
                         }
                     )
                 }
-                if let connectInProgressText = connectProgressManager.showConnectProgress {
-                    connectInProgressView(connectInProgressText)
-                }
-                if let connectingText {
-                    Text(connectingText)
-                        .font(.caption)
-                        .foregroundColor(theme.colors.secondary)
-                        .padding(.top)
-                }
-                if selectedChatItems == nil {
-                    ComposeView(
-                        chat: chat,
-                        im: im,
-                        composeState: $composeState,
-                        showCommandsMenu: $showCommandsMenu,
-                        keyboardVisible: $keyboardVisible,
-                        keyboardHiddenDate: $keyboardHiddenDate,
-                        selectedRange: $selectedRange
-                    )
-                } else {
-                    SelectedItemsBottomToolbar(
-                        im: im,
-                        selectedChatItems: $selectedChatItems,
-                        chatInfo: chat.chatInfo,
-                        deleteItems: { forAll in
-                            allowToDeleteSelectedMessagesForAll = forAll
-                            showDeleteSelectedMessages = true
-                        },
-                        archiveItems: {
-                            showArchiveSelectedReports = true
-                        },
-                        moderateItems: {
-                            if case let .group(groupInfo, _) = chat.chatInfo {
-                                showModerateSelectedMessagesAlert(groupInfo)
-                            }
-                        },
-                        forwardItems: forwardSelectedMessages
-                    )
-                }
             }
+            .modifier(SunderConversationBottomInset(bottom: conversationBottomBar))
             if im.showLoadingProgress == chat.id {
                 ProgressView().scaleEffect(2)
             }
@@ -534,6 +496,53 @@ struct ChatView: View {
             } else if !userMemberKnockingChat {
                 secondaryTrailingToolbarContent().tint(.primary)
             }
+        }
+    }
+
+    private var conversationBottomBar: some View {
+        VStack(spacing: 0) {
+            if let connectInProgressText = connectProgressManager.showConnectProgress {
+                connectInProgressView(connectInProgressText)
+            }
+            if let connectingText {
+                Text(connectingText)
+                    .font(.caption)
+                    .foregroundColor(theme.colors.secondary)
+                    .padding(.top)
+            }
+            if selectedChatItems == nil {
+                ComposeView(
+                    chat: chat,
+                    im: im,
+                    composeState: $composeState,
+                    showCommandsMenu: $showCommandsMenu,
+                    keyboardVisible: $keyboardVisible,
+                    keyboardHiddenDate: $keyboardHiddenDate,
+                    selectedRange: $selectedRange
+                )
+            } else {
+                SelectedItemsBottomToolbar(
+                    im: im,
+                    selectedChatItems: $selectedChatItems,
+                    chatInfo: chat.chatInfo,
+                    deleteItems: { forAll in
+                        allowToDeleteSelectedMessagesForAll = forAll
+                        showDeleteSelectedMessages = true
+                    },
+                    archiveItems: {
+                        showArchiveSelectedReports = true
+                    },
+                    moderateItems: {
+                        if case let .group(groupInfo, _) = chat.chatInfo {
+                            showModerateSelectedMessagesAlert(groupInfo)
+                        }
+                    },
+                    forwardItems: forwardSelectedMessages
+                )
+            }
+        }
+        .background {
+            if #available(iOS 26.0, *) { SunderComposeEdge(scrollView: scrollView) }
         }
     }
 

@@ -49,7 +49,7 @@ struct SelectedItemsBottomToolbar: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Divider()
+            if #unavailable(iOS 26.0) { Divider() }
 
             HStack(alignment: .center) {
                 Button {
@@ -108,7 +108,7 @@ struct SelectedItemsBottomToolbar: View {
             recheckItems(chatInfo, im.reversedChatItems, selected)
         }
         .frame(height: 55.5)
-        .background(.thinMaterial)
+        .modifier(SunderSelectionSurface())
     }
 
     private func recheckItems(_ chatInfo: ChatInfo, _ chatItems: [ChatItem], _ selectedItems: Set<Int64>?) {

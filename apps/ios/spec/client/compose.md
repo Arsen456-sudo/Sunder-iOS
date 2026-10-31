@@ -70,20 +70,20 @@ ComposeView
 | Function | Line | Description |
 |----------|------|-------------|
 | [`body`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L371) | L371 | Main view body |
-| [`sendMessageView()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L866) | L870 | Builds the send-message UI |
-| [`sendMessage(ttl:)`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1281) | L1286 | Entry point: initiates send |
-| [`sendMessageAsync()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1290) | L1295 | Async send implementation |
-| [`clearState(live:)`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1644) | L1649 | Resets compose state after send |
-| [`addMediaContent()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1069) | L1073 | Adds media attachment |
-| [`connectCheckLinkPreview()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1042) | L1046 | Checks link preview before connect |
-| [`commandsButton()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L927) | L931 | Builds commands menu button |
+| [`sendMessageView()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L869) | L870 | Builds the send-message UI |
+| [`sendMessage(ttl:)`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1284) | L1286 | Entry point: initiates send |
+| [`sendMessageAsync()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1293) | L1295 | Async send implementation |
+| [`clearState(live:)`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1647) | L1649 | Resets compose state after send |
+| [`addMediaContent()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1073) | L1073 | Adds media attachment |
+| [`connectCheckLinkPreview()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1046) | L1046 | Checks link preview before connect |
+| [`commandsButton()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L930) | L931 | Builds commands menu button |
 
 ### Draft Persistence
 
 | Function | Line | Description |
 |----------|------|-------------|
-| [`saveCurrentDraft()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1658) | L1663 | Saves compose state to `ChatModel.draft` |
-| [`clearCurrentDraft()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1664) | L1669 | Clears persisted draft |
+| [`saveCurrentDraft()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1661) | L1663 | Saves compose state to `ChatModel.draft` |
+| [`clearCurrentDraft()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1667) | L1669 | Clears persisted draft |
 
 - When navigating away from a chat, compose state is saved to `ChatModel.draft` / `ChatModel.draftChatId`
 - When returning to the same chat, draft is restored
@@ -253,10 +253,10 @@ Optional feature where the recipient sees typing in real-time.
 
 | Function | Line | Description |
 |----------|------|-------------|
-| [`sendLiveMessage()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1100) | L1102 | Initiates a live message |
-| [`updateLiveMessage()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1117) | L1120 | Sends incremental live update |
-| [`liveMessageToSend()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1134) | L1139 | Determines text diff to send |
-| [`truncateToWords()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1139) | L1144 | Truncates text at word boundary |
+| [`sendLiveMessage()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1104) | L1102 | Initiates a live message |
+| [`updateLiveMessage()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1120) | L1120 | Sends incremental live update |
+| [`liveMessageToSend()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1137) | L1139 | Determines text diff to send |
+| [`truncateToWords()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1142) | L1144 | Truncates text at word boundary |
 
 ### API
 - Initial: `apiSendMessages(live: true, composedMessages: [...])` -- creates live message
@@ -279,12 +279,12 @@ Optional feature where the recipient sees typing in real-time.
 
 | Function | Line | Description |
 |----------|------|-------------|
-| [`startVoiceMessageRecording()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1559) | L1564 | Begins audio recording |
-| [`finishVoiceMessageRecording()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1600) | L1605 | Stops recording, shows preview |
-| [`allowVoiceMessagesToContact()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1611) | L1616 | Enables voice messages for contact |
-| [`updateComposeVMRFinished()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1618) | L1623 | Updates state after recording finishes |
-| [`cancelCurrentVoiceRecording()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1630) | L1635 | Cancels in-progress recording |
-| [`cancelVoiceMessageRecording()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1637) | L1642 | Cancels and cleans up recording file |
+| [`startVoiceMessageRecording()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1562) | L1564 | Begins audio recording |
+| [`finishVoiceMessageRecording()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1603) | L1605 | Stops recording, shows preview |
+| [`allowVoiceMessagesToContact()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1614) | L1616 | Enables voice messages for contact |
+| [`updateComposeVMRFinished()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1621) | L1623 | Updates state after recording finishes |
+| [`cancelCurrentVoiceRecording()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1633) | L1635 | Cancels in-progress recording |
+| [`cancelVoiceMessageRecording()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1640) | L1642 | Cancels and cleans up recording file |
 
 ### Constraints
 - Maximum duration: `MAX_VOICE_MESSAGE_LENGTH = 300` seconds (5 minutes)
@@ -310,12 +310,12 @@ Optional feature where the recipient sees typing in real-time.
 
 | Function | Line | Description |
 |----------|------|-------------|
-| [`showLinkPreview()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1672) | L1677 | Triggers link preview loading |
-| [`getMessageLinks()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1692) | L1697 | Extracts URLs from formatted text |
-| [`isSimplexLink()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1703) | L1708 | Checks if URL is a SimpleX link |
-| [`cancelLinkPreview()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1707) | L1712 | Cancels pending preview |
-| [`loadLinkPreview()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1719) | L1724 | Fetches OpenGraph metadata |
-| [`resetLinkPreview()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1736) | L1741 | Resets preview state |
+| [`showLinkPreview()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1675) | L1677 | Triggers link preview loading |
+| [`getMessageLinks()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1695) | L1697 | Extracts URLs from formatted text |
+| [`isSimplexLink()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1706) | L1708 | Checks if URL is a SimpleX link |
+| [`cancelLinkPreview()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1710) | L1712 | Cancels pending preview |
+| [`loadLinkPreview()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1722) | L1724 | Fetches OpenGraph metadata |
+| [`resetLinkPreview()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1739) | L1741 | Resets preview state |
 
 ### Behavior
 - Only the first URL in the message generates a preview
@@ -347,8 +347,8 @@ In group chats, typing `@` triggers member name autocomplete:
 When `chat.chatInfo.groupInfo?.useRelays == true` (channel mode), compose behaves differently:
 
 ### Owner/Admin Compose
-- [`send()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1493) passes `sendAsGroup: true` to `apiSendMessages` when `useRelays && memberRole >= .owner`
-- [`forwardItems()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1521) passes `sendAsGroup: true` to `apiForwardChatItems` under same condition
+- [`send()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1496) passes `sendAsGroup: true` to `apiSendMessages` when `useRelays && memberRole >= .owner`
+- [`forwardItems()`](../../Shared/Views/Chat/ComposeMessage/ComposeView.swift#L1524) passes `sendAsGroup: true` to `apiForwardChatItems` under same condition
 - Placeholder text shows "Broadcast" instead of "Message" (via `sendMessageView()` `placeholder:` parameter)
 - Share Extension ([`ShareAPI.swift`](../../SimpleX%20SE/ShareAPI.swift#L71)) uses the same `sendAsGroup` expression
 
@@ -387,3 +387,24 @@ SwiftUI toolbar shared backgrounds are suppressed only for those controls.
 Neutral settings/compose foregrounds do not replace semantic action colors.
 Conversation uses automatic system navigation background and extends under its
 top safe area; virtualized scrolling and message/voice handlers are unchanged.
+
+## Native floating compose surfaces (2026-10-31)
+This supersedes standard compose presentation above on iOS26+ in chat only.
+SendMessageView.floating defaults false; ComposeView opts in. Its modern body
+contains GlassEffectContainer and a bottom-aligned HStack: editor uses native
+regular glass with 24pt corners, actionArea uses interactive capsule glass with
+a 44pt minimum. NativeTextEditor and all its bindings remain unchanged. The
+legacy branch retains the previous overlay/background. editorTrailingInset
+reserves clear-button room for long text, legacy always retains 32pt action room.
+usesFloatingLayout gates plain arrow/checkmark symbols to modern opt-in only;
+sendGlyphSize retains the live-size state proportion. SunderComposeActionInset
+centers existing action controls in 44pt modern targets with legacy inset fallback.
+RecordVoiceMessageButton receives floating but keeps its existing recording gesture,
+callbacks/disabled state. Context/send/menu/disappearing-message logic is unchanged.
+ComposeView removes modern full-width .bar/divider, wraps preview/context content
+with SunderComposePreviewSurface, and uses system plus/terminal attachment/command
+symbols. Specialized connect/channel/request branches remain available.
+SelectedItemsBottomToolbar uses SunderSelectionSurface and retains all enablement,
+moderation/report/forward/delete handlers. UIKit owns native effects/animations.
+
+Source entry points: [editor](../../Shared/Views/Chat/ComposeMessage/SendMessageView.swift#L82) | [editorTrailingInset](../../Shared/Views/Chat/ComposeMessage/SendMessageView.swift#L116) | [usesFloatingLayout](../../Shared/Views/Chat/ComposeMessage/SendMessageView.swift#L121) | [sendGlyphSize](../../Shared/Views/Chat/ComposeMessage/SendMessageView.swift#L126) | [actionArea](../../Shared/Views/Chat/ComposeMessage/SendMessageView.swift#L131)

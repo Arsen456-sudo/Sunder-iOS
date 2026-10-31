@@ -338,7 +338,7 @@ or additional backdrop renderer remains. Main-list search cancellation is unchan
 Native bar-item morphing from unread to the restored principal title remains a
 separate unverified limitation; a restored visible title is not proof of that morph.
 
-Source entry points: [SunderTabsController](../../Shared/Views/ChatList/ChatListNativeControls.swift#L241) | [SunderTitleSurface](../../Shared/Views/ChatList/SystemInterface.swift#L197)
+Source entry points: [SunderTabsController](../../Shared/Views/ChatList/ChatListNativeControls.swift#L241) | [SunderTitleSurface](../../Shared/Views/ChatList/SystemInterface.swift#L273)
 
 ## Toolbar builder compile correction (2026-10-31)
 Modern toolbar availability is selected at ChatView's outer ViewBuilder, not via
@@ -386,7 +386,7 @@ owner identity, not labels/chat/account data. SunderNavigationSearch saves/resto
 leading/trailing groups when present, with legacy fallback. It does not discard the
 actual groups just because the legacy arrays are nil. Principal morph remains a gap.
 
-Source entry points: [sunderTrailingBarItems](../../Shared/Views/ChatList/ChatListNativeControls.swift#L534) | [sunderMatchingBarItem](../../Shared/Views/ChatList/ChatListNativeControls.swift#L541) | [publishVisibility](../../Shared/Views/ChatList/SystemInterface.swift#L131)
+Source entry points: [sunderTrailingBarItems](../../Shared/Views/ChatList/ChatListNativeControls.swift#L534) | [sunderMatchingBarItem](../../Shared/Views/ChatList/ChatListNativeControls.swift#L541) | [publishVisibility](../../Shared/Views/ChatList/SystemInterface.swift#L207)
 
 The group-aware identity pass changes only identifiers/accessibility metadata. It no
 longer writes sharesBackground during native layout: SwiftUI ToolbarSpacer and
@@ -409,7 +409,7 @@ no nested-profile navigationDestination or hidden NavigationLink registration in
 the chat stack. The back-looking leading button dismisses the cover; child links
 use the independent NavigationView's normal navigation. No custom animator/renderer.
 
-Source entry point: [sunderFullScreenProfile](../../Shared/Views/ChatList/SystemInterface.swift#L220)
+Source entry point: [sunderFullScreenProfile](../../Shared/Views/ChatList/SystemInterface.swift#L296)
 
 ## Owned UIKit side-profile navigation (2026-10-31)
 This supersedes the thin fullScreenCover wrapper above. sunderFullScreenProfile now
@@ -432,4 +432,20 @@ The source unread ToolbarItem now hides its shared backing and uses a 44pt circu
 interactive native glassEffect. IDs alone do not match a titleView; this isolates
 the erroneous source platter but does not establish exact filter-to-title morphing.
 
-Source entry points: [SunderProfileCloseKey](../../Shared/Views/ChatList/SystemInterface.swift#L208) | [SunderSideProfile](../../Shared/Views/ChatList/SystemInterface.swift#L224) | [scheduleUpdate](../../Shared/Views/ChatList/SystemInterface.swift#L259) | [reconcile](../../Shared/Views/ChatList/SystemInterface.swift#L269) | [close](../../Shared/Views/ChatList/SystemInterface.swift#L301) | [navigationController](../../Shared/Views/ChatList/SystemInterface.swift#L308) | [gestureRecognizerShouldBegin](../../Shared/Views/ChatList/SystemInterface.swift#L323) | [finish](../../Shared/Views/ChatList/SystemInterface.swift#L333) | [tearDown](../../Shared/Views/ChatList/SystemInterface.swift#L346)
+Source entry points: [SunderProfileCloseKey](../../Shared/Views/ChatList/SystemInterface.swift#L284) | [SunderSideProfile](../../Shared/Views/ChatList/SystemInterface.swift#L300) | [scheduleUpdate](../../Shared/Views/ChatList/SystemInterface.swift#L335) | [reconcile](../../Shared/Views/ChatList/SystemInterface.swift#L345) | [close](../../Shared/Views/ChatList/SystemInterface.swift#L377) | [navigationController](../../Shared/Views/ChatList/SystemInterface.swift#L384) | [gestureRecognizerShouldBegin](../../Shared/Views/ChatList/SystemInterface.swift#L399) | [finish](../../Shared/Views/ChatList/SystemInterface.swift#L409) | [tearDown](../../Shared/Views/ChatList/SystemInterface.swift#L422)
+
+## Floating composer helpers (2026-10-31)
+SunderComposeButton uses native glass/circular/large controls on iOS26.
+SunderComposeBarBackground retains .bar only on older OS.
+SunderComposePreviewSurface adds a 24pt native glass backing only when context or
+preview is present. SunderSelectionSurface uses native capsule glass/12pt side and
+6pt vertical spacing, with previous thin-material fallback.
+SunderComposeActionInset provides centered modern 44pt controls and legacy insets.
+SunderConversationBottomInset uses system safeAreaInset on iOS26 with old sibling
+VStack fallback. SunderComposeEdge.EdgeView owns one native
+UIScrollEdgeElementContainerInteraction with edge=.bottom and the actual provided
+scrollView, sets bottomEdgeEffect=.soft/visible and detaches on dismantle.
+It draws no synthetic gradient or duplicate blur and performs no scroll hierarchy
+search. All iOS26 APIs are availability gated; UIKit/SwiftUI own effect animation.
+
+Source entry points: [SunderComposeActionInset](../../Shared/Views/ChatList/SystemInterface.swift#L91) | [SunderComposePreviewSurface](../../Shared/Views/ChatList/SystemInterface.swift#L103) | [SunderSelectionSurface](../../Shared/Views/ChatList/SystemInterface.swift#L114) | [SunderComposeBarBackground](../../Shared/Views/ChatList/SystemInterface.swift#L124) | [SunderConversationBottomInset](../../Shared/Views/ChatList/SystemInterface.swift#L131) | [SunderComposeEdge](../../Shared/Views/ChatList/SystemInterface.swift#L143)
